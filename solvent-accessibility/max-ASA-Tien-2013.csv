@@ -1,0 +1,23 @@
+# maximum theoretical and empirical ASA values from Tien et al 2013
+# Source: https://en.wikipedia.org/wiki/Relative_accessible_surface_area
+AA_name,AA_code,AA_letter,theoretical_max_ASA,empirical_max_ASA
+Alanine,Ala,A,129,121
+Arginine,Arg,R,274,265
+Asparagine,Asn,N,195,187
+Aspartate,Asp,D,193,187
+Cysteine,Cys,C,167,148
+Glutamate,Glu,E,223,214
+Glutamine,Gln,Q,225,214
+Glycine,Gly,G,104,97
+Histidine,His,H,224,216
+Isoleucine,Ile,I,197,195
+Leucine,Leu,L,201,191
+Lysine,Lys,K,236,230
+Methionine,Met,M,224,203
+Phenylalanine,Phe,F,240,228
+Proline,Pro,P,159,154
+Serine,Ser,S,155,143
+Threonine,Thr,T,172,163
+Tryptophan,Trp,W,285,264
+Tyrosine,Tyr,Y,263,255
+Valine,Val,V,174,165
