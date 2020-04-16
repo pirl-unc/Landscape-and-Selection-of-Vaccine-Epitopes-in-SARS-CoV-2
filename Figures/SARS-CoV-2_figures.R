@@ -38,7 +38,7 @@ library(ggbeeswarm)
 library(ggallin)
 library(stringr)
 
-WORKING_DIR = "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2/COVID/"
+WORKING_DIR = "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Figures/COVID/"
 
 
 #############################################################################################
@@ -97,6 +97,14 @@ WORKING_DIR = "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2
 # fwrite(ent_vs_prop, paste0(WORKING_DIR, "ent_vs_prop.txt"))
 
 ent_vs_prop = fread( paste0(WORKING_DIR, "ent_vs_prop.txt"))
+colnames(ent_vs_prop) = c("Position", "Entropy", "Proportion")
+
+ggplot(data=ent_vs_prop)+
+  geom_point(aes(x=Entropy, y = Proportion))+
+  theme(text=element_text(face="bold",size=20,colour="black")) +
+  geom_vline(xintercept = 0.1, color="red")
+
+
 plot(ent_vs_prop$prop~ent_vs_prop$V2)
 
 
@@ -372,8 +380,8 @@ paper_tc$Type = "T cell"
 ###Check overlaps###
 
 length(which(lo_entropy$c1_peptide %in% unique(paper_tc$Peptide)))
-which(HLAI_filt$Peptide[which(HLAI_filt$lo_entropy==1)] %in% unique(paper_tc$Peptide))
-which(HLAII_filt$Peptide[which(HLAII_filt$lo_entropy==1)] %in% unique(paper_tc$Peptide))
+length(which(HLAI_filt$Peptide[which(HLAI_filt$lo_entropy==1)] %in% unique(paper_tc$Peptide)))
+length(which(HLAII_filt$Peptide[which(HLAII_filt$lo_entropy==1)] %in% unique(paper_tc$Peptide)))
 
 
 
@@ -427,12 +435,33 @@ Paper_bc$Protein = factor(Paper_bc$Protein, levels = c("S","M", "N"))
 Paper_bc = Paper_bc[which(!is.na(Paper_bc$Start)),]
 
 ##Split into epitopes found from the literature vs from PEPperCHIP
-PPC_bc = Paper_bc[which((Paper_bc$Source == "PEPperCHIP") | (Paper_bc$Source == "PEPperCHIP_etc")),]
+PPC_bc = Paper_bc[which((Paper_bc$Source == "PEPperCHIP"))] #| (Paper_bc$Source == "PEPperCHIP_etc")),]
 Paper_bc = Paper_bc[which((Paper_bc$Source != "PEPperCHIP") & (Paper_bc$Source != "PEPperCHIP_etc")),]
 Paper_bc$Type = "B cell"
 
 colnames(Paper_bc)[3] = "Peptide"
 colnames(PPC_bc)[3] = "Peptide"
+
+
+###Overlap between PPC and lit
+which(PPC_bc$Peptide %in% Paper_bc$Peptide) #Exact hits
+
+#Overlaps
+g1 <-  GRanges(seqnames="COVID",
+               IRanges(start=Paper_bc$Start,
+                       end=Paper_bc$End),
+               Lit_Bc = Paper_bc$Peptide,
+               Lit_source = Paper_bc$Source)
+              
+
+g2 <-  GRanges(seqnames="COVID",
+               IRanges(start=PPC_bc$Start,
+                       end=PPC_bc$End),
+               Pep_Bc = PPC_bc$Peptide)
+
+merge_bc=as.data.table(mergeByOverlaps(g1,g2))
+
+
 
 ###Combine T and B cell data
 paper_all = rbind(Paper_bc[,c(3,4,14:16)],paper_tc[,c(11,1,4,5,12)])
@@ -443,8 +472,8 @@ paper_all = rbind(Paper_bc[,c(3,4,14:16)],paper_tc[,c(11,1,4,5,12)])
 
 
 #Change to PPC_bc for looking for PEPperCHIP overlaps
-Source = PPC_bc[which(PPC_bc$Source == "PEPperCHIP"),]
-#Source = Paper_bc
+#Source = PPC_bc[which(PPC_bc$Source == "PEPperCHIP"),]
+Source = Paper_bc
 
 ##Coepitopes
 g1 <-  GRanges(seqnames="COVID",
@@ -1414,7 +1443,7 @@ g2 <-  GRanges(seqnames="COVID",
 
 merge=as.data.table(mergeByOverlaps(g1,g2))
 
-
+Paper_bc$Coep_coverage = Paper_bc$Epitope %in% merge$Pep_Bc
 ####Look for overlap with HLA I
 
 HLAI_filt=fread(paste0(WORKING_DIR, "COVID_human_netMHCpan_rank_filtered.txt"))
