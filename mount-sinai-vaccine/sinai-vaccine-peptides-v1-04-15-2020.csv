@@ -1,0 +1,36 @@
+Name,Sequence,Start,End,Length,Domain,Glycosylation,Polymorphism,"PEPperPRINT
+Epitope","PEPperPRINT 
+IgG","PEPperPRINT
+ IgA",Wang 2020,Poh 2020 Epitope,Notes,MHC-II epitopes
+S453-15mer,YRLFRKSNLKPFERD,453,467,15,RBM,n/a,n/a,453-YRLFRKSNLKPFERD-467,1 strong,1 weak,"Contains:
+456-FRKSN-460",n/a,"Only in 2nd PEPperPRINT spreadsheet
+(single patient hits)",
+S459-15mer,SNLKPFERDISTEIY,459,473,15,RBM,n/a,n/a,459-SNLKPFERDISTEIY-473,3,2,"2aa overlap with:
+456-FRKSN-460",n/a,original PEPperPRINT spreadsheet hit,
+S505-18mer,YQPYRVVVLSFELLHAPA,505,522,18,RBD,n/a,n/a,505-YQPYRVVVLSFELLH-519,2,2,n/a,n/a,have MHC-II epitopes on the right,"Multiple NetMHCIIpan 3.2 binding predictions
+ for 13mer/14mer peptides containing with 
+~500nM affinity to 
+HLA-DQA1*01:01/DQB1*05:01 
+with binding core VLSFELLHA
+
+at the C-terminal: 
+RVVVLSFELLHAP, 
+RVVVLSFELLHAPA, 
+YRVVVLSFELLHAP, 
+VVVLSFELLHAPA, 
+YRVVVLSFELLHA"
+S569-19mer,IADTTDAVRDPQTLEILDI,569,587,19,"28aa downsteam
+ of RBD",n/a,n/a,"569-IADTTDAVRDPQTLE-583, 
+571-DTTDAVRDPQTLEIL-585, 
+573-TDAVRDPQTLEILDI-587",3,1,n/a,n/a,made of 3 overlapping PEPperPRINT epitopes,
+S553-Neutralizing-S14P5-18mer,TESNKKFLPFQQFGRDIA,553,570,18,"12aa downstream
+of RBD",n/a,n/a,n/a,n/a,n/a,n/a,"Exact match:
+553-TESNKKFLPFQQFGRDIA-570",,
+S806-Neutralizing-S21P2-21mer,LPDPSKPSKRSFIEDLLFNKV,806,826,21,"C terminus of
+fusion peptide 
+(FP)",n/a,n/a,"Contains:
+807-PDPSKPSKRSFIEDL-821",2,0,"Contains:
+806-LPDPSKPSKRSFIED-820","Contains:
+809-PSKPSKRSFIEDLLFNKV-826","Extended Poh 2020 neutralizing anitibody epitope
+3aa left to contain PEPperPRINT 
+S807-S821 and Wang S806-S820",
