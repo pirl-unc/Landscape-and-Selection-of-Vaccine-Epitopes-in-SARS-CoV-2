@@ -1,0 +1,16 @@
+Sample_ID	Group
+N1	Naïve
+N2	Naïve
+N3	Naïve
+N4	Naïve
+N5	Naïve
+N6	Naïve
+I1	Infected
+I2	Infected
+I3	Infected
+I4	Infected
+I5	Infected
+I6	Infected
+I7	Infected
+I8	Infected
+I9	Infected
