@@ -1,0 +1,266 @@
+Protein	ID	Epitope	Source	Virus	Strain	Animal	Isotype	Immunization	Monoclonal Ab Name	In vitro function	Vaccine function	Notes	Start	End
+S	10778	DVVNQNAQALNTLVKQL	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	950	966
+S	11038	EAEVQIDRLITGRLQSL	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	988	1004
+S	12426	EIDRLNEVAKNLNESLIDLQELGKYEQY	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	1182	1209
+S	14626	EVAKNLNESLIDLQELG	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	1188	1204
+S	18515	GAALQIPFAMQMAYRFN	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	891	907
+S	18594	GAGICASY	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	667	674
+S	2092	AISSVLNDILSRLDKVE	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	972	988
+S	22321	GSFCTQLN	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	757	764
+S	27357	ILSRLDKVEAEVQIDRL	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	980	996
+S	30987	KGIYQTSN	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	310	317
+S	3176	AMQMAYRF	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	899	906
+S	32508	KNHTSPDVDLGDISGIN	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	1157	1173
+S	41177	MAYRFNGIGVTQNVLYE	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	902	918
+S	462	AATKMSECVLGQSKRVD	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	1025	1041
+S	47479	PFAMQMAYRFNGIGVTQ	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	897	913
+S	50311	QALNTLVKQLSSNFGAI	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	957	973
+S	51379	QLIRAAEIRASANLAAT	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	1011	1027
+S	52020	QQFGRD	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	563	568
+S	53202	RASANLAATKMSECVLG	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	1019	1035
+S	54599	RLITGRLQSLQTYVTQQ	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	995	1011
+S	558417	EIDRLNEVAKNLNESLIDLQELGKYEQY	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	1182	1209
+S	59425	SLQTYVTQQLIRAAEIR	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	1003	1019
+S	9094	DLGDISGINASVVNIQK	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	1165	1181
+N	15814	FFGMSRIGMEVTPSGTW	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	314	330
+N	21065	GLPNNTASWFTALTQHGK	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	44	61
+N	22855	GTTLPK	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	164	169
+N	28371	IRQGTDYKHWPQIAQFA	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	292	308
+N	31116	KHIDAYKTFPPTEPKKDKKK	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	355	374
+N	31166	KHWPQIAQFAPSASAFF	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	299	315
+N	75235	YNVTQAFGRRGPEQTQGNF	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	268	286
+N	33669	KTFPPTEPKKDKKKK	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	361	375
+N	37640	LLPAAD	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	394	399
+N	38249	LNKHIDAYKTFPPTEPK	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	353	369
+N	38648	LPQGTTLPKG	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	161	170
+N	38657	LPQRQKKQ	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	382	389
+N	48067	PKGFYAEGSRGGSQASSR	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	168	185
+N	50741	QFAPSASAFFGMSRIGM	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	306	322
+N	50965	QGTDYKHW	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	294	301
+N	51483	QLPQGTTLPKGFYAE	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	160	174
+N	51484	QLPQGTTLPKGFYAEGSR	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	160	177
+N	51485	QLPQGTTLPKGFYAEGSRGGSQ	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	160	181
+N	63729	TFPPTEPK	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	362	369
+N	55683	RRPQGLPNNTASWFT	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	40	54
+N	60379	SQASSRSS	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	180	187
+N	60669	SRGGSQASSRSSSRSR	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	176	191
+M	21996	GRCDIKDLPKEITVATSR	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	157	174
+M	29127	ITVATSRT	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	168	175
+M	48052	PKEITVATSRTLSYYKL	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	165	181
+M	66409	TSRTLSYYKLGASQRV	Ahmed et al. 2020	SARS-CoV-2								in silico prediction	172	187
+S		SNLKPFERDISTEIY	PEPperCHIP										459	473
+S		VGYQPYRVVVLSFEL	PEPperCHIP										503	517
+S		YQPYRVVVLSFELLH	PEPperCHIP										505	519
+S		IADTTDAVRDPQTLE	PEPperCHIP										569	583
+S		DTTDAVRDPQTLEIL	PEPperCHIP										571	585
+S		TDAVRDPQTLEILDI	PEPperCHIP										573	587
+S		LTGIAVEQDKNTQEV	PEPperCHIP										767	781
+S		ILPDPSKPSKRSFIE	PEPperCHIP										805	819
+S		PDPSKPSKRSFIEDL	PEPperCHIP										807	821
+S		LNESLIDLQELGKYE	PEPperCHIP										1193	1207
+S		ESLIDLQELGKYEQY	PEPperCHIP										1195	1209
+S		VIKVCEFQFCNDPFL	PEPperCHIP										127	141
+S		CEFQFCNDPFLGVYY	PEPperCHIP										131	145
+S		NATRFASVYAWNRKR	PEPperCHIP										343	357
+S		EVPVAIHADQLTPTW	PEPperCHIP										619	633
+S		CLIGAEHVNNSYECD	PEPperCHIP										649	663
+S		LNRALTGIAVEQDKN	PEPperCHIP										763	777
+S		FPREGVFVSNGTHWF	PEPperCHIP										1089	1103
+S		LQPELDSFKEELDKY	PEPperCHIP										1141	1155
+S		KEIDRLNEVAKNLNE	PEPperCHIP										1181	1195
+M		SGSGMADSNGTITVE	PEPperCHIP											
+M		SGMADSNGTITVEEL	PEPperCHIP											
+M		SFNPETNILLNVPLH	PEPperCHIP										111	125
+M		ESELVIGAVILRGHL	PEPperCHIP										135	149
+M		EELKKLLEQWNLVIG	PEPperCHIP										11	25
+N		AIVLQLPQGTTLPKG	PEPperCHIP										156	170
+N		VLQLPQGTTLPKGFY	PEPperCHIP										158	172
+N		QLPQGTTLPKGFYAE	PEPperCHIP										160	174
+N		QGQTVTKKSAAEASK	PEPperCHIP										242	256
+N		QTVTKKSAAEASKKP	PEPperCHIP										244	258
+N		VTKKSAAEASKKPRQ	PEPperCHIP										246	260
+N		KKSAAEASKKPRQKR	PEPperCHIP										248	262
+N		AEASKKPRQKRTATK	PEPperCHIP										252	266
+N		TFPPTEPKKDKKKKA	PEPperCHIP										362	376
+N		VTLLPAADLDDFSKQ	PEPperCHIP										392	406
+N		EAGLPYGANKDGIIW	PEPperCHIP										118	132
+N		GNFGDQELIRQGTDY	PEPperCHIP										284	298
+N		KKADETQALPQRQKK	PEPperCHIP										374	388
+N		KQQTVTLLPAADLDD	PEPperCHIP										388	402
+S	S12-31	SGSDLDRCTTFDDVQAPNYT	Hu et al. 2005	SARS-CoV-1	BJ01	Human	IgG	Infection	Polyclonal					
+S	S141-163	SKPMGTQTHTMIFDNAFNCTFEY	Hu et al. 2005	SARS-CoV-1	BJ01	Human	IgG	Infection	Polyclonal					
+S	S236-262	TAFSPAQDTWGTSAAAYFVGYLKPTTF	Hu et al. 2005	SARS-CoV-1	BJ01	Human	IgG	Infection	Polyclonal					
+S	S298-312	GIYQTSNFRVVPSGD	Hu et al. 2005	SARS-CoV-1	BJ01	Human	IgG	Infection	Polyclonal					
+S	S342-368	RKKISNCVADYSVLYNSTFFSTFKCYG	Hu et al. 2005	SARS-CoV-1	BJ01	Human	IgG	Infection	Polyclonal					
+S	S420-445	VLAWNTRNIDATSTGNYNYKYRYLRH	Hu et al. 2005	SARS-CoV-1	BJ01	Human	IgG	Infection	Polyclonal					
+S	S471-503	ALNCYWPLNDYGFYTTTGIGYQPYRVVVLSFEL	Hu et al. 2005	SARS-CoV-1	BJ01	Human	IgG	Infection	Polyclonal	Neutralizing		binds ACE2, in RBD		
+S	S524-537	CVNFNFNGLTGTGV	Hu et al. 2005	SARS-CoV-1	BJ01	Human	IgG	Infection	Polyclonal				538	551
+S	S604-625	TDVSTAIHADQLTPAWRIYSTG	Hu et al. 2005	SARS-CoV-1	BJ01	Human	IgG	Infection	Polyclonal	Neutralizing				
+S	S704-723	ITTEVMPVSMAKTSVDCNMY	Hu et al. 2005	SARS-CoV-1	BJ01	Human	IgG	Infection	Polyclonal					
+S	S834-850	AQKFNGLTVLPPLLTDD	Hu et al. 2005	SARS-CoV-1	BJ01	Human	IgG	Infection	Polyclonal					
+S	S945-963	VKQLSSNFGAISSVLNDIL	Hu et al. 2005	SARS-CoV-1	BJ01	Human	IgG	Infection	Polyclonal				963	981
+S	S965-986	RLDKVEAEVQIDRLITGRLQSL	Hu et al. 2005	SARS-CoV-1	BJ01	Human	IgG	Infection	Polyclonal				983	1004
+S	S1003-1012	SANLAATKMS	Hu et al. 2005	SARS-CoV-1	BJ01	Human	IgG	Infection	Polyclonal				1021	1030
+S	S1073-1100	REGVFVFNGTSWFITQRNFFSPQIITTD	Hu et al. 2005	SARS-CoV-1	BJ01	Human	IgG	Infection	Polyclonal					
+S	S1142-1166	TSPDVDLGDISGINASVVNIQKEID	Hu et al. 2005	SARS-CoV-1	BJ01	Human	IgG	Infection	Polyclonal				1160	1184
+S	S1164-1191	EIDRLNEVAKNLNESLIDLQELGKYEQY	Hu et al. 2005	SARS-CoV-1	BJ01	Human	IgG	Infection	Polyclonal				1182	1209
+M	M29-48	AWIMLLQFAYSNRNRFLYII	Hu et al. 2005	SARS-CoV-1	BJ01	Human	IgG	Infection	Polyclonal					
+N	N32-41	GRNGARPKQR	Hu et al. 2005	SARS-CoV-1	BJ01	Human	IgG	Infection	Polyclonal					
+N	N67-76	LPQGTTLPKG	Hu et al. 2005	SARS-CoV-1	BJ01	Human	IgG	Infection	Polyclonal				161	170
+N	N203-N212	SRGNSPARMA	Hu et al. 2005	SARS-CoV-1	BJ01	Human	IgG	Infection	Polyclonal					
+N	N254-266	EASKKPRQKRTAT	Hu et al. 2005	SARS-CoV-1	BJ01	Human	IgG	Infection	Polyclonal				253	265
+N	N367-389	TEPKKDKKKKTDEAQPLPQRQKK	Hu et al. 2005	SARS-CoV-1	BJ01	Human	IgG	Infection	Polyclonal					
+S	CB116	DSFKEELDKYFKNHT	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination					1146	1160
+S	CB117	ELDKYFKNHTSPDVD	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination					1151	1165
+S	CB118	FKNHTSPDVDLGDIS	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination					1156	1170
+S	CB119	SPDVDLGDISGINAS	Lai et al. 2005	SARS-CoV-1		Mouse	IgG1	Vaccination	mAb 1, 3, 5, 8	Neutralizing			1161	1175
+S	CB120	LGDISGINASVVNIQ	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination					1166	1180
+S	CB121	GINASVVNIQKEIDR	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination					1171	1185
+S	CB122	VVNIQKEIDRLNEVA	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination					1176	1190
+S	CB123	KEIDRLNEVAKNLNE	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination					1181	1195
+S	CB124	LNEVAKNLNESLIDL	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination					1186	1200
+S	CB125	KNLNESLIDLQELGKY	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination					1191	1206
+S	CB126	SLIDLQELGKYEQYIK	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination					1196	1211
+S	CB127	QELGKYEQYIKWPWYV	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination						
+S	CB128	YEQYIKWPWYVWLGFI	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination						
+S	CB129	KWPWYVWLGFIAGLIA	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination						
+S	CB130	VWLGFIAGLIAIVMVT	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination						
+S	CB131	IAGLIAIVMVTILLCC	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination						
+S	CB132	AIVMVTILLCCMTSCCSCLKGACSCG	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination						
+S	CB133	TILLCCMTSCCSCLKG	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination						
+S	CB134	CMTSCCSCLKGACSCG	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination						
+S	CB135	CSCLKGACSCGSCCKF	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination						
+S	CB136	GACSCGSCCKFDEDDS	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination						
+S	CB137	GSCCKFDEDDSEPVLK	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination					1251	1266
+S	CB138	FDEDDSEPVLKGVKLH	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination					1256	1271
+S	SP1	NQCVNFNFNGLTGTGV	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination						
+S	SP2	SSNFGAISSVLNDILSRLDKV	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination					967	987
+S	PEP508	GDYSHCSPLRYYPWWKCTYPDP	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination						
+S	CB119IA	TDAVDCSQNPLAELKCSVKSF	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination						
+S	CB119GA	SPDVDLGDASGINAS	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination						
+S	SP-DLGIA	DLGDASGINASVVNI	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination						
+S	SP-DLG	DLGDISGINASVVNI	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination					1165	1179
+S	SP-SGNCD	SGNCDSGNCDSGNCDSGNCD	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination						
+S	SP-SGIAA	SGIAASGIAASGIAASGIAA	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination						
+S	SP 1143--1172	SPDVDLGDISGINASVVNIQKEIDRLNEVA	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination					1161	1190
+S	SP 917--946	QESLTTTSTALGKLQDVVNQNAQALNTLVK	Lai et al. 2005	SARS-CoV-1		Mouse		Vaccination						
+S	S19–48	CTTFDDVQAPNYTQHTSSMRGVYYPDEIFR	He et al. 2004	SARS-CoV-1	TOR2	Human	IgG	Infection	Polyclonal					
+S	S278–312	CSQNPLAELKCSVKSFEIDKGIYQTSNFRVVPSGD	He et al. 2004	SARS-CoV-1	TOR2	Human	IgG	Infection	Polyclonal					
+S	S511–552	CGPKLSTDLIKNQCVNFNFNGLTGTGVLTPSSKRFQPFQQFG	He et al. 2004	SARS-CoV-1	TOR2	Human	IgG	Vaccination	Polyclonal					
+S	S536–566	GVLTPSSKRFQPFQQFGRDVSDFTDSVRDPK	He et al. 2004	SARS-CoV-1	TOR2	Human	IgG	Vaccination	Polyclonal					
+S	S603–634	CTDVSTAIHADQLTPAWRIYSTGNNVFQTQAGC	He et al. 2004	SARS-CoV-1	TOR2	Human	IgG	Vaccination	Polyclonal					
+S	S536-552	GVLTPSSKRFQPFQQFG	He et al. 2004	SARS-CoV-1	TOR2	Human	IgG	Infection	Polyclonal					
+S	S544-560	RFQPFQQFGRDVSDFTD	He et al. 2004	SARS-CoV-1	TOR2	Human	IgG	Infection	Polyclonal					
+S	S603-619	CTDVSTAIHADQLTPAW	He et al. 2004	SARS-CoV-1	TOR2	Human	IgG	Infection	Polyclonal					
+S	S460-476	FSPDGKPATPPALNAYW	Berry et al. 2010	SARS-CoV-1	TOR2	Mouse/humanized-mouse Ab	IgG2a/IgG1	Infection	F26G18	Neutralizing				
+S	S612-620	ADQLTPAWR	Berry et al. 2010	SARS-CoV-1	TOR2	Mouse	IgG2a	Infection	F26G8	Non-neutralizing				
+S	S803-828	LLFNKVTLADAGFMKQYGECLGDINA	Zhang et al. 2004	SARS-CoV-1	BJ01	Human	IgG	Infection	Polyclonal	Neutralizing				
+S	S1061-1093	PAICHEGKAYFPREGVFVFNGTSWFITQRNFFS	Zhang et al. 2004	SARS-CoV-1	BJ01	Human	IgG	Infection	Polyclonal	Non-neutralizing				
+S	S1091-1130	FFSPQIITTDNTFVSGNCDVVIGIINNTVYDPLQPELDSF	Lip et al. 2006	SARS-CoV-1	Sin2774	Mouse	IgG1	Vaccination	I	Neutralizing				
+S	S1111-1130	VIGIINNTVYDPLQPELDSF	Lip et al. 2006	SARS-CoV-1	Sin2774	Mouse	IgG1	Vaccination	II	Neutralizing				
+S	S1151-1170	ISGINASVVNIQKEIDRLNEVAKNLNE	Lip et al. 2006	SARS-CoV-1	Sin2774	Mouse	IgG1	Vaccination	III	Neutralizing			1169	1195
+S	S1151-1192	ISGINASVVNIQKEIDRLNEVAKNLNESLIDLQELGKYEQYI	Lip et al. 2006	SARS-CoV-1	Sin2774	Mouse	IgG1	Vaccination	IV	Neutralizing			1169	1210
+S	S281-300	EQTQGNFGDQDLIRQGTDYK	Lip et al. 2006	SARS-CoV-1	Sin2774	Mouse	IgG1	Vaccination	7G12-6	Non-neutralizing				
+S	S471-503	ALNCYWPLNDYGFYTTTGIGYQPYRVVVLSFEL	Wang et al. 2016	SARS-CoV-1	BJ01	Human, Mouse, Rhesus macaque	IgG	Infection	mAb4E5, mAb4A10, mAb6G5	Neutralizing	Protective			
+S	S604-625	TDVSTAIHADQLTPAWRIYSTGC	Wang et al. 2016	SARS-CoV-1	BJ01	Human, Mouse, Rhesus macaque	IgG	Infection	mAb11B1	Neutralizing	Protective			
+S	S597-625	LYQDVNCTDVSTAIHADQLTPAWRIYSTG	Wang et al. 2016	SARS-CoV-1	BJ01	Human, Mouse, Rhesus macaque	IgG	Infection	mAb43-3-14, mAb219-10-28	Enhancing	Harmful			
+S	S1164-1191	EIDRLNEVAKNLNESLIDLQELGKYEQYC	Wang et al. 2016	SARS-CoV-1	BJ01	Human, Mouse, Rhesus macaque	IgG	Infection	mAb126-10	Neutralizing	Protective			
+S	S14P5	TESNKKFLPFQQFGRDIA	Poh et al. 2020	SARS-CoV-2		Human	IgG	Infection	Polyclonal	Neutralizing		Array	553	570
+S	S21P2	PSKPSKRSFIEDLLFNKV	Poh et al. 2020	SARS-CoV-2		Human	IgG	Infection	Polyclonal	Neutralizing		Array	809	826
+S	S67–89	TGFHTINHTFGNPVIPFKDGIYF	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+S	S 84–108	KDGIYFAATEKSNVVRGWVFGSTMN	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+S	S101–122	WVFGSTMNNKSQSVIIINNSTN	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+S	S118–142	NNSTNVVIRACNFELCDNPFFAVSK	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+S	S265–286	TTFMLKYDENGTITDAVDCSQN	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+S	S277–298	DCSQNPLAELKCSVKSFEIDKG	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+S	S301–322	QTSNFRVVPSGDVVRFPNITNL	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+S	S323–343	PFGEVFNATKFPSVYAWERKK	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+S	S345–366	ISNCVADYSVLYNSTFFSTFKC	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+S	S582–602	SVITPGTNASSEVAVLYQDVNCT	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+S	S599–620	QDVNCTDVSTAIHADQLTPAWR	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal			25/31 SARS patients, 0/24 controls		
+S	S624–645	TGNNVFQTQAGCLIGAEHVDTS	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+S	S645–667	SYECDIPIGAGICASYHTVSLLR	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+S	S886–906	YRFNGIGVTQNVLYENQKQIA	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+S	S1130–1147	FKEELDKYFKNHTSPDVD	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal				1148	1165
+S	S1211–1232	MVTILLCCMTSCCSCLKGACSC	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+S	S1227–1248	KGACSCGSCCKFDEDDSEPVLK	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+S	S1234–1255	SCCKFDEDDSEPVLKGVKLHYT	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal				1252	1273
+M	M1–21	MADNGTITVEELKQLLEQWN	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+M	M17–41	EQWNLVIGFLFLAWIMLLQFAYSNR	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+M	M94–116	YFVASFRLFARTRSMWSFNPETN	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal			25/31 SARS patients, 0/24 controls		
+M	M103–124	ARTRSMWSFNPETNILLNVPLR	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+M	M119–140	LNVPLRGTIVTRPLMESELVIG	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+M	M137–158	LVIGAVIIRGHLRMAGHSLGR	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal			25/31 SARS patients, 0/24 controls		
+M	M162–186	KDLPKEITVATSRTLSYYKLGASQR	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal				162	186
+M	M189–211	DSGFAAYNRYRIGNYKLNTDHAG	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+M	M206–221	NTDHAGSNDNIALLVQ	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+N	N1–23	MSDNGPQSNQRSAPRITFGGPTD	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+N	N21–42	PTDSTDNNQNGGRNGARPKQRR	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+N	N35–56	GARPKQRRPQGLPNNTASWFTA	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+N	N66–87	QLPQGTTLPKGFYAEGSRGGSQ	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal				160	181
+N	N99–120	DGKMKELSPRWYFYYLGTGPEA	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+N	N177–198	SRGGSQASSRSSSRSRGNSRNS	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+N	N196–217	RNSTPGSSRGNSPARMASGGGE	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+N	N215–239	GGETALALLLLDRLNQLESKVSGKG	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+N	N245–268	QTVTKKSAAEASKKPRQKRTATKQ	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+N	N258–279	KPRQKRTATKQYNVTQAFGRRG	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+N	N355–376	NKHIDAYKTFPPTEPKKDKKKK	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal				354	375
+N	N371–390	KDKKKKTDEAQPLPQRQKKQ	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal			30/31 SARS patients, 1/24 controls 		
+N	N385–407	QRQKKQPTVTLLPAADMDDFSRQ	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal			29/31 SARS patients, 0/24 controls		
+N	N401–422	MDDFSRQLQNSMSGASADSTQA	Wang et al. 2003	SARS-CoV-1		Human	IgG	Infection	Polyclonal					
+S	N-terminal to RBD	VYYHKNNKSWMESEF	PEPperCHIP_etc										143	157
+S	N-terminal to RBD	KNLREFVFKNIDGYF	PEPperCHIP_etc										187	201
+S	N-terminal to RBD	VRDLPQGFSALEPLV	PEPperCHIP_etc										213	227
+S		DLPQGFSALEPLVDL	PEPperCHIP_etc										215	229
+S		PQGFSALEPLVDLPI	PEPperCHIP_etc										217	231
+S		GFSALEPLVDLPIGI	PEPperCHIP_etc										219	233
+S		SALEPLVDLPIGINI	PEPperCHIP_etc										221	235
+S		LEPLVDLPIGINITR	PEPperCHIP_etc										223	237
+S		PLVDLPIGINITRFQ	PEPperCHIP_etc										225	239
+S	RBD	FPNITNLCPFGEVFN	PEPperCHIP_etc										329	343
+S		NITNLCPFGEVFNAT	PEPperCHIP_etc										331	345
+S		TNLCPFGEVFNATRF	PEPperCHIP_etc										333	347
+S		LCPFGEVFNATRFAS	PEPperCHIP_etc										335	349
+S		PFGEVFNATRFASVY	PEPperCHIP_etc										337	351
+S		GEVFNATRFASVYAW	PEPperCHIP_etc										339	353
+S		VFNATRFASVYAWNR	PEPperCHIP_etc										341	355
+S		NATRFASVYAWNRKR	PEPperCHIP_etc										343	357
+S	RBM	YNYLYRLFRKSNLKP	PEPperCHIP_etc										449	463
+S		YLYRLFRKSNLKPFE	PEPperCHIP_etc										451	465
+S		YRLFRKSNLKPFERD	PEPperCHIP_etc										453	467
+S	RBM	RKSNLKPFERDISTE	PEPperCHIP_etc										457	471
+S		SNLKPFERDISTEIY	PEPperCHIP_etc										459	473
+S		LKPFERDISTEIYQA	PEPperCHIP_etc										461	475
+S	RBM	ERDISTEIYQAGSTP	PEPperCHIP_etc										465	479
+S		DISTEIYQAGSTPCN	PEPperCHIP_etc										467	481
+S		STEIYQAGSTPCNGV	PEPperCHIP_etc										469	483
+S		EIYQAGSTPCNGVEG	PEPperCHIP_etc										471	485
+S		YQAGSTPCNGVEGFN	PEPperCHIP_etc										473	487
+S		AGSTPCNGVEGFNCY	PEPperCHIP_etc										475	489
+S	C-terminal to RBD	TVLPPLLTDEMIAQY	PEPperCHIP_etc										859	873
+S		LPPLLTDEMIAQYTS	PEPperCHIP_etc										861	875
+S		PLLTDEMIAQYTSAL	PEPperCHIP_etc										863	877
+S	C-terminal to RBD	ELDKYFKNHTSPDVD	PEPperCHIP_etc										1151	1165
+M	M16-20	LLEQW	Wang et al. 2020	SARS-CoV-2		Human	IgG	Infection	Polyclonal			Array	16	20
+M	M106-110	TRSMW	Wang et al. 2020	SARS-CoV-2		Human	IgG	Infection	Polyclonal			Array	106	110
+M	M196-200	YSRYR	Wang et al. 2020	SARS-CoV-2		Human	IgG, IgM	Infection	Polyclonal			Array	196	200
+M	M6-10	GTITV	Wang et al. 2020	SARS-CoV-2		Human	IgM	Infection	Polyclonal			Array	6	10
+M	M176-180	LSYYK	Wang et al. 2020	SARS-CoV-2		Human	IgM	Infection	Polyclonal			Array	176	180
+S	S26-30	PAYTN	Wang et al. 2020	SARS-CoV-2		Human	IgG	Infection	Polyclonal			Array	26	30
+S	S186-190	FKNLR	Wang et al. 2020	SARS-CoV-2		Human	IgG	Infection	Polyclonal			Array	186	190
+S	S356-360	KRISN	Wang et al. 2020	SARS-CoV-2		Human	IgG	Infection	Polyclonal			Array	356	360
+S	S456-460	FRKSN	Wang et al. 2020	SARS-CoV-2		Human	IgG	Infection	Polyclonal			Array	456	460
+S	S806-820	LPDPSKPSKRSFIED	Wang et al. 2020	SARS-CoV-2		Human	IgG	Infection	Polyclonal			Array	806	820
+S	S1196-1200	SLIDL	Wang et al. 2020	SARS-CoV-2		Human	IgG	Infection	Polyclonal			Array	1196	1200
+S	S886-890	WTFGA	Wang et al. 2020	SARS-CoV-2		Human	IgM	Infection	Polyclonal			Array	886	890
+S	S1046-1050	GYHLM	Wang et al. 2020	SARS-CoV-2		Human	IgM	Infection	Polyclonal			Array	1046	1050
+N	N66-70	FPRGQ	Wang et al. 2020	SARS-CoV-2		Human	IgG	Infection	Polyclonal			Array	66	70
+N	N96-100	GGDGK	Wang et al. 2020	SARS-CoV-2		Human	IgG	Infection	Polyclonal			Array	96	100
+N	N166-170	TLPKG	Wang et al. 2020	SARS-CoV-2		Human	IgG	Infection	Polyclonal			Array	166	170
+N	N206-210	SPARM	Wang et al. 2020	SARS-CoV-2		Human	IgG, IgM	Infection	Polyclonal			Array	206	210
+N	N226-230	RLNQL	Wang et al. 2020	SARS-CoV-2		Human	IgG	Infection	Polyclonal			Array	226	230
+N	N256-260	KKPRQ	Wang et al. 2020	SARS-CoV-2		Human	IgG	Infection	Polyclonal			Array	256	260
+N	N316-320	GMSRI	Wang et al. 2020	SARS-CoV-2		Human	IgG	Infection	Polyclonal			Array	316	320
+N	N366-400	TEPKKDKKKKADETQALPQRQKKQQTVTLPAADL	Wang et al. 2020	SARS-CoV-2		Human	IgG	Infection	Polyclonal			Array		
+N	N386-390	QKKQQ	Wang et al. 2020	SARS-CoV-2		Human	IgM	Infection	Polyclonal			Array	386	390
+S	S816-820	SFIED	Wang et al. 2020	SARS-CoV-2		Human	IgM	Infection	Polyclonal			Array	816	820
