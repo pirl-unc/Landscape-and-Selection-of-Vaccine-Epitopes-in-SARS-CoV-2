@@ -41,6 +41,13 @@ library(stringr)
 WORKING_DIR = "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Figures/COVID/"
 
 
+#######################################################################################
+#######################Alternative figure set#######################################
+
+
+
+
+
 #############################################################################################
 ###################Supplemental Figure X -- entropy vs proportion of top AA###################
 
@@ -890,7 +897,7 @@ I_filt=fread(paste0(WORKING_DIR, "COVID_human_netMHCpan_rank_filtered.txt"))
 II_filt=fread(paste0(WORKING_DIR, "COVID_human_netMHCIIpan_rank_filtered.txt"))
 joint_run_filt_entropy = 
   
-  mouse1 = fread(paste0(WORKING_DIR, "COVID_murine_NetMHCpan_unfilt.xls"))
+mouse1 = fread(paste0(WORKING_DIR, "COVID_murine_NetMHCpan_unfilt.xls"))
 mouse1 = mouse1[which(mouse1$NB>0),]
 mouse2 = fread(paste0(WORKING_DIR, "COVID_murine_NetMHCIIpan_unfilt.xls"))
 mouse2 = mouse2[which(mouse2$NB>0),]
@@ -1521,6 +1528,14 @@ final_set = data.table(Peptide, Start, End, Color, Segment) #Merging into a dt
 final_set$Peptide = factor(final_set$Peptide, levels = Peptide)
 
 
+
+#By solvent accessability
+SA = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/solvent-accessibility/Woods-Glycans-MD-Site-Specific-Accessibility.csv")
+colnames(SA)[1:2] = c("Position", "Accessibility")
+SA$Color = viridis(n=100)[as.factor(SA$Accessibility)]
+SA$Cutoff = "grey"
+SA$Cutoff[which(SA$Accessibility>.4)] ="red"
+
 ggplot(data=Paper_bc) + 
   geom_segment(aes(x=Start, xend=End, y=Segment, yend=Segment, color=Source),size=3, alpha=1)+
   theme(text=element_text(face="bold",size=20,colour="black")) +
@@ -1538,6 +1553,12 @@ ggplot(data=Paper_bc) +
   
   geom_rect(aes(xmin=788, xmax=806, ymin=0, ymax=(-1)), fill="white", color="black", size=0.1) +
   geom_text(aes(x=(788+806)/2, y=(-.5), label="FP", angle=0), size=4.5) +
+  
+  geom_rect(data=SA,aes(xmin=Position, xmax=Position+1,
+                           ymin=7.5, ymax=7.75), color= SA$Color,size=1, alpha=1)+
+  geom_rect(data=SA,aes(xmin=Position, xmax=Position+1,
+                        ymin=7.25, ymax=7.5), color= SA$Cutoff,size=1, alpha=1)+
+  
   scale_x_continuous(limits = c(400,910))+
   theme(axis.title.y=element_blank(),
         axis.text.y=element_blank(),
