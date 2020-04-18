@@ -13,6 +13,7 @@
 ############################################################
 #############Dependencies and working directory############
 ##########################################################
+'%ni%' <- Negate('%in%')
 
 if (!requireNamespace("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
@@ -43,6 +44,609 @@ WORKING_DIR = "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2
 
 #######################################################################################
 #######################Alternative figure set#######################################
+library(doMC)
+registerDoMC(64)
+###New Fig2A/B
+Freq=fread(paste0(WORKING_DIR, "HLA_freq.txt"))
+
+#A -- MHC-I
+
+###Calculate pop freq for netMHCpan
+I_8mer=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_out/COVID_NetMHCpan_8mer.xls")
+I_9mer=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_out/COVID_NetMHCpan_9mer.xls")
+I_10mer=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_out/COVID_NetMHCpan_10mer.xls")
+I_11mer=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_out/COVID_NetMHCpan_11mers.xls")
+
+HLAI=rbind(I_8mer, I_9mer, I_10mer, I_11mer)
+haps = c(seq(7,82,5))
+
+resultsLog1<-foreach(n=1:nrow(HLAI), .combine=rbind) %dopar% {
+  Binding_haplotype=paste0(colnames(HLAI)[haps[which(HLAI[n,haps+1,with=F] <= 1)]], collapse = ",")
+  Frequency=1-prod(1-(rep(Freq$US[which(Freq$Haplotype %in% colnames(HLAI)[haps[which(HLAI[n,haps+1,with=F] <= 1)]])]/100,2)))
+  data.frame(Binding_haplotype,Frequency)
+}
+
+Min<-foreach(n=1:nrow(HLAI), .combine=rbind) %dopar% {
+  min = as.numeric(min(HLAI[n,haps,with=F]))
+  data.frame(min)
+}
+
+HLAI$Min_nM = Min
+
+fwrite(HLAI,"/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_out/COVID_NetMHCpan_all.txt", sep = '\t', col.names = T, quote = F)
+
+####Calculate pop freq for MHCflurry
+Flurry= fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/sars-cov-2.mhcflurry_predictions.csv")
+Flurry=Flurry[,c(1,3,8,9)]
+flurry=dcast.data.table(Flurry, peptide ~ best_allele, value.var = "affinity_percentile", fun.aggregate = mean)
+
+##Taking too long...again in parallel
+library(doMC)
+registerDoMC(48)
+
+resultsLog2<-foreach(n=1:nrow(flurry), .combine=rbind) %dopar% {
+  
+  Binding_haplotype = paste0(colnames(flurry)[which(flurry[n,] <= 1)], collapse = ",")
+  probs = 1-prod(1-(rep(Freq$US[which(Freq$Haplotype %in% colnames(flurry)[which(flurry[n,] <= 1)])]/100,2)))
+  data.frame(Binding_haplotype,probs)
+
+}
+
+flurry = cbind(flurry, resultsLog2)
+colnames(flurry)[ncol(flurry)] = "Frequency"
+fwrite(flurry, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/COVID_human_MHCflurry.txt", sep = '\t', col.names = T, quote = F)
+
+
+
+##########################
+###New Figure 2A#########
+flurry = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/COVID_human_MHCflurry.txt")
+net = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_out/COVID_NetMHCpan_all.txt") ###TEMP
+net=net[which(net$Min_nM<500),]
+
+
+int = unique(c(flurry$peptide, net$Peptide))
+
+flurry_freq = c()
+net_freq = c()
+for(q in 1:length(int)){
+  if(int[q] %in% flurry$peptide){
+    flurry_freq = c(flurry_freq, flurry$Frequency[which(flurry$peptide == int[q])])
+  }else{
+    flurry_freq = c(flurry_freq,0)
+  }
+  if(int[q] %in% net$Peptide){
+    net_freq = c(net_freq, net$Frequency[which(net$Peptide == int[q])])
+  }else{
+    net_freq = c(net_freq, 0)
+  }
+}
+
+freq_plot = data.table(int, flurry_freq, net_freq)
+freq_plot$mean_freq=(freq_plot$flurry_freq+ freq_plot$net_freq)/2
+
+ggplot(data=freq_plot) + 
+  geom_point(aes(x=100*net_freq, y=100*flurry_freq, color = 100*mean_freq)) +
+  scale_color_viridis_c(name = "Mean Pop. Freq.")+
+  geom_vline(xintercept = 5, color = "red")+
+  geom_hline(yintercept = 5, color = 'red')+
+  theme(text=element_text(face="bold",size=20,colour="black")) +
+  geom_text(x=75, y=96, label=paste0("n=",length(which((freq_plot$flurry_freq>0)& (freq_plot$net_freq>0) ))), color = 'red', size=10)+
+  geom_text(x=75, y=3, label=paste0("n=", length(which((freq_plot$flurry_freq==0)& (freq_plot$net_freq>0) ))), color = 'red', size=10)+
+  geom_text(x=3, y=75, label=paste0("n=", length(which((freq_plot$flurry_freq>0)& (freq_plot$net_freq==0) ))), color = 'red', angle=90, size=10)+
+  scale_y_continuous(limits = c(-3,100))+
+  scale_x_continuous(limits = c(-3,100))+
+  labs(x="NetMHCPan Pop. Frequency", y="MHCflurry Pop. Frequency", title = "HLA-I predicted epitopes") 
+  
+
+
+
+#B -- MHC-II
+
+###Calculate pop freq for netMHCpan
+
+###DR######################
+Freq=fread(paste0(WORKING_DIR, "HLA_freq.txt"))
+DRB=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_out/COVID_DRB1_NetMHCIIpan.xls")
+
+haps = c(6,9,12,15,18,21,24)
+
+resultsLog3<-foreach(n=1:nrow(DRB), .combine=rbind) %dopar% {
+  
+  Binding_haplotype = paste0(colnames(DRB)[haps[which(DRB[n,haps+1,with=F] <= 5)]], collapse = ",")
+  Frequency=1-prod(1-(rep(Freq$US[which(Freq$Haplotype %in% colnames(DRB)[haps[which(DRB[n,haps+1,with=F] <= 5)]])]/100,2)))
+  data.frame(Binding_haplotype,Frequency)
+  
+}
+DRB = cbind(DRB, resultsLog3)
+fwrite(DRB, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_out/COVID_DRB1_NetMHCIIpan.xls", col.names = T,  sep = '\t')
+
+
+
+###DQ Cauc Am
+Freq=fread(paste0(WORKING_DIR, "HLA_freq.txt"))
+
+#DQ_cauc=fread(paste0(WORKING_DIR, "NetMHCpan_out_filt/COVID_Cauc_AM_NetMHCIIpan.xls"))
+
+#Same but for unfiltered reads
+DQ=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_out/COVID_Cauc_AM_NetMHCIIpan.xls")
+haps = c(6,9,12,15,18,21,24,27)
+
+
+resultsLog4<-foreach(n=1:nrow(DQ), .combine=rbind) %dopar% {
+  
+  Binding_haplotype = paste0(colnames(DQ)[haps[which(DQ[n,haps+1,with=F] <= 5)]], collapse = ",")
+  Frequency=1-prod(1-(rep(Freq$Cauc_Am[which(Freq$Haplotype %in% colnames(DQ)[haps[which(DQ[n,haps+1,with=F] <= 5)]])]/100,2)))
+  data.frame(Binding_haplotype,Frequency)
+  
+}
+DQ = cbind(DQ, resultsLog4)
+fwrite(DQ,"/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_out/COVID_Cauc_AM_NetMHCIIpan.xls", col.names = T, row.names = F, sep = '\t')
+
+
+
+##########Combine class II
+DR=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_out/COVID_DRB1_NetMHCIIpan.xls")
+DQ=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_out/COVID_Cauc_AM_NetMHCIIpan.xls")
+
+colnames(DR)[seq(7,25,3)] = paste( colnames(DR)[seq(7,25,3)],colnames(DR)[seq(6,24,3)] ,  sep = '_' )
+colnames(DR)[seq(5,23,3)] = paste( colnames(DR)[seq(5,23,3)],colnames(DR)[seq(6,24,3)] ,  sep = '_' )
+
+colnames(DQ)[seq(7,28,3)] = paste( colnames(DQ)[seq(7,28,3)],colnames(DQ)[seq(6,27,3)] ,  sep = '_' )
+colnames(DQ)[seq(5,26,3)] = paste( colnames(DQ)[seq(5,26,3)],colnames(DQ)[seq(6,27,3)] ,  sep = '_' )
+
+
+II_total = merge(DR, DQ, by = "Peptide", all = T)
+II_total$Pos.x[which(is.na(II_total$Pos.x))] = II_total$Pos.y[which(is.na(II_total$Pos.x))]
+colnames(II_total)[which(colnames(II_total) == "Pos.x")] = "Pos"
+II_total$Pos.y = NULL
+
+II_total$ID.x[which(is.na(II_total$ID.x))] = II_total$ID.y[which(is.na(II_total$ID.x))]
+colnames(II_total)[which(colnames(II_total) == "ID.x")] = "ID"
+II_total$ID.y = NULL
+
+
+resultsLog5<-foreach(n=1:nrow(II_total), .combine=rbind) %dopar% {
+  
+  Min_nM = min(II_total$Min_nM.x[n], II_total$Min_nM.y[n], na.rm = T)
+  
+  Binding_haplotype = paste(str_replace_na(II_total$Binding_haplotype.x[n], replacement = ""), 
+                                        str_replace_na(II_total$Binding_haplotype.y[n], replacement = ""), sep = ',')
+  
+  Binding_haplotype=gsub('^\\,|\\.$', '', Binding_haplotype)
+  Binding_haplotype=gsub("^,*|(?<=,),|,*$", "",  Binding_haplotype, perl=T)
+  
+  probs = c(II_total$Frequency.x[n], II_total$Frequency.y[n])
+  probs = probs[!is.na(probs)]
+  Frequency = 1-prod(1-probs)
+  data.frame(Min_nM,Binding_haplotype,Frequency)
+  
+}
+II_total = cbind(II_total, resultsLog5)
+
+
+colnames(II_total)[which(colnames(II_total) == "Frequency.x")] = "Frequency_DR"
+colnames(II_total)[which(colnames(II_total) == "Frequency.y")] = "Frequency_DQ"
+II_total$Binding_haplotype.y = NULL
+II_total$Binding_haplotype.x = NULL
+
+colnames(II_total)[which(colnames(II_total) == "Min_nM.x")] = "Min_nM_DR"
+colnames(II_total)[which(colnames(II_total) == "Min_nM.y")] = "Min_nM_DQ"
+
+fwrite(II_total, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/COVID_human_netMHCIIpan_all.txt", sep = '\t', col.names = T, row.names = F, quote = F)
+
+
+####Read in MARIA data
+MARIA = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/MARIA_results.tsv")
+colnames(MARIA)[10] = "Peptide"
+colnames(MARIA)[1] = "Allele"
+MARIA$`MARIA percentile scores` = 100-MARIA$`MARIA percentile scores`
+
+MARIA$Allele = str_remove_all(str_remove_all(MARIA$Allele, pattern = ":"), pattern = "\\*")
+MARIA$Allele = str_replace_all(MARIA$Allele, pattern = "HLA-DR", replacement = "DR")
+MARIA$Allele = str_replace_all(MARIA$Allele, pattern = "DQA", replacement = "HLA-DQA")
+MARIA$Allele = str_replace_all(MARIA$Allele, pattern = "DRB1", replacement = "DRB1_")
+
+MARIA = MARIA[which(MARIA$Allele %in% Freq$Haplotype),]
+
+maria=dcast.data.table(MARIA, Peptide ~ Allele, value.var = "MARIA percentile scores", fun.aggregate = mean)
+
+Freq$US[which(!is.na(Freq$Cauc_Am))] = Freq$Cauc_Am[which(!is.na(Freq$Cauc_Am))]
+
+resultsLog6<-foreach(n=1:nrow(maria), .combine=rbind) %dopar% {
+  
+  Binding_haplotype = paste0(colnames(maria)[which(maria[n,] <= 5)], collapse = ",")
+  prob=rep(Freq$US[which(Freq$Haplotype %in% colnames(maria)[which(maria[n,] <= 5)])]/100,2)
+  prob = prob[which(!is.na(prob))]
+  Frequency = 1-prod(1-(  prob ))
+
+  data.frame(Binding_haplotype,Frequency)
+  
+}
+
+maria = cbind(maria, resultsLog6)
+
+
+fwrite(maria, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/MARIA_cast.txt")
+
+
+##########################
+###New Figure 2B#########
+maria = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/MARIA_cast.txt")
+netii = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/COVID_human_netMHCIIpan_all.txt") ###TEMP
+
+int = unique(c(maria$Peptide, netii$Peptide))
+
+maria_freq = c()
+netii_freq = c()
+for(q in 1:length(int)){
+  if( int[q] %in% maria$Peptide){
+    maria_freq = c(maria_freq, maria$Frequency[which(maria$Peptide == int[q])])
+  }else{
+    maria_freq = c(maria_freq, 0)
+  }
+  if(int[q] %in% netii$Peptide){
+    netii_freq = c(netii_freq, netii$Frequency[which(netii$Peptide == int[q])])
+    
+  }else{
+    netii_freq = c(netii_freq, 0)
+  }
+  #mean_freq = (maria_freq[q] + netii_freq[q])/2
+}
+
+freq_plot = data.table(int, maria_freq, netii_freq)
+freq_plot$mean_freq = (freq_plot$maria_freq + freq_plot$netii_freq)/2
+
+ggplot(data=freq_plot) + 
+  geom_point(aes(x=100*netii_freq, y=100*maria_freq, color = 100*mean_freq)) +
+  scale_color_viridis_c(name = "Mean Pop. Freq.")+
+  geom_vline(xintercept = 5, color = "red")+
+  geom_hline(yintercept = 5, color = 'red')+
+  theme(text=element_text(face="bold",size=20,colour="black")) +
+  geom_text(x=75, y=96, label=paste0("n=", length(which((freq_plot$maria_freq>0)& (freq_plot$netii_freq>0) ))), color = 'red', size=10)+
+  geom_text(x=75, y=3, label=paste0("n=", length(which((freq_plot$maria_freq==0)& (freq_plot$netii_freq>0) ))), color = 'red', size=10)+
+  geom_text(x=3, y=75, label=paste0("n=", length(which((freq_plot$maria_freq>0)& (freq_plot$netii_freq==0) ))), color = 'red', angle=90, size=10)+
+  scale_y_continuous(limits = c(0,100))+
+  scale_x_continuous(limits = c(0,100))+
+  labs(x="NetMHCPan Pop. Frequency", y="MARIA Pop. Frequency", title = "HLA-II predicted epitopes") 
+
+
+
+##############################################
+####################New Fig 2C #1#################
+library(gridExtra)
+
+#Minimum frequency to display (mean of HLA-I and II frequencies)  
+Min_frequency = 0
+label_frequency = 65
+
+mouse1 = fread(paste0(WORKING_DIR, "COVID_murine_NetMHCpan_unfilt.xls"))
+mouse1 = mouse1[which(mouse1$NB>0),]
+mouse2 = fread(paste0(WORKING_DIR, "COVID_murine_NetMHCIIpan_unfilt.xls"))
+mouse2 = mouse2[which(mouse2$NB>0),]
+
+joint_run_filt_entropy = fread(paste0(WORKING_DIR, "COVID_combined_entropy_rank_filtered.csv"))
+joint_run_filt_entropy$c1_tot_freq = joint_run_filt_entropy$c1_tot_freq*100
+joint_run_filt_entropy$c2_tot_freq = joint_run_filt_entropy$c2_tot_freq*100
+
+net = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_out/COVID_NetMHCpan_all.txt")
+flurry = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/COVID_human_MHCflurry.txt")
+net_filt=net[which(net$Min_nM<500),]
+net_filt=net_filt[which(net_filt$Frequency>0),]
+net_filt = net_filt[which(net_filt$Peptide %in% flurry$peptide[which(flurry$Frequency>0)]),]
+
+maria = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/MARIA_cast.txt")
+netii = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/COVID_human_netMHCIIpan_all.txt") ###TEMP
+netii_filt = netii[which(netii$Frequency>0),]
+netii_filt = netii_filt[which(netii_filt$Peptide %in% maria$Peptide[which(maria$Frequency>0)]),]
+
+net_filt$lo_entropy=NA
+netii_filt$lo_entropy=NA
+##########Filter by entropy manually -- ran through once to calculat high/low entropy epitopes#########
+
+#ent = fread(paste0(WORKING_DIR, "entropy.MT072688.1.corrected.csv")
+#ent = fread(paste0(WORKING_DIR, "AA_mafft_df_entropy.txt"))
+ent = fread(paste0(WORKING_DIR, "entropy_7882.txt"))
+
+colnames(ent) = c("position", "entropy")
+
+###For each HLA-I, HLA-II, and co-epitope sets, mark which epitopes contain entropy >0.1 in any residue
+for(n in 1:nrow(joint_run_filt_entropy)){
+  if( max(ent$entropy[joint_run_filt_entropy$c2_start[n]:(joint_run_filt_entropy$c2_start[n]+14)]) > 0.1){
+    joint_run_filt_entropy$lo_entropy[n] = 0
+  }else{
+    joint_run_filt_entropy$lo_entropy[n] = 1
+  }
+}
+#fwrite(joint_run_filt_entropy, paste0(WORKING_DIR, "COVID_combined_entropy_rank_filtered.csv"))
+for(n in 1:nrow(net_filt)){
+  if( max(ent$entropy[net_filt$Pos[n]:(net_filt$Pos[n]+nchar(net_filt$Peptide[n])-1)]) > 0.1){
+    net_filt$lo_entropy[n] = 0
+  }else{
+    net_filt$lo_entropy[n] = 1
+  }
+}
+fwrite(net_filt,"/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/COVID_human_netMHCpan_rank_filtered.txt")
+for(n in 1:nrow(netii_filt)){
+  if( max(ent$entropy[netii_filt$Pos[n]:(netii_filt$Pos[n]+nchar(netii_filt$Peptide[n])-1)]) > 0.1){
+    netii_filt$lo_entropy[n] = 0
+  }else{
+    netii_filt$lo_entropy[n] = 1
+  }
+}
+fwrite(netii_filt,"/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/COVID_human_netMHCIIpan_rank_filtered.txt")
+
+############################
+
+###Number of MHC-I/II epitopes conserved between human and mouse
+length(which(HLAI_filt$Peptide[which(HLAI_filt$lo_entropy==1)] %in% unique(mouse1$Peptide)))
+length(which(HLAII_filt$Peptide[which(HLAII_filt$lo_entropy==1)] %in% unique(mouse2$Peptide)))
+
+##Adding murine coverage for each human epitope
+joint_run_filt_entropy$murine = "None"
+joint_run_filt_entropy$murine[which(joint_run_filt_entropy$c1_peptide %in% mouse1$Peptide)] = "MHC-I" 
+joint_run_filt_entropy$murine[which(joint_run_filt_entropy$c2_peptide %in% mouse2$Peptide)] = "MHC-II" 
+joint_run_filt_entropy$murine[which((joint_run_filt_entropy$c2_peptide %in% mouse2$Peptide) & (joint_run_filt_entropy$c1_peptide %in% mouse1$Peptide))] = "Both" 
+joint_run_filt_entropy$murine = factor(joint_run_filt_entropy$murine, levels = c("MHC-I", "MHC-II", "Both", "None"))
+
+joint_run_filt_entropy = joint_run_filt_entropy[which(joint_run_filt_entropy$lo_entropy==1),]
+joint_run_filt_entropy$Mean_freq = (joint_run_filt_entropy$c1_tot_freq + joint_run_filt_entropy$c2_tot_freq)/2
+
+joint_run_filt_entropy$c1_peptide_offset=NA
+for(z in 1:nrow(joint_run_filt_entropy)){
+  #Uses gregexpr to find c1 peptide within c2 peptide --> inserts spaces ahead of c1 peptide so the start AA aligns with its location on c2 peptide --> Pastes out as a string in matrix
+  joint_run_filt_entropy$c1_peptide_offset[z] = paste0(c(rep(" ", (gregexpr(joint_run_filt_entropy$c2_peptide[z], pattern = joint_run_filt_entropy$c1_peptide[z])[[1]][1])-1), joint_run_filt_entropy$c1_peptide[z]), collapse = '')
+}
+
+net_filt= fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/COVID_human_netMHCpan_rank_filtered.txt")
+netii_filt= fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/COVID_human_netMHCIIpan_rank_filtered.txt")
+
+###Keep only columns needed to graph to prevent ggplot error
+net_graph = net_filt[,c(1,2,3,86:89)]
+netii_graph = netii_filt[,c(1,2,3,57:60)]
+net_graph = net_graph[which(net_graph$lo_entropy==1),]
+netii_graph = netii_graph[which(netii_graph$lo_entropy==1),]
+
+pep_col = rainbow(4, begin = 0, end = .75, option = "plasma")
+
+ggplot(data=joint_run_filt_entropy) + 
+  ##Plot co-epitopes
+  geom_point(aes(x=c1_tot_freq, y=c2_tot_freq, color=gene, shape = murine),size=7) +
+  theme(text=element_text(face="bold",size=20,colour="black")) +
+  scale_color_viridis_d(option = "viridis")+
+  geom_label_repel(aes(label=ifelse(Mean_freq>label_frequency,as.character(c2_peptide),''), x=c1_tot_freq, y=c2_tot_freq),
+                   box.padding   = 0.35, 
+                   point.padding = 0.5,
+                   segment.color = 'grey50')+
+  scale_y_continuous(limits = c(0,95))+
+  scale_x_continuous(limits = c(0,95))+
+  scale_size(range = c(0,10), breaks = c(10,150,300), trans="reverse", name = "Mean nM")+
+  labs(y="MHC II Frequency (%)", x="MHC I Frequency (%)", title = "Predicted T cell co-epitopes", color="Gene") +
+  
+  ###Add MHCI and II epitopes
+  geom_rug(data=net_graph, aes(x = 100*Frequency),  col=rgb(.5,0,0,alpha=.2))+
+  geom_rug(data=netii_graph, aes(y = 100*Frequency),  col=rgb(.5,0,0,alpha=.2))+
+  
+  theme(text=element_text(face="bold",size=20,colour="black")) 
+
+
+  #theme(legend.position = "none", 
+  #    axis.title.x=element_blank(),
+  #    axis.text.x=element_blank(),
+  #    axis.ticks.x=element_blank(),
+  #    axis.title.y=element_blank(),
+  #    axis.text.y=element_blank(),
+  #    axis.ticks.y=element_blank() )+
+
+########################################
+########Figure 3 Top #2##############
+####Filtering criteria
+net_filt= fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/COVID_human_netMHCpan_rank_filtered.txt")
+netii_filt= fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/COVID_human_netMHCIIpan_rank_filtered.txt")
+coep = fread(paste0(WORKING_DIR, "COVID_combined_entropy_rank_filtered.csv"))
+
+
+#orf1ab: 1 - 7096                                                                    
+#S: 7097 - 8369                                                                       
+#ORF3a: 8370 - 8644                                                                   
+#E: 8645 - 8719                                                                       
+#M: 8720 - 8941                                                                       
+#ORF6: 8942 - 9002                                                                    
+#ORF7a: 9003 - 9123                                                                   
+#ORF8: 9124 - 9244                                                                    
+#N: 9245 - 9663                                                                       
+#ORF10: 9664 - 9701
+
+###TOP PLOT####
+net_filt$ID = sapply(strsplit(net_filt$ID, "_"), "[", 1)
+net_filt$ID[which(net_filt$ID == "orflab")] = "orf1ab"
+net_filt$Pos = net_filt$Pos+1
+net_filt$Pos[which(net_filt$ID == "S")] = net_filt$Pos[which(net_filt$ID == "S")]+7096
+net_filt$Pos[which(net_filt$ID == "ORF3a")] = net_filt$Pos[which(net_filt$ID == "ORF3a")]+8369
+net_filt$Pos[which(net_filt$ID == "E")] = net_filt$Pos[which(net_filt$ID == "E")]+8644
+net_filt$Pos[which(net_filt$ID == "M")] = net_filt$Pos[which(net_filt$ID == "M")]+8719
+net_filt$Pos[which(net_filt$ID == "ORF6")] = net_filt$Pos[which(net_filt$ID == "ORF6")]+8941
+net_filt$Pos[which(net_filt$ID == "ORF7a")] = net_filt$Pos[which(net_filt$ID == "ORF7a")]+9002
+net_filt$Pos[which(net_filt$ID == "ORF8")] = net_filt$Pos[which(net_filt$ID == "ORF8")]+9123
+net_filt$Pos[which(net_filt$ID == "N")] = net_filt$Pos[which(net_filt$ID == "N")]+9244
+net_filt$Pos[which(net_filt$ID == "ORF10")] = net_filt$Pos[which(net_filt$ID == "ORF10")]+9663
+net_filt = net_filt[order(net_filt$Pos),]
+net_filt$ID = factor(net_filt$ID, levels = unique(net_filt$ID))
+
+netii_filt$ID = sapply(strsplit(netii_filt$ID, "_"), "[", 1)
+netii_filt$ID[which(netii_filt$ID == "orflab")] = "orf1ab"
+
+netii_filt$Pos[which(netii_filt$ID == "S")] = netii_filt$Pos[which(netii_filt$ID == "S")]+7096
+netii_filt$Pos[which(netii_filt$ID == "ORF3a")] = netii_filt$Pos[which(netii_filt$ID == "ORF3a")]+8369
+netii_filt$Pos[which(netii_filt$ID == "E")] = netii_filt$Pos[which(netii_filt$ID == "E")]+8644
+netii_filt$Pos[which(netii_filt$ID == "M")] = netii_filt$Pos[which(netii_filt$ID == "M")]+8719
+netii_filt$Pos[which(netii_filt$ID == "ORF6")] = netii_filt$Pos[which(netii_filt$ID == "ORF6")]+8941
+netii_filt$Pos[which(netii_filt$ID == "ORF7a")] = netii_filt$Pos[which(netii_filt$ID == "ORF7a")]+9002
+netii_filt$Pos[which(netii_filt$ID == "ORF8")] = netii_filt$Pos[which(netii_filt$ID == "ORF8")]+9123
+netii_filt$Pos[which(netii_filt$ID == "N")] = netii_filt$Pos[which(netii_filt$ID == "N")]+9244
+netii_filt$Pos[which(netii_filt$ID == "ORF10")] = netii_filt$Pos[which(netii_filt$ID == "ORF10")]+9663
+netii_filt = netii_filt[order(netii_filt$Pos),]
+netii_filt$ID = factor(netii_filt$ID, levels = unique(net_filt$ID))
+
+
+net_filt$End = net_filt$Pos + nchar(net_filt$Peptide)-1
+netii_filt$End = netii_filt$Pos + nchar(netii_filt$Peptide)-1
+
+coep = coep[order(coep$c2_start),]
+coep$gene = factor(coep$gene, levels = unique(net_filt$ID))
+
+##Apply segments######
+prots = unique(net_filt$ID)
+
+net_filt$Segment = NA
+netii_filt$Segment = NA
+coep$Segment = NA
+
+prot_len= c(abs(1 - 7096),abs(7097 - 8369),abs(8370 - 8644),abs(8645 - 8719),abs(8720 - 8941),abs(8942 - 9002),abs(9003 - 9123), abs(9124 - 9244),abs(9245 - 9663),abs(9664 - 9701))
+
+for(n in 1:length(prots)){
+  total = length(net_filt$Segment[which(net_filt$ID == prots[n])])  
+  if(total>0){
+   net_filt$Segment[which(net_filt$ID == prots[n])] = seq(0,total-1,1)/prot_len[n]
+  }
+  totalii =  length(netii_filt$Segment[which(netii_filt$ID == prots[n])])  
+  if(totalii>0){
+    netii_filt$Segment[which(netii_filt$ID == prots[n])] = seq(0,totalii-1,1)/prot_len[n]
+  }
+  totalco = length(coep$Segment[which(coep$gene == prots[n])])  
+  if(totalco > 0){
+    coep$Segment[which(coep$gene == prots[n])] = seq(0,totalco-1,1)/prot_len[n]
+  }
+}
+
+
+######################
+
+net_filt$Segment = net_filt$Segment/max(net_filt$Segment)
+netii_filt$Segment = netii_filt$Segment/max(netii_filt$Segment)
+coep$Segment = coep$Segment/max(coep$Segment)
+
+
+net_graph = net_filt[,c(1,2,3,87:91)]
+netii_graph = netii_filt[,c(1,2,3,57:62)]
+
+
+netii_graph$Segment = netii_filt$Segment + 1
+coep$Segment = coep$Segment + 2
+coep$Frequency = coep$c1_tot_freq*coep$c2_tot_freq
+
+ggplot(data=net_graph) + 
+  geom_hline(yintercept = 1., size=2, color="white")+
+  geom_hline(yintercept = 2., size=2, color="white")+
+  geom_hline(yintercept = 3, size=2, color="white")+
+  
+  geom_segment(aes(x=Pos, xend=End, y=Segment, yend=Segment, color=ID),size=4, alpha=1)+
+  geom_segment(data=netii_graph,aes(x=Pos, xend=End, y=Segment, yend=Segment, color=ID),size=4, alpha=1)+
+  geom_segment(data=coep,aes(x=c2_start, xend=(c2_start+14), y=Segment, yend=Segment, color=gene),size=4, alpha=1)+
+  
+  scale_color_discrete(name = "Protein")+
+  
+  labs(y='Relative coverage by protein',x="Position across SARS-CoV-2 spike protein", title = "Predicted T cell epitopes: Pre-filter") +
+  geom_text(x = -100, y = 0.5, label = paste0("HLA-I: ", nrow(net_graph)), angle = 90, size = 4)+
+  geom_text(x = -100, y = 1.5, label = paste0("HLA-II: ", nrow(netii_graph)), angle = 90, size = 4)+
+  geom_text(x = -100, y = 2.5, label = paste0("Co-epitopes: ", nrow(coep)), angle = 90, size = 4)+
+  theme(text=element_text(face="bold",size=20,colour="black")) +
+  theme(axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank())
+
+
+#By entropy
+coep = coep[which(coep$lo_entropy==1),]
+net_graph = net_graph[which(net_graph$lo_entropy==1),]
+netii_graph = netii_graph[which(netii_graph$lo_entropy==1),]
+
+#By pop freq
+net_graph = net_graph[which(net_graph$Frequency > 0.5),]
+netii_graph = netii_graph[which(netii_graph$Frequency > 0.5),]
+coep = coep[which((coep$c1_tot_freq > 0.5) & (coep$c2_tot_freq> 0.05)),]
+
+#By murine
+mouse1 = fread(paste0(WORKING_DIR, "COVID_murine_NetMHCpan_unfilt.xls"))
+mouse1 = mouse1[which(mouse1$NB>0),]
+mouse2 = fread(paste0(WORKING_DIR, "COVID_murine_NetMHCIIpan_unfilt.xls"))
+mouse2 = mouse2[which(mouse2$NB>0),]
+
+net_graph = net_graph[which(net_graph$Peptide %in% mouse1$Peptide),]
+netii_graph = netii_graph[which(netii_graph$Peptide %in% mouse2$Peptide),]
+coep = coep[which((coep$c1_peptide %in% mouse1$Peptide) | (coep$c2_peptide %in% mouse2$Peptide)),]
+
+#By Protein levels ...TBD
+
+
+
+###########################
+#####New Fig2C#############
+y_ll=0
+
+ggplot(data=net_graph) + 
+  geom_hline(yintercept = 1., size=2, color="white")+
+  geom_hline(yintercept = 2., size=2, color="white")+
+  geom_hline(yintercept = 3, size=2, color="white")+
+  
+  geom_segment(aes(x=Pos, xend=End, y=Segment, yend=Segment, color=ID),size=8, alpha=1)+
+  geom_segment(data=netii_graph,aes(x=Pos, xend=End, y=Segment, yend=Segment, color=ID),size=8, alpha=1)+
+  geom_segment(data=coep,aes(x=c2_start, xend=(c2_start+14), y=Segment, yend=Segment, color=gene),size=8, alpha=1)+
+  
+  scale_color_discrete(name = "Protein")+
+  
+  labs(y='Relative coverage by protein',x="Position across SARS-CoV-2 spike protein", title = "Predicted T cell epitopes: Post-filter") +
+  
+  geom_text(x = -100, y = 0.5, label = paste0("HLA-I: ", nrow(net_graph)), angle = 90, size = 4)+
+  geom_text(x = -100, y = 1.5, label = paste0("HLA-II: ", nrow(netii_graph)), angle = 90, size = 4)+
+  geom_text(x = -100, y = 2.5, label = paste0("Co-epitopes: ", nrow(coep)), angle = 90, size = 4)+
+  theme(text=element_text(face="bold",size=20,colour="black")) +
+  theme(axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank())
+
+
+  geom_rect(aes(xmin=0, xmax=7095, ymin=(y_ll), ymax=(y_ll-.25)), fill=viridis(10)[1], color="black", size=0.1) +
+  geom_text(aes(x=7095/2, y=(y_ll-.125), label="orf1ab", angle=0), size=2.5, color = "white") +
+  
+  geom_rect(aes(xmin=7096, xmax=8368, ymin=(y_ll-.25), ymax=(y_ll-.5)), fill=viridis(10)[2], color="black", size=0.1) +
+  geom_text(aes(x=7096+(8368-7096)/2, y=(y_ll-.375), label="S", angle=0), size=2.5, color = "white") + 
+  
+  geom_rect(aes(xmin=8369, xmax=8644, ymin=(y_ll), ymax=(y_ll-.25)), fill=viridis(10)[3], color="black", size=0.1) +
+  geom_text(aes(x=8368+(8644-8368)/2, y=(y_ll-.125), label="ORF3a", angle=0), size=2.5, color = "white") +
+  
+  geom_rect(aes(xmin=8645, xmax=8718, ymin=(y_ll-.25), ymax=(y_ll-.5)), fill=viridis(10)[4], color="black", size=0.1) +
+  geom_text(aes(x=8645+(8718-8645)/2, y=(y_ll-.375)), label="E", angle=0, size=2.5, color = "white") + 
+  
+  geom_rect(aes(xmin=8719, xmax=8940, ymin=(y_ll), ymax=(y_ll-.25)), fill=viridis(10)[5], color="black", size=0.1) +
+  geom_text(aes(x=8719+(8940-8719)/2, y=(y_ll-.125)), label="M", angle=0, size=2.5, color = "white") +
+  
+  geom_rect(aes(xmin=8941, xmax=9001, ymin=(y_ll-.25), ymax=(y_ll-.5)), fill=viridis(10)[6], color="black", size=0.1) +
+  geom_text(aes(x=8941+(9001-8941)/2, y=(y_ll-.625)), label="ORF6", angle=0, size=2.5) +
+  
+  geom_rect(aes(xmin=9002, xmax=9122, ymin=(y_ll), ymax=(y_ll-.25)), fill=viridis(10)[7], color="black", size=0.1) +
+  geom_text(aes(x=9002+(9122-9002)/2, y=(y_ll+.125)), label="ORF7a", angle=0, size=2.5) +
+  
+  geom_rect(aes(xmin=9123, xmax=9243, ymin=(y_ll-.25), ymax=(y_ll-.5)), fill=viridis(10)[8], color="black", size=0.1) +
+  geom_text(aes(x=9123+(9243-9123)/2, y=(y_ll-.625)), label="ORF8", angle=0, size=2.5) +
+  
+  geom_rect(aes(xmin=9244, xmax=9662, ymin=(y_ll), ymax=(y_ll-.25)), fill=viridis(10)[9], color="black", size=0.1) +
+  geom_text(aes(x=9244+(9662-9244)/2, y=(y_ll-.125)), label="N", angle=0, size=2.5, color = "white") +
+  
+  geom_rect(aes(xmin=9663, xmax=9701, ymin=(y_ll-.25), ymax=(y_ll-.5)), fill=viridis(10)[10], color="black", size=0.1) +
+  geom_text(aes(x=9663+(9701-9663)/2, y=(y_ll-.625)), label="ORF10", angle=0, size=2.5) 
+  
+  
+  #Literature track
+  geom_rect(data = paper_tc,aes(ymin=y_ll-16, ymax=y_ll-20, xmin=Start, xmax=End), fill = alpha(c("red"), .5),size=0)+
+  geom_text(aes(x = 9670, y = y_ll-18, label = "Literature"), hjust = 0, size = 3.5)+
+  
+  
+  theme(panel.background = element_blank(), panel.grid.major.x = element_line(color="azure3"), panel.grid.major.y = element_line(color = "azure3"), axis.ticks = element_blank()) +
+  labs(y="HLA-I Pop. frequency", x="Position across SARS-CoV-2 proteome") +
+  theme(text=element_text(face="bold",size=20,colour="black")) 
+
+
 
 
 
