@@ -20,7 +20,11 @@ WORKING_DIR = "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2
 ###########################
 ###DR######################
 Freq=fread(paste0(WORKING_DIR, "HLA_freq.txt"))
-DRB=fread(paste0(WORKING_DIR, "NetMHCpan_out_filt/COVID_DRB1_NetMHCIIpan.xls"))
+#DRB=fread(paste0(WORKING_DIR, "NetMHCpan_out_filt/COVID_DRB1_NetMHCIIpan.xls"))
+
+#Same but for infiltered reads
+DRB=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_out/COVID_DRB1_NetMHCIIpan.xls")
+
 
 haps = c(6,9,12,15,18,21,24)
 
@@ -44,7 +48,11 @@ fwrite(DRB,paste0(WORKING_DIR, "NetMHC_pan_out_rank/COVID_DRB1_NetMHCIIpan.txt")
 ###DQ Cauc Am
 Freq=fread(paste0(WORKING_DIR, "HLA_freq.txt"))
 
-DQ_cauc=fread(paste0(WORKING_DIR, "NetMHCpan_out_filt/COVID_Cauc_AM_NetMHCIIpan.xls"))
+#DQ_cauc=fread(paste0(WORKING_DIR, "NetMHCpan_out_filt/COVID_Cauc_AM_NetMHCIIpan.xls"))
+
+#Same but for unfiltered reads
+DQ=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_out/COVID_Cauc_AM_NetMHCIIpan.xls")
+
 
 haps = c(6,9,12,15,18,21,24,27)
 
@@ -136,8 +144,12 @@ fwrite(HLAI_filt,paste0(WORKING_DIR, "COVID_human_netMHCpan_rank_filtered.txt"),
 
 ##########Combine all class II calls######
 library(stringr)
-DR=fread(paste0(WORKING_DIR, "NetMHC_pan_out_rank/COVID_DRB1_NetMHCIIpan.txt"))
-DQ=fread(paste0(WORKING_DIR, "NetMHC_pan_out_rank/COVID_Cauc_AM_NetMHCIIpan.txt"))
+#DR=fread(paste0(WORKING_DIR, "NetMHC_pan_out_rank/COVID_DRB1_NetMHCIIpan.txt"))
+#DQ=fread(paste0(WORKING_DIR, "NetMHC_pan_out_rank/COVID_Cauc_AM_NetMHCIIpan.txt"))
+
+#Same thing but without 500nM filter applied
+DR=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_out/COVID_DRB1_NetMHCIIpan.xls")
+DQ=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_out/COVID_Cauc_AM_NetMHCIIpan.xls")
 
 colnames(DR)[seq(7,25,3)] = paste( colnames(DR)[seq(7,25,3)],colnames(DR)[seq(6,24,3)] ,  sep = '_' )
 colnames(DR)[seq(5,23,3)] = paste( colnames(DR)[seq(5,23,3)],colnames(DR)[seq(6,24,3)] ,  sep = '_' )
