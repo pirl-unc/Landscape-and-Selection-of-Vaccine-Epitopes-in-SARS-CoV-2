@@ -1,0 +1,16 @@
+protein,description,start,end,length
+nsp1,leader protein,1,180,180
+nsp2,,181,818,638
+nsp3,,819,2763,1945
+nsp4,,2764,3263,500
+nsp5,3C-like proteinase,3264,3569,306
+nsp6,,3570,3859,290
+nsp7,,3860,3942,83
+nsp8,,3943,4140,198
+nsp9,,4141,4253,113
+nsp10,growth-factor-like protein,4254,4392,139
+nsp12,RNA-dependent RNA polymerase,4393,5324,932
+nsp13,RNA 5'-triphosphatase,5325,5925,601
+nsp14,3'-to-5' exonuclease,5926,6452,527
+nsp15,endoRNAse,6453,6798,346
+nsp16,2'-O-ribose methyltransferase,6799,7096,298
