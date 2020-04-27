@@ -52,7 +52,7 @@ WORKING_DIR = "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2
 
 #########Class I #########################
 library(doMC)
-registerDoMC(64)
+registerDoMC(48)
 ###New Fig2A/B
 Freq=fread(paste0(WORKING_DIR, "HLA_freq.txt"))
 
@@ -63,9 +63,14 @@ I_8mer=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_
 I_9mer=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_out/COVID_NetMHCpan_9mer.xls")
 I_10mer=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_out/COVID_NetMHCpan_10mer.xls")
 I_11mer=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_out/COVID_NetMHCpan_11mers.xls")
+I_B1501=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_out/COVID_NetMHCpan_B1501_8-11mers.txt")
 
 HLAI=rbind(I_8mer, I_9mer, I_10mer, I_11mer)
-haps = c(seq(7,82,5))
+HLAI=HLAI[order(HLAI$Peptide),]
+I_B1501 = I_B1501[order(I_B1501$Peptide),]
+HLAI=cbind(HLAI[,1:53], I_B1501[,4:8], HLAI[,54:ncol(HLAI)])
+
+haps = c(seq(7,87,5))
 
 resultsLog1<-foreach(n=1:nrow(HLAI), .combine=rbind) %dopar% {
   Binding_haplotype=paste0(colnames(HLAI)[haps[which(HLAI[n,haps+1,with=F] <= 1)]], collapse = ",")
@@ -79,6 +84,7 @@ Min<-foreach(n=1:nrow(HLAI), .combine=rbind) %dopar% {
 }
 
 HLAI$Min_nM = Min
+HLAI = cbind(HLAI, resultsLog1)
 
 fwrite(HLAI,"/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_out/COVID_NetMHCpan_all.txt", sep = '\t', col.names = T, quote = F)
 
@@ -335,6 +341,119 @@ fwrite(Netii, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2
 #Perfect overlap
 
 
+####IEDB vs in silico
+
+##Old format
+iedb = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/iedb/mhc-sars2.csv")
+colnames(iedb) = unlist(iedb[1,])
+iedb = iedb[-1,]
+
+netii = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/COVID_human_netMHCIIpan_all.txt")
+netii_filt = netii[which(netii$Peptide %in% iedb$Description),]
+
+fwrite(netii_filt, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/COVID_human_netMHCIIpan_IEDB_filt.txt")
+
+net = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/COVID_human_netMHCpan_rank.txt")
+net_filt = net[which(net$Peptide %in% iedb$Description),]
+
+fwrite(net_filt, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/COVID_human_netMHCpan_IEDB_filt.txt")
+
+##New format
+Net = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_standardized_all.txt")
+Netii = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCIIpan_standardized_all.txt")
+
+Net_unique = paste(Net$Peptide, Net$Haplotype, sep = "_")
+Netii_unique = paste(Netii$Peptide, Netii$Haplotype, sep = "_")
+
+iedb$`Allele Name` = str_replace_all(iedb$`Allele Name`, pattern = "\\*", replacement = "")
+iedb$`Allele Name` = str_replace_all(iedb$`Allele Name`, pattern = "HLA-DRB101:01", replacement = "DRB1_0101")
+iedb_unique = paste(iedb$Description, iedb$`Allele Name`, sep = "_")
+
+Net_filt = Net[which(Net_unique %in% iedb_unique),]
+Netii_filt = Netii[which(Netii_unique %in% iedb_unique),]
+
+Net_filt$IEDB_qual = NA
+Netii_filt$IEDB_qual = NA
+
+for(n in 1:nrow(Net_filt)){
+  Net_filt$IEDB_qual[n] = paste(unique(iedb$`Qualitative Measure`[which(iedb_unique == paste(Net_filt$Peptide[n], Net_filt$Haplotype[n], sep = "_"))]), collapse = ",")
+}
+for(n in 1:nrow(Netii_filt)){
+  Netii_filt$IEDB_qual[n] = paste(unique(iedb$`Qualitative Measure`[which(iedb_unique == paste(Netii_filt$Peptide[n], Netii_filt$Haplotype[n], sep = "_"))]), collapse = ",")
+}
+
+Net_filt$Negative = ifelse(Net_filt$IEDB_qual == "Negative","Negative","Positive")
+
+ggplot(data = Net_filt)+
+  geom_violin(aes(x = factor(Negative), y= NetMHCpan_percentile, color = factor(Negative)))+
+  geom_quasirandom(aes(x = factor(Negative), y= NetMHCpan_percentile, color = factor(Negative)), alpha=.5)+
+  scale_y_continuous(limits = c(-1,100), trans = ssqrt_trans)+
+  scale_color_viridis_d(name = "Negative IEDB\nqualitative binding")+
+  theme(text=element_text(face="bold",size=20,colour="black")) +
+  geom_hline(yintercept = 1, color="red")+
+  labs(x="Negative binding (IEDB)", y="NetMHCpan Percentile", title = "HLA-I predicted epitopes") 
+
+ggplot(data = Netii_filt)+
+  geom_violin(aes(x = factor(IEDB_qual), y= NetMHCIIpan_percentile, color = factor(IEDB_qual)))+
+  geom_quasirandom(aes(x = factor(IEDB_qual), y= NetMHCIIpan_percentile, color = factor(IEDB_qual)), alpha=.5)+
+  scale_y_continuous(limits = c(-1,100), trans = ssqrt_trans)+
+  scale_color_viridis_d(name = "IEDB\nqualitative binding")+
+  theme(text=element_text(face="bold",size=20,colour="black")) +
+  geom_hline(yintercept = 5, color="red")+
+  labs(x="Qualitative binding (IEDB)", y="NetMHCIIpan Percentile", title = "HLA-II predicted epitopes")   
+
+
+####################################################
+#########NetMHC(x)pan overlap#######################
+Net = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_standardized_all.txt")
+Netii = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCIIpan_standardized_all.txt")
+
+Net$End = Net$Start + nchar(Net$Peptide) -1
+Netii$End = Netii$Start + nchar(Netii$Peptide) -1
+
+Net = Net[which(Net$NetMHCpan_percentile<=1),]
+Netii = Netii[which(Netii$NetMHCIIpan_percentile<=1),]
+
+Net_unique = Net[-which(duplicated(Net$Peptide)),]
+Netii_unique = Netii[-which(duplicated(Netii$Peptide)),]
+
+#Overlaps
+g1 <-  GRanges(seqnames="COVID",
+               IRanges(start=Net_unique$Start,
+                       end=Net_unique$End), 
+               I_peptide = Net_unique$Peptide, MHCI_percentile = Net_unique$NetMHCpan_percentile, Protein = Net_unique$Protein)
+
+g2 <-  GRanges(seqnames="COVID",
+               IRanges(start=Netii_unique$Start,
+                       end=Netii_unique$End), 
+               II_peptide = Netii_unique$Peptide, MHCII_percentile = Netii_unique$NetMHCIIpan_percentile)
+
+merge_I_II=as.data.table(mergeByOverlaps(g1,g2))
+
+
+ggplot(data=merge_I_II) + 
+  ##Plot co-epitopes
+  geom_point(aes(x=MHCI_percentile, y=MHCII_percentile, color=Protein)) +
+  theme(text=element_text(face="bold",size=20,colour="black")) +
+  scale_color_viridis_d(option = "viridis")+
+  geom_label_repel(aes(label=ifelse(Mean_freq>label_frequency,as.character(c2_peptide),''), x=c1_tot_freq, y=c2_tot_freq),
+                   box.padding   = 0.35, 
+                   point.padding = 0.5,
+                   segment.color = 'grey50')+
+  scale_y_continuous(limits = c(0,95))+
+  scale_x_continuous(limits = c(0,95))+
+  scale_size(range = c(0,10), breaks = c(10,150,300), trans="reverse", name = "Mean nM")+
+  labs(y="MHC II Frequency (%)", x="MHC I Frequency (%)", title = "Predicted T cell co-epitopes", color="Gene") +
+  
+  ###Add MHCI and II epitopes
+  geom_rug(data=net_graph, aes(x = 100*Frequency),  col=viridis(n = 2, begin = 0, end = .75, option = 'plasma')[1])+
+  geom_rug(data=netii_graph, aes(y = 100*Frequency),  col=viridis(n=2, begin = 0, end = .75, option = 'plasma')[2])+
+  
+  geom_text(x=75, y=96, label=paste0("Co-epitopes: ", nrow(joint_run_filt_entropy)), color = 'red', size=10)+
+  geom_text(x=75, y=3, label=paste0("HLA-I: ", nrow(net_graph)), color = 'red', size=10)+
+  geom_text(x=3, y=75, label=paste0("HLA-II: ", nrow(netii_graph)), color = 'red', angle=90, size=10)+
+  
+  theme(text=element_text(face="bold",size=20,colour="black")) 
 
 
 
@@ -423,3 +542,86 @@ ggplot(data=combined_perc)+
   #geom_text(x=0, y=-3, label=paste0("n=",length(which((combined_perc$MHCflurry_percentile<1)& (combined_perc$NetMHCpan_percentile<1) ))), color = 'red', size=10)+
   
   labs(x="NetMHCIIpan Percentile", y="MARIA Percentile", title = "HLA-II predicted epitopes") 
+
+
+
+
+#################################################
+####################New Fig 2B ##################
+
+
+#Minimum frequency to display (mean of HLA-I and II frequencies)  
+Min_frequency = 0
+label_frequency = 75
+
+mouse1 = fread(paste0(WORKING_DIR, "COVID_murine_NetMHCpan_unfilt.xls"))
+mouse1 = mouse1[which(mouse1$NB>0),]
+mouse2 = fread(paste0(WORKING_DIR, "COVID_murine_NetMHCIIpan_unfilt.xls"))
+mouse2 = mouse2[which(mouse2$NB>0),]
+
+#joint_run_filt_entropy = fread(paste0(WORKING_DIR, "COVID_combined_entropy_rank_filtered.csv"))
+joint_run_filt_entropy=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/COVID_human_Coepitopes_rank.txt")
+joint_run_filt_entropy$c1_tot_freq = joint_run_filt_entropy$c1_tot_freq*100
+joint_run_filt_entropy$c2_tot_freq = joint_run_filt_entropy$c2_tot_freq*100
+
+###Number of MHC-I/II epitopes conserved between human and mouse
+#length(which(HLAI_filt$Peptide[which(HLAI_filt$lo_entropy==1)] %in% unique(mouse1$Peptide)))
+#length(which(HLAII_filt$Peptide[which(HLAII_filt$lo_entropy==1)] %in% unique(mouse2$Peptide)))
+
+##Adding murine coverage for each human epitope
+joint_run_filt_entropy$murine = "None"
+joint_run_filt_entropy$murine[which(joint_run_filt_entropy$c1_peptide %in% mouse1$Peptide)] = "MHC-I" 
+joint_run_filt_entropy$murine[which(joint_run_filt_entropy$c2_peptide %in% mouse2$Peptide)] = "MHC-II" 
+joint_run_filt_entropy$murine[which((joint_run_filt_entropy$c2_peptide %in% mouse2$Peptide) & (joint_run_filt_entropy$c1_peptide %in% mouse1$Peptide))] = "Both" 
+joint_run_filt_entropy$murine = factor(joint_run_filt_entropy$murine, levels = c("MHC-I", "MHC-II", "Both", "None"))
+
+#joint_run_filt_entropy = joint_run_filt_entropy[which(joint_run_filt_entropy$lo_entropy==1),]
+joint_run_filt_entropy$Mean_freq = (joint_run_filt_entropy$c1_tot_freq + joint_run_filt_entropy$c2_tot_freq)/2
+
+joint_run_filt_entropy$c1_peptide_offset=NA
+for(z in 1:nrow(joint_run_filt_entropy)){
+  #Uses gregexpr to find c1 peptide within c2 peptide --> inserts spaces ahead of c1 peptide so the start AA aligns with its location on c2 peptide --> Pastes out as a string in matrix
+  joint_run_filt_entropy$c1_peptide_offset[z] = paste0(c(rep(" ", (gregexpr(joint_run_filt_entropy$c2_peptide[z], pattern = joint_run_filt_entropy$c1_peptide[z])[[1]][1])-1), joint_run_filt_entropy$c1_peptide[z]), collapse = '')
+}
+
+####Read in filtered HLA-I/II data
+net_filt= fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/COVID_human_netMHCpan_rank.txt")
+netii_filt= fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/COVID_human_netMHCIIpan_rank.txt")
+
+net_filt=net_filt[which(net_filt$Frequency>0),]
+netii_filt=netii_filt[which(netii_filt$Frequency>0),]
+
+joint_run_filt_entropy=joint_run_filt_entropy[which((joint_run_filt_entropy$c1_tot_freq>0)&(joint_run_filt_entropy$c2_tot_freq>0)),]
+
+###Keep only columns needed to graph to prevent ggplot error
+net_graph = net_filt[,c(1,2,3,87:88)]
+netii_graph = netii_filt[,c(1,2,3,57:59)]
+#net_graph = net_graph[which(net_graph$lo_entropy==1),]
+#netii_graph = netii_graph[which(netii_graph$lo_entropy==1),]
+
+pep_col = viridis(4, begin = 0, end = .75, option = "plasma")
+
+ggplot(data=joint_run_filt_entropy) + 
+  ##Plot co-epitopes
+  geom_point(aes(x=c1_tot_freq, y=c2_tot_freq, color=gene, shape = murine),size=7, alpha=.5) +
+  theme(text=element_text(face="bold",size=20,colour="black")) +
+  scale_color_viridis_d(option = "viridis")+
+  geom_label_repel(aes(label=ifelse(Mean_freq>label_frequency,as.character(c2_peptide),''), x=c1_tot_freq, y=c2_tot_freq),
+                   box.padding   = 0.35, 
+                   point.padding = 0.5,
+                   segment.color = 'grey50')+
+  scale_y_continuous(limits = c(0,95))+
+  scale_x_continuous(limits = c(0,95))+
+  scale_size(range = c(0,10), breaks = c(10,150,300), trans="reverse", name = "Mean nM")+
+  labs(y="MHC II Frequency (%)", x="MHC I Frequency (%)", title = "Predicted T cell co-epitopes", color="Gene") +
+  
+  ###Add MHCI and II epitopes
+  geom_rug(data=net_graph, aes(x = 100*Frequency),  col=viridis(n = 2, begin = 0, end = .75, option = 'plasma')[1])+
+  geom_rug(data=netii_graph, aes(y = 100*Frequency),  col=viridis(n=2, begin = 0, end = .75, option = 'plasma')[2])+
+  
+  geom_text(x=75, y=96, label=paste0("Co-epitopes: ", nrow(joint_run_filt_entropy)), color = 'red', size=10)+
+  geom_text(x=75, y=3, label=paste0("HLA-I: ", nrow(net_graph)), color = 'red', size=10)+
+  geom_text(x=3, y=75, label=paste0("HLA-II: ", nrow(netii_graph)), color = 'red', angle=90, size=10)+
+  
+  theme(text=element_text(face="bold",size=20,colour="black")) 
+
