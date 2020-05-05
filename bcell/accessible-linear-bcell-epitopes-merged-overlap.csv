@@ -1,0 +1,23 @@
+num_sources,sources,accessible_subsequence_start,accessible_subsequence_end,accessible_subsequence,accessible_subsequence_length,accessible_subsequence_is_4mer_or_longer,IgG,IgA,IgG_and_IgA,accessible_subsequence_contains_polymorphism,accessible_subsequence_contains_glycosite,near_any_feature,in_any_feature
+1,Wang 2020 S26-30,27,30,AYTN,4,True,True,False,False,True,False,False,False
+1,Dahlke 2020 S63-91,68,80,IHVSGTNGTKRFD,13,True,False,True,False,True,True,False,False
+2,Charite 2020 S127-141; Charite 2020 S131-145,134,135,QF,2,False,True,True,True,False,False,False,False
+1,Dahlke 2020 S125-181,144,157,YYHKNNKSWMESEF,14,True,False,True,False,True,True,False,False
+1,Wang 2020 S186-190,186,187,FK,2,False,True,False,False,False,False,False,False
+1,Dahlke 2020 S215-229,218,219,QG,2,False,False,True,False,False,False,False,False
+1,Dahlke 2020 S241-265,245,261,HRSYLTPGDSSSGWTAG,17,True,False,True,False,True,False,False,False
+1,Dahlke 2020 S271-295,281,281,E,1,False,False,True,False,False,False,True,False
+2,Charite 2020 S343-357; Dahlke 2020 S343-357,345,346,TR,2,False,False,True,False,False,False,True,True
+3,Wang 2020 S456-460; Dahlke 2020 S449-463; Charite 2020 S459-473,457,473,RKSNLKPFERDISTEIY,17,True,True,True,True,False,False,True,True
+2,Charite 2020 S503-517; Charite 2020 S505-519,505,506,YQ,2,False,True,True,True,False,False,True,True
+1,Poh 2020 S553-570,553,554,TE,2,False,True,False,False,False,False,True,False
+4,Charite 2020 S569-583; Charite 2020 S571-585; Charite 2020 S573-587; Dahlke 2020 S565-587,580,583,QTLE,4,True,True,True,True,False,False,True,False
+1,Dahlke 2020 S605-619,618,619,TE,2,False,False,True,False,False,False,False,False
+1,Charite 2020 S619-633,622,633,VAIHADQLTPTW,12,True,False,True,False,False,False,False,False
+1,Dahlke 2020 S637-651,637,644,STGSNVFQ,8,True,True,False,False,False,False,False,False
+2,Charite 2020 S649-663; Dahlke 2020 S647-665,654,661,EHVNNSYE,8,True,False,True,False,False,True,False,False
+6,Poh 2020 S809-826; Wang 2020 S806-820; Charite 2020 S805-819; Charite 2020 S807-821; Dahlke 2020 S809-827; Dahlke 2020 S811-831,809,812,PSKP,4,True,True,True,True,False,False,True,False
+1,Dahlke 2020 S835-851,835,843,KQYGDCLGD,9,True,False,True,False,True,False,False,False
+1,Dahlke 2020 S927-955,929,929,S,1,False,True,False,False,False,False,True,True
+2,Charite 2020 S1089-1103; Dahlke 2020 S1087-1111,1099,1101,GTH,3,False,False,True,False,False,False,False,False
+2,Dahlke 2020 S1131-1145; Charite 2020 S1141-1155,1142,1146,QPELD,5,True,True,True,True,False,False,True,False
