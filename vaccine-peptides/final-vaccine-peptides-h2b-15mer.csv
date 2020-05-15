@@ -1,23 +1,23 @@
 Sequence,Protein,Start,End,B-cell Epitope,HLA-I alleles,HLA-II alleles,HLA-I coverage,HLA-II coverage,Class I H2-b,Class II H2-b,Class I H2-d,Class II H2-d,sources,num_sources
-ISTEIYQAGSTPCNG,S,468,482,RKSNLKPFERDISTEIY,,HLA-DQA1*05:05/DQB1*03:01,0.0,0.21,-,+,-,-,selected-bcell-cd4-h2b-15mer.csv;selected-bcell-cd4-15mer.csv,2
-GFNFSQILPDPSKPS,S,799,813,PSKP,,"HLA-DRB1*01:01,HLA-DRB1*04:01",0.0,0.23,-,+,-,-,selected-bcell-cd4-h2b-15mer.csv;selected-bcell-cd4-15mer.csv,2
-NYNYLYRLFRKSNLK,S,448,462,RKSNLKPFERDISTEIY,"HLA-A*24:02,HLA-C*07:02,HLA-B*08:01,HLA-A*03:01,HLA-A*11:01,HLA-C*06:02,HLA-C*07:01","HLA-DRB1*11:01,HLA-DRB1*13:01",0.77,0.2,+,-,+,-,selected-bcell-cd4-cd8-15mer.csv;selected-bcell-cd8-h2b-h2d-15mer.csv;selected-bcell-cd8-h2d-15mer.csv,3
-YRLFRKSNLKPFERD,S,453,467,RKSNLKPFERDISTEIY,"HLA-C*07:02,HLA-A*11:01,HLA-B*08:01,HLA-A*03:01,HLA-C*06:02,HLA-C*07:01",HLA-DRB1*07:01,0.73,0.23,+,-,-,-,selected-bcell-cd4-cd8-15mer.csv;selected-bcell-cd4-15mer.csv,2
-YNYLYRLFRKSNLKP,S,449,463,RKSNLKPFERDISTEIY,"HLA-B*08:01,HLA-A*03:01,HLA-A*11:01,HLA-C*06:02,HLA-C*07:01,HLA-C*07:02","HLA-DRB1*11:01,HLA-DRB1*13:01",0.73,0.2,+,-,-,-,selected-bcell-cd4-15mer.csv,1
-GGNYNYLYRLFRKSN,S,446,460,RKSNLKPFERDISTEIY,"HLA-A*24:02,HLA-C*07:02","HLA-DRB1*11:01,HLA-DRB1*13:01",0.37,0.2,+,-,+,-,selected-bcell-cd8-h2b-15mer.csv,1
-NYLYRLFRKSNLKPF,S,450,464,RKSNLKPFERDISTEIY,"HLA-C*07:02,HLA-B*08:01,HLA-A*03:01,HLA-A*11:01,HLA-C*06:02,HLA-C*07:01","HLA-DRB1*11:01,HLA-DRB1*13:01",0.73,0.2,+,-,-,-,selected-bcell-cd8-h2b-15mer.csv;selected-bcell-cd8-15mer.csv,2
-RLFRKSNLKPFERDI,S,454,468,RKSNLKPFERDISTEIY,"HLA-C*07:02,HLA-A*11:01,HLA-B*08:01,HLA-A*03:01",,0.56,0.0,+,-,-,-,selected-bcell-cd8-h2b-15mer.csv;selected-bcell-cd8-15mer.csv,2
-LLQFAYANRNRFLYI,M,34,48,,"HLA-B*08:01,HLA-C*07:02,HLA-B*35:01,HLA-C*03:04,HLA-C*06:02,HLA-C*07:01,HLA-A*01:01","HLA-DRB1*03:01,HLA-DRB1*11:01,HLA-DRB1*13:01",0.77,0.36,+,+,+,+,selected-tcell-cd4-cd8-h2b-h2d-15mer.csv;selected-tcell-cd4-cd8-h2d-15mer.csv;selected-tcell-cd4-h2b-h2d-15mer.csv;selected-tcell-cd4-h2b-15mer.csv;selected-tcell-cd4-h2d-15mer.csv;selected-tcell-cd4-15mer.csv,6
-LTDEMIAQYTSALLA,S,865,879,,"HLA-C*03:04,HLA-A*01:01,HLA-B*35:01","HLA-DRB1*01:01,HLA-DRB1*07:01,HLA-DRB1*15:01",0.42,0.46,+,+,+,+,selected-tcell-cd4-cd8-h2b-h2d-15mer.csv;selected-tcell-cd4-cd8-h2b-15mer.csv;selected-tcell-cd8-h2b-h2d-15mer.csv;selected-tcell-cd8-h2b-15mer.csv,4
-SFRLFARTRSMWSFN,M,99,113,,"HLA-C*06:02,HLA-C*07:02,HLA-B*07:02,HLA-B*08:01,HLA-C*03:04,HLA-C*07:01","HLA-DRB1*04:01,HLA-DRB1*07:01,HLA-DRB1*11:01,HLA-DRB1*13:01",0.73,0.46,+,+,-,+,selected-tcell-cd4-cd8-h2b-15mer.csv;selected-tcell-cd4-cd8-15mer.csv,2
-ATKAYNVTQAFGRRG,N,264,278,,"HLA-B*35:01,HLA-C*03:04","HLA-DRB1*01:01,HLA-DRB1*07:01,HLA-DRB1*11:01,HLA-DRB1*13:01",0.24,0.46,+,+,+,-,selected-tcell-cd4-cd8-h2b-15mer.csv,1
-DYSVLYNSASFSTFK,S,364,378,,"HLA-A*24:02,HLA-A*11:01","HLA-DRB1*04:01,HLA-DRB1*07:01",0.26,0.32,-,+,+,+,selected-tcell-cd4-cd8-h2d-15mer.csv,1
-MIAQYTSALLAGTIT,S,869,883,,HLA-C*03:04,"HLA-DQA1*01:02/DQB1*06:02,HLA-DQA1*03:03/DQB1*03:01,HLA-DQA1*05:05/DQB1*03:01,HLA-DRB1*01:01,HLA-DRB1*07:01,HLA-DRB1*15:01",0.14,0.73,+,+,+,+,selected-tcell-cd4-cd8-h2d-15mer.csv,1
-PQIAQFAPSASAFFG,N,302,316,,HLA-A*24:02,"HLA-DQA1*05:05/DQB1*03:01,HLA-DRB1*07:01",0.17,0.39,-,+,-,+,selected-tcell-cd4-h2b-h2d-15mer.csv;selected-tcell-cd4-cd8-15mer.csv;selected-tcell-cd4-h2d-15mer.csv,3
-RAAEIRASANLAATK,S,1014,1028,,"HLA-A*11:01,HLA-B*44:02,HLA-B*44:03","HLA-DQA1*01:02/DQB1*06:02,HLA-DQA1*03:03/DQB1*03:01,HLA-DQA1*05:05/DQB1*03:01,HLA-DRB1*01:01,HLA-DRB1*04:01,HLA-DRB1*07:01,HLA-DRB1*13:01,HLA-DRB1*15:01",0.3,0.79,-,+,-,+,selected-tcell-cd4-h2b-h2d-15mer.csv;selected-tcell-cd4-cd8-15mer.csv;selected-tcell-cd4-h2b-15mer.csv;selected-tcell-cd4-h2d-15mer.csv;selected-tcell-cd4-15mer.csv,5
-PSGTWLTYTGAIKLD,N,326,340,,HLA-C*03:04,"HLA-DRB1*01:01,HLA-DRB1*07:01,HLA-DRB1*13:01,HLA-DRB1*15:01",0.14,0.52,+,+,-,-,selected-tcell-cd4-h2b-15mer.csv,1
-ANRNRFLYIIKLIFL,M,40,54,,"HLA-B*08:01,HLA-A*02:01,HLA-C*06:02,HLA-C*07:01,HLA-C*07:02,HLA-A*24:02",,0.81,0.0,+,-,+,-,selected-tcell-cd8-h2b-h2d-15mer.csv;selected-tcell-cd8-h2b-15mer.csv,2
-LSPRWYFYYLGTGPE,N,104,118,,"HLA-A*01:01,HLA-B*07:02,HLA-B*08:01",,0.49,0.0,+,-,+,-,selected-tcell-cd8-h2b-h2d-15mer.csv;selected-tcell-cd8-h2d-15mer.csv;selected-tcell-cd8-h2b-15mer.csv,3
-YANRNRFLYIIKLIF,M,39,53,,"HLA-B*08:01,HLA-C*06:02,HLA-C*07:01,HLA-C*07:02,HLA-A*24:02,HLA-A*01:01,HLA-B*35:01",,0.78,0.0,+,-,+,-,selected-tcell-cd8-h2d-15mer.csv,1
-YYVGYLQPRTFLLKY,S,265,279,,"HLA-C*07:02,HLA-A*24:02,HLA-B*08:01,HLA-A*02:01,HLA-C*03:04,HLA-C*05:01,HLA-C*07:01,HLA-A*03:01,HLA-A*11:01",HLA-DRB1*07:01,0.88,0.23,-,+,+,-,selected-tcell-cd8-h2d-15mer.csv;selected-tcell-cd8-15mer.csv,2
-YFIASFRLFARTRSM,M,95,109,,"HLA-C*06:02,HLA-C*07:02,HLA-B*07:02,HLA-B*08:01,HLA-C*03:04,HLA-C*07:01,HLA-A*24:02","HLA-DRB1*11:01,HLA-DRB1*13:01",0.78,0.2,+,-,+,+,selected-tcell-cd8-15mer.csv,1
+LLQFAYANRNRFLYI,M,34,48,,B*08:01 C*07:02 B*35:01 C*03:04 C*06:02 C*07:01 A*01:01,DRB1*03:01 DRB1*11:01 DRB1*13:01,0.77,0.36,+,+,+,+,selected-tcell-cd4-cd8-h2b-h2d-15mer.csv;selected-tcell-cd4-cd8-h2d-15mer.csv;selected-tcell-cd4-h2b-h2d-15mer.csv;selected-tcell-cd4-h2b-15mer.csv;selected-tcell-cd4-h2d-15mer.csv;selected-tcell-cd4-15mer.csv,6
+YANRNRFLYIIKLIF,M,39,53,,B*08:01 C*06:02 C*07:01 C*07:02 A*24:02 A*01:01 B*35:01,,0.78,0.0,+,-,+,-,selected-tcell-cd8-h2d-15mer.csv,1
+ANRNRFLYIIKLIFL,M,40,54,,B*08:01 A*02:01 C*06:02 C*07:01 C*07:02 A*24:02,,0.81,0.0,+,-,+,-,selected-tcell-cd8-h2b-h2d-15mer.csv;selected-tcell-cd8-h2b-15mer.csv,2
+YFIASFRLFARTRSM,M,95,109,,C*06:02 C*07:02 B*07:02 B*08:01 C*03:04 C*07:01 A*24:02,DRB1*11:01 DRB1*13:01,0.78,0.2,+,-,+,+,selected-tcell-cd8-15mer.csv,1
+SFRLFARTRSMWSFN,M,99,113,,C*06:02 C*07:02 B*07:02 B*08:01 C*03:04 C*07:01,DRB1*04:01 DRB1*07:01 DRB1*11:01 DRB1*13:01,0.73,0.46,+,+,-,+,selected-tcell-cd4-cd8-h2b-15mer.csv;selected-tcell-cd4-cd8-15mer.csv,2
+LSPRWYFYYLGTGPE,N,104,118,,A*01:01 B*07:02 B*08:01,,0.49,0.0,+,-,+,-,selected-tcell-cd8-h2b-h2d-15mer.csv;selected-tcell-cd8-h2d-15mer.csv;selected-tcell-cd8-h2b-15mer.csv,3
+ATKAYNVTQAFGRRG,N,264,278,,B*35:01 C*03:04,DRB1*01:01 DRB1*07:01 DRB1*11:01 DRB1*13:01,0.24,0.46,+,+,+,-,selected-tcell-cd4-cd8-h2b-15mer.csv,1
+PQIAQFAPSASAFFG,N,302,316,,A*24:02,DQA1*05:05/DQB1*03:01 DRB1*07:01,0.17,0.39,-,+,-,+,selected-tcell-cd4-h2b-h2d-15mer.csv;selected-tcell-cd4-cd8-15mer.csv;selected-tcell-cd4-h2d-15mer.csv,3
+PSGTWLTYTGAIKLD,N,326,340,,C*03:04,DRB1*01:01 DRB1*07:01 DRB1*13:01 DRB1*15:01,0.14,0.52,+,+,-,-,selected-tcell-cd4-h2b-15mer.csv,1
+YYVGYLQPRTFLLKY,S,265,279,,C*07:02 A*24:02 B*08:01 A*02:01 C*03:04 C*05:01 C*07:01 A*03:01 A*11:01,DRB1*07:01,0.88,0.23,-,+,+,-,selected-tcell-cd8-h2d-15mer.csv;selected-tcell-cd8-15mer.csv,2
+DYSVLYNSASFSTFK,S,364,378,,A*24:02 A*11:01,DRB1*04:01 DRB1*07:01,0.26,0.32,-,+,+,+,selected-tcell-cd4-cd8-h2d-15mer.csv,1
+GGNYNYLYRLFRKSN,S,446,460,RKSNLKPFERDISTEIY,A*24:02 C*07:02,DRB1*11:01 DRB1*13:01,0.37,0.2,+,-,+,-,selected-bcell-cd8-h2b-15mer.csv,1
+NYNYLYRLFRKSNLK,S,448,462,RKSNLKPFERDISTEIY,A*24:02 C*07:02 B*08:01 A*03:01 A*11:01 C*06:02 C*07:01,DRB1*11:01 DRB1*13:01,0.77,0.2,+,-,+,-,selected-bcell-cd4-cd8-15mer.csv;selected-bcell-cd8-h2b-h2d-15mer.csv;selected-bcell-cd8-h2d-15mer.csv,3
+YNYLYRLFRKSNLKP,S,449,463,RKSNLKPFERDISTEIY,B*08:01 A*03:01 A*11:01 C*06:02 C*07:01 C*07:02,DRB1*11:01 DRB1*13:01,0.73,0.2,+,-,-,-,selected-bcell-cd4-15mer.csv,1
+NYLYRLFRKSNLKPF,S,450,464,RKSNLKPFERDISTEIY,C*07:02 B*08:01 A*03:01 A*11:01 C*06:02 C*07:01,DRB1*11:01 DRB1*13:01,0.73,0.2,+,-,-,-,selected-bcell-cd8-h2b-15mer.csv;selected-bcell-cd8-15mer.csv,2
+YRLFRKSNLKPFERD,S,453,467,RKSNLKPFERDISTEIY,C*07:02 A*11:01 B*08:01 A*03:01 C*06:02 C*07:01,DRB1*07:01,0.73,0.23,+,-,-,-,selected-bcell-cd4-cd8-15mer.csv;selected-bcell-cd4-15mer.csv,2
+RLFRKSNLKPFERDI,S,454,468,RKSNLKPFERDISTEIY,C*07:02 A*11:01 B*08:01 A*03:01,,0.56,0.0,+,-,-,-,selected-bcell-cd8-h2b-15mer.csv;selected-bcell-cd8-15mer.csv,2
+ISTEIYQAGSTPCNG,S,468,482,RKSNLKPFERDISTEIY,,DQA1*05:05/DQB1*03:01,0.0,0.21,-,+,-,-,selected-bcell-cd4-h2b-15mer.csv;selected-bcell-cd4-15mer.csv,2
+GFNFSQILPDPSKPS,S,799,813,PSKP,,DRB1*01:01 DRB1*04:01,0.0,0.23,-,+,-,-,selected-bcell-cd4-h2b-15mer.csv;selected-bcell-cd4-15mer.csv,2
+LTDEMIAQYTSALLA,S,865,879,,C*03:04 A*01:01 B*35:01,DRB1*01:01 DRB1*07:01 DRB1*15:01,0.42,0.46,+,+,+,+,selected-tcell-cd4-cd8-h2b-h2d-15mer.csv;selected-tcell-cd4-cd8-h2b-15mer.csv;selected-tcell-cd8-h2b-h2d-15mer.csv;selected-tcell-cd8-h2b-15mer.csv,4
+MIAQYTSALLAGTIT,S,869,883,,C*03:04,DQA1*01:02/DQB1*06:02 DQA1*03:03/DQB1*03:01 DQA1*05:05/DQB1*03:01 DRB1*01:01 DRB1*07:01 DRB1*15:01,0.14,0.73,+,+,+,+,selected-tcell-cd4-cd8-h2d-15mer.csv,1
+RAAEIRASANLAATK,S,1014,1028,,A*11:01 B*44:02 B*44:03,DQA1*01:02/DQB1*06:02 DQA1*03:03/DQB1*03:01 DQA1*05:05/DQB1*03:01 DRB1*01:01 DRB1*04:01 DRB1*07:01 DRB1*13:01 DRB1*15:01,0.3,0.79,-,+,-,+,selected-tcell-cd4-h2b-h2d-15mer.csv;selected-tcell-cd4-cd8-15mer.csv;selected-tcell-cd4-h2b-15mer.csv;selected-tcell-cd4-h2d-15mer.csv;selected-tcell-cd4-15mer.csv,5
