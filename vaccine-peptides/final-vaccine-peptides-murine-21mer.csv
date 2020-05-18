@@ -12,17 +12,15 @@ GTWLTYTGAIKLDDKDPNFKD,N,328,348,,C*05:01 C*03:04,DRB1*01:01 DRB1*07:01 DRB1*13:0
 KQQTVTLLPAADLDDFSKQLQ,N,388,408,,B*35:01,DQA1*01:02/DQB1*06:02 DRB1*01:01 DQA1*05:01/DQB1*02:01,0.11,0.52,-,-,-,+,selected-tcell-cd4-cd8-21mer.csv;selected-tcell-cd4-h2d-21mer.csv;selected-tcell-cd4-21mer.csv,3
 NYNYLYRLFRKSNLKPFERDI,S,448,468,FRKSNLKPFERDISTEIY,C*07:02 A*11:01 A*24:02 B*08:01 A*03:01 C*06:02 C*07:01,DRB1*13:01 DRB1*11:01 DRB1*07:01,0.77,0.38,+,-,+,-,selected-bcell-cd8-h2b-h2d-21mer.csv;selected-bcell-cd8-h2d-21mer.csv,2
 YNYLYRLFRKSNLKPFERDIS,S,449,469,FRKSNLKPFERDISTEIY,C*07:02 A*11:01 B*08:01 A*03:01 C*06:02 C*07:01,DRB1*13:01 DRB1*11:01 DRB1*07:01,0.73,0.38,+,-,-,-,selected-bcell-cd4-cd8-21mer.csv;selected-bcell-cd4-21mer.csv,2
-YRLFRKSNLKPFERDISTEIY,S,453,473,FRKSNLKPFERDISTEIY,C*07:02 B*07:02 A*11:01 B*08:01 A*03:01 C*06:02 C*07:01,DRB1*07:01,0.78,0.23,+,-,-,-,selected-bcell-cd4-cd8-21mer.csv;selected-bcell-cd4-21mer.csv;selected-bcell-cd8-h2b-21mer.csv;selected-bcell-cd8-21mer.csv;selected-bcell-vaccine-21mer.csv;selected-bcell-21mer.csv,6
-KPFERDISTEIYQAGSTPCNG,S,462,482,FRKSNLKPFERDISTEIY,B*07:02,DQA1*05:05/DQB1*03:01,0.2,0.21,-,+,-,-,selected-bcell-cd4-h2b-21mer.csv;selected-bcell-vaccine-21mer.csv,2
+YRLFRKSNLKPFERDISTEIY,S,453,473,FRKSNLKPFERDISTEIY,C*07:02 B*07:02 A*11:01 B*08:01 A*03:01 C*06:02 C*07:01,DRB1*07:01,0.78,0.23,+,-,-,-,selected-bcell-cd4-cd8-21mer.csv;selected-bcell-cd4-21mer.csv;selected-bcell-cd8-h2b-21mer.csv;selected-bcell-cd8-21mer.csv;selected-bcell-21mer.csv,5
+KPFERDISTEIYQAGSTPCNG,S,462,482,FRKSNLKPFERDISTEIY,B*07:02,DQA1*05:05/DQB1*03:01,0.2,0.21,-,+,-,-,selected-bcell-cd4-h2b-21mer.csv,1
 GYQPYRVVVLSFELLHAPATV,S,504,524,,A*24:02 B*07:02 A*02:01 B*08:01 C*03:04 C*07:02,DRB1*01:01,0.79,0.13,+,+,+,+,selected-tcell-cd8-h2b-h2d-21mer.csv,1
-IKDFGGFNFSQILPDPSKPSK,S,794,814,PSKP,A*03:01,DRB1*04:01 DRB1*01:01,0.21,0.23,-,+,-,-,selected-bcell-vaccine-21mer.csv,1
 GFNFSQILPDPSKPSKRSFIE,S,799,819,PSKP,A*03:01,DRB1*04:01 DRB1*01:01,0.21,0.23,-,+,-,-,selected-bcell-cd4-h2b-21mer.csv;selected-bcell-cd4-cd8-21mer.csv;selected-bcell-cd4-21mer.csv;selected-bcell-21mer.csv,4
 PSKPSKRSFIEDLLFNKVTLA,S,809,829,PSKP,A*02:01 A*11:01 B*08:01 A*03:01,,0.66,0.0,+,-,-,-,selected-bcell-cd8-h2b-21mer.csv;selected-bcell-cd8-21mer.csv,2
 LTDEMIAQYTSALLAGTITSG,S,865,885,,C*03:04 A*01:01 B*35:01,DQA1*01:02/DQB1*06:02 DQA1*03:03/DQB1*03:01 DQA1*05:05/DQB1*03:01 DRB1*01:01 DRB1*07:01 DRB1*15:01,0.42,0.73,+,+,+,+,selected-tcell-cd4-cd8-h2b-h2d-21mer.csv;selected-tcell-cd4-cd8-h2d-21mer.csv,2
 LSSNFGAISSVLNDILSRLDK,S,966,986,,A*11:01 A*02:01 A*03:01,DRB1*01:01 DQA1*05:05/DQB1*03:01 DRB1*04:01 DRB1*07:01 DRB1*03:01,0.59,0.62,+,+,-,+,selected-tcell-cd4-cd8-h2b-21mer.csv;selected-tcell-cd4-cd8-21mer.csv,2
 SSVLNDILSRLDKVEAEVQID,S,974,994,,A*02:01 C*05:01 A*11:01 A*03:01,DRB1*13:01 DRB1*03:01,0.65,0.28,+,-,-,-,selected-tcell-cd8-h2b-21mer.csv,1
 VTQQLIRAAEIRASANLAATK,S,1008,1028,,A*11:01 B*44:02 B*44:03,DRB1*01:01 DQA1*01:02/DQB1*06:02 DQA1*03:03/DQB1*03:01 DQA1*05:05/DQB1*03:01 DRB1*04:01 DRB1*07:01 DRB1*11:01 DRB1*13:01 DRB1*15:01,0.3,0.81,-,+,-,+,selected-tcell-cd4-h2b-h2d-21mer.csv;selected-tcell-cd4-cd8-21mer.csv;selected-tcell-cd4-h2d-21mer.csv;selected-tcell-cd4-h2b-21mer.csv;selected-tcell-cd4-21mer.csv,5
-CDVVIGIVNNTVYDPLQPELD,S,1126,1146,QPELD,C*04:01,DRB1*01:01,0.23,0.13,-,-,+,-,selected-bcell-vaccine-21mer.csv,1
 DVVIGIVNNTVYDPLQPELDS,S,1127,1147,QPELD,C*04:01,DRB1*01:01,0.23,0.13,-,-,+,-,selected-bcell-cd4-cd8-21mer.csv;selected-bcell-cd4-21mer.csv,2
 VYDPLQPELDSFKEELDKYFK,S,1137,1157,QPELD,C*04:01,,0.23,0.0,-,-,+,-,selected-bcell-cd8-h2d-21mer.csv;selected-bcell-cd8-21mer.csv;selected-bcell-21mer.csv,3
 SLIDLQELGKYEQYIKWPWYI,S,1196,1216,,A*01:01 A*03:01 A*11:01 A*24:02 B*44:02 B*44:03 A*02:01,,0.8,0.0,-,-,+,-,selected-tcell-cd8-h2d-21mer.csv;selected-tcell-cd8-21mer.csv,2

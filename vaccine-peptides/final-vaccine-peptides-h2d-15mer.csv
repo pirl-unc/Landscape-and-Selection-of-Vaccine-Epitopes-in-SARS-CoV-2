@@ -15,5 +15,4 @@ LTDEMIAQYTSALLA,S,865,879,,C*03:04 A*01:01 B*35:01,DRB1*01:01 DRB1*07:01 DRB1*15
 MIAQYTSALLAGTIT,S,869,883,,C*03:04,DQA1*01:02/DQB1*06:02 DQA1*03:03/DQB1*03:01 DQA1*05:05/DQB1*03:01 DRB1*01:01 DRB1*07:01 DRB1*15:01,0.14,0.73,+,+,+,+,selected-tcell-cd4-cd8-h2d-15mer.csv,1
 GRLQSLQTYVTQQLI,S,999,1013,,A*02:01,DRB1*01:01 DRB1*07:01 DRB1*13:01 DRB1*15:01,0.42,0.52,-,-,+,+,selected-tcell-cd4-cd8-h2d-15mer.csv,1
 RAAEIRASANLAATK,S,1014,1028,,A*11:01 B*44:02 B*44:03,DQA1*01:02/DQB1*06:02 DQA1*03:03/DQB1*03:01 DQA1*05:05/DQB1*03:01 DRB1*01:01 DRB1*04:01 DRB1*07:01 DRB1*13:01 DRB1*15:01,0.3,0.79,-,+,-,+,selected-tcell-cd4-h2b-h2d-15mer.csv;selected-tcell-cd4-cd8-15mer.csv;selected-tcell-cd4-h2b-15mer.csv;selected-tcell-cd4-h2d-15mer.csv;selected-tcell-cd4-15mer.csv,5
-IVNNTVYDPLQPELD,S,1132,1146,QPELD,C*04:01,,0.23,0.0,-,-,+,-,selected-bcell-vaccine-15mer.csv,1
 VYDPLQPELDSFKEE,S,1137,1151,QPELD,C*04:01,,0.23,0.0,-,-,+,-,selected-bcell-cd4-cd8-15mer.csv;selected-bcell-cd4-15mer.csv;selected-bcell-cd8-h2d-15mer.csv;selected-bcell-cd8-15mer.csv;selected-bcell-15mer.csv,5
