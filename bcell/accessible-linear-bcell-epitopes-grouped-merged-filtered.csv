@@ -1,5 +1,5 @@
 ,num_sources,sources,accessible_subsequence_start,accessible_subsequence_end,accessible_subsequence,accessible_subsequence_length,accessible_subsequence_is_4mer_or_longer,IgG,IgA,IgG_and_IgA,accessible_subsequence_contains_polymorphism,accessible_subsequence_contains_glycosite,near_any_feature,in_any_feature
-9,3,Wang 2020 S456-460; Dahlke 2020 S449-463; Charite 2020 S459-473,457,473,RKSNLKPFERDISTEIY,17,True,True,True,True,False,False,True,True
-12,4,Charite 2020 S569-583; Charite 2020 S571-585; Charite 2020 S573-587; Dahlke 2020 S565-587,580,583,QTLE,4,True,True,True,True,False,False,True,False
-17,6,Poh 2020 S809-826; Wang 2020 S806-820; Charite 2020 S805-819; Charite 2020 S807-821; Dahlke 2020 S809-827; Dahlke 2020 S811-831,809,812,PSKP,4,True,True,True,True,False,False,True,False
-21,2,Dahlke 2020 S1131-1145; Charite 2020 S1141-1155,1142,1146,QPELD,5,True,True,True,True,False,False,True,False
+9,3,Wang 2020 S456-460; Dahlke 2020 S449-463; Charite 2020 S459-473,456,473,FRKSNLKPFERDISTEIY,18,True,True,True,True,False,False,True,True
+12,5,Charite 2020 S569-583; Charite 2020 S571-585; Charite 2020 S573-587; Dahlke 2020 S565-587; ReScan S552-589,580,583,QTLE,4,True,True,True,True,False,False,True,False
+17,7,Poh 2020 S809-826; Wang 2020 S806-820; Charite 2020 S805-819; Charite 2020 S807-821; Dahlke 2020 S809-827; ReScan S799-836; Dahlke 2020 S811-831,809,812,PSKP,4,True,True,True,True,False,False,True,False
+21,3,Dahlke 2020 S1131-1145; Charite 2020 S1141-1155; ReScan S1141-1178,1142,1146,QPELD,5,True,True,True,True,False,False,True,False
