@@ -10,7 +10,7 @@
 #N: 9245 - 9663                                                                       
 #ORF10: 9664 - 9701
 
-############################################################
+
 #############Dependencies and working directory############
 ##########################################################
 '%ni%' <- Negate('%in%')
@@ -19,7 +19,9 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
 #BiocManager::install()
 
-packages <- c("scales", "data.table", "ggrepel", "ggplot2", "viridis", "ggnewscale", "seqinr", "DESeq2", "GenomicRanges", "gplots", "ggbeeswarm", "ggallin", "stringr")
+packages <- c("scales", "data.table", "ggrepel", "ggplot2", "viridis", "ggnewscale", "seqinr", 
+              "DESeq2", "GenomicRanges", "gplots", "ggbeeswarm", "ggallin", "stringr", "gridExtra",
+              "pROC", "caret", "RColorBrewer", "dplyr", "cowplot", "ggpubr", "huxtable", "doMC")
 
 if (length(setdiff(packages, rownames(installed.packages()))) > 0) {
   BiocManager::install(setdiff(packages, rownames(installed.packages())))  
@@ -43,15 +45,20 @@ library(pROC)
 library(caret)
 library(RColorBrewer)
 library(dplyr)
-
+library(cowplot)
+library(ggpubr)
+library(huxtable)
+library(doMC)
 
 WORKING_DIR = "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Figures/COVID/"
 
 theme = readRDS("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/ggplot_theme.R")
 theme_set(theme)
 
-###########################################
+
+
 ######Pre-processing#######################
+###########################################
 
 ####Create fasta from IEDB, all viruses###############
 
@@ -194,8 +201,6 @@ Netii$Haplotype[which(substr(Netii$Haplotype,1,6) == "HLA-DQ")] = paste0(substr(
                                                                          substr(Netii$Haplotype[which(substr(Netii$Haplotype,1,6) == "HLA-DQ")] ,12,
                                                                                 nchar(Netii$Haplotype[which(substr(Netii$Haplotype,1,6) == "HLA-DQ")])))
 
-
-
 fwrite(Netii, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCIIpan_standardized_all_BA.txt")
 
 
@@ -230,8 +235,6 @@ Netii$Haplotype[which(substr(Netii$Haplotype,1,6) == "HLA-DQ")] = paste0(substr(
 
 fwrite(Netii, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCIIpan4.0_standardized_all_BA.txt")
 
-
-
 ####netMHCIIpan 3.2 -- all viruses#########
 Netii_12=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/mhc_ligand_all_viruses_netmhcIIpan3.2_12mer.xls")
 Netii_13=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/mhc_ligand_all_viruses_netmhcIIpan3.2_13mer.xls")
@@ -247,6 +250,7 @@ Netii_20=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-
 
 Netii = rbind(Netii_12,Netii_13,Netii_14,Netii_15_1,Netii_15_2,Netii_15_3,Netii_16,Netii_17,Netii_18,Netii_19,Netii_20)
 
+
 Netii = Netii[order(Netii$Peptide),]
 colnames(Netii)[c(seq(6,33,3))] = colnames(Netii)[c(seq(5,32,3))]
 
@@ -258,7 +262,7 @@ Netii_Pep = melt(Netii, id.vars = 2, measure.vars = c(seq(6,33,3)))
 
 Netii_Start = melt(Netii, id.vars = 1, measure.vars = c(seq(6,33,3)))
 
-Netii = cbind(Netii_ID$ID, 1,Netii_Pep$Peptide, Netii_Rank[,2:3], Netii_log[,3],  Netii_nM[,3])
+Netii = cbind(Netii_ID$ID, 1, Netii_Pep$Peptide, Netii_Rank[,2:3], Netii_log[,3],  Netii_nM[,3])
 colnames(Netii) = c("ID", "Start", "Peptide", "Haplotype", "Rank", "1-log50k", "Binding_affinity")
 #Netii$Protein = sapply(strsplit(Netii$Protein, "_"),'[',1)
 #Netii$Protein[which(Netii$Protein =="orflab")] = "orf1ab"
@@ -276,7 +280,6 @@ Netii$Haplotype[which(substr(Netii$Haplotype,1,6) == "HLA-DQ")] = paste0(substr(
 fwrite(Netii, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCIIpan_standardized_mhc_all_viruses_all_lengths.txt")
 
 
-
 ####netMHCIIpan 4.0 -- all viruses#########
 Netii_12=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/mhc_ligand_all_viruses_netmhcIIpan4.0_12mer.xls")
 Netii_13=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/mhc_ligand_all_viruses_netmhcIIpan4.0_13mer.xls")
@@ -291,12 +294,6 @@ Netii_19=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-
 Netii_20=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/mhc_ligand_all_viruses_netmhcIIpan4.0_20mer.xls")
 
 Netii = rbind(Netii_12,Netii_13,Netii_14,Netii_15_1,Netii_15_2,Netii_15_3,Netii_16,Netii_17,Netii_18,Netii_19,Netii_20)
-
-#nM: colnames(Netii)[c(seq(8,53,5))]
-#EL score: colnames(Netii)[c(seq(5,50,5))]
-#EL rank: colnames(Netii)[c(seq(6,51,5))]
-#BA score: colnames(Netii)[c(seq(7,52,5))]
-#BA rank: colnames(Netii)[c(seq(9,54,5))]
 
 Netii = Netii[order(Netii$Peptide),]
 
@@ -314,10 +311,6 @@ Netii_Start = melt(Netii, id.vars = 1, measure.vars = c(seq(8,53,5)))
 Netii = data.table(Netii_ID$ID, Netii_nM$Pos, Netii_Pep$Peptide, as.character(Netii_nM$variable), Netii_BA_Rank$value, Netii_BA_Score$value,
                    Netii_nM$value, Netii_EL_Rank$value, Netii_EL_Score$value)
 colnames(Netii) = c("ID", "Start", "Peptide", "Haplotype", "BA_Rank", "BA_Score", "Binding_affinity", "EL_Rank", "EL_Score")
-#Netii$Protein = sapply(strsplit(Netii$Protein, "_"),'[',1)
-#Netii$Protein[which(Netii$Protein =="orflab")] = "orf1ab"
-
-
 
 Netii$Haplotype = str_replace_all(Netii$Haplotype, pattern = "DRB1_", replacement = "HLA-DRB1*")
 Netii$Haplotype = str_replace_all(Netii$Haplotype, pattern = "HLA-DQA1", replacement = "HLA-DQA1*")
@@ -331,8 +324,792 @@ fwrite(Netii, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2
 
 
 
-################################################
-#############Figure S1.0A#########################
+
+##################Tetramer GLM analysis################
+#######################################################
+
+#############Generate fasta files to run through netMHC(II)pan, MHCflurry
+
+#Read in IEDB tetramer data, filter by human epitopes
+Tet = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/iedb/tcell_virus_tetramer.csv")
+Tet$Length = nchar(Tet$peptide)
+Tet = Tet[which(Tet$species =="human"),]
+
+Tet1 = Tet[which(Tet$mhc_class == "I")]
+Tet2 = Tet[which(Tet$mhc_class == "II")]
+
+Tet1 = Tet1[which(Tet1$Length %in% c(8:14)),]  #Only 8-14mers were run through netMHCpan
+
+#Format allele names
+Tet2$allele[which(substr(Tet2$allele,1,7)=="HLA-DRA")] = sapply(strsplit(Tet2$allele[which(substr(Tet2$allele,1,7)=="HLA-DRA")], "/"), "[", 2)
+Tet2$allele[which(substr(Tet2$allele,1,3)=="DRB")] = paste0("HLA-", Tet2$allele[which(substr(Tet2$allele,1,3)=="DRB")])
+Tet2 = Tet2[which(substr(Tet2$allele,1,7) == "HLA-DRB")]
+
+#Write out fasta file by length.
+for(z in unique(Tet1$Length)){
+  tet = Tet1[which(Tet1$Length == z),]
+  print(paste0(z, ": ", paste0(unique(tet$allele), collapse = ', ')))
+  fa = c()
+  for (i in 1:nrow(tet)){
+    fa = c(fa, paste0(">", tet$allele[i], "_", tet$peptide[i]))
+    fa = c(fa, tet$peptide[i])
+  }
+  fwrite(as.data.table(fa), paste0("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_fa/MHC-I_",z,".fa"), col.names = F, quote = F)
+}
+
+for(z in unique(Tet2$Length)){
+  
+  tet = Tet2[which(Tet2$Length == z),]
+  print(paste0(z, ": ", paste0(unique(tet$allele), collapse = ', ')))
+  fa = c()
+  for (i in 1:nrow(tet)){
+    fa = c(fa, paste0(">", tet$allele[i], "_", tet$peptide[i]))
+    fa = c(fa, tet$peptide[i])
+  }
+  fwrite(as.data.table(fa), paste0("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_fa/MHC-II_",z,".fa"), col.names = F, quote = F)
+}
+
+
+###Read in netMHCpan, MHCflurry data
+
+##BA
+MHCI_tet_8mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramer_8mer.xls")
+MHCI_tet_9mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramer_9mer.xls")
+MHCI_tet_10mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramer_10mer.xls")
+MHCI_tet_11mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramer_11mer.xls")
+MHCI_tet_12mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramer_12mer.xls")
+MHCI_tet_13mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramer_13mer.xls")
+MHCI_tet_14mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramer_14mer.xls")
+MHCI_tet = rbind(MHCI_tet_8mer, MHCI_tet_9mer, MHCI_tet_10mer, MHCI_tet_11mer, MHCI_tet_12mer, MHCI_tet_13mer, MHCI_tet_14mer)
+
+##Formatting data
+colnames(MHCI_tet)[seq(8,88,5)] = colnames(MHCI_tet)[seq(7,87,5)]
+colnames(MHCI_tet)[seq(7,87,5)] = paste0("nM_", colnames(MHCI_tet)[seq(7,87,5)])
+
+MHCI_tet_rank = melt(MHCI_tet, id.vars = 2, measure.vars = c(seq(8,88,5)))
+MHCI_tet_nM = melt(MHCI_tet, id.vars = 2, measure.vars = c(seq(7,87,5)))
+MHCI_tet_log = melt(MHCI_tet, id.vars = 2, measure.vars = c(seq(6,86,5)))
+MHCI_tet_Protein = melt(MHCI_tet, id.vars = 3, measure.vars = c(seq(8,88,5)))
+MHCI_tet_Start = melt(MHCI_tet, id.vars = 1, measure.vars = c(seq(8,88,5)))
+
+MHCI_tet = cbind(MHCI_tet_Protein$ID, MHCI_tet_Start$Pos, MHCI_tet_rank, MHCI_tet_log[,3], MHCI_tet_nM[,3])
+colnames(MHCI_tet) = c("Protein", "Start", "Peptide", "Haplotype", "Rank", "1-log50k", "Binding_affinity")
+MHCI_tet$Protein = sapply(strsplit(MHCI_tet$Protein, "_"),'[',1)
+MHCI_tet$Protein[which(MHCI_tet$Protein =="orflab")] = "orf1ab"
+MHCI_tet$Start = MHCI_tet$Start+1
+
+MHCI_tet$Haplotype = paste0(substr(MHCI_tet$Haplotype,1,5), "*", substr(MHCI_tet$Haplotype,6,10))
+MHCI_tet = MHCI_tet[-which(MHCI_tet$Haplotype == "HLA-B*15:01"),]
+colnames(MHCI_tet)[5] = "BA_Rank"
+
+
+##EL
+MHCI_tet_EL_8mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramer_EL_8mer.xls")
+MHCI_tet_EL_9mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramer_EL_9mer.xls")
+MHCI_tet_EL_10mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramer_EL_10mer.xls")
+MHCI_tet_EL_11mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramer_EL_11mer.xls")
+MHCI_tet_EL_12mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramer_EL_12mer.xls")
+MHCI_tet_EL_13mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramer_EL_13mer.xls")
+MHCI_tet_EL_14mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramer_EL_14mer.xls")
+MHCI_tet_EL = rbind(MHCI_tet_EL_8mer, MHCI_tet_EL_9mer, MHCI_tet_EL_10mer, MHCI_tet_EL_11mer, MHCI_tet_EL_12mer, MHCI_tet_EL_13mer, MHCI_tet_EL_14mer)
+
+colnames(MHCI_tet_EL)[seq(8,83,5)] = colnames(MHCI_tet_EL)[seq(7,82,5)]
+colnames(MHCI_tet_EL)[seq(7,82,5)] = paste0("nM_", colnames(MHCI_tet_EL)[seq(7,82,5)])
+
+MHCI_tet_EL_rank = melt(MHCI_tet_EL, id.vars = 2, measure.vars = c(seq(8,83,5)))
+MHCI_tet_EL_nM = melt(MHCI_tet_EL, id.vars = 2, measure.vars = c(seq(7,82,5)))
+MHCI_tet_EL_log = melt(MHCI_tet_EL, id.vars = 2, measure.vars = c(seq(6,81,5)))
+MHCI_tet_EL_Protein = melt(MHCI_tet_EL, id.vars = 3, measure.vars = c(seq(8,83,5)))
+MHCI_tet_EL_Start = melt(MHCI_tet_EL, id.vars = 1, measure.vars = c(seq(8,85,5)))
+
+MHCI_tet_EL = cbind(MHCI_tet_EL_Protein$ID, MHCI_tet_EL_Start$Pos, MHCI_tet_EL_rank, MHCI_tet_EL_log[,3], MHCI_tet_EL_nM[,3])
+colnames(MHCI_tet_EL) = c("Protein", "Start", "Peptide", "Haplotype", "Rank", "1-log50k", "Binding_affinity")
+MHCI_tet_EL$Protein = sapply(strsplit(MHCI_tet_EL$Protein, "_"),'[',1)
+MHCI_tet_EL$Protein[which(MHCI_tet_EL$Protein =="orflab")] = "orf1ab"
+MHCI_tet_EL$Start = MHCI_tet_EL$Start+1
+
+MHCI_tet_EL$Haplotype = paste0(substr(MHCI_tet_EL$Haplotype,1,5), "*", substr(MHCI_tet_EL$Haplotype,6,10))
+#MHCI_tet_EL = MHCI_tet_EL[-which(MHCI_tet_EL$Haplotype == "HLA-B*15:01"),]
+colnames(MHCI_tet_EL)[5] = "EL_Rank"
+
+MHCI_tet = cbind(MHCI_tet, MHCI_tet_EL[,c(5,6)])
+
+
+###Flurry
+#MHCI_tet = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramers_all.txt")
+
+Flurry= fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/iedb/tcell_virus_tetramer_class1_mhcflurry_predictions.csv")
+colnames(Flurry)[c(4,6,7)] = c("Flurry_BA", "Flurry_proc_score", "Flurry_pres_score")
+
+MHCI_tet$Flurry_BA = NA
+MHCI_tet$Flurry_proc_score = NA
+MHCI_tet$Flurry_pres_score = NA
+
+for(n in 1:nrow(MHCI_tet)){
+  print(n)
+  if (paste0(MHCI_tet$Haplotype[n], "_", MHCI_tet$Peptide[n]) %in% paste0(Flurry$best_allele, "_", Flurry$peptide)){
+    MHCI_tet$Flurry_BA[n] = Flurry$Flurry_BA[which(paste0(Flurry$best_allele, "_", Flurry$peptide) == paste0(MHCI_tet$Haplotype[n], "_", MHCI_tet$Peptide[n]))]
+    MHCI_tet$Flurry_proc_score[n] = Flurry$Flurry_proc_score[which(paste0(Flurry$best_allele, "_", Flurry$peptide) == paste0(MHCI_tet$Haplotype[n], "_", MHCI_tet$Peptide[n]))]
+    MHCI_tet$Flurry_pres_score[n] = Flurry$Flurry_pres_score[which(paste0(Flurry$best_allele, "_", Flurry$peptide) == paste0(MHCI_tet$Haplotype[n], "_", MHCI_tet$Peptide[n]))]
+  }
+}
+
+
+####Add in AA features
+
+Aromatic = c('F','Y','W')
+Acidic = c('D','E')
+Basic = c('K','R','H')
+Small = c('A','G','S','T','P')
+Cyclic = 'P'
+Thiol = c('C','M')
+
+MHCI_tet$Aromatic = NA
+MHCI_tet$Acidic = NA
+MHCI_tet$Basic = NA
+MHCI_tet$Small = NA
+MHCI_tet$Cyclic = NA
+MHCI_tet$Thiol = NA
+
+for(n in 1:nrow(MHCI_tet)){
+  print(n)
+  MHCI_tet$Aromatic[n] = length(which(strsplit(MHCI_tet$Peptide[n], "")[[1]] %in% Aromatic))/nchar(MHCI_tet$Peptide[n])  
+  MHCI_tet$Acidic[n] = length(which(strsplit(MHCI_tet$Peptide[n], "")[[1]] %in% Acidic))/nchar(MHCI_tet$Peptide[n])  
+  MHCI_tet$Basic[n] = length(which(strsplit(MHCI_tet$Peptide[n], "")[[1]] %in% Basic))/nchar(MHCI_tet$Peptide[n])  
+  MHCI_tet$Small[n] = length(which(strsplit(MHCI_tet$Peptide[n], "")[[1]] %in% Small))/nchar(MHCI_tet$Peptide[n])  
+  MHCI_tet$Cyclic[n] = length(which(strsplit(MHCI_tet$Peptide[n], "")[[1]] %in% Cyclic))/nchar(MHCI_tet$Peptide[n])  
+  MHCI_tet$Thiol[n] = length(which(strsplit(MHCI_tet$Peptide[n], "")[[1]] %in% Thiol))/nchar(MHCI_tet$Peptide[n])  
+}
+
+
+#Read in IEDB tetramer data, filter by human epitopes
+Tet = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/iedb/tcell_virus_tetramer.csv")
+Tet$Length = nchar(Tet$peptide)
+Tet = Tet[which(Tet$species =="human"),]
+
+Tet1 = Tet[which(Tet$mhc_class == "I")]
+Tet2 = Tet[which(Tet$mhc_class == "II")]
+
+Tet1 = Tet1[which(Tet1$Length %in% c(8:14)),]  #Only 8-14mers were run through netMHCpan
+
+#Format allele names
+Tet2$allele[which(substr(Tet2$allele,1,7)=="HLA-DRA")] = sapply(strsplit(Tet2$allele[which(substr(Tet2$allele,1,7)=="HLA-DRA")], "/"), "[", 2)
+Tet2$allele[which(substr(Tet2$allele,1,3)=="DRB")] = paste0("HLA-", Tet2$allele[which(substr(Tet2$allele,1,3)=="DRB")])
+Tet2 = Tet2[which(substr(Tet2$allele,1,7) == "HLA-DRB")]
+
+#Add in tetramer data from IEDB set -- for each entry in the computationally predicted set, match the IEDB tetramer results
+MHCI_tet$Tetramer = NA
+for(n in 1:nrow(MHCI_tet)){
+  print(n)
+  if (paste0(MHCI_tet$Haplotype[n], "_", MHCI_tet$Peptide[n]) %in% paste0(Tet1$allele, "_", Tet1$peptide)){
+    MHCI_tet$Tetramer[n] = Tet1$fraction_entries_positive[which(paste0(Tet1$allele, "_", Tet1$peptide) == paste0(MHCI_tet$Haplotype[n], "_", MHCI_tet$Peptide[n]))]
+  }
+}
+
+MHCI_tet = MHCI_tet[complete.cases(MHCI_tet),] #Remove entries that weren't found
+colnames(MHCI_tet)[6] = "BA_Score"
+colnames(MHCI_tet)[9] = "EL_Score"
+
+fwrite(MHCI_tet, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/MHCI_tetramer_all_values.txt")
+
+
+###GLM with 5-fold CV
+MHCI_tet = fread( "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/MHCI_tetramer_all_values.txt")
+MHCI_tet$Tetramer = round(MHCI_tet$Tetramer) #Collapse values to binary
+MHCI_tet$Tetramer[which(MHCI_tet$Tetramer == 0)] = "False"  #Set to T/F because GLM doesn't handle numerics for binomial
+MHCI_tet$Tetramer[which(MHCI_tet$Tetramer == 1)] = "True"
+
+MHCI_tet$Tetramer = factor(MHCI_tet$Tetramer)
+MHCI_tet$Haplotype = factor(MHCI_tet$Haplotype)
+
+###Normalize values to range 0-1 so coefficients are easier to interpret
+MHCI_tet$Binding_affinity = MHCI_tet$Binding_affinity/50000
+MHCI_tet$BA_Rank = MHCI_tet$BA_Rank/100
+MHCI_tet$EL_Rank = MHCI_tet$EL_Rank/100
+MHCI_tet$Flurry_BA = MHCI_tet$Flurry_BA/50000
+
+#Create balanced folds, keeping haplotype proportions equal
+set.seed(1)  #Random seed to keep folds the same each time
+folds <- createFolds(factor(MHCI_tet$Haplotype), k = 5, list = FALSE)  #Creates 5x random folds, balancing by haplotype
+
+#spec_cutpoint = 0.9
+#cutoff = seq(0,1,.001)
+#Score = c()
+#mean_auc = c()
+
+performance1 = c()  #AUC for each fold
+FPR_test1 = c()  #False positive rate for each fold
+
+for(z in 1:5){
+  train = MHCI_tet[folds != z,]  #Set the training set
+  test = MHCI_tet[folds == z,]  #Set the test set
+  
+  print(table(test$Haplotype))
+  
+  #Variables included in model.  Ranks were taken out, as was binding affinity score
+  vars=c("Binding_affinity","EL_Score","Flurry_BA",
+         "Flurry_pres_score","Flurry_proc_score","Aromatic","Acidic","Basic","Small","Cyclic","Thiol")
+  
+  #Pull relevant columns from "train" to make model formula easier to run.  Column 19 is the tetramer (dependent) variable
+  train = data.table(train[,19,with=F], train[,which(colnames(train) %in% vars),with=F])
+  
+  min.model1 = glm(Tetramer ~ 1, data=train, family = binomial) #Minimum model
+  biggest1 <- formula(glm(Tetramer~., data=train, family = binomial)) #Max model, all features
+  model_step = step(min.model1, direction='forward', scope=biggest1, trace = F) #Forward stepwise regression
+  
+  print(summary(model_step))
+  
+  #Calculate AUC
+  ROC=roc(predictor=model_step$fitted.values,train$Tetramer, quiet = T)
+  auc = as.numeric(substr(ROC$auc, nchar(ROC$auc) - 21, nchar(ROC$auc)))
+  performance1 = c(performance1, auc) 
+  
+  # Specificity = c()
+  # for (n in cutoff){
+  #   Specificity = c(Specificity,  length(which(train$Tetramer[which(model_step$fitted.values<n)] == "False"))/length(which(train$Tetramer == "False")))
+  # }
+  #Score = c(Score, cutoff[min(which(Specificity>=spec_cutpoint))])
+  
+  #Predict on test set, keep FPR for test
+  pred = predict(model_step, newdata = test, type = "response")
+  FPR_test1 = c(FPR_test1, length(which((pred > cutoff[min(which(Specificity>=spec_cutpoint))]) & (test$Tetramer == 'False')))/length(which(test$Tetramer == "False")))
+  
+}
+performance1
+FPR_test1
+
+
+###Now model on all
+
+####Forward stepwise
+vars=c("Binding_affinity","EL_Score","Flurry_BA",
+       "Flurry_pres_score","Flurry_proc_score","Aromatic","Acidic","Basic","Small","Cyclic","Thiol")
+
+MHCI_mod = data.table(MHCI_tet[,19,with=F], MHCI_tet[,which(colnames(MHCI_tet) %in% vars),with=F])
+
+min.model1 = glm(Tetramer ~ 1, data=MHCI_mod, family = binomial)  #Starting model
+biggest1 <- formula(glm(Tetramer~., data=MHCI_mod, family = binomial))  #Max model
+fwd.model1 = step(min.model1, direction='forward', scope=biggest1)  #Forward stepwise GLM, going from starting to max model and looking for optimized variables
+
+# #########Older code for when we set cutpoint by specificity#####
+# 
+# cutoff = seq(0,1,.001)
+# 
+# FDR = c()
+# Sensitivity = c()
+# Specificity = c()
+# PPV = c()
+# 
+# for(n in cutoff){
+#   print(n)
+#   FDR = c(FDR, length(which(MHCI_tet$Tetramer[which(fwd.model1$fitted.values>=n)] == "False"))/length(which(fwd.model1$fitted.values>=n)))
+#   Sensitivity = c(Sensitivity,  length(which(MHCI_tet$Tetramer[which(fwd.model1$fitted.values>=n)] == "True"))/length(which(MHCI_tet$Tetramer == "True")))
+#   Specificity = c(Specificity,  length(which(MHCI_tet$Tetramer[which(fwd.model1$fitted.values<n)] == "False"))/length(which(MHCI_tet$Tetramer == "False")))
+#   PPV = c(PPV, length(which(MHCI_tet$Tetramer[which(fwd.model1$fitted.values>n)] == "True"))/length(which(fwd.model1$fitted.values>n)))
+# }
+# 
+# plot_cutoff = data.table(cutoff, FDR, Sensitivity, Specificity, PPV)
+# glm_cutpoint = cutoff[min(which(Specificity >= spec_cutpoint))]
+# 
+# perf1 = ggplot(data=plot_cutoff, aes(x=cutoff, y=Specificity))+
+#   geom_point()+
+#   theme(text=element_text(face="bold",size=20,colour="black")) +
+#   labs(x="GLM score", y= "Specificity", title = "HLA-I epitope model performance\nViral pMHC tetramers in IEDB")+
+#   geom_hline(yintercept = c(spec_cutpoint))+
+#   geom_vline(xintercept = glm_cutpoint)+
+#   annotate("text", label =paste0(spec_cutpoint),y=spec_cutpoint, x=0, vjust=0, hjust=0, size = 10)+
+#   annotate("text", label =paste0(glm_cutpoint),y=0, x=glm_cutpoint, vjust=0, hjust=0, angle = 90, size = 10)
+#saveRDS(model_all, paste0("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/MHCI_glm_new.R"))
+
+saveRDS(fwd.model1, paste0("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/MHCI_glm_forward.R"))
+
+
+####Modeling for MHC-II -- same strategy as MHC-I directly above
+
+####MHCII, read in data fron netMHCIIpan
+MHCII_tet_9mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCII_tetramer_9mer.xls")
+MHCII_tet_11mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCII_tetramer_11mer.xls")
+MHCII_tet_12mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCII_tetramer_12mer.xls")
+MHCII_tet_13mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCII_tetramer_13mer.xls")
+MHCII_tet_14mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCII_tetramer_14mer.xls")
+MHCII_tet_15mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCII_tetramer_15mer.xls")
+MHCII_tet_16mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCII_tetramer_16mer.xls")
+MHCII_tet_17mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCII_tetramer_17mer.xls")
+MHCII_tet_18mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCII_tetramer_18mer.xls")
+MHCII_tet_19mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCII_tetramer_19mer.xls")
+MHCII_tet_20mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCII_tetramer_20mer.xls")
+MHCII_tet_21mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCII_tetramer_21mer.xls")
+MHCII_tet = rbind(MHCII_tet_9mer, MHCII_tet_11mer, MHCII_tet_12mer, MHCII_tet_13mer, MHCII_tet_14mer, MHCII_tet_15mer, MHCII_tet_16mer, MHCII_tet_17mer, 
+                  MHCII_tet_18mer, MHCII_tet_19mer, MHCII_tet_20mer, MHCII_tet_21mer)
+
+#Formating data
+MHCII_tet = MHCII_tet[order(MHCII_tet$Peptide),]
+
+MHCII_tet_nM = melt(MHCII_tet, id.vars = 1, measure.vars = c(seq(8,78,5)))
+MHCII_tet_BA_Rank = melt(MHCII_tet, id.vars = 1, measure.vars = c(seq(9,79,5)))
+MHCII_tet_BA_Score = melt(MHCII_tet, id.vars = 1, measure.vars = c(seq(7,77,5)))
+MHCII_tet_EL_Rank = melt(MHCII_tet, id.vars = 1, measure.vars = c(seq(6,76,5)))
+MHCII_tet_EL_Score = melt(MHCII_tet, id.vars = 1, measure.vars = c(seq(5,75,5)))
+
+MHCII_tet_ID = melt(MHCII_tet, id.vars = 3, measure.vars = c(seq(8,78,5)))
+MHCII_tet_Pep = melt(MHCII_tet, id.vars = 2, measure.vars = c(seq(8,78,5)))
+
+MHCII_tet_Start = melt(MHCII_tet, id.vars = 1, measure.vars = c(seq(8,78,5)))
+
+MHCII_tet = data.table(MHCII_tet_ID$ID, MHCII_tet_nM$Pos, MHCII_tet_Pep$Peptide, as.character(MHCII_tet_nM$variable), MHCII_tet_BA_Rank$value, MHCII_tet_BA_Score$value,
+                       MHCII_tet_nM$value, MHCII_tet_EL_Rank$value, MHCII_tet_EL_Score$value)
+colnames(MHCII_tet) = c("ID", "Start", "Peptide", "Haplotype", "BA_Rank", "BA_Score", "Binding_affinity", "EL_Rank", "EL_Score")
+
+
+MHCII_tet$Haplotype = str_replace_all(MHCII_tet$Haplotype, pattern = "DRB1_", replacement = "HLA-DRB1*")
+MHCII_tet$Haplotype = str_replace_all(MHCII_tet$Haplotype, pattern = "HLA-DQA1", replacement = "HLA-DQA1*")
+MHCII_tet$Haplotype = str_replace_all(MHCII_tet$Haplotype, pattern = "-DQB1", replacement = "/DQB1*")
+MHCII_tet$Haplotype = paste0(substr(MHCII_tet$Haplotype, 1, nchar(MHCII_tet$Haplotype)-2),":", substr(MHCII_tet$Haplotype, nchar(MHCII_tet$Haplotype)-1, nchar(MHCII_tet$Haplotype)))
+MHCII_tet$Haplotype[which(substr(MHCII_tet$Haplotype,1,6) == "HLA-DQ")] = paste0(substr(MHCII_tet$Haplotype[which(substr(MHCII_tet$Haplotype,1,6) == "HLA-DQ")] ,1,11),":",
+                                                                                 substr(MHCII_tet$Haplotype[which(substr(MHCII_tet$Haplotype,1,6) == "HLA-DQ")] ,12,
+                                                                                        nchar(MHCII_tet$Haplotype[which(substr(MHCII_tet$Haplotype,1,6) == "HLA-DQ")])))
+
+####Add in AA features
+
+Aromatic = c('F','Y','W')
+Acidic = c('D','E')
+Basic = c('K','R','H')
+Small = c('A','G','S','T','P')
+Cyclic = 'P'
+Thiol = c('C','M')
+
+
+MHCII_tet$Aromatic = NA
+MHCII_tet$Acidic = NA
+MHCII_tet$Basic = NA
+MHCII_tet$Small = NA
+MHCII_tet$Cyclic = NA
+MHCII_tet$Thiol = NA
+
+for(n in 1:nrow(MHCII_tet)){
+  print(n)
+  MHCII_tet$Aromatic[n] = length(which(strsplit(MHCII_tet$Peptide[n], "")[[1]] %in% Aromatic))/nchar(MHCII_tet$Peptide[n])  
+  MHCII_tet$Acidic[n] = length(which(strsplit(MHCII_tet$Peptide[n], "")[[1]] %in% Acidic))/nchar(MHCII_tet$Peptide[n])  
+  MHCII_tet$Basic[n] = length(which(strsplit(MHCII_tet$Peptide[n], "")[[1]] %in% Basic))/nchar(MHCII_tet$Peptide[n])  
+  MHCII_tet$Small[n] = length(which(strsplit(MHCII_tet$Peptide[n], "")[[1]] %in% Small))/nchar(MHCII_tet$Peptide[n])  
+  MHCII_tet$Cyclic[n] = length(which(strsplit(MHCII_tet$Peptide[n], "")[[1]] %in% Cyclic))/nchar(MHCII_tet$Peptide[n])  
+  MHCII_tet$Thiol[n] = length(which(strsplit(MHCII_tet$Peptide[n], "")[[1]] %in% Thiol))/nchar(MHCII_tet$Peptide[n])  
+}
+
+#######Add tetramer data############
+
+MHCII_tet$Tetramer = NA
+for(n in 1:nrow(MHCII_tet)){
+  #print(n)
+  if (paste0(MHCII_tet$Haplotype[n], "_", MHCII_tet$Peptide[n]) %in% paste0(Tet2$allele, "_", Tet2$peptide)){
+    if(length(unique( Tet2$fraction_entries_positive[which(paste0(Tet2$allele, "_", Tet2$peptide) == paste0(MHCII_tet$Haplotype[n], "_", MHCII_tet$Peptide[n]))])) != 1){
+      print(n)
+    }
+    MHCII_tet$Tetramer[n] = unique(round(Tet2$fraction_entries_positive[which(paste0(Tet2$allele, "_", Tet2$peptide) == paste0(MHCII_tet$Haplotype[n], "_", MHCII_tet$Peptide[n]))]))
+  }
+}
+
+MHCII_tet = MHCII_tet[complete.cases(MHCII_tet),]
+
+fwrite(MHCII_tet, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/MHCII_tetramer_all_values.txt")
+
+
+###GLM with 5-fold CV, code is identical to HLA-I
+MHCII_tet = fread( "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/MHCII_tetramer_all_values.txt")
+
+MHCII_tet$Tetramer = round(MHCII_tet$Tetramer)
+MHCII_tet$Tetramer[which(MHCII_tet$Tetramer == 0)] = "False"
+MHCII_tet$Tetramer[which(MHCII_tet$Tetramer == 1)] = "True"
+
+MHCII_tet$Tetramer = factor(MHCII_tet$Tetramer)
+MHCII_tet$Haplotype = factor(MHCII_tet$Haplotype)
+
+###Try normalizing
+MHCII_tet$Binding_affinity = MHCII_tet$Binding_affinity/50000
+MHCII_tet$BA_Rank = MHCII_tet$BA_Rank/100
+MHCII_tet$EL_Rank = MHCII_tet$EL_Rank/100
+
+set.seed(12)
+folds <- createFolds(factor(MHCII_tet$Haplotype), k = 5, list = FALSE)
+
+#spec_cutpoint = 0.9
+#cutoff = seq(0,1,.001)
+#mean_auc = c()
+#Score = c()
+
+performance2 = c()
+FPR_test2 = c()
+
+for(z in 1:5){
+  train = MHCII_tet[folds != z,]
+  test = MHCII_tet[folds == z,]
+  
+  print(table(test$Haplotype))
+  
+  vars=c("Binding_affinity","EL_Score","Aromatic","Acidic","Basic","Small","Cyclic","Thiol")
+  
+  train = data.table(train[,16,with=F], train[,which(colnames(train) %in% vars),with=F])
+  
+  min.model = glm(Tetramer ~ 1, data=train, family = binomial)
+  biggest <- formula(glm(Tetramer~., data=train, family = binomial))
+  model_step = step(min.model, direction='forward', scope=biggest, trace = F)
+  
+  print(summary(model_step))
+  
+  ROC=roc(predictor=model_step$fitted.values,train$Tetramer, quiet = T)
+  auc = as.numeric(substr(ROC$auc, nchar(ROC$auc) - 21, nchar(ROC$auc)))
+  
+  performance2 = c(performance2, auc) 
+  
+  # Specificity = c()
+  # for (n in cutoff){
+  #   Specificity = c(Specificity,  length(which(train$Tetramer[which(model_step$fitted.values<n)] == "False"))/length(which(train$Tetramer == "False")))
+  # }
+  # Score = c(Score, cutoff[min(which(Specificity>=spec_cutpoint))])
+  
+  pred = predict(model_step, newdata = test, type = "response")
+  FPR_test2 = c(FPR_test2, length(which((pred > cutoff[min(which(Specificity>=spec_cutpoint))]) & (test$Tetramer == 'False')))/length(which(test$Tetramer == "False")))
+}
+
+performance2
+FPR_test2
+
+
+######Generating full model
+
+####Forward stepwise
+vars=c("Binding_affinity","EL_Score","Aromatic","Acidic","Basic","Small","Cyclic","Thiol")
+
+MHCII_mod = data.table(MHCII_tet[,16,with=F], MHCII_tet[,which(colnames(MHCII_tet) %in% vars),with=F])
+
+min.model = glm(Tetramer ~ 1, data=MHCII_mod, family = binomial)
+biggest <- formula(glm(Tetramer~., data=MHCII_mod, family = binomial))
+fwd.model2 = step(min.model, direction='forward', scope=biggest)
+
+# ###########
+# cutoff = seq(0,1,.001)
+# 
+# FDR = c()
+# Sensitivity = c()
+# Specificity = c()
+# PPV=c()
+# for(n in cutoff){
+#   print(n)
+#   FDR = c(FDR, length(which(MHCII_tet$Tetramer[which(fwd.model2$fitted.values>=n)] == "False"))/length(which(fwd.model2$fitted.values>=n)))
+#   Sensitivity = c(Sensitivity,  length(which(MHCII_tet$Tetramer[which(fwd.model2$fitted.values>=n)] == "True"))/length(which(MHCII_tet$Tetramer == "True")))
+#   Specificity = c(Specificity,  length(which(MHCII_tet$Tetramer[which(fwd.model2$fitted.values<n)] == "False"))/length(which(MHCII_tet$Tetramer == "False")))
+#   PPV = c(PPV, length(which(MHCI_tet$Tetramer[which(fwd.model2$fitted.values>n)] == "True"))/length(which(fwd.model2$fitted.values>n)))
+#   
+# }
+# 
+# plot_cutoff = data.table(cutoff, FDR, Sensitivity, Specificity,PPV)
+# glm_cutpoint = cutoff[min(which(Specificity >= spec_cutpoint))]
+# 
+# perf2 = ggplot(data=plot_cutoff, aes(x=cutoff, y=Specificity))+
+#   geom_point()+
+#   theme(text=element_text(face="bold",size=20,colour="black")) +
+#   labs(x="GLM score", y= "Specificity", title ="HLA-II epitope model performance\nViral pMHC tetramers in IEDB")+
+#   geom_hline(yintercept = c(spec_cutpoint))+
+#   geom_vline(xintercept = glm_cutpoint)+
+#   annotate("text", label =paste0(spec_cutpoint),y=spec_cutpoint, x=0, vjust=0, hjust=0, size = 10)+
+#   annotate("text", label =paste0(glm_cutpoint),y=0, x=glm_cutpoint, vjust=0, hjust=0, angle = 90, size = 10)
+# 
+# #saveRDS(model_all2, paste0("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/MHCII_glm_new.R"))
+
+saveRDS(fwd.model2, paste0("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/MHCII_glm_forward.R"))
+
+
+#######################################################################################
+########Calculate GLM scores for SARS-CoV-2 predicted epitopes#########################
+
+#Models generated above
+MHCI_glm = readRDS("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/MHCI_glm_forward.R")
+MHCII_glm = readRDS("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/MHCII_glm_forward.R")
+
+#HLA-I data
+Net_BA =  fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_standardized_BA.txt")
+Net_EL= fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_standardized_all_EL.txt")
+Flurry = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/MHCflurry_standardized_all.txt")
+
+#Order by haplotype and peptide so I can combine sets easily
+Net_BA = Net_BA[order(Net_BA$Haplotype),]
+Net_BA = Net_BA[order(Net_BA$Peptide),]
+Net_EL = Net_EL[order(Net_EL$Haplotype),]
+Net_EL = Net_EL[order(Net_EL$Peptide),]
+Flurry = Flurry[order(Flurry$Haplotype),]
+Flurry = Flurry[order(Flurry$Peptide),]
+
+Net_combined = cbind(Net_BA, Net_EL[,c(5:6)], Flurry[,c(5,7:9)]) #Join sets together, normalize values for GLM 
+colnames(Net_combined)[5:13] = c("BA_Rank", "BA_Score", "Binding_affinity", "EL_Rank", "EL_Score", "Flurry_Rank", "Flurry_BA", "Flurry_proc_score", "Flurry_pres_score")
+Net_combined$BA_Rank = Net_combined$BA_Rank/100
+Net_combined$Binding_affinity = Net_combined$Binding_affinity/50000
+Net_combined$EL_Rank = Net_combined$EL_Rank/100
+Net_combined$Flurry_Rank = Net_combined$Flurry_Rank/100
+Net_combined$Flurry_BA = Net_combined$Flurry_BA/50000
+
+###Add peptide info
+features =list(Aromatic = c('F','Y','W'),
+               Acidic = c('D','E'),
+               Basic = c('K','R','H'),
+               Small = c('A','G','S','T','P'),
+               Cyclic = c('P'),
+               Thiol = c('C','M'))
+
+feature_tab = data.table()  #Table for the amino acid features, to be appended to the rest of the data
+
+for(f in features){  #For each amino acid feature set
+  print(f)
+  temp_list = data.table()
+  for(n in 1:length(f)){  #For each amino acid of the feature set
+    print(n)
+    temp_list = cbind(temp_list, c(str_count(Net_combined$Peptide, pattern = f[n])))  #Count number of occurances of that AA across all peptides; used stringr because it allows for list-based counting, which is dramatically faster
+  }
+  hits = rowSums(temp_list)/nchar(Net_combined$Peptide) #Normalize values to percentage
+  feature_tab = cbind(feature_tab, hits)
+}
+colnames(feature_tab) = c("Aromatic", "Acidic", "Basic", "Small", "Cyclic", "Thiol")
+
+Net_combined = cbind(Net_combined, feature_tab)
+
+#####Run model, write out
+
+Net_combined$GLM_score = predict(MHCI_glm, newdata = Net_combined, type = "response")
+
+#Initially filtered by GLM_score cutoff of .5 -- can ignore, now filtered by median
+Net_combined$Predicted_tetramer = ifelse(Net_combined$GLM_score >= .5, "True", "False")
+
+fwrite(Net_combined, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/HLAI_all_glm.txt")
+
+
+##########MHCII, same strategy as above############
+Netii_3 = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCIIpan_standardized_all_BA.txt")
+Netii_4 = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCIIpan4.0_standardized_all_BA.txt")
+
+Netii_3 = Netii_3[order(Netii_3$Haplotype),]
+Netii_3 = Netii_3[order(Netii_3$Peptide),]
+Netii_4 = Netii_4[order(Netii_4$Haplotype),]
+Netii_4 = Netii_4[order(Netii_4$Peptide),]
+
+Netii_all = cbind(Netii_3, Netii_4[,c(5:9)])
+colnames(Netii_all)[5:7] = c("v3.2_Rank", "v3.2_Score", "v3.2_Binding_affinity")
+
+Netii_all$BA_Rank = Netii_all$BA_Rank/100
+Netii_all$Binding_affinity = Netii_all$Binding_affinity/50000
+Netii_all$EL_Rank = Netii_all$EL_Rank/100
+
+
+###Add peptide info
+features =list(Aromatic = c('F','Y','W'),
+               Acidic = c('D','E'),
+               Basic = c('K','R','H'),
+               Small = c('A','G','S','T','P'),
+               Cyclic = c('P'),
+               Thiol = c('C','M'))
+
+feature_tab = data.table()
+
+for(f in features){
+  print(f)
+  temp_list = data.table()
+  for(n in 1:length(f)){
+    print(n)
+    temp_list = cbind(temp_list, c(str_count(Netii_all$Peptide, pattern = f[n])))
+  }
+  hits = rowSums(temp_list)/nchar(Netii_all$Peptide)
+  feature_tab = cbind(feature_tab, hits)
+}
+colnames(feature_tab) = c("Aromatic", "Acidic", "Basic", "Small", "Cyclic", "Thiol")
+
+Netii_all = cbind(Netii_all, feature_tab)
+
+#####Run model, write out
+
+Netii_all$GLM_score = predict(MHCII_glm, newdata = Netii_all, type = "response")
+
+#Initially filtered by GLM_score cutoff of .5 -- can ignore, now filtered by median
+Netii_all$Predicted_tetramer = ifelse(Netii_all$GLM_score >= .5, "True", "False")
+
+fwrite(Netii_all, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/HLAII_all_glm.txt")
+
+
+
+###################Figure S2 - Model performance##################
+##################################################################
+
+###S2A/B (old)
+#grid.arrange(perf1, perf2, nrow=1, ncol=2)
+
+#S2 A/B, GLM score histogram, split by tetramer +/-
+plota = data.table(MHCI_tet$Tetramer, MHCI_glm$fitted.values)
+ha=ggplot(data=plot)+
+  scale_x_continuous(limits = c(0,1))+
+  geom_histogram(aes(x = V2, fill = V1), alpha=.5,bins = 50, position="dodge")+
+  scale_fill_manual(values = c("blue","red"), name = "Tetramer\npositive")+
+  theme(text=element_text(face="bold",size=20,colour="black")) +
+  labs(x= "GLM score", y="Count", title = "IEDB HLA-I")
+
+
+plotb = data.table(MHCII_tet$Tetramer, MHCII_glm$fitted.values)
+hb=ggplot(data=plot2)+
+  scale_x_continuous(limits = c(0,1))+
+  geom_histogram(aes(x = V2, fill = V1), alpha=.5,bins = 50, position="dodge")+
+  scale_fill_manual(values = c("blue","red"), name = "Tetramer\npositive")+
+  theme(text=element_text(face="bold",size=20,colour="black")) +
+  labs(x= "GLM score", y="Count", title = "IEDB HLA-II")
+
+grid.arrange(h1, h2, nrow=1, ncol=2)
+
+
+#S2 C/D, Binding affinity histogram, split by tet+/-
+plotc = data.table(MHCI_tet$Tetramer, MHCI_tet$BA_Score)
+hc=ggplot(data=plotc)+
+  geom_histogram(aes(x = V2, fill = V1,y=..ncount..), alpha=.5,bins = 50, position="dodge")+
+  scale_fill_manual(values = c("blue","red"), name = "Tetramer\npositive")+
+  theme(text=element_text(face="bold",size=20,colour="black")) +
+  labs(x= "Binding affinity 1-log(50k)", y="Count", title = "IEDB HLA-I")
+
+
+plotd = data.table(MHCII_tet$Tetramer, MHCII_tet$BA_Score)
+hd=ggplot(data=plotd)+
+  geom_histogram(aes(x = V2, fill = V1, y=..ncount..), alpha=.5,bins = 50, position="dodge")+
+  scale_fill_manual(values = c("blue","red"), name = "Tetramer\npositive")+
+  theme(text=element_text(face="bold",size=20,colour="black")) +
+  labs(x= "Binding affinity 1-log(50k)", y="Count", title = "IEDB HLA-II")
+
+grid.arrange(hc, hd, nrow=1, ncol=2)
+
+
+#S2 E, summary of AUC
+auc_mat = data.table(c(performance1, performance2), c(rep("HLA-I", 5), rep("HLA-II", 5)))
+S2E=ggplot(data = auc_mat)+
+  geom_boxplot(aes(y=V1, x=V2, color = V2), show.legend = F)+
+  geom_jitter(aes(y=V1, x=V2, color = V2), show.legend = F)+
+  scale_y_continuous(limits = c(.5,1))+
+  theme(text=element_text(face="bold",size=20,colour="black")) +
+  labs(x="", y="AUC")
+
+#S2F, FPR for training data
+#
+#FP_mat = data.table(c(FPR_test1, FPR_test2), c(rep("HLA-I", 5), rep("HLA-II", 5)))
+#S2F=ggplot(data = FP_mat)+
+#  geom_boxplot(aes(y=V1, x=V2, color = V2), show.legend = F)+
+#  geom_jitter(aes(y=V1, x=V2, color = V2), show.legend = F)+
+#  scale_y_continuous(limits = c(0,.2))+
+#  theme(text=element_text(face="bold",size=20,colour="black")) +
+#  labs(x="", y="False positive rate - Test sets")
+#
+#grid.arrange(S2E, S2F, nrow = 1, ncol = 2)
+
+
+###Figure S4 A/B, histogram of GLM scores for SARS-CoV-2 predicted epitopes, before and after BA filter###
+##########################################################################################################
+
+Net_combined = fread( "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/HLAI_all_glm.txt")
+Netii_all = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/HLAII_all_glm.txt")
+
+SARS_comb = cbind(data.table(c(rep("HLA-I", nrow(Net_combined)), rep("HLA-II", nrow(Netii_all)))),
+                  data.table(c(Net_combined$GLM_score, Netii_all$GLM_score)))
+colnames(SARS_comb) = c("HLA", "GLM_score")
+ggplot(data=SARS_comb)+
+  geom_histogram(aes(x = GLM_score, fill = HLA), alpha=.5,bins = 50, position = "dodge")+
+  scale_fill_manual(values = c("blue","red"), name = "")+
+  theme(text=element_text(face="bold",size=20,colour="black")) +
+  labs(x= "GLM score", y="Count", title = "SARS-CoV-2 predicted epitopes\nAll peptide/MHC")
+
+
+##Post nM filter
+
+##Filter by tetramer models
+Net_combined_filt = Net_combined[which((Net_combined$Binding_affinity*50000)<393.4),]
+Netii_all_filt = Netii_all[which((Netii_all$v3.2_Binding_affinity)<220),]
+
+MHCI_tet_median = round(median(Net_combined_filt$GLM_score[which((Net_combined_filt$Binding_affinity) < 393.4)]), digits = 3)
+MHCII_tet_median = round(median(Netii_all_filt$GLM_score[which((Netii_all_filt$v3.2_Binding_affinity) < 220)]), digits = 3)
+
+
+SARS_comb_filt = cbind(data.table(c(rep("HLA-I", nrow(Net_combined_filt)), rep("HLA-II", nrow(Netii_all_filt)))),
+                       data.table(c(Net_combined_filt$GLM_score, Netii_all_filt$GLM_score)))
+colnames(SARS_comb_filt) = c("HLA", "GLM_score")
+ggplot(data=SARS_comb_filt)+
+  geom_histogram(aes(x = GLM_score, fill = HLA), alpha=.5,bins = 50, position = "dodge")+
+  geom_vline(xintercept = MHCI_tet_median, color = "blue")+
+  annotate("text", label= paste0("HLA-I median: ", MHCI_tet_median),
+           x=MHCI_tet_median, y=600, vjust=0, hjust=0, angle = 90, size = 7.5, color = "blue")+
+  geom_vline(xintercept = MHCII_tet_median, color = "red")+
+  annotate("text", label = paste0("HLA-II median: ", MHCII_tet_median),
+           x=MHCII_tet_median, y=600, vjust=0, hjust=0, angle = 90, size = 7.5, color = "red")+
+  scale_fill_manual(values = c("blue","red"), name = "")+
+  theme(text=element_text(face="bold",size=20,colour="black")) +
+  labs(x= "GLM score", y="Count", title = "SARS-CoV-2 predicted epitopes\nPost binding affinity filter")
+
+
+
+###########Figure S6 -- MS counts ##################
+####################################################
+
+Protein = c("M", "N", "ORF1ab", "ORF3a", "ORF6", "ORF7a", "ORF8", "S")
+PSM_counts = c(250,4152,1816,119,3,23,33,1984)
+Length_normalized = c(1.126126126, 9.909307876, 0.255918828, 0.432727273,0.049180328, 0.190082645,0.270491803,1.558523174)
+
+MS_tab = data.table(Protein, PSM_counts, Length_normalized)
+MS_tab = MS_tab[rev(order(as.numeric(MS_tab$Length_normalized))),]
+MS_tab$Protein = factor(MS_tab$Protein, levels = MS_tab$Protein)
+
+ggplot(data = MS_tab)+
+  geom_bar(aes(x = Protein, y = Length_normalized, fill = Protein), stat = "identity")+
+  labs(y = "Length normalized PSM")
+
+
+
+# ####Check for missing alleles -- can ignore this, was just checking Alex's work
+# Netii_all = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/HLAII_all_glm.txt")
+# 
+# missing = c("HLA-DQA1*03:01/DQB1*03:02", "HLA-DQA1*01:01/DQB1*05:01", "HLA-DQA1*02:01/DQB1*02:02", "HLA-DQA1*01:03/DQB1*06:03")
+# 
+# boxplot(Netii_all$v3.2_Binding_affinity[which(Netii_all$Haplotype %in% missing)], Netii_all$v3.2_Binding_affinity[which(Netii_all$Haplotype %ni% missing)])
+# t.test(Netii_all$v3.2_Binding_affinity[which(Netii_all$Haplotype %in% missing)], Netii_all$v3.2_Binding_affinity[which(Netii_all$Haplotype %ni% missing)])
+# 
+# 
+# boxplot(Netii_all$GLM_score[which(Netii_all$Haplotype %in% missing)], Netii_all$GLM_score[which(Netii_all$Haplotype %ni% missing)])
+# t.test(Netii_all$GLM_score[which(Netii_all$Haplotype %in% missing)], Netii_all$GLM_score[which(Netii_all$Haplotype %ni% missing)])
+
+# #Check Alex's outputs
+# 
+# Window_27mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Window_27mer.txt")
+# b_d_27mer_CD4_8 = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/vaccine-peptides/selected-tcell-cd4-cd8-h2b-h2d-27mer.csv")
+# 
+# W_27mer = Window_27mer[which(Window_27mer$Sequence %in% b_d_27mer_CD4_8$Sequence),]
+# 
+# unique_I = unique(unlist(strsplit(b_d_27mer_CD4_8$`HLA-I_haplotypes`, ',')))
+# unique_II = unique(unlist(strsplit(b_d_27mer_CD4_8$`HLA-II_haplotypes`, ',')))
+# 
+# #Read in population frequencies of each allele, format allele names to be consistent
+# Freq=fread(paste0(WORKING_DIR, "HLA_freq.txt"))
+# Freq$Haplotype = str_replace_all(Freq$Haplotype, "DRB1_", "HLA-DRB1*")
+# Freq$Haplotype = str_replace_all(Freq$Haplotype, "DQA1", "DQA1*")
+# Freq$Haplotype = str_replace_all(Freq$Haplotype, "-DQB1", "/DQB1*")
+# Freq$Haplotype = str_replace_all(Freq$Haplotype, "HLA-A", "HLA-A*")
+# Freq$Haplotype = str_replace_all(Freq$Haplotype, "HLA-B", "HLA-B*")
+# Freq$Haplotype = str_replace_all(Freq$Haplotype, "HLA-C", "HLA-C*")
+# Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DR")] = paste0(substr(Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DR")],1,11), ":",
+#                                                                       substr(Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DR")],12,13))
+# Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DQ")] = paste0(substr(Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DQ")],1,11), ":",
+#                                                                       substr(Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DQ")],12,21),":",
+#                                                                       substr(Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DQ")],22,23))
+# 
+# #For DQ reads, values were derived from a study which was biased for caucasian americans.  
+# #Unfortunately, paired DQ frequency data was not available for a balanced US population.
+# Freq$US[which(is.na(Freq$US))] = Freq$Cauc_Am[which(is.na(Freq$US))]
+# 
+# 1-prod(1-(rep(Freq$US[which(Freq$Haplotype %in% unique_I)]/100,2)))
+# 1-prod(1-(rep(Freq$US[which(Freq$Haplotype %in% unique_II)]/100,2)))
+
+
+
+
+
+#############Figure S1A##########################
+#################################################
 
 cutpoint = 500 #What nM is considered a binder/non-binder in IEDB data
 
@@ -416,7 +1193,7 @@ for(z in unique(iedb_melt$Program)){
   }
   
   sub_melt = iedb_melt[which(iedb_melt$Program ==z),]
-  test = cor.test(sub_melt$affinity, sub_melt$Rank, method = "spearman")
+  test = cor.test(sub_melt$affinity, sub_melt$Rank, method = "spearman") #Will throw "cannot compute exact p-value" warning, this is expected. Will still give good estimate.
   
   p= ggplot(data = sub_melt)+
     geom_point(aes(x = affinity, y= Rank), color = col, alpha=.6, show.legend = F)+
@@ -440,8 +1217,8 @@ grid.arrange(NetMHCpan_BA_Rank,NetMHCpan_BA_log,NetMHCpan_BA_BA,
 
 
 
+#############Figure S1B##########################
 #################################################
-#############Figure S1.1A#########################
 
 ######Compared performance vs IEDB##############
 #MHC II, using all viruses instead of only SARS because of lack of MHC-II SARS data
@@ -500,8 +1277,6 @@ for(n in 1:nrow(iedb_low)){
   
 }
 
-
-
 iedb_melt = melt(iedb_low, id.vars = c(1:3), measure.vars = c(4:11))
 colnames(iedb_melt)[4:5] = c("Program", "Value")
 iedb_melt = iedb_melt[complete.cases(iedb_melt),]
@@ -520,7 +1295,7 @@ for(z in unique(iedb_melt$Program)){
   }
   
   sub_melt = iedb_melt[which(iedb_melt$Program ==z),]
-  test = cor.test(sub_melt$affinity, sub_melt$Value, method = "spearman")
+  test = cor.test(sub_melt$affinity, sub_melt$Value, method = "spearman") #Will throw "cannot compute exact p-value" warning, this is expected. Will still give good estimate.
   
   p= ggplot(data = sub_melt)+
     geom_point(aes(x = affinity, y= Value), color = col, alpha=.6, show.legend = F)+
@@ -547,10 +1322,8 @@ grid.arrange(NetMHCIIpan3.2_Rank,NetMHCIIpan3.2_log,NetMHCIIpan3.2_BA,
              ncol=4, nrow=2)
 
 
-
-
-####################################################
 #########Figure 2A##################################
+####################################################
 
 #Reading in melted matrix from above
 iedb_melt = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/iedb/IEDB_SARS2_HLAI_filtered_competitive_radioactivity.txt") 
@@ -588,7 +1361,7 @@ iedb_comp$allele = factor(iedb_comp$allele, levels = all_haps, ordered = T)
 Net_BA$Haplotype = factor(Net_BA$Haplotype, levels = all_haps, ordered = T)
 
 
-#####Figure S1B
+#####Figure S1C
 spec_cutpoint = .9  #90% specificity cutoff
 cutpoint = 500 #500nM IEDB cutoff
 
@@ -685,8 +1458,9 @@ fwrite(Net_BA,"/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2
 fwrite(Net_BA_filt, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_standardized_filtered_BA.txt")
 
 
-################################################
+
 ##############Figure 2B#########################
+################################################
 
 #Reading in IEDB viral data and corresponding netMHCIIpan 3.2 data, keeping in 12-20mers with alleles used in this study
 Netii = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCIIpan_standardized_mhc_all_viruses_all_lengths.txt")
@@ -752,11 +1526,9 @@ ggplot(data=plot_cutoff, aes(x=cutoff, y=Specificity))+
   annotate("text", label = HLAII_nM_cut, x = HLAII_nM_cut, y = min(plot_cutoff$Specificity), size = 10, hjust=0, vjust = 0, angle = 90)
 
 
-
-
 #######Plotting figure 2B#####################
 
-#Read in SARS netMHCIIpan 3.2 daata
+#Read in SARS netMHCIIpan 3.2 data
 Netii_SARS=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCIIpan_standardized_all_BA.txt")
 Netii_SARS$Haplotype = factor(Netii_SARS$Haplotype, levels = all_haps2, ordered = T)
 
@@ -818,8 +1590,9 @@ fwrite(Netii_SARS, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-
 fwrite(Netii_SARS_filt, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCIIpan_standardized_filtered_BA.txt")
 
 
-#################################################
-####################New Fig 2C ##################
+
+####################Figure 2C -- Lollipop plot ##################
+################################################################
 
 #Read in HLA-I and II SARS-CoV-2 predicted epitopes
 Net_BA=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_standardized_BA.txt")
@@ -1110,8 +1883,8 @@ grid.arrange(p, sm, ncol=1, nrow=2, heights = c(5,2))
 dev.off()
 
 
-####################################
-#####Figure 2D######################
+#####Figure 2D -- Venn diagrams######################
+#####################################################
 
 #Class I/II overlap
 
@@ -1141,8 +1914,10 @@ text(0.75,.55,paste0("Co-epitopes: ", nrow(Net_coepitopes)))
 
 
 
+
+########Figure 2E - Pie charts#######################
 #####################################################
-########Figure 2E####################################
+
 #Defining proteins and their lengths
 all_prots=c("orf1ab", "S", "ORF3a", "E", "M", "ORF6", "ORF7a", "ORF8","N","ORF10")
 prot_len= c(abs(1 - 7096),abs(7097 - 8369),abs(8370 - 8644),abs(8645 - 8719),abs(8720 - 8941),abs(8942 - 9002),abs(9003 - 9123), abs(9124 - 9244),abs(9245 - 9663),abs(9664 - 9701))
@@ -1214,8 +1989,9 @@ p_norm = ggplot(prot_dist, aes(x="", y=Count, fill=Protein)) +
 
 grid.arrange(p_unnorm, p_norm, nrow = 1, ncol = 2)
 
-####################################
-#####Figure 2F######################
+
+#####Figure 2F - Murine vs human Venn diagrams######################
+####################################################################
 
 #Murine overlap
 
@@ -1273,8 +2049,9 @@ text(0.375,.5,murine_2_coep)
 
 
 
-############################################
+
 ###Figure 2G - Histogram of pop freq###################
+#######################################################
 
 all_freq = data.table(c(Net_coepitopes$c1_freq, Net_coepitopes$c2_freq), 
                       c(rep("HLA-I", nrow(Net_coepitopes)), rep("HLA-II", nrow(Net_coepitopes))))
@@ -1314,11 +2091,40 @@ ggplot(all_freq, aes(x=`Pop. frequency`, color=HLA, fill=HLA)) +
 # annotate("text", x=common_HLAII[3], y = 100, label = paste0(HLAII_lab3[1],"\n",HLAII_lab3[2]), color = "black", hjust=0, vjust=0, angle = 90)+
 # annotate("text", x=common_HLAII[4], y = 100, label = HLAII_lab4, color = "black", hjust=0, vjust=0, angle = 90)
 # 
+fwrite(Net_BA_cast, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Net_BA_cast_fig3.txt")
+fwrite(Netii_BA_cast, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Netii_BA_cast_fig3.txt")
+fwrite(Net_coepitopes, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Net_coepitopes_fig3.txt")
 
-
-
-####################################################
 #########Figure 3A top --All candidates#############
+####################################################
+
+##Define objects
+
+#HLA data
+Net_BA_cast=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Net_BA_cast_fig3.txt")
+Netii_BA_cast = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Netii_BA_cast_fig3.txt")
+Net_coepitopes = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Net_coepitopes_fig3.txt")
+
+#Population frequency
+Freq=fread(paste0(WORKING_DIR, "HLA_freq.txt"))
+Freq$Haplotype = str_replace_all(Freq$Haplotype, "DRB1_", "HLA-DRB1*")
+Freq$Haplotype = str_replace_all(Freq$Haplotype, "DQA1", "DQA1*")
+Freq$Haplotype = str_replace_all(Freq$Haplotype, "-DQB1", "/DQB1*")
+Freq$Haplotype = str_replace_all(Freq$Haplotype, "HLA-A", "HLA-A*")
+Freq$Haplotype = str_replace_all(Freq$Haplotype, "HLA-B", "HLA-B*")
+Freq$Haplotype = str_replace_all(Freq$Haplotype, "HLA-C", "HLA-C*")
+Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DR")] = paste0(substr(Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DR")],1,11), ":",
+                                                                      substr(Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DR")],12,13))
+Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DQ")] = paste0(substr(Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DQ")],1,11), ":",
+                                                                      substr(Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DQ")],12,21),":",
+                                                                      substr(Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DQ")],22,23))
+
+#For DQ reads, values were derived from a study which was biased for caucasian americans.  
+#Unfortunately, paired DQ frequency data was not available for a balanced US population.
+Freq$US[which(is.na(Freq$US))] = Freq$Cauc_Am[which(is.na(Freq$US))]
+
+HLAI_nM_cut = 393.4  ###Defined from fig 2 code, see Fig S1C
+HLAII_nM_cut = 220 #See Fig S1D
 
 ####Left: Predicted epitopes
 
@@ -1605,8 +2411,8 @@ fwrite(Pop_freq_II_iedb, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets
 fwrite(Net_coepitopes, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Coepitopes_vaccine_candidates_prefilter.txt")
 
 
-################################################################
 #################Figure 3 middle -- Filtering###################
+################################################################
 
 #Define function to plot allele proportions at each filtering step, with counts of class I/II and coepitopes
 bar_chart = function(mat, mat2, matco, size){
@@ -1664,14 +2470,12 @@ Pop_freq_I_iedb = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/
 Pop_freq_II_iedb = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/HLAII_vaccine_candidates_prefilter.txt")
 Net_coepitopes = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Coepitopes_vaccine_candidates_prefilter.txt")
 
-
-
 ##Filter by tetramer models
 MHCI_tet =fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/HLAI_all_glm.txt")
 MHCII_tet =fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/HLAII_all_glm.txt")
 
 MHCI_tet_median = median(MHCI_tet$GLM_score[which((MHCI_tet$Binding_affinity*50000) < 393.4)])
-MHCII_tet_median = median(MHCII_tet$GLM_score[which((MHCII_tet$Binding_affinity*50000) < 220)])
+MHCII_tet_median = median(MHCII_tet$GLM_score[which((MHCII_tet$v3.2_Binding_affinity) < 220)])
 
 #Read in population frequencies of each allele, format allele names to be consistent
 Freq=fread(paste0(WORKING_DIR, "HLA_freq.txt"))
@@ -1688,25 +2492,30 @@ Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DQ")] = paste0(substr(Fre
                                                                       substr(Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DQ")],22,23))
 Freq$US[which(is.na(Freq$US))] = Freq$Cauc_Am[which(is.na(Freq$US))]
 
+#Add in GLM-filtered population frequency and immunogenic haplotypes for class I, II, and coepitopes
+
+#Class I
 filt_I = Pop_freq_I_iedb
 filt_I$Haplotype_GLM = NA
 filt_I$Immunogenic_haplotypes = NA
 filt_I$Immunogenic_frequency = NA
 for (n in 1:nrow(filt_I)){
   print(n)
-  haps = unlist(strsplit(filt_I$Binding_haplotype[n],","))
+  haps = unlist(strsplit(filt_I$Binding_haplotype[n],",")) #Haplotypes defined for each peptide
   
+  #Grab the GLM scores for each epitope
   GLM = c()
   for(h in haps){
     GLM = c(GLM, MHCI_tet$GLM_score[which((MHCI_tet$Peptide == filt_I$all_I.n.[n]) & (MHCI_tet$Haplotype == h))])
   }
-  filt_I$Haplotype_GLM[n] = paste0(GLM, collapse = ",")
-  filt_I$Immunogenic_haplotypes[n] = paste0(haps[which(GLM > MHCI_tet_median)], collapse = ",")
-  filt_I$Immunogenic_frequency[n] = 1-prod(1-(rep(Freq$US[which(Freq$Haplotype %in% strsplit(filt_I$Immunogenic_haplotypes[n],",")[[1]])]/100,2)))
+  filt_I$Haplotype_GLM[n] = paste0(GLM, collapse = ",") #Collapse GLM scores to comma-delimited
+  filt_I$Immunogenic_haplotypes[n] = paste0(haps[which(GLM > MHCI_tet_median)], collapse = ",") #Lists alleles for which GLM score meets median cutoff
+  filt_I$Immunogenic_frequency[n] = 1-prod(1-(rep(Freq$US[which(Freq$Haplotype %in% strsplit(filt_I$Immunogenic_haplotypes[n],",")[[1]])]/100,2))) #Calculate population frequency for immunogenic alleles
   
 }
 fwrite(filt_I, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/HLAI_vaccine_candidates_prefilter_glm.txt")
 
+#Class II, same strategy as above
 filt_II = Pop_freq_II_iedb
 filt_II$Haplotype_GLM = NA
 filt_II$Immunogenic_haplotypes = NA
@@ -1726,7 +2535,7 @@ for (n in 1:nrow(filt_II)){
 }
 fwrite(filt_II, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/HLAII_vaccine_candidates_prefilter_glm.txt")
 
-
+#Co-epitopes, same strategy as above
 filt_co = Net_coepitopes
 filt_co$c1_GLM = NA
 filt_co$c2_GLM = NA
@@ -1759,18 +2568,11 @@ for (n in 1:nrow(filt_co)){
 }
 fwrite(filt_co, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Coepitopes_vaccine_candidates_prefilter_glm.txt")
 
+
 ###Pre filter counts
-
-
 filt_I = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/HLAI_vaccine_candidates_prefilter_glm.txt")
 filt_II = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/HLAII_vaccine_candidates_prefilter_glm.txt")
 filt_co = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Coepitopes_vaccine_candidates_prefilter_glm.txt")
-
-
-nrow(filt_I)
-nrow(filt_II)
-nrow(filt_co)
-
 
 t1 = bar_chart(filt_I, filt_II, filt_co, 30)
 
@@ -1779,11 +2581,6 @@ filt_I = filt_I[which(filt_I$Immunogenic_haplotypes != "")]
 filt_II = filt_II[which(filt_II$Immunogenic_haplotypes != "")]
 filt_co = filt_co[which((filt_co$c1_immunogenic_haplotypes != "") & (filt_co$c2_immunogenic_haplotypes != ""))]
 
-
-nrow(filt_I)
-nrow(filt_II)
-nrow(filt_co)
-
 t2 = bar_chart(filt_I, filt_II, filt_co, 26)
 
 ##Filter by entropy
@@ -1791,33 +2588,20 @@ filt_I = filt_I[which(filt_I$Low_entropy==1),]
 filt_II = filt_II[which(filt_II$Low_entropy==1),]
 filt_co = filt_co[which(filt_co$Low_entropy==1),]
 
-nrow(filt_I)
-nrow(filt_II)
-nrow(filt_co)
-
 t3 = bar_chart(filt_I, filt_II, filt_co, 22)
 
 
 #Filter by protein
-
-###Non-length normalized hits
-#filt_I = filt_I[which(filt_I$Protein %in% c("orf1ab", "S", "N")),]
-#filt_II = filt_II[which(filt_II$Protein %in% c("orf1ab", "S", "N")),]
-#filt_co = filt_co[which(filt_co$Protein %in% c("orf1ab", "S", "N")),]
 
 ###Length normalized
 filt_I = filt_I[which(filt_I$Protein %in% c("M", "S", "N")),]
 filt_II = filt_II[which(filt_II$Protein %in% c("M", "S", "N")),]
 filt_co = filt_co[which(filt_co$Protein %in% c("M", "S", "N")),]
 
-nrow(filt_I)
-nrow(filt_II)
-nrow(filt_co)
-
 t4 = bar_chart(filt_I, filt_II, filt_co, 18)
 
 
-##Filter by murine coverage
+##Add in murine coverage, don't filter
 mouse1 = fread(paste0(WORKING_DIR, "COVID_murine_NetMHCpan_unfilt.xls"))
 mouse1 = mouse1[which(mouse1$NB>0),]
 mouse2 = fread(paste0(WORKING_DIR, "COVID_murine_NetMHCIIpan_unfilt.xls"))
@@ -1825,42 +2609,35 @@ mouse2 = mouse2[which(mouse2$NB>0),]
 
 filt_I$Murine = NA
 filt_II$Murine = NA
-filt_co$Murine = NA
+#filt_co$Murine_I = NA
+#filt_co$Murine_II = NA
 
-filt_I$Murine[which(filt_I$all_I.n. %in% mouse1$Peptide)] = "MHC-I"
-filt_II$Murine[which(filt_II$all_II.n. %in% mouse2$Peptide)] = "MHC-II"
-filt_co$Murine[which(filt_co$c1_peptide %in% mouse1$Peptide)] = "MHC-I"
-filt_co$Murine[which(filt_co$c2_peptide %in% mouse2$Peptide)] = "MHC-II"
-filt_co$Murine[which((filt_co$c1_peptide %in% mouse1$Peptide)&(filt_co$c2_peptide %in% mouse2$Peptide))] = "Both"
+for (n in 1:nrow(filt_I)){
+  if(filt_I$all_I.n.[n] %in% mouse1$Peptide){
+    hit = which(mouse1$Peptide == filt_I$all_I.n.[n])
+    if((length(which(mouse1[hit, c(8, 18)] < 2)) > 0) & (length(which(mouse1[hit, c(13, 23)] < 2)) > 0)){ #Looking for if either b or d MHC-I scores are in the top 2nd percentiles
+      filt_I$Murine[n] = "B/D"
+    }else if(length(which(mouse1[hit, c(8, 18)] < 2)) > 0){ #Looking for if either b MHC-I scores are in the top 2nd percentiles
+      filt_I$Murine[n] = "B"
+    }else if(length(which(mouse1[hit, c(13, 23)] < 2)) > 0){ #Looking for if either d MHC-I scores are in the top 2nd percentiles
+      filt_I$Murine[n] = "D"
+    }
+  }
+}
+for (n in 1:nrow(filt_II)){
+  if(filt_II$all_II.n.[n] %in% mouse2$Peptide){
+    hit = which(mouse2$Peptide == filt_II$all_II.n.[n])
+    if((length(which(mouse2[hit, 6] < 10)) > 0) & (length(which(mouse2[hit, 9] < 10)) > 0)){ #Same as above, but 10% percentile or better for MHC-II
+      filt_II$Murine[n] = "B/D"
+    }else if(length(which(mouse2[hit, 6] < 10)) > 0){
+      filt_II$Murine[n] = "B"
+    }else if(length(which(mouse2[hit, 9] < 10)) > 0){
+      filt_II$Murine[n] = "D"
+    }
+  }
+}
 
-##Take out for now -- just include in table later
-#filt_I=filt_I[which(!is.na(filt_I$Murine)),]
-#filt_II=filt_II[which(!is.na(filt_II$Murine)),]
-#filt_co=filt_co[which(!is.na(filt_co$Murine)),]
-
-#nrow(filt_I)
-#nrow(filt_II)
-#nrow(filt_co)
-
-#pI_5 = pie_chart(filt_I)
-#pII_5 = pie_chart2(filt_II)
-
-
-##Filter by freq>50%
-
-##Take out for now -- just rank later
-#filt_I = filt_I[which(filt_I$Frequency>.5),]
-#filt_II = filt_II[which(filt_II$Frequency>.5),]
-#filt_co = filt_co[which((filt_co$c1_freq>50)&(filt_co$c2_freq>50)),]
-
-nrow(filt_I)
-nrow(filt_II)
-nrow(filt_co)
-
-#pI_6 = pie_chart(filt_I)
-#pII_6 = pie_chart2(filt_II)
-
-###########FFigure 3 middle - Plot funnel###############
+###########Figure 3 middle - Plot funnel###############
 #######################################################
 
 ggdraw() +
@@ -1873,7 +2650,10 @@ ggdraw() +
   draw_plot(t4, x = .3, y =0, width = .4, height = .25)
 
 
-##########################################################
+
+#######Figure 3 bottom - Centipede plot###############
+######################################################
+
 
 #Combine matrices
 filt_I$Immunogenic_frequency = filt_I$Immunogenic_frequency*100
@@ -1884,15 +2664,11 @@ filt_II$Group = "HLAII"
 filt_co$Group = "Coepitope"
 filt_co$End = filt_co$Start+nchar(filt_co$c2_peptide)-1
 
-
 Master_tab=rbind(filt_I,filt_II, use.names=F)
 colnames(Master_tab)[1] = "Peptide"
 
-#######Figure 3 bottom - Centipede plot###############
-######################################################
-Coep_tab = Master_tab[which(Master_tab$Group =="Coepitope"),]
-Master_tab = Master_tab[which(Master_tab$Group !="Coepitope"),]
-
+#Coep_tab = Master_tab[which(Master_tab$Group =="Coepitope"),]
+#Master_tab = Master_tab[which(Master_tab$Group !="Coepitope"),]
 
 ###Find overlapping class I and II peptides
 g1 <-  GRanges(seqnames="COVID",
@@ -1907,33 +2683,33 @@ g2 <-  GRanges(seqnames="COVID",
                II_peptide = Master_tab[which(Master_tab$Group == "HLAII")]$Peptide, 
                Frequency_II= Master_tab[which(Master_tab$Group == "HLAII")]$Immunogenic_frequency)
 
-HLA_I_II=as.data.table(mergeByOverlaps(g1,g2))
+HLA_I_II=as.data.table(mergeByOverlaps(g1,g2))  #Overlapping regions for HLA-I and HLA-II epitopes
 
 ###Add overlap %
 
 HLA_I_II$Overlap = NA
 for(z in 1:nrow(HLA_I_II)){
-  c1 = c(HLA_I_II$g1.start[z]:HLA_I_II$g1.end[z])
-  c2 = c(HLA_I_II$g2.start[z]:HLA_I_II$g2.end[z])
-  HLA_I_II$Overlap[z] = 100*(length(which(c1 %in% c2))/length(c1))
+  c1 = c(HLA_I_II$g1.start[z]:HLA_I_II$g1.end[z])  #Positions for HLA-I epitope
+  c2 = c(HLA_I_II$g2.start[z]:HLA_I_II$g2.end[z]) #Positions for HLA-II epitope
+  HLA_I_II$Overlap[z] = 100*(length(which(c1 %in% c2))/length(c1))  #Percentage of HLA-I epitope which is overlapped by HLA-II
   
 }
-HLA_I_II$Frequency = HLA_I_II$Frequency_I/100*HLA_I_II$Frequency_II/100
+HLA_I_II$Frequency = (HLA_I_II$Frequency_I/100)*(HLA_I_II$Frequency_II/100)
 
-###Reduce class I and II epitopes to unique regions
+###Reduce class I and II epitopes to unique, non-overlapping regions
 g1_merged <-  GRanges(seqnames="COVID",
                       IRanges(start= HLA_I_II$g1.start,
                               end=HLA_I_II$g1.end), 
                       I_peptide = HLA_I_II$g1.I_peptide, 
                       Frequency_I= HLA_I_II$Frequency_I)
-g1_red = reduce(g1_merged)
+g1_red = reduce(g1_merged)  #Reduce all HLA-I overlaps
 g2_merged <-  GRanges(seqnames="COVID",
                       IRanges(start= HLA_I_II$g2.start,
                               end=HLA_I_II$g2.end), 
                       II_peptide = HLA_I_II$g2.II_peptide, 
                       Frequency_II= HLA_I_II$Frequency_II)
 
-g2_red = reduce(g2_merged)               
+g2_red = reduce(g2_merged)  #Reduce all HLA-II overlaps             
 
 #Look for overlap between class I and II regions
 red_merged=as.data.table(mergeByOverlaps(g1_red, g2_red))
@@ -1942,37 +2718,25 @@ red_merged=as.data.table(mergeByOverlaps(g1_red, g2_red))
 merge_tab = data.table()
 for(z in 1:nrow(red_merged)){
   print(z)
-  rows = which((HLA_I_II$g1.start >= red_merged$g1_red.start[z]) & (HLA_I_II$g1.end <= red_merged$g1_red.end[z]) )
+  rows = which((HLA_I_II$g1.start >= red_merged$g1_red.start[z]) & (HLA_I_II$g1.end <= red_merged$g1_red.end[z])) #Find epitopes within overlapping regions
   
-  best_frequency = max(HLA_I_II$g1.Frequency_I[rows]/100 * HLA_I_II$g2.Frequency_II[rows]/100)
-  best_row = rows[which((HLA_I_II$g1.Frequency_I[rows]/100 * HLA_I_II$g2.Frequency_II[rows]/100) == best_frequency)]
+  best_frequency = max((HLA_I_II$g1.Frequency_I[rows]/100) * (HLA_I_II$g2.Frequency_II[rows]/100))  #Highest overall pop. freq
+  best_row = rows[which(((HLA_I_II$g1.Frequency_I[rows]/100) * (HLA_I_II$g2.Frequency_II[rows]/100)) == best_frequency)] #Which rows correspond to those w/high freq
   
   overlap = c()
   for(r in best_row){
-    c1 = c(HLA_I_II$g1.start[r]:HLA_I_II$g1.end[r])
-    c2 = c(HLA_I_II$g2.start[r]:HLA_I_II$g2.end[r])
-    overlap = c(overlap, length(which(c1 %in% c2))/length(c1) )
+    c1 = c(HLA_I_II$g1.start[r]:HLA_I_II$g1.end[r])  #HLA-I region
+    c2 = c(HLA_I_II$g2.start[r]:HLA_I_II$g2.end[r]) #HLA-II region
+    overlap = c(overlap, length(which(c1 %in% c2))/length(c1) ) #Percentage overlap
   }
   
-  best_overlap = max(overlap)
-  best_c1 = paste0(unique(HLA_I_II$g1.I_peptide[best_row]), collapse = ", ")
-  best_c2 = paste0(unique(HLA_I_II$g2.II_peptide[best_row]), collapse = ", ")
+  best_overlap = max(overlap) #Overlap %
+  best_c1 = paste0(unique(HLA_I_II$g1.I_peptide[best_row]), collapse = ", ") #HLA-I epitopes
+  best_c2 = paste0(unique(HLA_I_II$g2.II_peptide[best_row]), collapse = ", ") #HLA-II epitopes
   best_start = min(HLA_I_II$g2.start[best_row])
   
   merge_tab = rbind(merge_tab, data.table(best_c1, best_c2, best_start, best_overlap, best_frequency))
-  
 }
-
-
-# ####Define scales
-# library(scales)
-# trans <- function(x) {
-#   ifelse((x >= 50), x - 40, ifelse((x <= -50), x+40 , ifelse(x==0,x,x/10)))
-# }
-# inv <- function(x) {
-#   ifelse(x > 0.02, x + 40, ifelse(x < -0.02, x-40 , x*10))
-# }
-# my_trans <- trans_new("my_trans", trans, inv)
 
 #Convert HLA-II frequencies to negative values for plotting, convert frequencies to percent scale
 Master_tab$Immunogenic_frequency[which(Master_tab$Group =="HLAII")] = -1*Master_tab$Immunogenic_frequency[which(Master_tab$Group =="HLAII")] 
@@ -1980,30 +2744,27 @@ HLA_I_II$Frequency = HLA_I_II$Frequency*100
 merge_tab$best_frequency = 100 * merge_tab$best_frequency
 
 ####Make plot
-y_ll=-90
+y_ll=-90  #Lower limit of y axis
+
 centipede = 
   ggplot(data=Master_tab) + 
   
   geom_hline(yintercept = c(-80,-70,-60,-50,50,60,70,80), color = "white")+
-  #annotate("text", x = rep(-100,8), y =  c(-80,-70,-60,-50,50,60,70,80), label= c('80','70','60','50','50',"60","70","80"), size = 5)+
-  
+
   geom_segment(aes(x=Start, xend=Start, y=ifelse(Master_tab$Group=="HLAI",10,-10), yend=Immunogenic_frequency, color = Group), 
                alpha = .1, size=.2, show.legend = F) +
   scale_color_manual(values = c("red", "blue"), name="HLA", guide=F)+
   ggnewscale::new_scale("color")+
   
   geom_point(aes(x=Start, y=Immunogenic_frequency, fill=Group, size = abs(Immunogenic_frequency)), color='black',  show.legend = T, shape=21) +
-  
-  scale_x_continuous(limits = c(7096,9662))+
-  scale_y_continuous(breaks = seq(-80,80,10))+
+  scale_y_continuous(breaks = seq(-80,80,10), labels = abs)+
   scale_color_manual(values = alpha("black",1), guide = F)+
   scale_fill_manual(values = c(alpha("red",.1), alpha("blue",.1)), name="HLA", guide=F)+
-  scale_size_continuous(name = "HLA-I/II\nPop. freq.", limits = c(10,90), range = c(1,10))+
+  scale_size_continuous(name = "HLA-I/II\nPop. freq.", limits = c(9,90), range = c(1,10))+
   ggnewscale::new_scale("color")+
   ggnewscale::new_scale("size")+
   ggnewscale::new_scale("alpha")+
   ggnewscale::new_scale("fill")+
-  
   
   # ###Try using all merged data
   # geom_point(data=HLA_I_II,aes(x=g2.start, y=0, size = Frequency , fill = Overlap), alpha = .1,
@@ -2013,241 +2774,65 @@ centipede =
   # scale_size_continuous(name = "Overlaps\nPop. freq.", limits = c(1,55), range = c(1,10))+
   # #scale_alpha_continuous(range = c(.25,.75), guide = F)+
   
-  
-###Try using merged_tab
-geom_point(data=merge_tab,aes(x=best_start, y=0, size = best_frequency , fill = best_overlap),
+  ###Try using merged_tab
+  geom_point(data=merge_tab,aes(x=best_start, y=0, size = best_frequency , fill = best_overlap),
            alpha = 0.6, show.legend = T, position=position_jitter(width=0, height=7.5), shape = 23)+
   scale_fill_viridis_c(direction = 1, name = "% overlap", option = "plasma")+
   scale_color_manual(values = alpha("black",1), guide = F)+
   scale_size_continuous(name = "Overlaps\nPop. freq.", limits = c(1,55), range = c(1,10))+
   
-  
-  labs(y = "Population frequency", x="Position along SARS-CoV-2 proteome")+
   annotate("text", x = c(-400,-400,-400), y = c(-65,0,65), label = c("HLA-II", "Overlap", "HLA-I"), angle =90, size = 7)+
   theme(text=element_text(face="bold",size=30,colour="black")) +
-  
-  geom_rect(aes(xmin=0, xmax=7095, ymin=(y_ll), ymax=(y_ll-12)), fill=viridis(10)[1], color="black", size=0.1) +
-  geom_text(aes(x=7095/2, y=(y_ll-15), label="orf1ab", angle=0), size=5, color = "black") +
-  geom_text(aes(x=1000, y=(y_ll), label="-1000", angle=-90), size=3.5, color = "white",  fontface = "plain", hjust=0) +
-  geom_text(aes(x=2000, y=(y_ll), label="-2000", angle=-90), size=3.5, color = "white",  fontface = "plain", hjust=0) +
-  geom_text(aes(x=3000, y=(y_ll), label="-3000", angle=-90), size=3.5, color = "white",  fontface = "plain", hjust=0) +
-  geom_text(aes(x=4000, y=(y_ll), label="-4000", angle=-90), size=3.5, color = "white",  fontface = "plain", hjust=0) +
-  geom_text(aes(x=5000, y=(y_ll), label="-5000", angle=-90), size=3.5, color = "white",  fontface = "plain", hjust=0) +
-  geom_text(aes(x=6000, y=(y_ll), label="-6000", angle=-90), size=3.5, color = "white",  fontface = "plain", hjust=0) +
-  geom_text(aes(x=7000, y=(y_ll), label="-7000", angle=-90), size=3.5, color = "white",  fontface = "plain", hjust=0) +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())+
   
   geom_rect(aes(xmin=7096, xmax=8368, ymin=(y_ll), ymax=(y_ll-12)), fill=viridis(10)[2], color="black", size=0.1) +
-  geom_text(aes(x=7096+(8368-7096)/2, y=(y_ll-15), label="S", angle=0), size=5, color = "black") + 
+  geom_text(aes(x=7096+(8368-7096)/2, y=(y_ll-17), label="S", angle=0), size=10, color = "black") + 
   geom_text(aes(x=7096+200, y=(y_ll), label="-200", angle=-90), size=3.5, color = "white",  fontface = "plain", hjust=0) +
   geom_text(aes(x=7096+500, y=(y_ll), label="-500", angle=-90), size=3.5, color = "white",  fontface = "plain", hjust=0) +
   geom_text(aes(x=7096+800, y=(y_ll), label="-800", angle=-90), size=3.5, color = "white",  fontface = "plain", hjust=0) +
   geom_text(aes(x=7096+1100, y=(y_ll), label="-1100", angle=-90), size=3.5, color = "white",  fontface = "plain", hjust=0) +
   
-  
-  geom_rect(aes(xmin=8369, xmax=8644, ymin=(y_ll-0), ymax=(y_ll-12)), fill=viridis(10)[3], color="black", size=0.1) +
-  geom_text(aes(x=8368+(8644-8368)/2, y=(y_ll-15), label="ORF3a", angle=0), size=2.5, color = "black") +
-  geom_text(aes(x=8369+100, y=(y_ll), label="-100", angle=-90), size=3.5, color = "white",  fontface = "plain", hjust=0) +
-  geom_text(aes(x=8369+200, y=(y_ll), label="-200", angle=-90), size=3.5, color = "white",  fontface = "plain", hjust=0) +
-  
-  geom_rect(aes(xmin=8645, xmax=8718, ymin=(y_ll), ymax=(y_ll-12)), fill=viridis(10)[4], color="black", size=0.1) +
-  geom_text(aes(x=8645+(8718-8645)/2, y=(y_ll-15)), label="E", angle=0, size=2.5, color = "black") + 
-  
   geom_rect(aes(xmin=8719, xmax=8940, ymin=(y_ll-0), ymax=(y_ll-12)), fill=viridis(10)[5], color="black", size=0.1) +
-  geom_text(aes(x=8719+(8940-8719)/2, y=(y_ll-15)), label="M", angle=0, size=2.5, color = "black") +
-  
-  geom_rect(aes(xmin=8941, xmax=9001, ymin=(y_ll), ymax=(y_ll-12)), fill=viridis(10)[6], color="black", size=0.1) +
-  geom_text(aes(x=8941+(9001-8941)/2, y=(y_ll-18)), label="ORF6", angle=0, size=2.5, color = "black") +
-  
-  geom_rect(aes(xmin=9002, xmax=9122, ymin=(y_ll-0), ymax=(y_ll-12)), fill=viridis(10)[7], color="black", size=0.1) +
-  geom_text(aes(x=9002+(9122-9002)/2, y=(y_ll-21)), label="ORF7a", angle=0, size=2.5, color = "black") +
-  
-  geom_rect(aes(xmin=9123, xmax=9243, ymin=(y_ll), ymax=(y_ll-12)), fill=viridis(10)[8], color="black", size=0.1) +
-  geom_text(aes(x=9123+(9243-9123)/2, y=(y_ll-18)), label="ORF8", angle=0, size=2.5, color = "black") +
+  geom_text(aes(x=8719+(8940-8719)/2, y=(y_ll-17)), label="M", angle=0, size=10, color = "black") +
+  geom_text(aes(x=8719+50, y=(y_ll), label="-50", angle=-90), size=3.5, color = "white",  fontface = "plain", hjust=0) +
+  geom_text(aes(x=8719+100, y=(y_ll), label="-100", angle=-90), size=3.5, color = "white",  fontface = "plain", hjust=0) +
+  geom_text(aes(x=8719+150, y=(y_ll), label="-150", angle=-90), size=3.5, color = "white",  fontface = "plain", hjust=0) +
+  geom_text(aes(x=8719+200, y=(y_ll), label="-200", angle=-90), size=3.5, color = "white",  fontface = "plain", hjust=0) +
   
   geom_rect(aes(xmin=9244, xmax=9662, ymin=(y_ll-0), ymax=(y_ll-12)), fill=viridis(10)[9], color="black", size=0.1) +
-  geom_text(aes(x=9244+(9662-9244)/2, y=(y_ll-15)), label="N", angle=0, size=2.5, color = "black") +
+  geom_text(aes(x=9244+(9662-9244)/2, y=(y_ll-17)), label="N", angle=0, size=10, color = "black") +
   geom_text(aes(x=9244+100, y=(y_ll), label="-100", angle=-90), size=3.5, color = "white",  fontface = "plain", hjust=0) +
   geom_text(aes(x=9244+200, y=(y_ll), label="-200", angle=-90), size=3.5, color = "white",  fontface = "plain", hjust=0) +
-  geom_text(aes(x=9244+300, y=(y_ll), label="-300", angle=-90), size=3.5, color = "white",  fontface = "plain", hjust=0) +
+  geom_text(aes(x=9244+300, y=(y_ll), label="-300", angle=-90), size=3.5, color = "white",  fontface = "plain", hjust=0) 
+
+
+c_S = centipede + scale_x_continuous(limits = c(7096,8369)) + theme(legend.position = "none") +  labs(y = "Population frequency", x="")
+c_M = centipede + scale_x_continuous(limits = c(8719,8941)) + theme(legend.position = "none") + labs(y="",x="")
+c_N = centipede + scale_x_continuous(limits = c(9244,9663)) + labs(y="",x="")
   
-  geom_rect(aes(xmin=9663, xmax=9701, ymin=(y_ll), ymax=(y_ll-12)), fill=viridis(10)[10], color="black", size=0.1) +
-  geom_text(aes(x=9663+(9701-9663)/2, y=(y_ll-15)), label="ORF10", angle=0, size=2.5, color = "black") 
-
-
+#Note, this will throw warnings because of areas getting cut off in the x axis, but the data plotted should be correct
 png("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Figure_3_bottom.png", width = 20, height = 8.3, units = "in", res=300)
-centipede
+ggarrange(c_S, c_M, c_N, nrow = 1, ncol = 3,common.legend = TRUE, legend="right")
 dev.off()
-
-#####Figure 5 -- filtering Tc epitopes#####
-###########################################
-
-##Reading in frequency data
-Freq=fread(paste0(WORKING_DIR, "HLA_freq.txt"))
-Freq$Haplotype = str_replace_all(Freq$Haplotype, "DRB1_", "HLA-DRB1*")
-Freq$Haplotype = str_replace_all(Freq$Haplotype, "DQA1", "DQA1*")
-Freq$Haplotype = str_replace_all(Freq$Haplotype, "-DQB1", "/DQB1*")
-Freq$Haplotype = str_replace_all(Freq$Haplotype, "HLA-A", "HLA-A*")
-Freq$Haplotype = str_replace_all(Freq$Haplotype, "HLA-B", "HLA-B*")
-Freq$Haplotype = str_replace_all(Freq$Haplotype, "HLA-C", "HLA-C*")
-Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DR")] = paste0(substr(Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DR")],1,11), ":",
-                                                                      substr(Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DR")],12,13))
-Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DQ")] = paste0(substr(Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DQ")],1,11), ":",
-                                                                      substr(Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DQ")],12,21),":",
-                                                                      substr(Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DQ")],22,23))
-Freq$US[which(is.na(Freq$US))] = Freq$Cauc_Am[which(is.na(Freq$US))]
-
-
-###Selection process
-#Sliding window of 15, 21, 27 AA
-#Within each window, look for total population frequency covered for each class I, class II, or both
-#Filter by "zones" i.e. keeping only one peptide per region in proteome
-
-window = c(15,21,27)
-
-for(w in window){
-  print(w)
-  Freq_by_window = data.table()
-  count=0
-  p=0
-  for(n in 7096:9701){
-    count=count+1
-    if(count >= 2605/100){
-      count=0
-      p = p+1
-      print(paste0("Window ", w, ": ", p, "% done"))
-    }
-    
-    range = seq(n,n+w-1,1)
-    
-    c1_hits = filt_I[which((filt_I$Start %in% range)&(filt_I$End %in% range))] 
-    c2_hits = filt_II[which((filt_II$Start %in% range)&(filt_II$End %in% range))] 
-    
-    c1_haps = unique(unlist(strsplit(c1_hits$Immunogenic_haplotypes,",")))
-    c1_freq=1-prod(1-(rep(Freq$US[which(Freq$Haplotype %in% c1_haps)]/100,2)))
-    
-    c2_haps = unique(unlist(strsplit(c2_hits$Immunogenic_haplotypes,",")))
-    c2_freq=1-prod(1-(rep(Freq$US[which(Freq$Haplotype %in% c2_haps)]/100,2)))
-    
-    co_freq = c1_freq*c2_freq
-    
-    Freq_by_window = rbind(Freq_by_window, data.table(n, n+w, 
-                                                      paste0(c1_hits$all_I.n., collapse = ","), paste(c1_haps, collapse = ","), c1_freq,
-                                                      paste0(c2_hits$all_II.n., collapse = ","), paste(c2_haps, collapse = ","), c2_freq))
-    
-  }
-  
-  colnames(Freq_by_window) = c("Start", "End", "HLA-I_peptides", "HLA-I_haplotypes", "HLA-I_pop_freq", "HLA-II_peptides", "HLA-II_haplotypes", "HLA-II_pop_freq")
-  Freq_by_window$Total_frequency = Freq_by_window$`HLA-I_pop_freq` *  Freq_by_window$`HLA-II_pop_freq` 
-  
-  assign(paste0("Window_", w, "mer"), Freq_by_window)
-}
-
-
-p15mer = ggplot(data=Window_15mer)+
-  geom_point(aes(x=Start, y=Total_frequency), color = "purple")+
-  geom_point(aes(x=Start, y=`HLA-I_pop_freq`), color = "red")+
-  geom_point(aes(x=Start, y=`HLA-II_pop_freq`), color = "blue")+
-  scale_y_continuous(limits = c(0,1))+
-  scale_x_continuous(limits = c(7095,9662))+
-  labs(x = "", y = "Frequency", title = "15mer window")
-
-p21mer = ggplot(data=Window_21mer)+
-  geom_point(aes(x=Start, y=Total_frequency), color = "purple")+
-  geom_point(aes(x=Start, y=`HLA-I_pop_freq`), color = "red")+
-  geom_point(aes(x=Start, y=`HLA-II_pop_freq`), color = "blue")+
-  scale_y_continuous(limits = c(0,1))+
-  scale_x_continuous(limits = c(7095,9662))+
-  labs(x = "", y = "Frequency", title = "21mer window")
-
-p27mer = ggplot(data=Window_27mer)+
-  geom_point(aes(x=Start, y=Total_frequency), color = "purple")+
-  geom_point(aes(x=Start, y=`HLA-I_pop_freq`), color = "red")+
-  geom_point(aes(x=Start, y=`HLA-II_pop_freq`), color = "blue")+
-  scale_y_continuous(limits = c(0,1))+
-  scale_x_continuous(limits = c(7095,9662))+
-  labs(x = "", y = "Frequency", title = "27mer window")
-
-grid.arrange(p15mer, p21mer, p27mer, nrow=3, ncol=1)
-
-
-Window_15mer$Num_c1 = sapply(strsplit(Window_15mer$`HLA-I_peptides`,","), length)
-Window_15mer$Num_c2 = sapply(strsplit(Window_15mer$`HLA-II_peptides`,","), length)
-
-Window_21mer$Num_c1 = sapply(strsplit(Window_21mer$`HLA-I_peptides`,","), length)
-Window_21mer$Num_c2 = sapply(strsplit(Window_21mer$`HLA-II_peptides`,","), length)
-
-Window_27mer$Num_c1 = sapply(strsplit(Window_27mer$`HLA-I_peptides`,","), length)
-Window_27mer$Num_c2 = sapply(strsplit(Window_27mer$`HLA-II_peptides`,","), length)
-
-p15mer_count = ggplot(data=Window_15mer)+
-  geom_point(aes(x=Start, y=Num_c1), color = "red", alpha = .3)+
-  geom_point(aes(x=Start, y=Num_c2), color = "blue", alpha = .3)+
-  scale_y_continuous(limits = c(0,15))+  scale_x_continuous(limits = c(7096,9662))+
-  labs(x = "", y = "Count", title = "15mer window")
-
-p21mer_count = ggplot(data=Window_21mer)+
-  geom_point(aes(x=Start, y=Num_c1), color = "red", alpha = .3)+
-  geom_point(aes(x=Start, y=Num_c2), color = "blue", alpha = .3)+
-  scale_y_continuous(limits = c(0,15))+  scale_x_continuous(limits = c(7096,9662))+
-  labs(x = "", y = "Count", title = "21mer window")
-
-p27mer_count = ggplot(data=Window_27mer)+
-  geom_point(aes(x=Start, y=Num_c1), color = "red", alpha = .3)+
-  geom_point(aes(x=Start, y=Num_c2), color = "blue", alpha = .3)+
-  scale_y_continuous(limits = c(0,15))+  scale_x_continuous(limits = c(7096,9662))+
-  labs(x = "", y = "Count", title = "27mer window")
-
-grid.arrange(p15mer_count, p21mer_count, p27mer_count, nrow=3, ncol=1)
-
-fwrite(Window_15mer, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Window_15mer.txt")
-fwrite(Window_21mer, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Window_21mer.txt")
-fwrite(Window_27mer, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Window_27mer.txt")
-
-#####Remove overlapping regions
-fwrite(Window_15mer, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Window_15mer.txt")
-fwrite(Window_21mer, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Window_21mer.txt")
-fwrite(Window_27mer, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Window_27mer.txt")
-
-
-Window_15mer_filt = Window_15mer[which(Window_15mer$)]
-g15 <-  GRanges(seqnames="COVID",
-                IRanges(start= Window_15mer$Start,
-                        end=Window_15mer$End), 
-                Frequency= Window_15mer$Total_frequency)
-g15_red = reduce(g15)
-
-
-
-
-############Bc MHCII overlap########################
-
-
 
 
 
 ########################Figure 4A####################
 #####################################################
 
-
-#Curated epitopes: 54 
-#Accessible regions: 26 
-#Combine overlapping: 22
-#Glycosite filter: 19
-#Polymorphism filter: 16
-#Near functional domains (RBD, FP, HR1, HR2): 9
-#4mer or longer: 4
-
+#Curated Bc data from 4 array sources
 Bc = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/bcell/linear-bcell-epitopes-SARS2-S.csv")
 
 Bc = Bc[order(Bc$Start),]
 Bc= Bc[order(Bc$Source),]
 Bc$Segment = 1
 
-
+#Define the y-axis for each source
 for(s in unique(Bc$Source)){
-  Bc$Segment[which(Bc$Source == s)] <- which(s == unique(Bc$Source))
+  Bc$Segment[which(Bc$Source == s)] = which(s == unique(Bc$Source))
 }
-
 
 ggplot(data=Bc) + 
   geom_rect(aes(xmin=Start, xmax=End, ymin=Segment-.25, ymax=Segment+.25, fill=Source), color = "black")+
@@ -2281,1016 +2866,461 @@ ggplot(data=Bc) +
   geom_rect(aes(xmin=685, xmax=686, ymin=.5, ymax=(0)), fill="black", color="black", size=0.1) +
   geom_text(aes(x=685, y=(-.1), label="S1/S2", angle=0), size=4.5) +
   
-  scale_x_continuous(limits = c(-.2,5))+
-  
   scale_x_continuous(limits = c(1,1273), breaks = c(1, 200, 400, 600, 800, 1000, 1200, 1273))+
   theme(axis.title.y=element_blank(),
         axis.text.y=element_blank(),
         axis.ticks.y=element_blank())
 
 
+###Funnel, built in PPT###
+#Curated epitopes: 54 
+#Accessible regions: 26 
+#Combine overlapping: 22
+#Glycosite filter: 19
+#Polymorphism filter: 16
+#Near functional domains (RBD, FP, HR1, HR2): 9
+#4mer or longer: 4
 
 
 
-###########################################
-# 
-# ####MHCII by nM
-# 
-# 
-# iedb_II = iedb_melt[which(iedb_melt$Program %in% c('NetMHCIIpan_BA'))]
-# 
-# Netii=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCIIpan_standardized_all_BA.txt")
-# 
-# 
-# iedb = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/iedb/mhc_sars2_purified_competitive_radioactivity.csv")
-# iedb$allele = str_replace_all(iedb$allele, pattern = "\\*", replacement = "")
-# iedb$allele = str_replace_all(iedb$allele, pattern = "HLA-DRB101:01", replacement = "DRB1_0101")
-# iedb$affinity = as.numeric(iedb$affinity)
-# 
-# iedb_unique = paste(iedb$peptide, iedb$allele, sep = "_")
-# Netii_unique = paste(Netii$Peptide, Netii$Haplotype, sep = "_")
-# 
-# iedb$NetMHCIIpan_BA = NA
-# for(z in 1:length(iedb_unique)){
-#   if(iedb_unique[z] %in% Netii_unique){
-#     iedb$NetMHCIIpan_BA[z] = Netii$Binding_affinity[which(Netii_unique == iedb_unique[z])]
-#   }
-# }
-# iedb_comp = iedb[complete.cases(iedb),]
-# 
-# 
-# ggplot(data=iedb_comp, aes(x=NetMHCIIpan_BA, y=affinity))+
-#   geom_point()+
-#   scale_y_log10()+#breaks = c(0.001, 0.01, .1, 1, 10, 100, 1000, 10000))+
-#   scale_x_log10()+
-#   geom_vline(xintercept = 1000)+
-#   geom_hline(yintercept = 1000)+
-#   theme(text=element_text(face="bold",size=20,colour="black")) +
-#   labs(x="NetMHCIIpan BA (nM)", y="IEDB affinity (nM)")+
-#   annotate("text",x=10, y = .3, label = paste0("n=", length(which((iedb_comp$NetMHCIIpan_BA<1000)&(iedb_comp$affinity<1000)))), color="red", size=10)+
-#   annotate("text",x=10, y = 10000, label = paste0("n=", length(which((iedb_comp$NetMHCIIpan_BA<1000)&(iedb_comp$affinity>1000)))), color="red", size=10)
-# 
-# iedb_comp$Hits = ifelse(iedb_comp$affinity < 1000,0,1)
-# cut = 1000
-# cutoff = seq(0,1000,1)
-# 
-# FPR = c()
-# FDR = c()
-# Specificity=c()
-# Sensitivity = c()
-# PPV = c()
-# NPV = c()
-# 
-# for(n in cutoff){
-#   print(n)
-#   #FPR = c(FPR, length(which(iedb_comp$affinity[which(iedb_comp$NetMHCIIpan_BA<=n)] > cut))/length(which(iedb_comp$affinity>cut)))
-#   FDR = c(FDR, length(which(iedb_comp$affinity[which(iedb_comp$NetMHCIIpan_BA<=n)] > cut))/length(which(iedb_comp$NetMHCIIpan_BA<=n)))
-#   Sensitivity = c(Sensitivity,  length(which(iedb_comp$affinity[which(iedb_comp$NetMHCIIpan_BA<=n)] < cut))/length(which(iedb_comp$affinity<cut)) )
-#   #Specificity = c(Specificity,  length(which(iedb_comp$affinity[which(iedb_comp$NetMHCIIpan_BA>n)] > cut))/length(which(iedb_comp$affinity>cut)) )
-#   #PPV = c(PPV,  length(which(iedb_comp$affinity[which(iedb_comp$NetMHCIIpan_BA<=n)] < cut))/length(which(iedb_comp$NetMHCIIpan_BA<=n)) )
-#   #NPV = c(NPV,  length(which(iedb_comp$affinity[which(iedb_comp$NetMHCIIpan_BA>n)] > cut))/length(which(iedb_comp$NetMHCIIpan_BA>n)) )
-#   
-# }
-# 
-# plot_cutoff = data.table(cutoff, FDR, Sensitivity)
-# ggplot(data=plot_cutoff, aes(x=cutoff, y=FDR))+
-#   geom_point()+
-#   #scale_x_continuous(limits = c(0,1000))+
-#   geom_hline(yintercept = c(.01,.05,.1))+
-#   geom_smooth(method='lm',formula= y~+log(x))
-# 
-# 
-# library(precrec)
-# precrec_obj <- evalmod(scores = iedb_comp$NetMHCIIpan_BA, labels = iedb_comp$Hits)
-# autoplot(precrec_obj)
-# 
-# ggplot()+
-#   geom_histogram(data = Netii, aes(x=Binding_affinity, y = ..ncount.., color="All netMHCIIpan calls"), alpha=0.3, binwidth = 2.5)+
-#   geom_histogram(data=iedb_II, aes(x= Rank,y = ..ncount.., color="NetMHCIIpan calls with IEDB support"), alpha = 0.3, binwidth = 2.5)+
-#   geom_histogram(data = Netii[which(Netii$Haplotype =="DRB1_0101")], aes(x=Binding_affinity, y = ..ncount.., color="DRB1*0101 netMHCIIpan calls"), alpha=0.3, binwidth = 2.5)+
-#   
-#   scale_color_viridis_d(name="Data Group")+
-#   geom_vline(xintercept = 1000)+
-#   scale_x_continuous(trans=ssqrt_trans)+
-#   theme(text=element_text(face="bold",size=20,colour="black")) +
-#   labs(y="Relative proportion (scaled to max bin height)", x="NetMHCIIpan BA (nM)")
-# 
-# 
-# ####MHCII by rank
-# 
-# iedb_II_rank = iedb_melt[which(iedb_melt$Program %in% c('NetMHCIIpan_Rank'))]
-# 
-# Netii=fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCIIpan_standardized_all_BA.txt")
-# 
-# 
-# iedb = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/iedb/mhc_sars2_purified_competitive_radioactivity.csv")
-# iedb$allele = str_replace_all(iedb$allele, pattern = "\\*", replacement = "")
-# iedb$allele = str_replace_all(iedb$allele, pattern = "HLA-DRB101:01", replacement = "DRB1_0101")
-# iedb$affinity = as.numeric(iedb$affinity)
-# 
-# iedb_unique = paste(iedb$peptide, iedb$allele, sep = "_")
-# Netii_unique = paste(Netii$Peptide, Netii$Haplotype, sep = "_")
-# 
-# iedb$NetMHCIIpan_Rank = NA
-# for(z in 1:length(iedb_unique)){
-#   if(iedb_unique[z] %in% Netii_unique){
-#     iedb$NetMHCIIpan_Rank[z] = Netii$Rank[which(Netii_unique == iedb_unique[z])]
-#   }
-# }
-# iedb_comp = iedb[complete.cases(iedb),]
-# 
-# 
-# ggplot(data=iedb_comp, aes(x=NetMHCIIpan_Rank, y=affinity))+
-#   geom_point()+
-#   scale_y_log10()+#breaks = c(0.001, 0.01, .1, 1, 10, 100, 1000, 10000))+
-#   scale_x_log10()+
-#   #geom_vline(xintercept = 1000)+
-#   geom_hline(yintercept = 1000)+
-#   theme(text=element_text(face="bold",size=20,colour="black")) +
-#   labs(x="NetMHCIIpan Rank", y="IEDB affinity (nM)")
-#   #annotate("text",x=10, y = .3, label = paste0("n=", length(which((iedb_comp$NetMHCIIpan_Rank<1000)&(iedb_comp$affinity<1000)))), color="red", size=10)+
-#   #annotate("text",x=10, y = 10000, label = paste0("n=", length(which((iedb_comp$NetMHCIIpan_Rank<1000)&(iedb_comp$affinity>1000)))), color="red", size=10)
-# 
-# cut = 1000
-# iedb_comp$Hits = ifelse(iedb_comp$affinity < cut,0,1)
-# cutoff = seq(0,100,.1)
-# 
-# FPR = c()
-# FDR = c()
-# Specificity=c()
-# Sensitivity = c()
-# PPV = c()
-# NPV = c()
-# 
-# for(n in cutoff){
-#   print(n)
-#   #FPR = c(FPR, length(which(iedb_comp$affinity[which(iedb_comp$NetMHCIIpan_Rank<=n)] > cut))/length(which(iedb_comp$affinity>cut)))
-#   FDR = c(FDR, length(which(iedb_comp$affinity[which(iedb_comp$NetMHCIIpan_Rank<=n)] > cut))/length(which(iedb_comp$NetMHCIIpan_Rank<=n)))
-#   Sensitivity = c(Sensitivity,  length(which(iedb_comp$affinity[which(iedb_comp$NetMHCIIpan_Rank<=n)] < cut))/length(which(iedb_comp$affinity<cut)) )
-#   #Specificity = c(Specificity,  length(which(iedb_comp$affinity[which(iedb_comp$NetMHCIIpan_Rank>n)] > cut))/length(which(iedb_comp$affinity>cut)) )
-#   #PPV = c(PPV,  length(which(iedb_comp$affinity[which(iedb_comp$NetMHCIIpan_Rank<=n)] < cut))/length(which(iedb_comp$NetMHCIIpan_Rank<=n)) )
-#   #NPV = c(NPV,  length(which(iedb_comp$affinity[which(iedb_comp$NetMHCIIpan_Rank>n)] > cut))/length(which(iedb_comp$NetMHCIIpan_Rank>n)) )
-#   
-# }
-# 
-# plot_cutoff = data.table(cutoff, FDR, Sensitivity)
-# ggplot(data=plot_cutoff, aes(x=cutoff, y=FDR))+
-#   geom_point()+
-#   #scale_x_continuous(limits = c(0,1000))+
-#   geom_hline(yintercept = c(.01,.05,.1))+
-#   geom_smooth(method='lm',formula= y~+log(x))
-# 
-# 
-# library(precrec)
-# precrec_obj <- evalmod(scores = iedb_comp$NetMHCIIpan_Rank, labels = iedb_comp$Hits)
-# autoplot(precrec_obj)
-# 
-# 
-# iedb_II_rank = iedb_melt[which(iedb_melt$Program %in% c('NetMHCIIpan_Rank'))]
-# 
-# 
-# ggplot()+
-#   geom_histogram(data = Netii, aes(x=Rank, y = ..ncount.., color="All netMHCIIpan calls"), alpha=0.3, binwidth = 2.5)+
-#   geom_histogram(data=iedb_II_rank, aes(x= Rank,y = ..ncount.., color="NetMHCIIpan calls with IEDB support"), alpha = 0.3, binwidth = 2.5)+
-#   geom_histogram(data = Netii[which(Netii$Haplotype =="DRB1_0101")], aes(x=Rank, y = ..ncount.., color="DRB1*0101 netMHCIIpan calls"), alpha=0.3, binwidth = 2.5)+
-#   
-#   scale_color_viridis_d(name="Data Group")+
-#   #geom_vline(xintercept = 1000)+
-#   scale_x_continuous()+
-#   theme(text=element_text(face="bold",size=20,colour="black")) +
-#   labs(y="Relative proportion (scaled to max bin height)", x="NetMHCIIpan Rank")
-# 
-# 
+#####Figure 5 -- filtering Tc epitopes#################################################
+##Note that this section is dependent on above code for figure 3 starting line 2545####
+#######################################################################################
 
-# 
-# ###Reading in MixMHC2pred
-# 
-# mix = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/mhc_all_viruses_combined_DRB_only_res.txt")
-# mix = unique(mix)
-# colnames(mix)[seq(7,19,2)] = substr(colnames(mix)[seq(7,19,2)],7,16)
-# mix = melt(mix, id.vars = 1, measure.vars = c(seq(7,19,2)))
-# mix$variable = paste0("HLA-", sapply(strsplit(as.character(mix$variable),split = "_"),'[',1), "*", 
-#                       sapply(strsplit(as.character(mix$variable),split = "_"),'[',2), ":",
-#                       sapply(strsplit(as.character(mix$variable),split = "_"),'[',3))
-# colnames(mix) = c("Peptide", "Haplotype", "Percentile")
-# 
-# 
-# iedb_v$affinity = as.numeric(iedb_v$affinity)
-# 
-# iedb_unique = paste(iedb_v$peptide, iedb_v$allele, sep = "_")
-# mix_unique = paste(mix$Peptide, mix$Haplotype, sep = "_")
-# 
-# iedb_v$Mix_Rank = NA
-# for(z in 1:length(iedb_unique)){
-#   if(iedb_unique[z] %in% mix_unique){
-#     #print(paste0(z,": ", which(mix_unique == iedb_unique[z])))
-#     iedb_v$Mix_Rank[z] = mix$Percentile[which(mix_unique == iedb_unique[z])]
-#   }
-# }
-# iedb_comp = iedb_v[complete.cases(iedb_v),]
-# 
-# 
-# ggplot(data=iedb_comp, aes(x=Mix_Rank, y=affinity, color = allele), alpha=0.1)+
-#   geom_point()+
-#   scale_y_log10()+#breaks = c(0.001, 0.01, .1, 1, 10, 100, 1000, 10000))+
-#   #scale_x_log10()+
-#   #geom_vline(xintercept = 1000)+
-#   geom_hline(yintercept = 500)+
-#   theme(text=element_text(face="bold",size=20,colour="black")) +
-#   labs(x="MixMHC2pred Rank", y="IEDB affinity (nM)")
-# #annotate("text",x=10, y = .3, label = paste0("n=", length(which((iedb_comp$Mix_Rank<1000)&(iedb_comp$affinity<1000)))), color="red", size=10)+
-# #annotate("text",x=10, y = 10000, label = paste0("n=", length(which((iedb_comp$Mix_Rank<1000)&(iedb_comp$affinity>1000)))), color="red", size=10)
-# 
-# cut = 2000
-# iedb_comp$Hits = ifelse(iedb_comp$affinity < cut,0,1)
-# cutoff = seq(0,100,.1)
-# 
-# FPR = c()
-# FDR = c()
-# Specificity=c()
-# Sensitivity = c()
-# PPV = c()
-# NPV = c()
-# 
-# for(n in cutoff){
-#   print(n)
-#   #FPR = c(FPR, length(which(iedb_comp$affinity[which(iedb_comp$Mix_Rank<=n)] > cut))/length(which(iedb_comp$affinity>cut)))
-#   FDR = c(FDR, length(which(iedb_comp$affinity[which(iedb_comp$Mix_Rank<=n)] > cut))/length(which(iedb_comp$Mix_Rank<=n)))
-#   Sensitivity = c(Sensitivity,  length(which(iedb_comp$affinity[which(iedb_comp$Mix_Rank<=n)] < cut))/length(which(iedb_comp$affinity<cut)) )
-#   #Specificity = c(Specificity,  length(which(iedb_comp$affinity[which(iedb_comp$Mix_Rank>n)] > cut))/length(which(iedb_comp$affinity>cut)) )
-#   #PPV = c(PPV,  length(which(iedb_comp$affinity[which(iedb_comp$Mix_Rank<=n)] < cut))/length(which(iedb_comp$Mix_Rank<=n)) )
-#   #NPV = c(NPV,  length(which(iedb_comp$affinity[which(iedb_comp$Mix_Rank>n)] > cut))/length(which(iedb_comp$Mix_Rank>n)) )
-#   
-# }
-# 
-# plot_cutoff = data.table(cutoff, FDR, Sensitivity)
-# ggplot(data=plot_cutoff, aes(x=cutoff, y=FDR))+
-#   geom_point()+
-#   #scale_x_continuous(limits = c(0,1000))+
-#   geom_hline(yintercept = c(.01,.05,.1))+
-#   geom_smooth(method='lm',formula= y~+log(x))
-# 
-# 
-# library(precrec)
-# precrec_obj <- evalmod(scores = iedb_comp$Mix_Rank, labels = iedb_comp$Hits)
-# autoplot(precrec_obj)
-# 
-# 
-# iedb_II_rank = iedb_melt[which(iedb_melt$Program %in% c('Mix_Rank'))]
-# 
-# 
-# ggplot()+
-#   geom_histogram(data = Netii, aes(x=Rank, y = ..ncount.., color="All netMHCIIpan calls"), alpha=0.3, binwidth = 2.5)+
-#   geom_histogram(data=iedb_II_rank, aes(x= Rank,y = ..ncount.., color="NetMHCIIpan calls with IEDB support"), alpha = 0.3, binwidth = 2.5)+
-#   geom_histogram(data = Netii[which(Netii$Haplotype =="DRB1_0101")], aes(x=Rank, y = ..ncount.., color="DRB1*0101 netMHCIIpan calls"), alpha=0.3, binwidth = 2.5)+
-#   
-#   scale_color_viridis_d(name="Data Group")+
-#   #geom_vline(xintercept = 1000)+
-#   scale_x_continuous()+
-#   theme(text=element_text(face="bold",size=20,colour="black")) +
-#   labs(y="Relative proportion (scaled to max bin height)", x="NetMHCIIpan Rank")
-# 
+##Reading in frequency data, formatting
+Freq=fread(paste0(WORKING_DIR, "HLA_freq.txt"))
+Freq$Haplotype = str_replace_all(Freq$Haplotype, "DRB1_", "HLA-DRB1*")
+Freq$Haplotype = str_replace_all(Freq$Haplotype, "DQA1", "DQA1*")
+Freq$Haplotype = str_replace_all(Freq$Haplotype, "-DQB1", "/DQB1*")
+Freq$Haplotype = str_replace_all(Freq$Haplotype, "HLA-A", "HLA-A*")
+Freq$Haplotype = str_replace_all(Freq$Haplotype, "HLA-B", "HLA-B*")
+Freq$Haplotype = str_replace_all(Freq$Haplotype, "HLA-C", "HLA-C*")
+Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DR")] = paste0(substr(Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DR")],1,11), ":",
+                                                                      substr(Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DR")],12,13))
+Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DQ")] = paste0(substr(Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DQ")],1,11), ":",
+                                                                      substr(Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DQ")],12,21),":",
+                                                                      substr(Freq$Haplotype[which(substr(Freq$Haplotype,1,6) =="HLA-DQ")],22,23))
+Freq$US[which(is.na(Freq$US))] = Freq$Cauc_Am[which(is.na(Freq$US))] #Move over DQ frequencies to same column
 
 
+###Selection process
+#Sliding window of 15, 21, 27 AA
+#Within each window, look for total population frequency covered for each class I, class II, or both
 
-##################Tetramer analysis#############
+seq =  fread(paste0(WORKING_DIR, "AA_sequence_combined.txt"), header=F) #SARS-CoV-2 proteome
 
-Tet = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/iedb/tcell_virus_tetramer.csv")
-Tet$Length = nchar(Tet$peptide)
-Tet = Tet[which(Tet$species =="human"),]
+##Filter by mouse, if necessary.  Not relevant for manuscript, but included for Ting lab peptide set####
 
-Tet1 = Tet[which(Tet$mhc_class == "I")]
-Tet2 = Tet[which(Tet$mhc_class == "II")]
+#No filt
+filt_I_m = filt_I
+filt_II_m = filt_II
 
-Tet1 = Tet1[which(Tet1$Length %in% c(8:14)),]
-
-Tet2$allele[which(substr(Tet2$allele,1,7)=="HLA-DRA")] = sapply(strsplit(Tet2$allele[which(substr(Tet2$allele,1,7)=="HLA-DRA")], "/"), "[", 2)
-Tet2$allele[which(substr(Tet2$allele,1,3)=="DRB")] = paste0("HLA-", Tet2$allele[which(substr(Tet2$allele,1,3)=="DRB")])
-Tet2 = Tet2[which(substr(Tet2$allele,1,7) == "HLA-DRB")]
-
-# Alleles_to_keep1=c("HLA-A*11:01", "HLA-A*02:01", "HLA-A*01:01", "HLA-A*03:01", "HLA-A*24:02", "HLA-B*44:03", "HLA-B*07:02", 
-#                    "HLA-B*08:01", "HLA-B*44:02", "HLA-B*35:01", "HLA-B*15:01", "HLA-C*03:04", "HLA-C*04:01", "HLA-C*05:01", 
-#                    "HLA-C*06:02", "HLA-C*07:01", "HLA-C*07:02")
+#Filter by haplotype -- only used for Ting lab peptide set, can ignore for manuscript
+# #By B
+# filt_I_m = filt_I[which((filt_I$Murine == "B") | (filt_I$Murine == "B/D")),]
+# filt_II_m = filt_II[which((filt_II$Murine == "B") | (filt_II$Murine == "B/D")),]
 # 
+# #By D
+# filt_I_m = filt_I[which((filt_I$Murine == "D") | (filt_I$Murine == "B/D")),]
+# filt_II_m = filt_II[which((filt_II$Murine == "D") | (filt_II$Murine == "B/D")),]
 # 
-# Alleles_to_keep2=c("HLA-DRB1*01:01", "HLA-DRB1*03:01", "HLA-DRB1*04:01", "HLA-DRB1*07:01", "HLA-DRB1*11:01", "HLA-DRB1*13:01", "HLA-DRB1*15:01",
-#                    "HLA-DQA1*01:02/DQB1*06:02", "HLA-DQA1*05:01/DQB1*02:01", "HLA-DQA1*02:01/DQB1*02:02", "HLA-DQA1*05:05/DQB1*03:01",
-#                    "HLA-DQA1*01:01/DQB1*05:01", "HLA-DQA1*03:01/DQB1*03:02", "HLA-DQA1*03:03/DQB1*03:01", "HLA-DQA1*01:03/DQB1*06:03")
-
-#Tet1 = Tet1[which(Tet1$allele %in% Alleles_to_keep1),]
-#Tet2 = Tet2[which(Tet2$allele %in% Alleles_to_keep2),]
+# #BxD
+# filt_I_m - filt_I[which(!is.na(filt_I$Murine)),]
+# filt_II_m - filt_I[which(!is.na(filt_II$Murine)),]
 
 
-for(z in unique(Tet1$Length)){
-  tet = Tet1[which(Tet1$Length == z),]
-  print(paste0(z, ": ", paste0(unique(tet$allele), collapse = ', ')))
-  fa = c()
-  for (i in 1:nrow(tet)){
-    fa = c(fa, paste0(">", tet$allele[i], "_", tet$peptide[i]))
-    fa = c(fa, tet$peptide[i])
-  }
-  fwrite(as.data.table(fa), paste0("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_fa/MHC-I_",z,".fa"), col.names = F, quote = F)
-}
+window = c(15,21,27)
 
-for(z in unique(Tet2$Length)){
-  
-  tet = Tet2[which(Tet2$Length == z),]
-  print(paste0(z, ": ", paste0(unique(tet$allele), collapse = ', ')))
-  fa = c()
-  for (i in 1:nrow(tet)){
-    fa = c(fa, paste0(">", tet$allele[i], "_", tet$peptide[i]))
-    fa = c(fa, tet$peptide[i])
-  }
-  fwrite(as.data.table(fa), paste0("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_fa/MHC-II_",z,".fa"), col.names = F, quote = F)
-}
-
-
-###Read in netMHC(II)pan
-
-##BA
-MHCI_tet_8mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramer_8mer.xls")
-MHCI_tet_9mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramer_9mer.xls")
-MHCI_tet_10mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramer_10mer.xls")
-MHCI_tet_11mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramer_11mer.xls")
-MHCI_tet_12mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramer_12mer.xls")
-MHCI_tet_13mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramer_13mer.xls")
-MHCI_tet_14mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramer_14mer.xls")
-MHCI_tet = rbind(MHCI_tet_8mer, MHCI_tet_9mer, MHCI_tet_10mer, MHCI_tet_11mer, MHCI_tet_12mer, MHCI_tet_13mer, MHCI_tet_14mer)
-
-colnames(MHCI_tet)[seq(8,88,5)] = colnames(MHCI_tet)[seq(7,87,5)]
-colnames(MHCI_tet)[seq(7,87,5)] = paste0("nM_", colnames(MHCI_tet)[seq(7,87,5)])
-
-MHCI_tet_rank = melt(MHCI_tet, id.vars = 2, measure.vars = c(seq(8,88,5)))
-MHCI_tet_nM = melt(MHCI_tet, id.vars = 2, measure.vars = c(seq(7,87,5)))
-MHCI_tet_log = melt(MHCI_tet, id.vars = 2, measure.vars = c(seq(6,86,5)))
-MHCI_tet_Protein = melt(MHCI_tet, id.vars = 3, measure.vars = c(seq(8,88,5)))
-MHCI_tet_Start = melt(MHCI_tet, id.vars = 1, measure.vars = c(seq(8,88,5)))
-
-MHCI_tet = cbind(MHCI_tet_Protein$ID, MHCI_tet_Start$Pos, MHCI_tet_rank, MHCI_tet_log[,3], MHCI_tet_nM[,3])
-colnames(MHCI_tet) = c("Protein", "Start", "Peptide", "Haplotype", "Rank", "1-log50k", "Binding_affinity")
-MHCI_tet$Protein = sapply(strsplit(MHCI_tet$Protein, "_"),'[',1)
-MHCI_tet$Protein[which(MHCI_tet$Protein =="orflab")] = "orf1ab"
-MHCI_tet$Start = MHCI_tet$Start+1
-
-MHCI_tet$Haplotype = paste0(substr(MHCI_tet$Haplotype,1,5), "*", substr(MHCI_tet$Haplotype,6,10))
-MHCI_tet = MHCI_tet[-which(MHCI_tet$Haplotype == "HLA-B*15:01"),]
-colnames(MHCI_tet)[5] = "BA_Rank"
-
-
-##EL
-MHCI_tet_EL_8mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramer_EL_8mer.xls")
-MHCI_tet_EL_9mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramer_EL_9mer.xls")
-MHCI_tet_EL_10mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramer_EL_10mer.xls")
-MHCI_tet_EL_11mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramer_EL_11mer.xls")
-MHCI_tet_EL_12mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramer_EL_12mer.xls")
-MHCI_tet_EL_13mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramer_EL_13mer.xls")
-MHCI_tet_EL_14mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramer_EL_14mer.xls")
-MHCI_tet_EL = rbind(MHCI_tet_EL_8mer, MHCI_tet_EL_9mer, MHCI_tet_EL_10mer, MHCI_tet_EL_11mer, MHCI_tet_EL_12mer, MHCI_tet_EL_13mer, MHCI_tet_EL_14mer)
-
-colnames(MHCI_tet_EL)[seq(8,83,5)] = colnames(MHCI_tet_EL)[seq(7,82,5)]
-colnames(MHCI_tet_EL)[seq(7,82,5)] = paste0("nM_", colnames(MHCI_tet_EL)[seq(7,82,5)])
-
-MHCI_tet_EL_rank = melt(MHCI_tet_EL, id.vars = 2, measure.vars = c(seq(8,83,5)))
-MHCI_tet_EL_nM = melt(MHCI_tet_EL, id.vars = 2, measure.vars = c(seq(7,82,5)))
-MHCI_tet_EL_log = melt(MHCI_tet_EL, id.vars = 2, measure.vars = c(seq(6,81,5)))
-MHCI_tet_EL_Protein = melt(MHCI_tet_EL, id.vars = 3, measure.vars = c(seq(8,83,5)))
-MHCI_tet_EL_Start = melt(MHCI_tet_EL, id.vars = 1, measure.vars = c(seq(8,85,5)))
-
-MHCI_tet_EL = cbind(MHCI_tet_EL_Protein$ID, MHCI_tet_EL_Start$Pos, MHCI_tet_EL_rank, MHCI_tet_EL_log[,3], MHCI_tet_EL_nM[,3])
-colnames(MHCI_tet_EL) = c("Protein", "Start", "Peptide", "Haplotype", "Rank", "1-log50k", "Binding_affinity")
-MHCI_tet_EL$Protein = sapply(strsplit(MHCI_tet_EL$Protein, "_"),'[',1)
-MHCI_tet_EL$Protein[which(MHCI_tet_EL$Protein =="orflab")] = "orf1ab"
-MHCI_tet_EL$Start = MHCI_tet_EL$Start+1
-
-MHCI_tet_EL$Haplotype = paste0(substr(MHCI_tet_EL$Haplotype,1,5), "*", substr(MHCI_tet_EL$Haplotype,6,10))
-#MHCI_tet_EL = MHCI_tet_EL[-which(MHCI_tet_EL$Haplotype == "HLA-B*15:01"),]
-colnames(MHCI_tet_EL)[5] = "EL_Rank"
-
-MHCI_tet = cbind(MHCI_tet, MHCI_tet_EL[,c(5,6)])
-
-
-###Flurry
-#MHCI_tet = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCI_tetramers_all.txt")
-
-Flurry= fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/iedb/tcell_virus_tetramer_class1_mhcflurry_predictions.csv")
-colnames(Flurry)[c(4,6,7)] = c("Flurry_BA", "Flurry_proc_score", "Flurry_pres_score")
-
-MHCI_tet$Flurry_BA = NA
-MHCI_tet$Flurry_proc_score = NA
-MHCI_tet$Flurry_pres_score = NA
-
-for(n in 1:nrow(MHCI_tet)){
-  print(n)
-  if (paste0(MHCI_tet$Haplotype[n], "_", MHCI_tet$Peptide[n]) %in% paste0(Flurry$best_allele, "_", Flurry$peptide)){
-    MHCI_tet$Flurry_BA[n] = Flurry$Flurry_BA[which(paste0(Flurry$best_allele, "_", Flurry$peptide) == paste0(MHCI_tet$Haplotype[n], "_", MHCI_tet$Peptide[n]))]
-    MHCI_tet$Flurry_proc_score[n] = Flurry$Flurry_proc_score[which(paste0(Flurry$best_allele, "_", Flurry$peptide) == paste0(MHCI_tet$Haplotype[n], "_", MHCI_tet$Peptide[n]))]
-    MHCI_tet$Flurry_pres_score[n] = Flurry$Flurry_pres_score[which(paste0(Flurry$best_allele, "_", Flurry$peptide) == paste0(MHCI_tet$Haplotype[n], "_", MHCI_tet$Peptide[n]))]
-  }
-}
-
-
-####Add in AA features
-
-Aromatic = c('F','Y','W')
-Acidic = c('D','E')
-Basic = c('K','R','H')
-Small = c('A','G','S','T','P')
-Cyclic = 'P'
-Thiol = c('C','M')
-
-MHCI_tet$Aromatic = NA
-MHCI_tet$Acidic = NA
-MHCI_tet$Basic = NA
-MHCI_tet$Small = NA
-MHCI_tet$Cyclic = NA
-MHCI_tet$Thiol = NA
-
-for(n in 1:nrow(MHCI_tet)){
-  print(n)
-  MHCI_tet$Aromatic[n] = length(which(strsplit(MHCI_tet$Peptide[n], "")[[1]] %in% Aromatic))/nchar(MHCI_tet$Peptide[n])  
-  MHCI_tet$Acidic[n] = length(which(strsplit(MHCI_tet$Peptide[n], "")[[1]] %in% Acidic))/nchar(MHCI_tet$Peptide[n])  
-  MHCI_tet$Basic[n] = length(which(strsplit(MHCI_tet$Peptide[n], "")[[1]] %in% Basic))/nchar(MHCI_tet$Peptide[n])  
-  MHCI_tet$Small[n] = length(which(strsplit(MHCI_tet$Peptide[n], "")[[1]] %in% Small))/nchar(MHCI_tet$Peptide[n])  
-  MHCI_tet$Cyclic[n] = length(which(strsplit(MHCI_tet$Peptide[n], "")[[1]] %in% Cyclic))/nchar(MHCI_tet$Peptide[n])  
-  MHCI_tet$Thiol[n] = length(which(strsplit(MHCI_tet$Peptide[n], "")[[1]] %in% Thiol))/nchar(MHCI_tet$Peptide[n])  
-}
-
-
-##################
-MHCI_tet$Tetramer = NA
-for(n in 1:nrow(MHCI_tet)){
-  print(n)
-  if (paste0(MHCI_tet$Haplotype[n], "_", MHCI_tet$Peptide[n]) %in% paste0(Tet1$allele, "_", Tet1$peptide)){
-    MHCI_tet$Tetramer[n] = Tet1$fraction_entries_positive[which(paste0(Tet1$allele, "_", Tet1$peptide) == paste0(MHCI_tet$Haplotype[n], "_", MHCI_tet$Peptide[n]))]
-  }
-}
-
-MHCI_tet = MHCI_tet[complete.cases(MHCI_tet),]
-colnames(MHCI_tet)[6] = "BA_Score"
-colnames(MHCI_tet)[9] = "EL_Score"
-
-fwrite(MHCI_tet, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/MHCI_tetramer_all_values.txt")
-
-
-###GLM with 5-fold CV
-MHCI_tet = fread( "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/MHCI_tetramer_all_values.txt")
-MHCI_tet$Tetramer = round(MHCI_tet$Tetramer)
-MHCI_tet$Tetramer[which(MHCI_tet$Tetramer == 0)] = "False"
-MHCI_tet$Tetramer[which(MHCI_tet$Tetramer == 1)] = "True"
-
-MHCI_tet$Tetramer = factor(MHCI_tet$Tetramer)
-MHCI_tet$Haplotype = factor(MHCI_tet$Haplotype)
-
-###Try normalizing
-MHCI_tet$Binding_affinity = MHCI_tet$Binding_affinity/50000
-MHCI_tet$BA_Rank = MHCI_tet$BA_Rank/100
-MHCI_tet$EL_Rank = MHCI_tet$EL_Rank/100
-MHCI_tet$Flurry_BA = MHCI_tet$Flurry_BA/50000
-
-set.seed(1)
-folds <- createFolds(factor(MHCI_tet$Haplotype), k = 5, list = FALSE)
-
-
-spec_cutpoint = 0.9
-cutoff = seq(0,1,.001)
-
-#mean_auc = c()
-performance1 = c()
-Score = c()
-FPR_test1 = c()
-
-for(z in 1:5){
-  train = MHCI_tet[folds != z,]
-  test = MHCI_tet[folds == z,]
-  
-  print(table(test$Haplotype))
-  
-  vars=c("BA_Rank","BA_Score","Binding_affinity","EL_Rank","EL_Score","Flurry_BA",
-         "Flurry_pres_score","Flurry_proc_score","Aromatic","Acidic","Basic","Small","Cyclic","Thiol")
-  
-  sig_vars=c()
-  for(v in vars){
-    #print(v)
-    t = data.table(train[,19,with=F], train[,eval(v),with=F])
-    m=glm(Tetramer ~ ., data=t, family=binomial)
-    if(coef(summary(m))[2,4] < 0.05){
-      sig_vars = c(sig_vars, v)
+for(w in window){
+  print(w)
+  Freq_by_window = data.table()
+  count=0
+  p=0
+  for(n in c(7097:8369, 8720:8941, 9245:9663)){
+    #Just a rough % counter to show progress
+    count=count+1
+    if(count >= 1914/100){
+      count=0
+      p = p+1
+      print(paste0("Window ", w, ": ", p, "% done"))
     }
-  }
-  
-  train = data.table(train[,19,with=F], train[,which(colnames(train) %in% sig_vars),with=F])
-  #test = data.table(test[,19,with=F], test[,which(colnames(test) %in% sig_vars),with=F])
-  
-  model = glm(Tetramer ~ .,   # model to fit
-              data = train,
-              family = binomial)
-  #model_step = step(object = model, direction = "backward", trace = F)
-  model_step = model
-  
-  print(model_step$formula)
-  print(sig_vars)
-  
-  ROC=roc(predictor=model_step$fitted.values,train$Tetramer, quiet = T)
-  auc = as.numeric(substr(ROC$auc, nchar(ROC$auc) - 21, nchar(ROC$auc)))
-  
-  performance1 = c(performance1, auc) 
-  
-  Specificity = c()
-  for (n in cutoff){
-    Specificity = c(Specificity,  length(which(train$Tetramer[which(model_step$fitted.values<n)] == "False"))/length(which(train$Tetramer == "False")))
-  }
-  Score = c(Score, cutoff[min(which(Specificity>=spec_cutpoint))])
-  
-  pred = predict(model_step, newdata = test, type = "response")
-  FPR_test1 = c(FPR_test1, length(which((pred > cutoff[min(which(Specificity>=spec_cutpoint))]) & (test$Tetramer == 'False')))/length(which(test$Tetramer == "False")))
-  
-}
-
-performance1
-FPR_test1
-
-
-###Now model on all
-vars=c("BA_Rank","BA_Score","Binding_affinity","EL_Rank","EL_Score","Flurry_BA",
-       "Flurry_pres_score","Flurry_proc_score","Aromatic","Acidic","Basic","Small","Cyclic","Thiol")
-
-sig_vars=c()
-for(v in vars){
-  #print(v)
-  t = data.table(MHCI_tet[,19,with=F], MHCI_tet[,eval(v),with=F])
-  m=glm(Tetramer ~ ., data=t, family=binomial)
-  if(coef(summary(m))[2,4] < 0.05){
-    sig_vars = c(sig_vars, v)
-  }
-}
-
-MHCI_mod = data.table(MHCI_tet[,19,with=F], MHCI_tet[,which(colnames(MHCI_tet) %in% sig_vars),with=F])
-
-model_all  = glm(Tetramer ~  ., # model to fit
-                 data = MHCI_mod,
-                 family = binomial)
-
-####Forward stepwise
-vars=c("Binding_affinity","EL_Score","Flurry_BA",
-       "Flurry_pres_score","Flurry_proc_score","Aromatic","Acidic","Basic","Small","Cyclic","Thiol")
-
-MHCI_mod = data.table(MHCI_tet[,19,with=F], MHCI_tet[,which(colnames(MHCI_tet) %in% vars),with=F])
-
-min.model1 = glm(Tetramer ~ 1, data=MHCI_mod, family = binomial)
-biggest1 <- formula(glm(Tetramer~., data=MHCI_mod, family = binomial))
-fwd.model1 = step(min.model1, direction='forward', scope=biggest1)
-###########
-
-cutoff = seq(0,1,.001)
-
-FDR = c()
-Sensitivity = c()
-Specificity = c()
-PPV = c()
-
-for(n in cutoff){
-  print(n)
-  FDR = c(FDR, length(which(MHCI_tet$Tetramer[which(model_all$fitted.values>=n)] == "False"))/length(which(model_all$fitted.values>=n)))
-  Sensitivity = c(Sensitivity,  length(which(MHCI_tet$Tetramer[which(model_all$fitted.values>=n)] == "True"))/length(which(MHCI_tet$Tetramer == "True")))
-  Specificity = c(Specificity,  length(which(MHCI_tet$Tetramer[which(model_all$fitted.values<n)] == "False"))/length(which(MHCI_tet$Tetramer == "False")))
-  PPV = c(PPV, length(which(MHCI_tet$Tetramer[which(model_all$fitted.values>n)] == "True"))/length(which(model_all$fitted.values>n)))
-}
-
-plot_cutoff = data.table(cutoff, FDR, Sensitivity, Specificity, PPV)
-glm_cutpoint = cutoff[min(which(Specificity >= spec_cutpoint))]
-
-perf1 = ggplot(data=plot_cutoff, aes(x=cutoff, y=Specificity))+
-  geom_point()+
-  theme(text=element_text(face="bold",size=20,colour="black")) +
-  labs(x="GLM score", y= "Specificity", title = "HLA-I epitope model performance\nViral pMHC tetramers in IEDB")+
-  geom_hline(yintercept = c(spec_cutpoint))+
-  geom_vline(xintercept = glm_cutpoint)+
-  annotate("text", label =paste0(spec_cutpoint),y=spec_cutpoint, x=0, vjust=0, hjust=0, size = 10)+
-  annotate("text", label =paste0(glm_cutpoint),y=0, x=glm_cutpoint, vjust=0, hjust=0, angle = 90, size = 10)
-# 
-# ggplot(data=plot_cutoff, aes(x=cutoff, y=PPV))+
-#   geom_point()+
-#   theme(text=element_text(face="bold",size=20,colour="black")) +
-#   labs(x="GLM score", y= "PPV", title = "NetMHCpan v4.0 vs IEDB performance\nAll viral tetramers")
-# 
-
-saveRDS(model_all, paste0("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/MHCI_glm_new.R"))
-saveRDS(fwd.model1, paste0("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/MHCI_glm_forward.R"))
-
-
-####MHCII
-MHCII_tet_9mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCII_tetramer_9mer.xls")
-MHCII_tet_11mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCII_tetramer_11mer.xls")
-MHCII_tet_12mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCII_tetramer_12mer.xls")
-MHCII_tet_13mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCII_tetramer_13mer.xls")
-MHCII_tet_14mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCII_tetramer_14mer.xls")
-MHCII_tet_15mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCII_tetramer_15mer.xls")
-MHCII_tet_16mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCII_tetramer_16mer.xls")
-MHCII_tet_17mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCII_tetramer_17mer.xls")
-MHCII_tet_18mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCII_tetramer_18mer.xls")
-MHCII_tet_19mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCII_tetramer_19mer.xls")
-MHCII_tet_20mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCII_tetramer_20mer.xls")
-MHCII_tet_21mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Tetramer_calls/MHCII_tetramer_21mer.xls")
-MHCII_tet = rbind(MHCII_tet_9mer, MHCII_tet_11mer, MHCII_tet_12mer, MHCII_tet_13mer, MHCII_tet_14mer, MHCII_tet_15mer, MHCII_tet_16mer, MHCII_tet_17mer, 
-                  MHCII_tet_18mer, MHCII_tet_19mer, MHCII_tet_20mer, MHCII_tet_21mer)
-
-MHCII_tet = MHCII_tet[order(MHCII_tet$Peptide),]
-
-MHCII_tet_nM = melt(MHCII_tet, id.vars = 1, measure.vars = c(seq(8,78,5)))
-MHCII_tet_BA_Rank = melt(MHCII_tet, id.vars = 1, measure.vars = c(seq(9,79,5)))
-MHCII_tet_BA_Score = melt(MHCII_tet, id.vars = 1, measure.vars = c(seq(7,77,5)))
-MHCII_tet_EL_Rank = melt(MHCII_tet, id.vars = 1, measure.vars = c(seq(6,76,5)))
-MHCII_tet_EL_Score = melt(MHCII_tet, id.vars = 1, measure.vars = c(seq(5,75,5)))
-
-MHCII_tet_ID = melt(MHCII_tet, id.vars = 3, measure.vars = c(seq(8,78,5)))
-MHCII_tet_Pep = melt(MHCII_tet, id.vars = 2, measure.vars = c(seq(8,78,5)))
-
-MHCII_tet_Start = melt(MHCII_tet, id.vars = 1, measure.vars = c(seq(8,78,5)))
-
-MHCII_tet = data.table(MHCII_tet_ID$ID, MHCII_tet_nM$Pos, MHCII_tet_Pep$Peptide, as.character(MHCII_tet_nM$variable), MHCII_tet_BA_Rank$value, MHCII_tet_BA_Score$value,
-                       MHCII_tet_nM$value, MHCII_tet_EL_Rank$value, MHCII_tet_EL_Score$value)
-colnames(MHCII_tet) = c("ID", "Start", "Peptide", "Haplotype", "BA_Rank", "BA_Score", "Binding_affinity", "EL_Rank", "EL_Score")
-
-
-MHCII_tet$Haplotype = str_replace_all(MHCII_tet$Haplotype, pattern = "DRB1_", replacement = "HLA-DRB1*")
-MHCII_tet$Haplotype = str_replace_all(MHCII_tet$Haplotype, pattern = "HLA-DQA1", replacement = "HLA-DQA1*")
-MHCII_tet$Haplotype = str_replace_all(MHCII_tet$Haplotype, pattern = "-DQB1", replacement = "/DQB1*")
-MHCII_tet$Haplotype = paste0(substr(MHCII_tet$Haplotype, 1, nchar(MHCII_tet$Haplotype)-2),":", substr(MHCII_tet$Haplotype, nchar(MHCII_tet$Haplotype)-1, nchar(MHCII_tet$Haplotype)))
-MHCII_tet$Haplotype[which(substr(MHCII_tet$Haplotype,1,6) == "HLA-DQ")] = paste0(substr(MHCII_tet$Haplotype[which(substr(MHCII_tet$Haplotype,1,6) == "HLA-DQ")] ,1,11),":",
-                                                                                 substr(MHCII_tet$Haplotype[which(substr(MHCII_tet$Haplotype,1,6) == "HLA-DQ")] ,12,
-                                                                                        nchar(MHCII_tet$Haplotype[which(substr(MHCII_tet$Haplotype,1,6) == "HLA-DQ")])))
-
-####Add in AA features
-
-Aromatic = c('F','Y','W')
-Acidic = c('D','E')
-Basic = c('K','R','H')
-Small = c('A','G','S','T','P')
-Cyclic = 'P'
-Thiol = c('C','M')
-
-
-MHCII_tet$Aromatic = NA
-MHCII_tet$Acidic = NA
-MHCII_tet$Basic = NA
-MHCII_tet$Small = NA
-MHCII_tet$Cyclic = NA
-MHCII_tet$Thiol = NA
-
-for(n in 1:nrow(MHCII_tet)){
-  print(n)
-  MHCII_tet$Aromatic[n] = length(which(strsplit(MHCII_tet$Peptide[n], "")[[1]] %in% Aromatic))/nchar(MHCII_tet$Peptide[n])  
-  MHCII_tet$Acidic[n] = length(which(strsplit(MHCII_tet$Peptide[n], "")[[1]] %in% Acidic))/nchar(MHCII_tet$Peptide[n])  
-  MHCII_tet$Basic[n] = length(which(strsplit(MHCII_tet$Peptide[n], "")[[1]] %in% Basic))/nchar(MHCII_tet$Peptide[n])  
-  MHCII_tet$Small[n] = length(which(strsplit(MHCII_tet$Peptide[n], "")[[1]] %in% Small))/nchar(MHCII_tet$Peptide[n])  
-  MHCII_tet$Cyclic[n] = length(which(strsplit(MHCII_tet$Peptide[n], "")[[1]] %in% Cyclic))/nchar(MHCII_tet$Peptide[n])  
-  MHCII_tet$Thiol[n] = length(which(strsplit(MHCII_tet$Peptide[n], "")[[1]] %in% Thiol))/nchar(MHCII_tet$Peptide[n])  
-}
-
-#######Add tetramer data############
-
-MHCII_tet$Tetramer = NA
-for(n in 1:nrow(MHCII_tet)){
-  #print(n)
-  if (paste0(MHCII_tet$Haplotype[n], "_", MHCII_tet$Peptide[n]) %in% paste0(Tet2$allele, "_", Tet2$peptide)){
-    if(length(unique( Tet2$fraction_entries_positive[which(paste0(Tet2$allele, "_", Tet2$peptide) == paste0(MHCII_tet$Haplotype[n], "_", MHCII_tet$Peptide[n]))])) != 1){
-      print(n)
+       
+    if((n >= 7097) & (n <= 8369)){  #Set the protein and positions wrt that protein
+      Protein = "S"
+      Start = n-7096
+      End= Start+w-1
+    }else if((n >= 8720) & (n <= 8941)){
+      Protein = "M"
+      Start = n-8719
+      End= Start+w-1
+    }else if ((n >= 9245) & (n <= 9663)){
+      Protein = "N"
+      Start = n-9244
+      End= Start+w-1
+    }else{
+      Protein = NA
+      Start = NA
+      End = NA
     }
-    MHCII_tet$Tetramer[n] = unique(round(Tet2$fraction_entries_positive[which(paste0(Tet2$allele, "_", Tet2$peptide) == paste0(MHCII_tet$Haplotype[n], "_", MHCII_tet$Peptide[n]))]))
-  }
-}
-
-MHCII_tet = MHCII_tet[complete.cases(MHCII_tet),]
-
-fwrite(MHCII_tet, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/MHCII_tetramer_all_values.txt")
-
-
-###GLM with 5-fold CV
-MHCII_tet = fread( "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/MHCII_tetramer_all_values.txt")
-
-MHCII_tet$Tetramer = round(MHCII_tet$Tetramer)
-MHCII_tet$Tetramer[which(MHCII_tet$Tetramer == 0)] = "False"
-MHCII_tet$Tetramer[which(MHCII_tet$Tetramer == 1)] = "True"
-
-MHCII_tet$Tetramer = factor(MHCII_tet$Tetramer)
-MHCII_tet$Haplotype = factor(MHCII_tet$Haplotype)
-
-
-
-
-###Try normalizing
-MHCII_tet$Binding_affinity = MHCII_tet$Binding_affinity/50000
-MHCII_tet$BA_Rank = MHCII_tet$BA_Rank/100
-MHCII_tet$EL_Rank = MHCII_tet$EL_Rank/100
-
-set.seed(12)
-folds <- createFolds(factor(MHCII_tet$Haplotype), k = 5, list = FALSE)
-
-spec_cutpoint = 0.9
-cutoff = seq(0,1,.001)
-
-#mean_auc = c()
-performance2 = c()
-Score = c()
-FPR_test2 = c()
-
-for(z in 1:5){
-  train = MHCII_tet[folds != z,]
-  test = MHCII_tet[folds == z,]
-  
-  print(table(test$Haplotype))
-  
-  vars=c("BA_Rank","BA_Score","Binding_affinity","EL_Rank","EL_Score","Aromatic","Acidic","Basic","Small","Cyclic","Thiol")
-  
-  sig_vars=c()
-  for(v in vars){
-    #print(v)
-    t = data.table(train[,16,with=F], train[,eval(v),with=F])
-    m=glm(Tetramer ~ ., data=t, family=binomial)
-    if(coef(summary(m))[2,4] < 0.05){
-      sig_vars = c(sig_vars, v)
-    }
+    
+    range = seq(n,n+w-1,1)  #Set the window range
+    sequence = substr(seq$V1,n,n+w-1) #Grab the sequence for that window range
+    
+    #Find all HLA-I/II epitopes that fall within the defined window
+    c1_hits = filt_I_m[which((filt_I_m$Start %in% range)&(filt_I_m$End %in% range))] 
+    c1_murine_b_hits = paste0(c1_hits$all_I.n.[which((c1_hits$Murine == "B") | (c1_hits$Murine == "B/D"))], collapse = ",")
+    c1_murine_d_hits = paste0(c1_hits$all_I.n.[which((c1_hits$Murine == "D") | (c1_hits$Murine == "B/D"))], collapse = ",")
+    
+    c2_hits = filt_II_m[which((filt_II_m$Start %in% range)&(filt_II_m$End %in% range))]
+    c2_murine_b_hits = paste0(c2_hits$all_II.n.[which((c2_hits$Murine == "B") | (c2_hits$Murine == "B/D"))], collapse = ",")
+    c2_murine_d_hits = paste0(c2_hits$all_II.n.[which((c2_hits$Murine == "D") | (c2_hits$Murine == "B/D"))], collapse = ",")
+    
+    #Grab their haplotypes and pop. freq. (post-GLM filter)
+    c1_haps = unique(unlist(strsplit(c1_hits$Immunogenic_haplotypes,",")))
+    c1_freq=1-prod(1-(rep(Freq$US[which(Freq$Haplotype %in% c1_haps)]/100,2)))
+    c2_haps = unique(unlist(strsplit(c2_hits$Immunogenic_haplotypes,",")))
+    c2_freq=1-prod(1-(rep(Freq$US[which(Freq$Haplotype %in% c2_haps)]/100,2)))
+    
+    #Total pop. freq.
+    co_freq = c1_freq*c2_freq
+    
+    Freq_by_window = rbind(Freq_by_window, data.table(sequence, Protein, Start, End, 
+                                                      paste0(c1_hits$all_I.n., collapse = ","), paste(c1_haps, collapse = ","), c1_freq,
+                                                      paste0(c2_hits$all_II.n., collapse = ","), paste(c2_haps, collapse = ","), c2_freq,
+                                                      c1_murine_b_hits, c1_murine_d_hits, c2_murine_b_hits, c2_murine_d_hits))
+    
   }
   
-  train = data.table(train[,16,with=F], train[,which(colnames(train) %in% sig_vars),with=F])
-  #test = data.table(test[,16,with=F], test[,which(colnames(test) %in% sig_vars),with=F])
+  colnames(Freq_by_window) = c("Sequence","Protein","Start", "End", "HLA-I_peptides", "HLA-I_haplotypes", "HLA-I_pop_freq", 
+                               "HLA-II_peptides", "HLA-II_haplotypes", "HLA-II_pop_freq", "Mouse MHC-I b", "Mouse MHC-I d",
+                               "Mouse MHC-II b", "Mouse MHC-II d")
+  Freq_by_window$Total_frequency = Freq_by_window$`HLA-I_pop_freq` *  Freq_by_window$`HLA-II_pop_freq` 
   
+  #Remove non-S/M/N entries
+  #Freq_by_window = Freq_by_window[which(!is.na(Protein)),]
   
-  model = glm(Tetramer ~ .,   # model to fit
-              data = train,
-              family = binomial)
-  #model_step = step(object = model, direction = "backward", trace = F)
-  model_step = model
-  #print(model_step$formula)
-  print(sig_vars)
-  
-  ROC=roc(predictor=model_step$fitted.values,train$Tetramer, quiet = T)
-  auc = as.numeric(substr(ROC$auc, nchar(ROC$auc) - 21, nchar(ROC$auc)))
-  
-  performance2 = c(performance2, auc) 
-  
-  Specificity = c()
-  for (n in cutoff){
-    Specificity = c(Specificity,  length(which(train$Tetramer[which(model_step$fitted.values<n)] == "False"))/length(which(train$Tetramer == "False")))
-  }
-  Score = c(Score, cutoff[min(which(Specificity>=spec_cutpoint))])
-  
-  pred = predict(model_step, newdata = test, type = "response")
-  FPR_test2 = c(FPR_test2, length(which((pred > cutoff[min(which(Specificity>=spec_cutpoint))]) & (test$Tetramer == 'False')))/length(which(test$Tetramer == "False")))
-  
+  assign(paste0("Window_", w, "mer"), Freq_by_window)
 }
 
-performance2
-FPR_test2
+fwrite(Window_15mer, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Window_15mer.txt")
+fwrite(Window_21mer, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Window_21mer.txt")
+fwrite(Window_27mer, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Window_27mer.txt")
 
 
-######Generating full model
-vars=c("BA_Rank","BA_Score","Binding_affinity","EL_Rank","EL_Score","Aromatic","Acidic","Basic","Small","Cyclic","Thiol")
-
-sig_vars=c()
-for(v in vars){
-  print(v)
-  t = data.table(MHCII_tet[,16,with=F], MHCII_tet[,eval(v),with=F])
-  m=glm(Tetramer ~ ., data=t, family=binomial)
-  if(coef(summary(m))[2,4] < 0.05){
-    sig_vars = c(sig_vars, v)
-  }
-}
-
-MHCII_mod = data.table(MHCII_tet[,16,with=F], MHCII_tet[,which(colnames(MHCII_tet) %in% sig_vars),with=F])
-
-model_all2  = glm(Tetramer ~  ., # model to fit
-                  data = MHCII_mod,
-                  family = binomial)
-
-####Forward stepwise
-vars=c("Binding_affinity","EL_Score","Aromatic","Acidic","Basic","Small","Cyclic","Thiol")
-
-MHCII_mod = data.table(MHCII_tet[,16,with=F], MHCII_tet[,which(colnames(MHCII_tet) %in% vars),with=F])
-
-min.model = glm(Tetramer ~ 1, data=MHCII_mod, family = binomial)
-biggest <- formula(glm(Tetramer~., data=MHCII_mod, family = binomial))
-fwd.model = step(min.model, direction='forward', scope=biggest)
-###########
-
-cutoff = seq(0,1,.001)
-
-FDR = c()
-Sensitivity = c()
-Specificity = c()
-PPV=c()
-for(n in cutoff){
-  print(n)
-  FDR = c(FDR, length(which(MHCII_tet$Tetramer[which(model_all2$fitted.values>=n)] == "False"))/length(which(model_all2$fitted.values>=n)))
-  Sensitivity = c(Sensitivity,  length(which(MHCII_tet$Tetramer[which(model_all2$fitted.values>=n)] == "True"))/length(which(MHCII_tet$Tetramer == "True")))
-  Specificity = c(Specificity,  length(which(MHCII_tet$Tetramer[which(model_all2$fitted.values<n)] == "False"))/length(which(MHCII_tet$Tetramer == "False")))
-  PPV = c(PPV, length(which(MHCI_tet$Tetramer[which(model_all2$fitted.values>n)] == "True"))/length(which(model_all2$fitted.values>n)))
-  
-}
-
-plot_cutoff = data.table(cutoff, FDR, Sensitivity, Specificity,PPV)
-glm_cutpoint = cutoff[min(which(Specificity >= spec_cutpoint))]
-
-perf2 = ggplot(data=plot_cutoff, aes(x=cutoff, y=Specificity))+
-  geom_point()+
-  theme(text=element_text(face="bold",size=20,colour="black")) +
-  labs(x="GLM score", y= "Specificity", title ="HLA-II epitope model performance\nViral pMHC tetramers in IEDB")+
-  geom_hline(yintercept = c(spec_cutpoint))+
-  geom_vline(xintercept = glm_cutpoint)+
-  annotate("text", label =paste0(spec_cutpoint),y=spec_cutpoint, x=0, vjust=0, hjust=0, size = 10)+
-  annotate("text", label =paste0(glm_cutpoint),y=0, x=glm_cutpoint, vjust=0, hjust=0, angle = 90, size = 10)
-#geom_smooth(method = "lm", formula = y~exp(x))
-
+# ###Plotting population frequency for each window
 # 
-# ggplot(data=plot_cutoff, aes(x=cutoff, y=PPV))+
-#   geom_point()+
-#   theme(text=element_text(face="bold",size=20,colour="black")) +
-#   labs(x="GLM score", y= "PPV", title = "IEDB model performance\nAll viral tetramers")
+# p15mer = ggplot(data=Window_15mer)+
+#   geom_point(aes(x=Start, y=Total_frequency), color = "purple")+
+#   geom_point(aes(x=Start, y=`HLA-I_pop_freq`), color = "red")+
+#   geom_point(aes(x=Start, y=`HLA-II_pop_freq`), color = "blue")+
+#   scale_y_continuous(limits = c(0,1))+
+#   scale_x_continuous(limits = c(7095,9717))+
+#   labs(x = "", y = "Frequency", title = "15mer window")
+# 
+# p21mer = ggplot(data=Window_21mer)+
+#   geom_point(aes(x=Start, y=Total_frequency), color = "purple")+
+#   geom_point(aes(x=Start, y=`HLA-I_pop_freq`), color = "red")+
+#   geom_point(aes(x=Start, y=`HLA-II_pop_freq`), color = "blue")+
+#   scale_y_continuous(limits = c(0,1))+
+#   scale_x_continuous(limits = c(7095,9717))+
+#   labs(x = "", y = "Frequency", title = "21mer window")
+# 
+# p27mer = ggplot(data=Window_27mer)+
+#   geom_point(aes(x=Start, y=Total_frequency), color = "purple")+
+#   geom_point(aes(x=Start, y=`HLA-I_pop_freq`), color = "red")+
+#   geom_point(aes(x=Start, y=`HLA-II_pop_freq`), color = "blue")+
+#   scale_y_continuous(limits = c(0,1))+
+#   scale_x_continuous(limits = c(7095,9717))+
+#   labs(x = "", y = "Frequency", title = "27mer window")
+# 
+# grid.arrange(p15mer, p21mer, p27mer, nrow=3, ncol=1)
+# 
+# 
+# ##Plotting number of epitopes per each window
+# 
+# Window_15mer$Num_c1 = sapply(strsplit(Window_15mer$`HLA-I_peptides`,","), length)
+# Window_15mer$Num_c2 = sapply(strsplit(Window_15mer$`HLA-II_peptides`,","), length)
+# 
+# Window_21mer$Num_c1 = sapply(strsplit(Window_21mer$`HLA-I_peptides`,","), length)
+# Window_21mer$Num_c2 = sapply(strsplit(Window_21mer$`HLA-II_peptides`,","), length)
+# 
+# Window_27mer$Num_c1 = sapply(strsplit(Window_27mer$`HLA-I_peptides`,","), length)
+# Window_27mer$Num_c2 = sapply(strsplit(Window_27mer$`HLA-II_peptides`,","), length)
+# 
+# p15mer_count = ggplot(data=Window_15mer)+
+#   geom_point(aes(x=Start, y=Num_c1), color = "red", alpha = .3)+
+#   geom_point(aes(x=Start, y=Num_c2), color = "blue", alpha = .3)+
+#   scale_y_continuous(limits = c(0,15))+  scale_x_continuous(limits = c(7096,9717))+
+#   labs(x = "", y = "Count", title = "15mer window")
+# 
+# p21mer_count = ggplot(data=Window_21mer)+
+#   geom_point(aes(x=Start, y=Num_c1), color = "red", alpha = .3)+
+#   geom_point(aes(x=Start, y=Num_c2), color = "blue", alpha = .3)+
+#   scale_y_continuous(limits = c(0,15))+  scale_x_continuous(limits = c(7096,9717))+
+#   labs(x = "", y = "Count", title = "21mer window")
+# 
+# p27mer_count = ggplot(data=Window_27mer)+
+#   geom_point(aes(x=Start, y=Num_c1), color = "red", alpha = .3)+
+#   geom_point(aes(x=Start, y=Num_c2), color = "blue", alpha = .3)+
+#   scale_y_continuous(limits = c(0,15))+  scale_x_continuous(limits = c(7096,9717))+
+#   labs(x = "", y = "Count", title = "27mer window")
+# 
+# grid.arrange(p15mer_count, p21mer_count, p27mer_count, nrow=3, ncol=1)
+# 
+# 
+# ######Selecting N peptides for Ting lab
+# 
+# #B haplotype (ran window caller on 27mers with B coverage)
+# S_filt = Window_27mer[which((Window_27mer$Protein == "S") & (Window_27mer$Total_frequency > .25))] #B filter 25%
+# S_plot=ggplot(S_filt)+
+#   geom_segment(aes(x = Start, xend = End, y=0, yend=0))+
+#   geom_point(aes(x= Start, y = Total_frequency)) +
+#   labs(y="Population frequency", x="S protein coordinate")
+# 
+# M_filt = Window_27mer[which((Window_27mer$Protein == "M") & (Window_27mer$Total_frequency > .25))] #B filter 25%
+# M_plot=ggplot(M_filt)+
+#   geom_segment(aes(x = Start, xend = End, y=0, yend=0))+
+#   geom_point(aes(x= Start, y = Total_frequency)) +
+#   labs(y="Population frequency", x="M protein coordinate")
+# 
+# N_filt = Window_27mer[which((Window_27mer$Protein == "N") & (Window_27mer$Total_frequency > .06))] #B filter 6%
+# N_plot=ggplot(N_filt)+
+#   geom_segment(aes(x = Start, xend = End, y=0, yend=0))+
+#   geom_point(aes(x= Start, y = Total_frequency)) +
+#   labs(y="Population frequency", x="N protein coordinate")
+# 
+# grid.arrange(S_plot, M_plot, N_plot, nrow = 3, ncol = 1)
+# 
+# S_sub = S_filt[c(1, 10, 20, 34), ]
+# M_sub = M_filt[c(1, 17, 25, 37), ]
+# N_sub = N_filt[c(5, 13, 26, 48), ]
+# All_sub = rbind(S_sub, M_sub, N_sub)
+# 
+# hla_I = unique(c(unlist(strsplit(S_sub$`HLA-I_haplotypes`,",")),
+#                  unlist(strsplit(M_sub$`HLA-I_haplotypes`,",")),
+#                  unlist(strsplit(N_sub$`HLA-I_haplotypes`,","))))
+# hla_II = unique(c(unlist(strsplit(S_sub$`HLA-II_haplotypes`,",")),
+#                  unlist(strsplit(M_sub$`HLA-II_haplotypes`,",")),
+#                  unlist(strsplit(N_sub$`HLA-II_haplotypes`,","))))
+# 
+# hla_I_freq = 1-prod(1-(rep(Freq$US[which(Freq$Haplotype %in% hla_I)]/100,2)))
+# hla_II_freq = 1-prod(1-(rep(Freq$US[which(Freq$Haplotype %in% hla_II)]/100,2)))
+# 
+# fwrite(All_sub, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/H2b_SARS-CoV-2_27mers.txt")
 
-saveRDS(model_all2, paste0("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/MHCII_glm_new.R"))
-saveRDS(fwd.model, paste0("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/MHCII_glm_forward.R"))
+
+# ############Bc MHCII overlap########################
+# 
+# #Alex's B cell epitope data, post filtering
+# bc = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/bcell/accessible-linear-bcell-epitopes-grouped-merged-filtered.csv")
+# 
+# Tc_match = data.table()
+# All_tc_match = data.table()
+# for (b in 1:nrow(bc)){
+#   bc_start = bc$accessible_subsequence_start[b]
+#   bc_end = bc$accessible_subsequence_end[b]
+#   
+#   ##Epitope 1 is longer than 15AA, so this "if" statement was added
+#   if(bc$accessible_subsequence_length[b] <= 15){
+#       total_15mers = Window_15mer[which((Window_15mer$Start <= bc_start)&(Window_15mer$End >= bc_end))] #Find Tc epitope windows that encompase the Bc epitope
+#       max_15mer = total_15mers[which(total_15mers$`HLA-II_pop_freq` == max(total_15mers$`HLA-II_pop_freq`)),] #Grab the window with highest HLA-II pop freq
+#       max_15mer$B_cell_epitope = bc$accessible_subsequence[b] #Get Bc epitope sequence
+#       max_15mer$Peptide_length = 15 #Define length
+#       
+#   }else{
+#     max_15mers = data.table()
+#   }
+#   
+#   total_21mers = Window_21mer[which((Window_21mer$Start <= bc_start)&(Window_21mer$End >= bc_end))]
+#   max_21mer = total_21mers[which(total_21mers$`HLA-II_pop_freq` == max(total_21mers$`HLA-II_pop_freq`)),]
+#   max_21mer$B_cell_epitope = bc$accessible_subsequence[b]
+#   max_21mer$Peptide_length = 21
+#   
+#   total_27mers = Window_27mer[which((Window_27mer$Start <= bc_start)&(Window_27mer$End >= bc_end))]
+#   max_27mer = total_27mers[which(total_27mers$`HLA-II_pop_freq` == max(total_27mers$`HLA-II_pop_freq`)),]
+#   max_27mer$B_cell_epitope = bc$accessible_subsequence[b]
+#   max_27mer$Peptide_length = 27
+#   
+#   Tc_match = rbind(Tc_match, max_15mers, max_21mer, max_27mer)
+#   All_tc_match = rbind(All_tc_match, total_15mers, total_21mers, total_27mers)
+# }
+# 
+# #Reorder
+# Tc_match = Tc_match[,c(12,13,1,2,3,4,5,6,7,8,9)]
+# 
+# fwrite(Tc_match, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Bc_epitopes_HLA_overlap.txt")
+# 
+# 
+
+######Read back in Alex's rankings, make fig 5 tables#############
+library(huxtable)
+
+#Human only 27mer
+CD4_h_27 = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/vaccine-peptides/selected-tcell-cd4-27mer.csv")
+CD8_h_27 = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/vaccine-peptides/selected-tcell-cd8-27mer.csv")
+CD4_CD8_h_27 = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/vaccine-peptides/selected-tcell-cd4-cd8-27mer.csv")
+Bc_h_27 = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/vaccine-peptides/selected-bcell-vaccine-27mer.csv")
+
+#Check pop freq#
+1-prod(1-(rep(Freq$US[which(Freq$Haplotype %in% unique(unlist(strsplit(Bc_h_27$`HLA-II_haplotypes`,','))))]/100,2)))
+#
+
+total_h = rbind(cbind("CD4 optimized", CD4_h_27[,c(1,2,3,7,10)], NA),
+                cbind("CD8 optimized", CD8_h_27[,c(1,2,3,7,10)], NA),
+                cbind("CD4/CD8 optimized", CD4_CD8_h_27[,c(1,2,3,7,10)], NA),
+                cbind("B cell optimized", Bc_h_27[,c(1,2,3,7,10,35)]), use.names=F)
+total_h$`HLA-I_pop_freq` = paste0(round(total_h$`HLA-I_pop_freq`,3) * 100, "%")
+total_h$`HLA-II_pop_freq` = paste0(round(total_h$`HLA-II_pop_freq`,3) * 100, "%")
+colnames(total_h)[c(1,7)] = c("Set", "B cell epitope")
+colnames(total_h)[c(5,6)] = c("HLA I frequency", "HLA II frequency")
+#total_h$`HLA-I_peptides` = str_replace_all(total_h$`HLA-I_peptides`, ",", ", ")
+#total_h$`HLA-II_peptides` = str_replace_all(total_h$`HLA-II_peptides`, ",", ", ")
 
 
-###Add in GLM scores from tetramer analysis
-MHCI_glm = readRDS("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/MHCI_glm_forward.R")
-MHCII_glm = readRDS("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/MHCII_glm_forward.R")
+ht <- hux(
+  total_h,
+  add_colnames = TRUE
+)
+bold(ht) = TRUE
+
+ht = ht %>% set_background_color(row = c(2:4), col = c(1:7), alpha("blue", .5)) %>%
+  set_background_color(row = c(5:8), col = c(1:7), alpha("red", .5)) %>%
+  set_background_color(row = c(9:12), col = c(1:7), alpha("purple", .5)) %>%
+  set_background_color(row = c(13:18), col = c(1:7), alpha("green", .5)) %>%
+  set_background_color(row = 1, col = c(1:7), "grey95") %>% set_all_borders(row = c(1:18), col = c(1:7), 1) %>%
+        set_outer_borders(0.4) #%>% map_background_color(by_rows("grey95", "white"))
+#theme_plain(ht)
+
+quick_pptx(ht, file = "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/vaccine-peptides/human_27mers.pptx")
 
 
-Net_BA =  fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_standardized_BA.txt")
-Net_EL= fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCpan_standardized_all_EL.txt")
-Flurry = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/MHCflurry_standardized_all.txt")
+#Murine b/d 27er
+CD4_bd_27 = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/vaccine-peptides/selected-tcell-cd4-h2b-h2d-27mer.csv")
+CD8_bd_27 = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/vaccine-peptides/selected-tcell-cd8-h2b-h2d-27mer.csv")
+CD4_CD8_bd_27 = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/vaccine-peptides/selected-tcell-cd4-cd8-h2b-h2d-27mer.csv")
+Bc_bd_27 = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/vaccine-peptides/selected-bcell-vaccine-27mer.csv")
 
-Net_BA = Net_BA[order(Net_BA$Haplotype),]
-Net_BA = Net_BA[order(Net_BA$Peptide),]
-Net_EL = Net_EL[order(Net_EL$Haplotype),]
-Net_EL = Net_EL[order(Net_EL$Peptide),]
-Flurry = Flurry[order(Flurry$Haplotype),]
-Flurry = Flurry[order(Flurry$Peptide),]
+#Check pop freq#
+1-prod(1-(rep(Freq$US[which(Freq$Haplotype %in% unique(unlist(strsplit(Bc_bd_27$`HLA-I_haplotypes`,','))))]/100,2)))
+1-prod(1-(rep(Freq$US[which(Freq$Haplotype %in% unique(unlist(strsplit(Bc_bd_27$`HLA-II_haplotypes`,','))))]/100,2)))
+prod(1-prod(1-(rep(Freq$US[which(Freq$Haplotype %in% unique(unlist(strsplit(CD4_CD8_bd_27$`HLA-I_haplotypes`,','))))]/100,2))), 
+     1-prod(1-(rep(Freq$US[which(Freq$Haplotype %in% unique(unlist(strsplit(CD4_CD8_bd_27$`HLA-II_haplotypes`,','))))]/100,2))))
+#
 
-Net_combined = cbind(Net_BA, Net_EL[,c(5:6)], Flurry[,c(5,7:9)])
-colnames(Net_combined)[5:13] = c("BA_Rank", "BA_Score", "Binding_affinity", "EL_Rank", "EL_Score", "Flurry_Rank", "Flurry_BA", "Flurry_proc_score", "Flurry_pres_score")
-Net_combined$BA_Rank = Net_combined$BA_Rank/100
-Net_combined$Binding_affinity = Net_combined$Binding_affinity/50000
-Net_combined$EL_Rank = Net_combined$EL_Rank/100
-Net_combined$Flurry_Rank = Net_combined$Flurry_Rank/100
-Net_combined$Flurry_BA = Net_combined$Flurry_BA/50000
+total_bd = rbind(cbind("CD4 optimized", CD4_bd_27[,c(1,2,3,7,10)], NA),
+                cbind("CD8 optimized", CD8_bd_27[,c(1,2,3,7,10)], NA),
+                cbind("CD4/CD8 optimized", CD4_CD8_bd_27[,c(1,2,3,7,10)], NA),
+                cbind("B cell optimized", Bc_bd_27[,c(1,2,3,7,10,35)]), use.names=F)
+total_bd$`HLA-I_pop_freq` = paste0(round(total_bd$`HLA-I_pop_freq`,3) * 100, "%")
+total_bd$`HLA-II_pop_freq` = paste0(round(total_bd$`HLA-II_pop_freq`,3) * 100, "%")
+colnames(total_bd)[c(1,7)] = c("Set", "B cell epitope")
+colnames(total_bd)[c(5,6)] = c("HLA I frequency", "HLA II frequency")
+#total_h$`HLA-I_peptides` = str_replace_all(total_h$`HLA-I_peptides`, ",", ", ")
+#total_h$`HLA-II_peptides` = str_replace_all(total_h$`HLA-II_peptides`, ",", ", ")
 
-###Add peptide info
-features =list(Aromatic = c('F','Y','W'),
-               Acidic = c('D','E'),
-               Basic = c('K','R','H'),
-               Small = c('A','G','S','T','P'),
-               Cyclic = c('P'),
-               Thiol = c('C','M'))
 
-feature_tab = data.table()
+ht_m <- hux(
+  total_bd,
+  add_colnames = TRUE
+)
+bold(ht_m) = TRUE
 
-for(f in features){
-  print(f)
-  temp_list = data.table()
-  for(n in 1:length(f)){
-    print(n)
-    temp_list = cbind(temp_list, c(str_count(Net_combined$Peptide, pattern = f[n])))
-  }
-  hits = rowSums(temp_list)/nchar(Net_combined$Peptide)
-  feature_tab = cbind(feature_tab, hits)
+ht_m = ht_m %>% set_background_color(row = c(2:3), col = c(1:7), alpha("blue", .5)) %>%
+  set_background_color(row = c(4:7), col = c(1:7), alpha("red", .5)) %>%
+  set_background_color(row = c(8:10), col = c(1:7), alpha("purple", .5)) %>%
+  set_background_color(row = c(11:16), col = c(1:7), alpha("green", .5)) %>%
+  set_background_color(row = 1, col = c(1:7), "grey95") %>% set_all_borders(row = c(1:16), col = c(1:7), 1) %>%
+  set_outer_borders(0.4) #%>% map_background_color(by_rows("grey95", "white"))
+#theme_plain(ht)
+
+quick_pptx(ht_m, file = "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/vaccine-peptides/murine_27mers.pptx")
+
+
+
+
+
+
+##############ELISpot analysis -- not for current manuscript, can ignore for now####################
+####################################################################################################
+
+el1 = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/ELISpot/051120_COVID_ELISpot.txt")
+el1$Mean_count = NA
+el1$Mean_intensity= NA
+
+for (n in 1:nrow(el1)){
+  el1$Mean_count[n] = sum(el1$Count_1[n], el1$Count_2[n], el1$Count_3[n])/3
+  el1$Mean_intensity[n] = sum(el1$Intensity_1[n], el1$Intensity_2[n], el1$Intensity_3[n])/3
 }
-colnames(feature_tab) = c("Aromatic", "Acidic", "Basic", "Small", "Cyclic", "Thiol")
 
-Net_combined = cbind(Net_combined, feature_tab)
+#Remove m11 -- failed positive control
+el1 = el1[which(el1$Sample != "M11"),]
 
-#####Run model, write out
+el1_neg = el1[which(el1$Peptide == "Negative"),]
+el1_pos = el1[which(el1$Peptide == "Positive"),]
+el1 = el1[which(el1$Peptide %ni% c("Positive", "Negative")),]
 
-Net_combined$GLM_score = predict(MHCI_glm, newdata = Net_combined, type = "response")
-Net_combined$Predicted_tetramer = ifelse(Net_combined$GLM_score >= .5, "True", "False")
-
-fwrite(Net_combined, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/HLAI_all_glm.txt")
-
-##########MHCII############
-Netii_3 = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCIIpan_standardized_all_BA.txt")
-Netii_4 = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/NetMHCIIpan4.0_standardized_all_BA.txt")
-
-Netii_3 = Netii_3[order(Netii_3$Haplotype),]
-Netii_3 = Netii_3[order(Netii_3$Peptide),]
-Netii_4 = Netii_4[order(Netii_4$Haplotype),]
-Netii_4 = Netii_4[order(Netii_4$Peptide),]
-
-Netii_all = cbind(Netii_3, Netii_4[,c(5:9)])
-colnames(Netii_all)[5:7] = c("v3.2_Rank", "v3.2_Score", "v3.2_Binding_affinity")
-
-Netii_all$BA_Rank = Netii_all$BA_Rank/100
-Netii_all$Binding_affinity = Netii_all$Binding_affinity/50000
-Netii_all$EL_Rank = Netii_all$EL_Rank/100
-
-
-###Add peptide info
-features =list(Aromatic = c('F','Y','W'),
-               Acidic = c('D','E'),
-               Basic = c('K','R','H'),
-               Small = c('A','G','S','T','P'),
-               Cyclic = c('P'),
-               Thiol = c('C','M'))
-
-feature_tab = data.table()
-
-for(f in features){
-  print(f)
-  temp_list = data.table()
-  for(n in 1:length(f)){
-    print(n)
-    temp_list = cbind(temp_list, c(str_count(Netii_all$Peptide, pattern = f[n])))
-  }
-  hits = rowSums(temp_list)/nchar(Netii_all$Peptide)
-  feature_tab = cbind(feature_tab, hits)
+for(n in 1:nrow(el1)){
+  el1$Mean_count[n] = el1$Mean_count[n] - el1_neg$Mean_count[which(el1_neg$Sample == el1$Sample[n])]
+  el1$Mean_intensity[n] = el1$Mean_intensity[n] - el1_neg$Mean_intensity[which(el1_neg$Sample == el1$Sample[n])]
 }
-colnames(feature_tab) = c("Aromatic", "Acidic", "Basic", "Small", "Cyclic", "Thiol")
-
-Netii_all = cbind(Netii_all, feature_tab)
-
-#####Run model, write out
-
-Netii_all$GLM_score = predict(MHCII_glm, newdata = Netii_all, type = "response")
-Netii_all$Predicted_tetramer = ifelse(Netii_all$GLM_score >= .5, "True", "False")
-
-fwrite(Netii_all, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/HLAII_all_glm.txt")
 
 
+el1$Group = ifelse(substr(el1$Sample,1,1) == "C", "PBS", "Peptide")
+el1$Adjuvant = ifelse((substr(el1$Sample,1,1) == "C"), "None", ifelse(substr(el1$Sample,2, nchar(el1$Sample)) %in% c(1,2,3,4,5,6), "MQ", "PM")) 
+el1$Adjuvant = factor(el1$Adjuvant, levels = c("None", "MQ", "PM"))
 
-###################Figure S2 Check distributions##################
+#wilcox_counts = c()
+#wilcox_intensity = c()
+t_counts_1_2 = c()
+t_counts_1_3 = c()
+t_counts_2_3 = c()
+t_int_1_2 = c()
+t_int_1_3 = c()
+t_int_2_3 = c()
 
-###S2A/B
+for(p in unique(el1$Peptide)){
+  None_count = as.numeric(el1$Mean_count[which((el1$Peptide == p)&(el1$Adjuvant == "None"))])
+  MQ_count = as.numeric(el1$Mean_count[which((el1$Peptide == p)&(el1$Adjuvant == "MQ"))])
+  PM_count = as.numeric(el1$Mean_count[which((el1$Peptide == p)&(el1$Adjuvant == "PM"))])
+  
+  #wilcox_counts = c(wilcox_counts, wilcox.test(Pep_count, Control_count)$p.value)
+  t_counts_1_2 = c(t_counts_1_2, t.test(None_count, MQ_count, var.equal = F)$p.value)
+  t_counts_1_3 = c(t_counts_1_3, t.test(None_count, PM_count, var.equal = F)$p.value)
+  t_counts_2_3 = c(t_counts_2_3, t.test(MQ_count, PM_count, var.equal = F)$p.value)
+  
+  None_int = as.numeric(el1$Mean_intensity[which((el1$Peptide == p)&(el1$Adjuvant == "None"))])
+  MQ_int = as.numeric(el1$Mean_intensity[which((el1$Peptide == p)&(el1$Adjuvant == "MQ"))])
+  PM_int = as.numeric(el1$Mean_intensity[which((el1$Peptide == p)&(el1$Adjuvant == "PM"))])
+  
+  #wilcox_ints = c(wilcox_ints, wilcox.test(Pep_int, Control_int)$p.value)
+  t_int_1_2 = c(t_int_1_2, t.test(None_int, MQ_int, var.equal = F)$p.value)
+  t_int_1_3 = c(t_int_1_3, t.test(None_int, PM_int, var.equal = F)$p.value)
+  t_int_2_3 = c(t_int_2_3, t.test(MQ_int, PM_int, var.equal = F)$p.value)
+  
+}
 
-grid.arrange(perf1, perf2, nrow=1, ncol=2)
-
-#S2 C/D
-plot = data.table(MHCI_tet$Tetramer, MHCI_glm$fitted.values)
-h1=ggplot(data=plot)+
-  geom_histogram(aes(x = V2, fill = V1), alpha=.5,bins = 50, position="dodge")+
-  geom_vline(xintercept = .697)+
-  annotate("text", label = ".697", x=.697, y=20, vjust=0, hjust=0, angle = 90, size = 10)+
-  scale_fill_manual(values = c("blue","red"), name = "Tetramer\npositive")+
+el_count = ggplot(data = el1, aes(x= Peptide, y = Mean_count, color = Adjuvant, shape = Adjuvant)) +
+  stat_boxplot(outlier.shape = NA, alpha = 0.7)+
+  geom_point(position=position_jitterdodge(), size = 4) +
+  annotate("text", x = c(1,2,3,4,5,"M"), y = rep(23,6),
+           label = paste0("None vs MQ: ", round(t_counts_1_2, 3),
+                          "\nNone vs PM: ", round(t_counts_1_3, 3),
+                          "\nMQ vs PM: ", round(t_counts_2_3, 3)))+
   theme(text=element_text(face="bold",size=20,colour="black")) +
-  labs(x= "GLM score", y="Count", title = "IEDB HLA-I")
+  labs(x = "", y = "Mean number of spots (n = 3)") 
 
-
-plot2 = data.table(MHCII_tet$Tetramer, MHCII_glm$fitted.values)
-h2=ggplot(data=plot2)+
-  geom_histogram(aes(x = V2, fill = V1), alpha=.5,bins = 50, position="dodge")+
-  geom_vline(xintercept = .768)+
-  annotate("text", label = ".768", x=.768, y=250, vjust=0, hjust=0, angle = 90, size = 10)+
-  scale_fill_manual(values = c("blue","red"), name = "Tetramer\npositive")+
+el_int = ggplot(data = el1, aes(x= Peptide, y = Mean_intensity, color = Adjuvant, shape = Adjuvant)) +
+  stat_boxplot(outlier.shape = NA, alpha = 0.7)+
+  geom_point(position=position_jitterdodge(), size = 4) +
+  annotate("text", x = c(1,2,3,4,5,"M"), y = rep(760,6),
+           label = paste0("None vs MQ: ", round(t_int_1_2, 3),
+                          "\nNone vs PM: ", round(t_int_1_3, 3),
+                          "\nMQ vs PM: ", round(t_int_2_3, 3)))+
   theme(text=element_text(face="bold",size=20,colour="black")) +
-  labs(x= "GLM score", y="Count", title = "IEDB HLA-II")
+  labs(x = "", y = "Mean well intensity (n = 3)")
 
-grid.arrange(h1, h2, nrow=1, ncol=2)
-
-#S2 E/F
-
-auc_mat = data.table(c(performance1, performance2), c(rep("HLA-I", 5), rep("HLA-II", 5)))
-ggplot(data = auc_mat)+
-  geom_boxplot(aes(y=V1, x=V2, color = V2), show.legend = F)+
-  geom_jitter(aes(y=V1, x=V2, color = V2), show.legend = F)+
-  scale_y_continuous(limits = c(.5,1))+
-  labs(x="", y="AUC")
-
-#S2.1 A/B
-Net_combined = fread( "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/HLAI_all_glm.txt")
-Netii_all = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/HLAII_all_glm.txt")
-
-SARS_comb = cbind(data.table(c(rep("HLA-I", nrow(Net_combined)), rep("HLA-II", nrow(Netii_all)))),
-                  data.table(c(Net_combined$GLM_score, Netii_all$GLM_score)))
-colnames(SARS_comb) = c("HLA", "GLM_score")
-ggplot(data=SARS_comb)+
-  geom_histogram(aes(x = GLM_score, fill = HLA), alpha=.5,bins = 50, position = "dodge")+
-  geom_vline(xintercept = .5, color = "blue")+
-  annotate("text", label= paste0(100*round(length(which(Net_combined$Predicted_tetramer==T))/nrow(Net_combined), digits = 3), "% positive"),
-           x=.5, y=35000, vjust=0, hjust=0, angle = 90, size = 10, color = "blue")+
-  #geom_vline(xintercept = .768, color = "red")+
-  annotate("text", label = paste0(100*round(length(which(Netii_all$Predicted_tetramer==T))/nrow(Netii_all), digits = 3), "% positive"),
-           x=.6, y=35000, vjust=0, hjust=0, angle = 90, size = 10, color = "red")+
-  scale_fill_manual(values = c("blue","red"), name = "")+
-  theme(text=element_text(face="bold",size=20,colour="black")) +
-  labs(x= "GLM score", y="Count", title = "SARS-CoV-2 predicted epitopes")
+grid.arrange(el_count, el_int, nrow = 2, ncol = 1)
 
 
-##Post nM filter
-
-##Filter by tetramer models
-Net_combined_filt = Net_combined[which((Net_combined$Binding_affinity*50000)<393.4),]
-Netii_all_filt = Netii_all[which((Netii_all$v3.2_Binding_affinity)<220),]
 
 
-SARS_comb_filt = cbind(data.table(c(rep("HLA-I", nrow(Net_combined_filt)), rep("HLA-II", nrow(Netii_all_filt)))),
-                       data.table(c(Net_combined_filt$GLM_score, Netii_all_filt$GLM_score)))
-colnames(SARS_comb_filt) = c("HLA", "GLM_score")
-ggplot(data=SARS_comb_filt)+
-  geom_histogram(aes(x = GLM_score, fill = HLA), alpha=.5,bins = 50, position = "dodge")+
-  geom_vline(xintercept = .5, color = "blue")+
-  annotate("text", label= paste0(100*round(length(which(Net_combined_filt$Predicted_tetramer==T))/nrow(Net_combined_filt), digits = 3), "% positive"),
-           x=.5, y=1000, vjust=0, hjust=0, angle = 90, size = 10, color = "blue")+
-  #geom_vline(xintercept = .768, color = "red")+
-  annotate("text", label = paste0(100*round(length(which(Netii_all_filt$Predicted_tetramer==T))/nrow(Netii_all_filt), digits = 3), "% positive"),
-           x=.6, y=1000, vjust=0, hjust=0, angle = 90, size = 10, color = "red")+
-  scale_fill_manual(values = c("blue","red"), name = "")+
-  theme(text=element_text(face="bold",size=20,colour="black")) +
-  labs(x= "GLM score", y="Count", title = "SARS-CoV-2 predicted epitopes")
