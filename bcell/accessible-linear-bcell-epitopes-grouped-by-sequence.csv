@@ -1,28 +1,20 @@
 num_sources,sources,accessible_subsequence_start,accessible_subsequence_end,accessible_subsequence,accessible_subsequence_length,accessible_subsequence_is_4mer_or_longer,IgG,IgA,IgG_and_IgA,accessible_subsequence_contains_polymorphism,accessible_subsequence_contains_glycosite,near_any_feature,in_any_feature
-1,Wang 2020 S26-30,27,30,AYTN,4,True,1.0,0.0,0.0,True,False,False,False
-1,Dahlke 2020 S63-91,68,80,IHVSGTNGTKRFD,13,True,0.0,1.0,0.0,True,True,False,False
-2,Charite 2020 S127-141; Charite 2020 S131-145,134,135,QF,2,False,1.0,1.0,1.0,False,False,False,False
-1,Dahlke 2020 S125-181,144,157,YYHKNNKSWMESEF,14,True,0.0,1.0,0.0,True,True,False,False
+1,Dahlke 2020 S63-91,68,78,IHVSGTNGTKR,11,True,0.0,1.0,0.0,True,True,False,False
+1,Charite 2020 S131-145,144,145,YY,2,False,1.0,1.0,1.0,False,False,False,False
+1,Dahlke 2020 S125-181,144,154,YYHKNNKSWME,11,True,0.0,1.0,0.0,True,True,False,False
 1,Wang 2020 S186-190,186,187,FK,2,False,1.0,0.0,0.0,False,False,False,False
-1,Dahlke 2020 S215-229,218,219,QG,2,False,0.0,1.0,0.0,False,False,False,False
+1,Dahlke 2020 S215-229,215,215,D,1,False,0.0,1.0,0.0,False,False,False,False
 1,Dahlke 2020 S241-265,245,261,HRSYLTPGDSSSGWTAG,17,True,0.0,1.0,0.0,True,False,False,False
-1,Dahlke 2020 S271-295,281,281,E,1,False,0.0,1.0,0.0,False,False,True,False
-2,Charite 2020 S343-357; Dahlke 2020 S343-357,343,346,NATR,4,True,0.0,1.0,0.0,False,True,True,True
 1,Wang 2020 S456-460,456,460,FRKSN,5,True,1.0,0.0,0.0,False,False,True,True
 1,Dahlke 2020 S449-463,456,463,FRKSNLKP,8,True,0.0,1.0,0.0,False,False,True,True
 1,Charite 2020 S459-473,459,473,SNLKPFERDISTEIY,15,True,1.0,1.0,1.0,False,False,True,True
-2,Charite 2020 S503-517; Charite 2020 S505-519,505,506,YQ,2,False,1.0,0.5,0.5,False,False,True,True
-1,Poh 2020 S553-570,553,554,TE,2,False,1.0,0.0,0.0,False,False,True,False
+1,Charite 2020 S503-517,503,503,V,1,False,1.0,0.0,0.0,False,False,True,True
 5,Charite 2020 S569-583; Charite 2020 S571-585; Charite 2020 S573-587; Dahlke 2020 S565-587; ReScan S552-589,580,583,QTLE,4,True,0.8,0.8,0.6,False,False,True,False
-1,Dahlke 2020 S605-619,618,619,TE,2,False,0.0,1.0,0.0,False,False,False,False
 1,Charite 2020 S619-633,622,633,VAIHADQLTPTW,12,True,0.0,1.0,0.0,False,False,False,False
 1,Dahlke 2020 S637-651,637,644,STGSNVFQ,8,True,1.0,0.0,0.0,False,False,False,False
-2,Charite 2020 S649-663; Dahlke 2020 S647-665,654,661,EHVNNSYE,8,True,0.0,1.0,0.0,False,True,True,False
+2,Charite 2020 S649-663; Dahlke 2020 S647-665,654,661,EHVNNSYE,8,True,0.0,1.0,0.0,False,True,False,False
 6,Poh 2020 S809-826; Wang 2020 S806-820; Charite 2020 S805-819; Charite 2020 S807-821; Dahlke 2020 S809-827; ReScan S799-836,809,812,PSKP,4,True,0.8333333333333334,0.3333333333333333,0.16666666666666666,False,False,True,True
 1,Dahlke 2020 S811-831,811,812,KP,2,False,1.0,0.0,0.0,False,False,True,False
 1,ReScan S818-855,833,843,FIKQYGDCLGD,11,True,1.0,0.0,0.0,True,False,True,False
 1,Dahlke 2020 S835-851,835,843,KQYGDCLGD,9,True,0.0,1.0,0.0,True,False,False,False
-1,Dahlke 2020 S927-955,929,929,S,1,False,1.0,0.0,0.0,False,False,True,True
 2,Charite 2020 S1089-1103; Dahlke 2020 S1087-1111,1099,1101,GTH,3,False,0.0,1.0,0.0,False,False,False,False
-1,Dahlke 2020 S1131-1145,1142,1145,QPEL,4,True,0.0,1.0,0.0,False,False,True,False
-2,Charite 2020 S1141-1155; ReScan S1141-1178,1142,1146,QPELD,5,True,1.0,0.5,0.5,False,False,True,True

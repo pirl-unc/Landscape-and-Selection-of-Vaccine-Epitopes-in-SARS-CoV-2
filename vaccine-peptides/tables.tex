@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage[a4paper,margin=0.75in,landscape]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{color, colortbl}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{stmaryrd}
+\usepackage[usestackEOL]{stackengine}
+\usepackage{booktabs}
+
+\definecolor{Gray}{gray}{0.96}
+\definecolor{DarkGray}{gray}{0.89}
+\newcommand{\pbox}[1]{\boxed{\phantom{#1}}}
+
+\title{Vaccine Peptide Tables for SARS2 Vaccine Preprint}
+
+\begin{document}
+
+Below are the vaccine peptide tables for 27mer, 21mer, and 15mer peptide lengths.
+
+\section{27mer}
+\subsection{27mer Selection Sets}
+\input{summary-27mer.tex}
+\subsection{27mer Vaccine Peptides}
+\input{final-vaccine-peptides-27mer.tex}
+
+\section{21mer}
+\subsection{21mer Selection Sets}
+\input{summary-21mer.tex}
+\subsection{21mer Vaccine Peptides}
+\input{final-vaccine-peptides-21mer.tex}
+
+\section{15mer vaccine peptides}
+\subsection{15mer Selection Sets}
+\input{summary-15mer.tex}
+\subsection{15mer Vaccine Peptides}
+\input{final-vaccine-peptides-15mer.tex}
+
+\end{document}
