@@ -1,0 +1,151 @@
+Source,Virus,Protein,Start,End,Animal,Isotype,Immunization,Monoclonal Name,In vitro function,Vaccine function,Notes,Sequence,Length,Sequence_length
+Berry 2010,SARS,S,460,476,Human,IgG,Infection,F26G18,Neutralizing,,"54% identity with 
+PCNGVEGFNCYFPLQSYGFQPTNGVGYQ 
+from cov-2 in the middle of the RBD",,17,0
+Berry 2010,SARS,S,612,620,Human,IgG,Infection,F26G8,Non-neutralizing,,,,9,0
+Hu 2005,SARS,S,471,503,Human,IgG,Infection,Polyclonal,Neutralizing,,"binds ACE2, in RDB",,33,0
+Hu 2005,SARS,S,604,625,Human,IgG,Infection,Polyclonal,Non-neutralizing,,"""high variability of S471-503 and 
+S604-625 implies that this 
+region was recognized by the human immune 
+system and escaped from the host
+ immunopressure""",,22,0
+Hu 2005,SARS,S,1164,1191,Human,IgG,Infection,Polyclonal,,,,,28,0
+Hu 2005,SARS,N,67,76,Human,IgG,Infection,Polyclonal,,,,,10,0
+Hu 2005,SARS,N,367,389,Human,IgG,Infection,Polyclonal,,,,,23,0
+He 2004,SARS,S,9,71,Human,IgG,Infection,Polyclonal,,,,,63,0
+He 2004,SARS,S,171,224,Human,IgG,Infection,Polyclonal,,,,,54,0
+He 2004,SARS,S,271,318,Human,IgG,Infection,Polyclonal,,,,,48,0
+He 2004,SARS,S,528,635,Human,IgG,Infection,Polyclonal,,,Recognized by >80% of patient samples,,108,0
+He 2004,SARS,S,824,913,Human,IgG,Infection,Polyclonal,,,,,90,0
+He 2004,SARS,S,536,552,Rabbit,IgG,Vaccination,Polyclonal,,, ,,17,0
+He 2004,SARS,S,544,560,Rabbit,IgG,Vaccination,Polyclonal,,,,,17,0
+He 2004,SARS,S,603,619,Rabbit,IgG,Vaccination,Polyclonal,,,,,17,0
+He 2004,SARS,S,511,552,Human,IgG,Infection,Polyclonal,,,,,42,0
+He 2004,SARS,S,536,566,Human,IgG,Infection,Polyclonal,,,,,31,0
+He 2004,SARS,S,603,634,Human,IgG,Infection,Polyclonal,,,,,32,0
+Zhang 2004,SARS,S,803,828,Human,IgG,Infection,Polyclonal,Neutralizing,,"Only detected in 15/64 convalescent patients, 
+only neutralizing from some immunized animals",,26,0
+Zhang 2004,SARS,S,1061,1093,Human,IgG,Infection,Polyclonal,Non-neutralizing,,"Only detected in 15/64 convalescent patients, 
+only neutralizing from some immunized animals",,33,0
+Wang 2003,SARS,N,385,407,Human,IgG,Infection,Polyclonal,,,"29/31 SARS patients, 0/24 controls",,23,0
+Wang 2003,SARS,N,371,390,Human,IgG,Infection,Polyclonal,,,"30/31 SARS patients, 1/24 controls ",,20,0
+Wang 2003,SARS,S,599,620,Human,IgG,Infection,Polyclonal,,,"25/31 SARS patients, 0/24 controls",,22,0
+Wang 2003,SARS,M,94,116,Human,IgG,Infection,Polyclonal,,,"25/31 SARS patients, 0/24 controls 
+(worse absorbance than other M peptide)",,23,0
+Wang 2003,SARS,M,137,158,Human,IgG,Infection,Polyclonal,,,"25/31 SARS patients, 0/24 controls ",,22,0
+Chou 2005,SARS,S,310,535,Mouse,IgG2a,Vaccination,1A5,Neutralizing,,Didn't recognize recombinant spike,,226,0
+Chou 2005,SARS,S,310,535,Mouse,IgG1,Vaccination,2C5,Neutralizing,,,,226,0
+Chou 2005,SARS,S,12,311,Mouse,IgG1,Vaccination,2A3,Non-neutralizing,,,,300,0
+Chou 2005,SARS,S,12,311,Mouse,IgG2a,Vaccination,1B4,Non-neutralizing,,Didn't recognize recombinant spike,,300,0
+Chou 2005,SARS,S,12,311,Mouse,IgG2a,Vaccination,2B1,Non-neutralizing,,,,300,0
+Chou 2005,SARS,S,797,1255,Mouse,IgG2b,Vaccination,3A3,Non-neutralizing,,,,459,0
+Wang 2016,SARS,S,471,503,Human,IgG,Infection,Polyclonal,Neutralizing,Protective,,,33,0
+Wang 2016,SARS,S,604,625,Human,IgG,Infection,Polyclonal,Neutralizing,Protective,,,22,0
+Wang 2016,SARS,S,1164,1191,Human,IgG,Infection,Polyclonal,Neutralizing,Protective,,,28,0
+Wang 2016,SARS,S,597,603,Human,IgG,Infection,Polyclonal,Enhancing,Harmful,,,7,0
+Poh 2020,SARS-CoV-2,S,553,570,Human,IgG,Infection,Polyclonal,,,,TESNKKFLPFQQFGRDIA,18,18
+Poh 2020,SARS-CoV-2,S,809,826,Human,IgG,Infection,Polyclonal,,,,PSKPSKRSFIEDLLFNKV,18,18
+Wang 2020,SARS-CoV-2,M,16,20,Human,IgG,Infection,Polyclonal,,,,LLEQW,5,5
+Wang 2020,SARS-CoV-2,M,106,110,Human,IgG,Infection,Polyclonal,,,,TRSMW,5,5
+Wang 2020,SARS-CoV-2,M,196,200,Human,"IgG, IgM",Infection,Polyclonal,,,,YSRYR,5,5
+Wang 2020,SARS-CoV-2,M,6,10,Human,IgM,Infection,Polyclonal,,,,GTITV,5,5
+Wang 2020,SARS-CoV-2,M,176,180,Human,IgM,Infection,Polyclonal,,,,LSYYK,5,5
+Wang 2020,SARS-CoV-2,S,26,30,Human,IgG,Infection,Polyclonal,,,,PAYTN,5,5
+Wang 2020,SARS-CoV-2,S,186,190,Human,IgG,Infection,Polyclonal,,,,FKNLR,5,5
+Wang 2020,SARS-CoV-2,S,356,360,Human,IgG,Infection,Polyclonal,,,,KRISN,5,5
+Wang 2020,SARS-CoV-2,S,456,460,Human,IgG,Infection,Polyclonal,,,,FRKSN,5,5
+Wang 2020,SARS-CoV-2,S,806,820,Human,"IgG,IgM",Infection,Polyclonal,,,IgM epitpe is 816-SFIED-820 ,LPDPSKPSKRSFIED,15,15
+Wang 2020,SARS-CoV-2,S,1196,1200,Human,IgG,Infection,Polyclonal,,,,SLIDL,5,5
+Wang 2020,SARS-CoV-2,S,886,890,Human,IgM,Infection,Polyclonal,,,,WTFGA,5,5
+Wang 2020,SARS-CoV-2,S,1046,1050,Human,IgM,Infection,Polyclonal,,,,GYHLM,5,5
+Wang 2020,SARS-CoV-2,N,66,70,Human,IgG,Infection,Polyclonal,,,,FPRGQ,5,5
+Wang 2020,SARS-CoV-2,N,96,100,Human,IgG,Infection,Polyclonal,,,,GGDGK,5,5
+Wang 2020,SARS-CoV-2,N,166,170,Human,IgG,Infection,Polyclonal,,,,TLPKG,5,5
+Wang 2020,SARS-CoV-2,N,206,210,Human,"IgG, IgM",Infection,Polyclonal,,,,SPARM,5,5
+Wang 2020,SARS-CoV-2,N,226,230,Human,IgG,Infection,Polyclonal,,,,RLNQL,5,5
+Wang 2020,SARS-CoV-2,N,256,260,Human,IgG,Infection,Polyclonal,,,,KKPRQ,5,5
+Wang 2020,SARS-CoV-2,N,316,320,Human,IgG,Infection,Polyclonal,,,,GMSRI,5,5
+Wang 2020,SARS-CoV-2,N,366,400,Human,"IgG, IgM",Infection,Polyclonal,,,IgM epitope is 386-QKKQQ-390 ,TEPKKDKKKKADETQALPQRQKKQQTVTLLPAADL,35,35
+Charite 2020,SARS-CoV-2,S,459,473,Human,"3/9 IgG, 2/9 IgA",Infection,Polyclonal,,,,SNLKPFERDISTEIY,15,15
+Charite 2020,SARS-CoV-2,S,503,517,Human,1/9 IgG,Infection,Polyclonal,,,,VGYQPYRVVVLSFEL,15,15
+Charite 2020,SARS-CoV-2,S,505,519,Human,"2/9 IgG, 2/9 IgA",Infection,Polyclonal,,,,YQPYRVVVLSFELLH,15,15
+Charite 2020,SARS-CoV-2,S,569,583,Human,"3/9 IgG, 1/9 IgA",Infection,Polyclonal,,,,IADTTDAVRDPQTLE,15,15
+Charite 2020,SARS-CoV-2,S,571,585,Human,"1/9 IgG, 2/9 IgA",Infection,Polyclonal,,,,DTTDAVRDPQTLEIL,15,15
+Charite 2020,SARS-CoV-2,S,573,587,Human,"3/9 IgG, 1/9 IgA",Infection,Polyclonal,,,,TDAVRDPQTLEILDI,15,15
+Charite 2020,SARS-CoV-2,S,767,781,Human,"3/9 IgG, 2/9 IgA",Infection,Polyclonal,,,,LTGIAVEQDKNTQEV,15,15
+Charite 2020,SARS-CoV-2,S,805,819,Human,2/9 IgG,Infection,Polyclonal,,,,ILPDPSKPSKRSFIE,15,15
+Charite 2020,SARS-CoV-2,S,807,821,Human,"2/9 IgG, 1/9 IgA",Infection,Polyclonal,,,,PDPSKPSKRSFIEDL,15,15
+Charite 2020,SARS-CoV-2,S,1193,1207,Human,"3/9 IgG, 2/9 IgA",Infection,Polyclonal,,,,LNESLIDLQELGKYE,15,15
+Charite 2020,SARS-CoV-2,S,1195,1209,Human,"2/9 IgG, 3/9 IgA",Infection,Polyclonal,,,,ESLIDLQELGKYEQY,15,15
+Charite 2020,SARS-CoV-2,S,127,141,Human,"2/9 IgG, 2/9 IgA",Infection,Polyclonal,,,,VIKVCEFQFCNDPFL,15,15
+Charite 2020,SARS-CoV-2,S,131,145,Human,"1/9 IgG, 3/9 IgA",Infection,Polyclonal,,,,CEFQFCNDPFLGVYY,15,15
+Charite 2020,SARS-CoV-2,S,343,357,Human,2/9 IgA,Infection,Polyclonal,,,,NATRFASVYAWNRKR,15,15
+Charite 2020,SARS-CoV-2,S,619,633,Human,1/9 IgA,Infection,Polyclonal,,,,EVPVAIHADQLTPTW,15,15
+Charite 2020,SARS-CoV-2,S,649,663,Human,1/9 IgA,Infection,Polyclonal,,,,CLIGAEHVNNSYECD,15,15
+Charite 2020,SARS-CoV-2,S,763,777,Human,"2/9 IgG, 3/9 IgA",Infection,Polyclonal,,,,LNRALTGIAVEQDKN,15,15
+Charite 2020,SARS-CoV-2,S,1089,1103,Human,1/9 IgA,Infection,Polyclonal,,,,FPREGVFVSNGTHWF,15,15
+Charite 2020,SARS-CoV-2,S,1141,1155,Human,"2/9 IgG, 2/9 IgA",Infection,Polyclonal,,,,LQPELDSFKEELDKY,15,15
+Charite 2020,SARS-CoV-2,S,1181,1195,Human,"1/9 IgG,1/9 IgA",Infection,Polyclonal,,,,KEIDRLNEVAKNLNE,15,15
+Charite 2020,SARS-CoV-2,M,111,125,Human,1/9 IgA,Infection,Polyclonal,,,,SFNPETNILLNVPLH,15,15
+Charite 2020,SARS-CoV-2,M,135,149,Human,"1/9 IgG, 2/9 IgA",Infection,Polyclonal,,,,ESELVIGAVILRGHL,15,15
+Charite 2020,SARS-CoV-2,M,11,25,Human,"1/9 IgG, 2/9 IgA",Infection,Polyclonal,,,,EELKKLLEQWNLVIG,15,15
+Charite 2020,SARS-CoV-2,N,156,170,Human,"3/9 IgG, 3/9 IgA",Infection,Polyclonal,,,,AIVLQLPQGTTLPKG,15,15
+Charite 2020,SARS-CoV-2,N,158,172,Human,"3/9 IgG, 1/9 IgA",Infection,Polyclonal,,,,VLQLPQGTTLPKGFY,15,15
+Charite 2020,SARS-CoV-2,N,160,174,Human,"3/9 IgG, 1/9 IgA",Infection,Polyclonal,,,,QLPQGTTLPKGFYAE,15,15
+Charite 2020,SARS-CoV-2,N,242,256,Human,"4/9 IgG, 1/9 IgA",Infection,Polyclonal,,,,QGQTVTKKSAAEASK,15,15
+Charite 2020,SARS-CoV-2,N,244,258,Human,"5/9 IgG, 1/9 IgA",Infection,Polyclonal,,,,QTVTKKSAAEASKKP,15,15
+Charite 2020,SARS-CoV-2,N,246,260,Human,"2/9 IgG, 2/9 IgA",Infection,Polyclonal,,,,VTKKSAAEASKKPRQ,15,15
+Charite 2020,SARS-CoV-2,N,248,262,Human,"3/9 IgG, 3/9 IgA",Infection,Polyclonal,,,,KKSAAEASKKPRQKR,15,15
+Charite 2020,SARS-CoV-2,N,252,266,Human,"2/9 IgG, 2/9 IgA",Infection,Polyclonal,,,,AEASKKPRQKRTATK,15,15
+Charite 2020,SARS-CoV-2,N,362,376,Human,"3/9 IgG, 3/9 IgA",Infection,Polyclonal,,,,TFPPTEPKKDKKKKA,15,15
+Charite 2020,SARS-CoV-2,N,392,406,Human,"2/9 IgG, 1/9 IgA",Infection,Polyclonal,,,,VTLLPAADLDDFSKQ,15,15
+Charite 2020,SARS-CoV-2,N,118,132,Human,2/9 IgA,Infection,Polyclonal,,,,EAGLPYGANKDGIIW,15,15
+Charite 2020,SARS-CoV-2,N,284,298,Human,No responses,Infection,Polyclonal,,,,GNFGDQELIRQGTDY,15,15
+Charite 2020,SARS-CoV-2,N,374,388,Human,"1/9 IgG, 3/9 IgA",Infection,Polyclonal,,,,KKADETQALPQRQKK,15,15
+Charite 2020,SARS-CoV-2,N,388,402,Human,"1/9 IgG, 2/9 IgA",Infection,Polyclonal,,,,KQQTVTLLPAADLDD,15,15
+Dahlke 2020,SARS-CoV-2,S,45,59,Human,"IgA, IgM",Infection,Polyclonal,,,,SSVLHSTQDLFLPFF,15,15
+Dahlke 2020,SARS-CoV-2,S,63,91,Human,IgA,Infection,Polyclonal,,,,TWFHAIHVSGTNGTKRFDNPVLPFNDGVY,29,29
+Dahlke 2020,SARS-CoV-2,S,125,181,Human,IgA,Infection,Polyclonal,,,,NVVIKVCEFQFCNDPFLGVYYHKNNKSWMESEFRVYSSANNCTFEYVSQPFLMDLEG,57,57
+Dahlke 2020,SARS-CoV-2,S,215,229,Human,IgA,Infection,Polyclonal,,,,DLPQGFSALEPLVDL,15,15
+Dahlke 2020,SARS-CoV-2,S,241,265,Human,"IgA, IgM",Infection,Polyclonal,,,,LLALHRSYLTPGDSSSGWTAGAAAY,25,25
+Dahlke 2020,SARS-CoV-2,S,271,295,Human,IgA,Infection,Polyclonal,,,,QPRTFLLKYNENGTITDAVDCALDP,25,25
+Dahlke 2020,SARS-CoV-2,S,343,357,Human,IgA,Infection,Polyclonal,,,,NATRFASVYAWNRKR,15,15
+Dahlke 2020,SARS-CoV-2,S,415,429,Human,IgA,Infection,Polyclonal,,,,TGKIADYNYKLPDDF,15,15
+Dahlke 2020,SARS-CoV-2,S,449,463,Human,IgA,Infection,Polyclonal,,,,YNYLYRLFRKSNLKP,15,15
+Dahlke 2020,SARS-CoV-2,S,565,587,Human,IgA,Infection,Polyclonal,,,,FGRDIADTTDAVRDPQTLEILDI,23,23
+Dahlke 2020,SARS-CoV-2,S,605,619,Human,IgA,Infection,Polyclonal,,,,SNQVAVLYQDVNCTE,15,15
+Dahlke 2020,SARS-CoV-2,S,647,665,Human,IgA,Infection,Polyclonal,,,,AGCLIGAEHVNNSYECDIP,19,19
+Dahlke 2020,SARS-CoV-2,S,721,735,Human,IgA,Infection,Polyclonal,,,,SVTTEILPVSMTKTS,15,15
+Dahlke 2020,SARS-CoV-2,S,809,827,Human,IgA,Infection,Polyclonal,,,,PSKPSKRSFIEDLLFNKVT,19,19
+Dahlke 2020,SARS-CoV-2,S,835,851,Human,IgA,Infection,Polyclonal,,,,KQYGDCLGDIAARDLIC,17,17
+Dahlke 2020,SARS-CoV-2,S,1087,1111,Human,IgA,Infection,Polyclonal,,,,AHFPREGVFVSNGTHWFVTQRNFYE,25,25
+Dahlke 2020,SARS-CoV-2,S,1131,1145,Human,IgA,Infection,Polyclonal,,,,GIVNNTVYDPLQPEL,15,15
+Dahlke 2020,SARS-CoV-2,S,1193,1215,Human,IgA,Infection,Polyclonal,,,,LNESLIDLQELGKYEQYIKWPWY,23,23
+Dahlke 2020,SARS-CoV-2,S,369,383,Human,IgG,Infection,Polyclonal,,,,YNSASFSTFKCYGVS,15,15
+Dahlke 2020,SARS-CoV-2,S,637,651,Human,IgG,Infection,Polyclonal,,,,STGSNVFQTRAGCLI,15,15
+Dahlke 2020,SARS-CoV-2,S,725,739,Human,IgG,Infection,Polyclonal,,,,EILPVSMTKTSVDCT,15,15
+Dahlke 2020,SARS-CoV-2,S,811,831,Human,IgG,Infection,Polyclonal,,,,KPSKRSFIEDLLFNKVTLADA,21,21
+Dahlke 2020,SARS-CoV-2,S,927,955,Human,IgG,Infection,Polyclonal,,,,FNSAIGKIQDSLSSTASALGKLQDVVNQN,29,29
+Dahlke 2020,SARS-CoV-2,S,1201,1217,Human,IgG,Infection,Polyclonal,,,,QELGKYEQYIKWPWYIW,17,17
+Dahlke 2020,SARS-CoV-2,M,1,7,Human,IgG,Infection,Polyclonal,,,,MADSNGT,7,7
+Dahlke 2020,SARS-CoV-2,M,1,25,Human,IgA,Infection,Polyclonal,,,,MADSNGTITVEELKKLLEQWNLVIG,25,25
+Dahlke 2020,SARS-CoV-2,M,203,222,Human,IgG,Infection,Polyclonal,,,,NYKLNTDHSSSSDNIALLVQ,20,20
+Dahlke 2020,SARS-CoV-2,N,96,110,Human,IgA,Infection,Polyclonal,,,,GGDGKMKDLSPRWYF,15,15
+Dahlke 2020,SARS-CoV-2,N,156,170,Human,IgA,Infection,Polyclonal,,,,AIVLQLPQGTTLPKG,15,15
+Dahlke 2020,SARS-CoV-2,N,182,196,Human,"IgA, IgM",Infection,Polyclonal,,,,ASSRSSSRSRNSSRN,15,15
+Dahlke 2020,SARS-CoV-2,N,236,262,Human,IgA,Infection,Polyclonal,,,,GKGQQQQGQTVTKKSAAEASKKPRQKR,27,27
+Dahlke 2020,SARS-CoV-2,N,276,298,Human,IgA,Infection,Polyclonal,,,,RRGPEQTQGNFGDQELIRQGTDY,23,23
+Dahlke 2020,SARS-CoV-2,N,332,346,Human,IgA,Infection,Polyclonal,,,,TYTGAIKLDDKDPNF,15,15
+Dahlke 2020,SARS-CoV-2,N,380,394,Human,IgA,Infection,Polyclonal,,,,QALPQRQKKQQTVTL,15,15
+Dahlke 2020,SARS-CoV-2,N,176,206,Human,IgG,Infection,Polyclonal,,,,SRGGSQASSRSSSRSRNSSRNSTPGSSRGTS,31,31
+Dahlke 2020,SARS-CoV-2,N,366,382,Human,IgG,Infection,Polyclonal,,,,TEPKKDKKKKADETQAL,17,17
+Dahlke 2020,SARS-CoV-2,N,392,406,Human,IgG,Infection,Polyclonal,,,,VTLLPAADLDDFSKQ,15,15
+ReScan,SARS-CoV-2,ORF3a,172,209,Human,IgG,Infection ,Polyclonal,,,,GDGTTSPISEHDYQIGGYTEKWESGVKDCVVLHSYFTS,38,38
+ReScan,SARS-CoV-2,S,1141,1178,Human,IgG,Infection ,Polyclonal,,,,LQPELDSFKEELDKYFKNHTSPDVDLGDISGINASVVN,38,38
+ReScan,SARS-CoV-2,S,818,855,Human,IgG,Infection ,Polyclonal,,,,IEDLLFNKVTLADAGFIKQYGDCLGDIAARDLICAQKF,38,38
+ReScan,SARS-CoV-2,S,799,836,Human,IgG,Infection ,Polyclonal,,,,GFNFSQILPDPSKPSKRSFIEDLLFNKVTLADAGFIKQ,38,38
+ReScan,SARS-CoV-2,S,552,589,Human,IgG,Infection ,Polyclonal,,,,LTESNKKFLPFQQFGRDIADTTDAVRDPQTLEILDITP,38,38
+ReScan,SARS-CoV-2,N,362,399,Human,IgG,Infection ,Polyclonal,,,,TFPPTEPKKDKKKKADETQALPQRQKKQQTVTLLPAAD,38,38
+ReScan,SARS-CoV-2,N,210,247,Human,IgG,Infection ,Polyclonal,,,,MAGNGGDAALALLLLDRLNQLESKMSGKGQQQQGQTVT,38,38
+ReScan,SARS-CoV-2,N,153,190,Human,IgG,Infection ,Polyclonal,,,,NNAAIVLQLPQGTTLPKGFYAEGSRGGSQASSRSSSRS,38,38
+ReScan,SARS-CoV-2,N,134,172,Human,IgG,Infection ,Polyclonal,,,,ATEGALNTPKDHIGTRNPANNAAIVLQLPQGTTLPKGFY,39,39
