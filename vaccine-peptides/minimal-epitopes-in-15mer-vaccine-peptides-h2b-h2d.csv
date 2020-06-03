@@ -1,0 +1,15 @@
+peptide,length,vaccine_peptide_length,vaccine_peptides,human_class1,human_class2,h2b_class1,h2b_class2,h2d_class1,h2d_class2,any_human,any_h2b,any_h2d,any_murine
+ANRNRFLYI,9,15,ANRNRFLYIIKLIFL;LLQFAYANRNRFLYI;YANRNRFLYIIKLIF,True,False,True,False,True,False,True,True,True,True
+FAYANRNRF,9,15,LLQFAYANRNRFLYI,True,False,True,False,True,False,True,True,True,True
+IAQYTSALL,9,15,LTDEMIAQYTSALLA,True,False,True,False,True,False,True,True,True,True
+INITRFQTL,9,15,IGINITRFQTLLALH,True,False,True,False,True,False,True,True,True,True
+KAYNVTQAF,9,15,ATKAYNVTQAFGRRG,True,False,True,False,True,False,True,True,True,True
+SAFFGMSRI,9,15,SASAFFGMSRIGMEV,True,False,True,False,True,False,True,True,True,True
+SPRWYFYYL,9,15,LSPRWYFYYLGTGPE,True,False,True,False,True,False,True,True,True,True
+FAYANRNRFL,10,15,LLQFAYANRNRFLYI,True,False,True,False,True,False,True,True,True,True
+YANRNRFLYI,10,15,LLQFAYANRNRFLYI;YANRNRFLYIIKLIF,True,False,True,False,True,False,True,True,True,True
+LLQFAYANRNRFLYI,15,15,LLQFAYANRNRFLYI,False,True,False,True,False,True,True,True,True,True
+LTDEMIAQYTSALLA,15,15,LTDEMIAQYTSALLA,False,True,False,True,False,True,True,True,True,True
+PQIAQFAPSASAFFG,15,15,PQIAQFAPSASAFFG,False,True,False,True,False,True,True,True,True,True
+RAAEIRASANLAATK,15,15,RAAEIRASANLAATK,False,True,False,True,False,True,True,True,True,True
+SFRLFARTRSMWSFN,15,15,SFRLFARTRSMWSFN,False,True,False,True,False,True,True,True,True,True
