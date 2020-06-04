@@ -166,3 +166,10 @@ venv.bak/
 .mypy_cache/
 .dmypy.json
 dmypy.json
+
+# Files larger than 100mb
+Working/HLAI_all_glm.txt
+Working/Table_S1_HLA-I_epitopes.csv
+Working/sars-cov-2.mhcflurry_predictions.csv
+entropy_analysis/fasta_files/gisaid_cov2020_sequences.fasta
+entropy_analysis/singularity/nextstrain.simg
