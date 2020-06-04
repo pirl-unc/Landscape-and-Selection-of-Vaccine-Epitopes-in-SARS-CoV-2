@@ -1,0 +1,5 @@
+Working/HLAI_all_glm.txt filter=lfs diff=lfs merge=lfs -text
+Working/Table_S1_HLA-I_epitopes.csv filter=lfs diff=lfs merge=lfs -text
+Working/sars-cov-2.mhcflurry_predictions.csv filter=lfs diff=lfs merge=lfs -text
+entropy_analysis/fasta_files/gisaid_cov2020_sequences.fasta filter=lfs diff=lfs merge=lfs -text
+entropy_analysis/singularity/nextstrain.simg filter=lfs diff=lfs merge=lfs -text
