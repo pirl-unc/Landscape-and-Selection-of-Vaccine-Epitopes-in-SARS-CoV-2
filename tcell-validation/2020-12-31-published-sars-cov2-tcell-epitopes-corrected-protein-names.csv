@@ -1,0 +1,963 @@
+Source,Species,Exposure,Assay,Protein,Start,End,Length,# Responding,# Total,% Responding,Peptide,MHC,Peptide Selection Method,Allele Attribution,Response type,T-cell Stimulation,Notes,Original Location
+Chour,Human,Infection,Single chain trimer,S,424,433,10,2.0,2.0,1.0,KLPDDFTGCV,A*02:01,Predicted Binding Affinity,Biological,CD8,,,S 424-433
+Chour,Human,Infection,Single chain trimer,S,983,991,9,2.0,2.0,1.0,RLDKVEAEV,A*02:01,Predicted Binding Affinity,Biological,CD8,,,S 983-991
+Ferretti,Human,Infection,T-Scan,nsp7,27,35,9,8.0,9.0,0.8888888888888888,KLWAQCVQL,A*02:01,Unbiased Tiling,Biological,CD8,7 days,,ORF1ab 3886-3894
+Ferretti,Human,Infection,T-Scan,S,269,277,9,7.0,9.0,0.7777777777777778,YLQPRTFLL,A*02:01,Unbiased Tiling,Biological,CD8,7 days,,S 269-277
+Ferretti,Human,Infection,T-Scan,ORF3a,139,147,9,8.0,9.0,0.8888888888888888,LLYDANYFL,A*02:01,Unbiased Tiling,Biological,CD8,7 days,,ORF3a 139-147
+Ferretti,Human,Infection,T-Scan,nsp8,152,160,9,8.0,9.0,0.8888888888888888,ALWEIQQVV,A*02:01,Unbiased Tiling,Biological,CD8,7 days,,ORF1ab 4094-4102
+Ferretti,Human,Infection,T-Scan,N,222,230,9,2.0,9.0,0.2222222222222222,LLLDRLNQL,A*02:01,Unbiased Tiling,Biological,CD8,7 days,,N 222-230
+Ferretti,Human,Infection,T-Scan,nsp3,88,98,11,3.0,9.0,0.3333333333333333,YLFDESGEFKL,A*02:01,Unbiased Tiling,Biological,CD8,7 days,,ORF1ab 906-916
+Ferretti,Human,Infection,T-Scan,ORF3a,207,215,9,5.0,5.0,1.0,FTSDYYQLY,A*01:01,Unbiased Tiling,Biological,CD8,7 days,,ORF3a 207-215
+Ferretti,Human,Infection,T-Scan,nsp3,819,828,10,5.0,5.0,1.0,TTDPSFLGRY,A*01:01,Unbiased Tiling,Biological,CD8,7 days,,ORF1ab 1637-1646
+Ferretti,Human,Infection,T-Scan,nsp3,503,511,9,4.0,5.0,0.8,PTDNYITTY,A*01:01,Unbiased Tiling,Biological,CD8,7 days,,ORF1ab 1321-1329
+Ferretti,Human,Infection,T-Scan,M,171,179,9,3.0,5.0,0.6,ATSRTLSYY,A*01:01,Unbiased Tiling,Biological,CD8,7 days,,M 171-179
+Ferretti,Human,Infection,T-Scan,nsp9,23,32,10,5.0,5.0,1.0,CTDDNALAYY,A*01:01,Unbiased Tiling,Biological,CD8,7 days,,ORF1ab 4163-4172
+Ferretti,Human,Infection,T-Scan,nsp8,140,149,10,3.0,5.0,0.6,NTCDGTTFTY,A*01:01,Unbiased Tiling,Biological,CD8,7 days,,ORF1ab 4082-4091
+Ferretti,Human,Infection,T-Scan,nsp12,738,746,9,2.0,5.0,0.4,DTDFVNEFY,A*01:01,Unbiased Tiling,Biological,CD8,7 days,,ORF1ab 5130-5138
+Ferretti,Human,Infection,T-Scan,nsp5,174,182,9,2.0,5.0,0.4,GTDLEGNFY,A*01:01,Unbiased Tiling,Biological,CD8,7 days,,ORF1ab 3437-3445
+Ferretti,Human,Infection,T-Scan,N,361,369,9,5.0,5.0,1.0,KTFPPTEPK,A*03:01,Unbiased Tiling,Biological,CD8,7 days,,N 361-369
+Ferretti,Human,Infection,T-Scan,S,378,386,9,5.0,5.0,1.0,KCYGVSPTK,A*03:01,Unbiased Tiling,Biological,CD8,7 days,,S 378-386
+Ferretti,Human,Infection,T-Scan,nsp2,628,636,9,2.0,5.0,0.4,VTNNTFTLK,A*03:01,Unbiased Tiling,Biological,CD8,7 days,,ORF1ab 808-816
+Ferretti,Human,Infection,T-Scan,nsp2,102,110,9,2.0,5.0,0.4,KTIQPRVEK,A*03:01,Unbiased Tiling,Biological,CD8,7 days,,ORF1ab 282-290
+Ferretti,Human,Infection,T-Scan,N,361,369,9,5.0,5.0,1.0,KTFPPTEPK,A*11:01,Unbiased Tiling,Biological,CD8,7 days,,N 361-369
+Ferretti,Human,Infection,T-Scan,nsp9,76,84,9,3.0,5.0,0.6,VTDTPKGPK,A*11:01,Unbiased Tiling,Biological,CD8,7 days,,ORF1ab 4216-4224
+Ferretti,Human,Infection,T-Scan,N,134,143,10,4.0,5.0,0.8,ATEGALNTPK,A*11:01,Unbiased Tiling,Biological,CD8,7 days,,N 134-143
+Ferretti,Human,Infection,T-Scan,N,311,319,9,2.0,5.0,0.4,ASAFFGMSR,A*11:01,Unbiased Tiling,Biological,CD8,7 days,,N 311-319
+Ferretti,Human,Infection,T-Scan,M,171,180,10,3.0,5.0,0.6,ATSRTLSYYK,A*11:01,Unbiased Tiling,Biological,CD8,7 days,,M 171-180
+Ferretti,Human,Infection,T-Scan,S,1208,1216,9,3.0,5.0,0.6,QYIKWPWYI,A*24:02,Unbiased Tiling,Biological,CD8,7 days,,S 1208-1216
+Ferretti,Human,Infection,T-Scan,ORF3a,112,120,9,4.0,5.0,0.8,VYFLQSINF,A*24:02,Unbiased Tiling,Biological,CD8,7 days,,ORF3a 112-120
+Ferretti,Human,Infection,T-Scan,nsp13,397,405,9,2.0,5.0,0.4,VYIGDPAQL,A*24:02,Unbiased Tiling,Biological,CD8,7 days,,ORF1ab 5721-5729
+Ferretti,Human,Infection,T-Scan,N,105,113,9,4.0,5.0,0.8,SPRWYFYYL,B*07:02,Unbiased Tiling,Biological,CD8,7 days,,N 105-113
+Ferretti,Human,Infection,T-Scan,nsp4,186,193,8,4.0,5.0,0.8,RPDTRYVL,B*07:02,Unbiased Tiling,Biological,CD8,7 days,,ORF1ab 2949-2956
+Ferretti,Human,Infection,T-Scan,nsp13,592,600,9,1.0,5.0,0.2,IPRRNVATL,B*07:02,Unbiased Tiling,Biological,CD8,7 days,,ORF1ab 5916-5924
+Le Bert,Human,Infection,IFN-γ ELISpot,N,51,65,15,1.0,7.0,0.14285714285714285,SWFTALTQHGKEDLK,,Unbiased Tiling,,CD4,<= 1 day,,N 51-65
+Le Bert,Human,Infection,IFN-γ ELISpot,N,81,95,15,1.0,7.0,0.14285714285714285,DDQIGYYRRATRRIR,,Unbiased Tiling,,CD4,<= 1 day,,N 81-95
+Le Bert,Human,Infection,IFN-γ ELISpot,N,101,120,20,2.0,7.0,0.2857142857142857,MKDLSPRWYFYYLGTGPEAG,,Unbiased Tiling,,CD4,<= 1 day,,N 101-120
+Le Bert,Human,Infection,IFN-γ ELISpot,N,266,280,15,1.0,7.0,0.14285714285714285,KAYNVTQAFGRRGPE,,Unbiased Tiling,,CD4,<= 1 day,,N 266-280
+Le Bert,Human,Infection,IFN-γ ELISpot,N,291,305,15,1.0,7.0,0.14285714285714285,LIRQGTDYKHWPQIA,,Unbiased Tiling,,CD4,<= 1 day,,N 291-305
+Le Bert,Human,Infection,IFN-γ ELISpot,N,301,315,15,1.0,7.0,0.14285714285714285,WPQIAQFAPSASAFF,,Unbiased Tiling,,CD4,<= 1 day,,N 301-315
+Le Bert,Human,Infection,IFN-γ ELISpot,N,321,340,20,3.0,7.0,0.42857142857142855,GMEVTPSGTWLTYTGAIKLD,,Unbiased Tiling,,CD4 & CD8,<= 1 day,,N 321-340
+Le Bert,Human,Infection,IFN-γ ELISpot,nsp7,21,35,15,1.0,7.0,0.14285714285714285,RVESSSKLWAQCVQL,,Unbiased Tiling,,CD4,<= 1 day,,nsp7 21-35
+Minervina,Human,Infection,TCR-seq,S,269,277,9,1.0,2.0,0.5,YLQPRTFLL,A*02:01,Inferred from TCR,Inferred from TCR,CD8,,,S 269-277
+Minervina,Human,Infection,TCR-seq,S,919,927,9,1.0,2.0,0.5,NQKLIANQF,B*15:01,Inferred from TCR,Inferred from TCR,CD8,,,S 919-927
+Nelde,Human,Infection,IFN-γ ELISpot,M,43,51,9,6.0,11.0,0.5454545454545454,NRFLYIIKL,C*07,Predicted Binding Affinity,Predicted,CD8,12 days,,M 43-51
+Nelde,Human,Infection,IFN-γ ELISpot,M,176,190,15,21.0,22.0,0.9545454545454546,LSYYKLGASQRVAGD,"DRB1*04, DRB1*07",Predicted Binding Affinity,Predicted,CD4,12 days,,M 176-190
+Nelde,Human,Infection,IFN-γ ELISpot,N,361,370,10,7.0,11.0,0.6363636363636364,KTFPPTEPKK,A*03,Predicted Binding Affinity,Predicted,CD8,12 days,,N 361-370
+Nelde,Human,Infection,IFN-γ ELISpot,N,134,143,10,9.0,11.0,0.8181818181818182,ATEGALNTPK,A*11,Predicted Binding Affinity,Predicted,CD8,12 days,,N 134-143
+Nelde,Human,Infection,IFN-γ ELISpot,N,322,331,10,9.0,12.0,0.75,MEVTPSGTWL,B*40,Predicted Binding Affinity,Predicted,CD8,12 days,,N 322-331
+Nelde,Human,Infection,IFN-γ ELISpot,N,50,64,15,13.0,22.0,0.5909090909090909,ASWFTALTQHGKEDL,"DRB1*04, DRB1*11",Predicted Binding Affinity,Predicted,CD4,12 days,,N 50-64
+Nelde,Human,Infection,IFN-γ ELISpot,N,84,98,15,12.0,22.0,0.5454545454545454,IGYYRRATRRIRGGD,"DRB1*04, DRB1*11",Predicted Binding Affinity,Predicted,CD4,12 days,,N 84-98
+Nelde,Human,Infection,IFN-γ ELISpot,N,107,121,15,16.0,22.0,0.7272727272727273,RWYFYYLGTGPEAGL,DRB1*04,Predicted Binding Affinity,Predicted,CD4,12 days,,N 107-121
+Nelde,Human,Infection,IFN-γ ELISpot,N,221,235,15,14.0,22.0,0.6363636363636364,LLLLDRLNQLESKMS,"DRB1*04, DRB1*15",Predicted Binding Affinity,Predicted,CD4,12 days,,N 221-235
+Nelde,Human,Infection,IFN-γ ELISpot,N,311,325,15,12.0,23.0,0.5217391304347826,ASAFFGMSRIGMEVT,"DRB1*01, DRB1*04, DRB1*07, DRB1*11",Predicted Binding Affinity,Predicted,CD4,12 days,,N 311-325
+Nelde,Human,Infection,IFN-γ ELISpot,N,328,342,15,17.0,22.0,0.7727272727272727,GTWLTYTGAIKLDDK,"DRB1*01, DRB1*07, DRB1*15",Predicted Binding Affinity,Predicted,CD4,12 days,,N 328-342
+Nelde,Human,Infection,IFN-γ ELISpot,S,235,249,15,12.0,22.0,0.5454545454545454, ITRFQTLLALHRSYL,DRB1*01:01,Predicted Binding Affinity,Predicted,CD4,12 days,,S 235-249
+Nelde,Human,Infection,IFN-γ ELISpot,S,1208,1216,9,6.0,10.0,0.6,QYIKWPWYI,A*24,Predicted Binding Affinity,Predicted,CD8,12 days,,S 1208-1216
+Nelde,Human,Infection,IFN-γ ELISpot,nsp3,819,828,10,10.0,12.0,0.8333333333333334,TTDPSFLGRY,A*01,Predicted Binding Affinity,Predicted,CD8,12 days,,ORF1ab 1637-1646
+Nelde,Human,Infection,IFN-γ ELISpot,nsp13,397,405,9,7.0,10.0,0.7,VYIGDPAQL,A*24,Predicted Binding Affinity,Predicted,CD8,12 days,,ORF1ab 5721-5729
+Nelde,Human,Infection,IFN-γ ELISpot,ORF3,72,80,9,6.0,11.0,0.5454545454545454,ALSKGVHFV,A*02,Predicted Binding Affinity,Predicted,CD8,12 days,,ORF3 72-80
+Nelde,Human,Infection,IFN-γ ELISpot,ORF3,112,120,9,7.0,10.0,0.7,VYFLQSINF,A*24,Predicted Binding Affinity,Predicted,CD8,12 days,,ORF3 112-120
+Peng,Human,Infection,pMHC Multimer,N,9,17,9,,,,QRNAPRITF,B*27:05,Validation of Primary Assay,Biological,CD8,,,N 9-17
+Peng,Human,Infection,pMHC Multimer,N,105,113,9,,,,SPRWYFYYL,B*07:02,Validation of Primary Assay,Biological,CD8,,,N 105-113
+Peng,Human,Infection,pMHC Multimer,N,322,331,10,,,,MEVTPSGTWL,B*40:01,Validation of Primary Assay,Biological,CD8,,,N 322-331
+Peng,Human,Infection,pMHC Multimer,N,362,370,9,,,,KTFPPTEPK,"A*03:01, A*11:01",Validation of Primary Assay,Biological,CD8,,,N 362-370
+Peng,Human,Infection,pMHC Multimer,ORF3a,207,215,9,,,,FTSDYYQLY,A*01:01,Validation of Primary Assay,Biological,CD8,,,ORF3a 207-215
+Peng,Human,Infection,IFN-γ ELISpot,S,166,180,15,10.0,42.0,0.23809523809523808,CTFEYVSQPFLMDLE,,Unbiased Tiling,,CD4 & CD8,<= 1 day,,S 166-180
+Peng,Human,Infection,IFN-γ ELISpot,S,191,205,15,1.0,42.0,0.023809523809523808,EFVFKNIDGYFKIYS,,Unbiased Tiling,,,<= 1 day,,S 191-205
+Peng,Human,Infection,IFN-γ ELISpot,S,206,220,15,1.0,42.0,0.023809523809523808,KHTPINLVRDLPQGF,,Unbiased Tiling,,,<= 1 day,,S 206-220
+Peng,Human,Infection,IFN-γ ELISpot,S,211,225,15,1.0,42.0,0.023809523809523808,NLVRDLPQGFSALEP,,Unbiased Tiling,,,<= 1 day,,S 211-225
+Peng,Human,Infection,IFN-γ ELISpot,S,351,365,15,1.0,42.0,0.023809523809523808,YAWNRKRISNCVADY,,Unbiased Tiling,,CD4,<= 1 day,,S 351-365
+Peng,Human,Infection,IFN-γ ELISpot,S,381,395,15,1.0,42.0,0.023809523809523808,GVSPTKLNDLCFTNV,,Unbiased Tiling,,CD4,<= 1 day,,S 381-395
+Peng,Human,Infection,IFN-γ ELISpot,S,446,460,15,1.0,42.0,0.023809523809523808,GGNYNYLYRLFRKSN,,Unbiased Tiling,,,<= 1 day,,S 446-460
+Peng,Human,Infection,IFN-γ ELISpot,S,451,465,15,1.0,42.0,0.023809523809523808,YLYRLFRKSNLKPFE,,Unbiased Tiling,,,<= 1 day,,S 451-465
+Peng,Human,Infection,IFN-γ ELISpot,S,506,520,15,1.0,42.0,0.023809523809523808,VVLSFELLHAPATVC,,Unbiased Tiling,,CD4,<= 1 day,,S 506-520
+Peng,Human,Infection,IFN-γ ELISpot,S,526,540,15,1.0,42.0,0.023809523809523808,GPKKSTNLVKNKCVN,,Unbiased Tiling,,CD8,<= 1 day,,S 526-540
+Peng,Human,Infection,IFN-γ ELISpot,S,721,735,15,1.0,42.0,0.023809523809523808,SVTTEILPVSMTKTS,,Unbiased Tiling,,,<= 1 day,,S 721-735
+Peng,Human,Infection,IFN-γ ELISpot,S,746,760,15,1.0,42.0,0.023809523809523808,STECSNLLLQYGSFC,,Unbiased Tiling,,,<= 1 day,,S 746-760
+Peng,Human,Infection,IFN-γ ELISpot,S,751,765,15,8.0,42.0,0.19047619047619047,NLLLQYGSFCTQLNR,,Unbiased Tiling,,CD4,<= 1 day,,S 751-765
+Peng,Human,Infection,IFN-γ ELISpot,S,801,815,15,2.0,42.0,0.047619047619047616,NFSQILPDPSKPSKR,,Unbiased Tiling,,CD4,<= 1 day,,S 801-815
+Peng,Human,Infection,IFN-γ ELISpot,S,866,880,15,6.0,42.0,0.14285714285714285,TDEMIAQYTSALLAG,,Unbiased Tiling,,CD4,<= 1 day,,S 866-880
+Peng,Human,Infection,IFN-γ ELISpot,S,1171,1185,15,1.0,42.0,0.023809523809523808,GINASVVNIQKEIDR,,Unbiased Tiling,,,<= 1 day,,S 1171-1185
+Peng,Human,Infection,IFN-γ ELISpot,S,1196,1210,15,1.0,42.0,0.023809523809523808,SLIDLQELGKYEQYI,,Unbiased Tiling,,,<= 1 day,,S 1196-1210
+Peng,Human,Infection,IFN-γ ELISpot,S,1206,1220,15,1.0,42.0,0.023809523809523808,YEQYIKWPWYIWLGF,,Unbiased Tiling,,,<= 1 day,,S 1206-1220
+Peng,Human,Infection,IFN-γ ELISpot,N,1,17,17,3.0,42.0,0.07142857142857142,MSDNGPQNQRNAPRITF,,Unbiased Tiling,,CD8,<= 1 day,,N 1-17
+Peng,Human,Infection,IFN-γ ELISpot,N,8,25,18,3.0,42.0,0.07142857142857142,NQRNAPRITFGGPSDSTG,,Unbiased Tiling,,CD8,<= 1 day,,N 8-25
+Peng,Human,Infection,IFN-γ ELISpot,N,82,95,14,1.0,42.0,0.023809523809523808,DQIGYYRRATRRIR,,Unbiased Tiling,,,<= 1 day,,N 82-95
+Peng,Human,Infection,IFN-γ ELISpot,N,101,113,13,1.0,42.0,0.023809523809523808,MKDLSPRWYFYYL,,Unbiased Tiling,,,<= 1 day,,N 101-113
+Peng,Human,Infection,IFN-γ ELISpot,N,104,121,18,12.0,42.0,0.2857142857142857,LSPRWYFYYLGTGPEAGL,,Unbiased Tiling,,CD4 & CD8,<= 1 day,,N 104-121
+Peng,Human,Infection,IFN-γ ELISpot,N,313,330,18,1.0,42.0,0.023809523809523808,AFFGMSRIGMEVTPSGTW,,Unbiased Tiling,,,<= 1 day,,N 313-330
+Peng,Human,Infection,IFN-γ ELISpot,N,321,338,18,1.0,42.0,0.023809523809523808,GMEVTPSGTWLTYTGAIK,,Unbiased Tiling,,,<= 1 day,,N 321-338
+Peng,Human,Infection,IFN-γ ELISpot,N,329,346,18,2.0,42.0,0.047619047619047616,TWLTYTGAIKLDDKDPNF,,Unbiased Tiling,,CD4,<= 1 day,,N 329-346
+Peng,Human,Infection,IFN-γ ELISpot,N,344,361,18,1.0,42.0,0.023809523809523808,PNFKDQVILLNKHIDAYK,,Unbiased Tiling,,CD4,<= 1 day,,N 344-361
+Peng,Human,Infection,IFN-γ ELISpot,N,352,369,18,3.0,42.0,0.07142857142857142,LLNKHIDAYKTFPPTEPK,,Unbiased Tiling,,CD8,<= 1 day,,N 352-369
+Peng,Human,Infection,IFN-γ ELISpot,M,133,150,18,3.0,42.0,0.07142857142857142,LLESELVIGAVILRGHLR,,Unbiased Tiling,,,<= 1 day,,M 133-150
+Peng,Human,Infection,IFN-γ ELISpot,M,141,158,18,11.0,42.0,0.2619047619047619,GAVILRGHLRIAGHHLGR,,Unbiased Tiling,,CD4,<= 1 day,,M 141-158
+Peng,Human,Infection,IFN-γ ELISpot,M,149,166,18,3.0,42.0,0.07142857142857142,LRIAGHHLGRCDIKDLPK,,Unbiased Tiling,,,<= 1 day,,M 149-166
+Peng,Human,Infection,IFN-γ ELISpot,M,165,181,17,3.0,42.0,0.07142857142857142,PKEITVATSRTLSYYKL,,Unbiased Tiling,,,<= 1 day,,M 165-181
+Peng,Human,Infection,IFN-γ ELISpot,M,172,188,17,16.0,42.0,0.38095238095238093,TSRTLSYYKLGASQRVA,,Unbiased Tiling,,CD4,<= 1 day,,M 172-188
+Peng,Human,Infection,IFN-γ ELISpot,M,201,218,18,1.0,42.0,0.023809523809523808,IGNYKLNTDHSSSSDNIA,,Unbiased Tiling,,,<= 1 day,,M 201-218
+Peng,Human,Infection,IFN-γ ELISpot,ORF3a,145,160,16,1.0,42.0,0.023809523809523808,YFLCWHTNCYDYCIPY,,Unbiased Tiling,,,<= 1 day,,ORF3a 145-160
+Peng,Human,Infection,IFN-γ ELISpot,ORF3a,198,215,18,3.0,42.0,0.07142857142857142,KDCVVLHSYFTSDYYQLY,,Unbiased Tiling,,,<= 1 day,,ORF3a 198-215
+Peng,Human,Infection,IFN-γ ELISpot,ORF3a,206,225,20,4.0,42.0,0.09523809523809523,YFTSDYYQLYSTQLSTDTGV,,Unbiased Tiling,,CD8,<= 1 day,,ORF3a 206-225
+Peng,Human,Infection,IFN-γ ELISpot,ORF3a,224,243,20,1.0,42.0,0.023809523809523808,GVEHVTFFIYNKIVDEPEEH,,Unbiased Tiling,,,<= 1 day,,ORF3a 224-243
+Peng,Human,Infection,IFN-γ ELISpot,ORF7a,9,25,17,3.0,42.0,0.07142857142857142,LITLATCELYHYQECVR,,Unbiased Tiling,,,<= 1 day,,ORF7a 9-25
+Peng,Human,Infection,IFN-γ ELISpot,ORF7a,46,63,18,1.0,42.0,0.023809523809523808,FHPLADNKFALTCFSTQF,,Unbiased Tiling,,,<= 1 day,,ORF7a 46-63
+Peng,Human,Infection,IFN-γ ELISpot,ORF7a,69,86,18,1.0,42.0,0.023809523809523808,DGVKHVYQLRARSVSPKL,,Unbiased Tiling,,CD4,<= 1 day,,ORF7a 69-86
+Schulien,Human,Infection,pMHC Multimer,nsp9,23,31,9,5.0,6.0,0.8333333333333334,CTDDNALAY,A*01:01,Predicted Binding Affinity,Biological,CD8,,,ORF1ab 4163-4171
+Schulien,Human,Infection,pMHC Multimer,nsp12,738,746,9,5.0,6.0,0.8333333333333334,DTDFVNEFY,A*01:01,Predicted Binding Affinity,Biological,CD8,,,ORF1ab 5130-5138
+Schulien,Human,Infection,pMHC Multimer,ORF3a,207,215,9,5.0,6.0,0.8333333333333334,FTSDYYQLY,A*01:01,Predicted Binding Affinity,Biological,CD8,,,ORF3a 207-215
+Schulien,Human,Infection,pMHC Multimer,S,865,873,9,4.0,6.0,0.6666666666666666,LTDEMIAQY,A*01:01,Predicted Binding Affinity,Biological,CD8,,,S 865-873
+Schulien,Human,Infection,pMHC Multimer,nsp9,23,32,10,3.0,6.0,0.5,CTDDNALAYY,A*01:01,Predicted Binding Affinity,Biological,CD8,,,ORF1ab 4163-4172
+Schulien,Human,Infection,pMHC Multimer,ORF3a,139,147,9,11.0,11.0,1.0,LLYDANYFL,A*02:01,Predicted Binding Affinity,Biological,CD8,,,ORF3a 139-147
+Schulien,Human,Infection,pMHC Multimer,N,222,230,9,3.0,11.0,0.2727272727272727,LLLDRLNQL,A*02:01,Predicted Binding Affinity,Biological,CD8,,,N 222-230
+Schulien,Human,Infection,pMHC Multimer,nsp3,1514,1522,9,10.0,11.0,0.9090909090909091,ILFTRFFYV,A*02:01,Predicted Binding Affinity,Biological,CD8,,,ORF1a 2332-2340
+Schulien,Human,Infection,pMHC Multimer,ORF3a,107,115,9,9.0,11.0,0.8181818181818182,YLYALVYFL,A*02:01,Predicted Binding Affinity,Biological,CD8,,,ORF3a 107-115
+Schulien,Human,Infection,pMHC Multimer,N,316,324,9,2.0,11.0,0.18181818181818182,GMSRIGMEV,A*02:01,Predicted Binding Affinity,Biological,CD8,,,N 316-324
+Schulien,Human,Infection,pMHC Multimer,N,219,227,9,2.0,11.0,0.18181818181818182,LALLLLDRL,A*02:01,Predicted Binding Affinity,Biological,CD8,,,N 219-227
+Schulien,Human,Infection,pMHC Multimer,nsp13,209,218,10,3.0,7.0,0.42857142857142855,VVYRGTTTYK,A*03:01,Predicted Binding Affinity,Biological,CD8,,,ORF1ab 5533-5542
+Schulien,Human,Infection,pMHC Multimer,nsp3,1564,1573,10,1.0,7.0,0.14285714285714285,RMYIFFASFY,A*03:01,Predicted Binding Affinity,Biological,CD8,,,ORF1ab 2382-2391
+Schulien,Human,Infection,pMHC Multimer,nsp6,53,61,9,3.0,4.0,0.75,SAFAMMFVK,A*11:01,Predicted Binding Affinity,Biological,CD8,,,ORF1ab 3622-3630
+Schulien,Human,Infection,pMHC Multimer,nsp3,1782,1790,9,3.0,4.0,0.75,STFNVPMEK,A*11:01,Predicted Binding Affinity,Biological,CD8,,,ORF1ab 2600-2608
+Schulien,Human,Infection,pMHC Multimer,nsp3,1374,1382,9,3.0,4.0,0.75,ASMPTTIAK,A*11:01,Predicted Binding Affinity,Biological,CD8,,,ORF1ab 2192-2200
+Schulien,Human,Infection,pMHC Multimer,N,105,113,9,6.0,7.0,0.8571428571428571,SPRWYFYYL,B*07:02,Predicted Binding Affinity,Biological,CD8,,,N 105-113
+Schulien,Human,Infection,pMHC Multimer,nsp13,592,600,9,3.0,7.0,0.42857142857142855,IPRRNVATL,B*07:02,Predicted Binding Affinity,Biological,CD8,,,ORF1ab 5916-5924
+Schulien,Human,Infection,pMHC Multimer,N,66,74,9,2.0,7.0,0.2857142857142857,FPRGQGVPI,B*07:02,Predicted Binding Affinity,Biological,CD8,,,N 66-74
+Schulien,Human,Infection,pMHC Multimer,S,680,688,9,4.0,7.0,0.5714285714285714,SPRRARSVA,B*07:02,Predicted Binding Affinity,Biological,CD8,,,S 680-688
+Schulien,Human,Infection,pMHC Multimer,N,257,265,9,3.0,7.0,0.42857142857142855,KPRQKRTAT,B*07:02,Predicted Binding Affinity,Biological,CD8,,,N 257-265
+Schulien,Human,Infection,pMHC Multimer,N,305,314,10,3.0,5.0,0.6,AQFAPSASAF,B*15:01,Predicted Binding Affinity,Biological,CD8,,,N 305-314
+Schulien,Human,Infection,pMHC Multimer,nsp3,1553,1562,10,2.0,5.0,0.4,LVQMAPISAM,B*15:01,Predicted Binding Affinity,Biological,CD8,,,ORF1ab 2371-2380
+Schulien,Human,Infection,pMHC Multimer,nsp4,8,17,10,1.0,5.0,0.2,KQLIKVTLVF,B*15:01,Predicted Binding Affinity,Biological,CD8,,,ORF1ab 2771-2780
+Schulien,Human,Infection,pMHC Multimer,N,322,331,10,2.0,4.0,0.5,MEVTPSGTWL,B*40:01,Predicted Binding Affinity,Biological,CD8,,,N 322-331
+Schulien,Human,Infection,pMHC Multimer,nsp3,887,895,9,2.0,4.0,0.5,GEAANFCAL,B*40:01,Predicted Binding Affinity,Biological,CD8,,,ORF1ab 1705-1713
+Schulien,Human,Infection,pMHC Multimer,nsp3,730,738,9,2.0,4.0,0.5,GEVITFDNL,B*40:01,Predicted Binding Affinity,Biological,CD8,,,ORF1ab 1548-1556
+Schulien,Human,Infection,pMHC Multimer,nsp2,564,572,9,1.0,4.0,0.25,GETLPTEVL,B*40:01,Predicted Binding Affinity,Biological,CD8,,,ORF1ab 744-752
+Schulien,Human,Infection,pMHC Multimer,nsp3,1251,1259,9,1.0,4.0,0.25,TEVVGDIIL,B*40:01,Predicted Binding Affinity,Biological,CD8,,,ORF1ab 2069-2077
+Schulien,Human,Infection,pMHC Multimer,N,322,330,9,5.0,6.0,0.8333333333333334,MEVTPSGTW,B*44:02/03,Predicted Binding Affinity,Biological,CD8,,,N 322-330
+Schulien,Human,Infection,pMHC Multimer,nsp8,4,12,9,3.0,8.0,0.375,SEFSSLPSY,B*44:02/03,Predicted Binding Affinity,Biological,CD8,,,ORF1ab 3946-3954
+Schulien,Human,Infection,pMHC Multimer,nsp3,547,555,9,2.0,6.0,0.3333333333333333,QEILGTVSW,B*44:02/03,Predicted Binding Affinity,Biological,CD8,,,ORF1ab 1365-1373
+Schulien,Human,Infection,pMHC Multimer,nsp2,291,300,10,1.0,8.0,0.125,EEIAIILASF,B*44:02/03,Predicted Binding Affinity,Biological,CD8,,,ORF1ab 471-480
+Schulien,Human,Infection,pMHC Multimer,nsp14,77,86,10,1.0,8.0,0.125,EEAIRHVRAW,B*44:02/03,Predicted Binding Affinity,Biological,CD8,,,ORF1ab 6002-6011
+Schulien,Human,Infection,pMHC Multimer,nsp12,875,884,10,1.0,8.0,0.125,QEYADVFHLY,B*44:02/03,Predicted Binding Affinity,Biological,CD8,,,ORF1ab 5267-5276
+Schulien,Human,Infection,pMHC Multimer,S,1206,1214,9,1.0,8.0,0.125,YEQYIKWPW,B*44:02/03,Predicted Binding Affinity,Biological,CD8,,,S 1206-1214
+Shomuradova,Human,Infection,pMHC Multimer,S,269,277,9,13.0,14.0,0.9285714285714286,YLQPRTFLL,A*02:01,Homology to SARS,Biological,CD8,,,S 269-277
+Shomuradova,Human,Infection,pMHC Multimer,S,1000,1008,9,10.0,14.0,0.7142857142857143,RLQSLQTYV,A*02:01,Homology to SARS,Biological,CD8,,,S 1000-1008
+Smith,Mouse,DNA Vaccine,IFN-γ ELISpot,S,427,441,15,,,,DDFTGCVIAWNSNNL,H2-d,Unbiased Tiling,Biological,,,,S 427-441
+Smith,Mouse,DNA Vaccine,IFN-γ ELISpot,S,1075,1089,15,,,,FTTAPAICHDGKAHF,H2-d,Unbiased Tiling,Biological,,,,S 1075-1089
+Smith,Mouse,DNA Vaccine,IFN-γ ELISpot,S,535,549,15,,,,KNKCVNFNFNGLTGT,H2-d,Unbiased Tiling,Biological,,,,S 535-549
+Smith,Mouse,DNA Vaccine,IFN-γ ELISpot,S,517,531,15,,,,LLHAPATVCGPKKST,H2-d,Unbiased Tiling,Biological,,,,S 517-531
+Smith,Mouse,DNA Vaccine,IFN-γ ELISpot,S,1057,1071,15,,,,PHGVVFLHVTYVPAQ,H2-d,Unbiased Tiling,Biological,,,,S 1057-1071
+Smith,Mouse,DNA Vaccine,IFN-γ ELISpot,S,1051,1065,15,,,,SFPQSAPHGVVFLHV,H2-d,Unbiased Tiling,Biological,,,,S 1051-1065
+Smith,Mouse,DNA Vaccine,IFN-γ ELISpot,S,445,459,15,,,,VGGNYNYLYRLFRKS,H2-d,Unbiased Tiling,Biological,,,,S 445-459
+Smith,Mouse,DNA Vaccine,IFN-γ ELISpot,S,421,435,15,,,,YNYKLPDDFTGCVIA,H2-d,Unbiased Tiling,Biological,,,,S 421-435
+Snyder,Human,Infection,MIRA,nsp3,818,828,11,10.0,12.0,0.8333333333333334,HTTDPSFLGRY,A*01:01,Predicted Binding Affinity,Correlation Between Volunteers,CD8,,,ORF1ab 1636-1646
+Snyder,Human,Infection,MIRA,N,104,113,10,11.0,11.0,1.0,LSPRWYFYYL,B*07:02,Predicted Binding Affinity,Correlation Between Volunteers,CD8,"Minimal epitopes: LSPRWYFYY, SPRWYFYYL",,N 104-113
+Tarke,Human,Infection,AIM,nsp3,818,828,11,2.0,2.0,1.0,HTTDPSFLGRY,A*01:01,Predicted Elution,Predicted,CD8,,,nsp3 1636-1646
+Tarke,Human,Infection,AIM,nsp3,819,829,11,2.0,2.0,1.0,TTDPSFLGRYM,A*01:01,Predicted Elution,Predicted,CD8,,,nsp3 1637-1647
+Tarke,Human,Infection,AIM,N,324,333,10,2.0,2.0,1.0,VTPSGTWLTY,A*30:02,Predicted Elution,Predicted,CD8,,,N 324-333
+Tarke,Human,Infection,AIM,M,142,150,9,2.0,2.0,1.0,AVILRGHLR,A*68:01,Predicted Elution,Predicted,CD8,,,M 142-150
+Tarke,Human,Infection,AIM,S,30,38,9,2.0,2.0,1.0,NSFTRGVYY,A*68:01,Predicted Elution,Predicted,CD8,,,S 30-38
+Tarke,Human,Infection,AIM,S,69,77,9,2.0,2.0,1.0,HVSGTNGTK,A*68:01,Predicted Elution,Predicted,CD8,,,S 69-77
+Tarke,Human,Infection,AIM,S,409,417,9,2.0,2.0,1.0,QIAPGQTGK,A*68:01,Predicted Elution,Predicted,CD8,,,S 409-417
+Tarke,Human,Infection,AIM,N,43,52,10,2.0,2.0,1.0,QGLPNNTASW,B*57:01,Predicted Elution,Predicted,CD8,,,N 43-52
+Tarke,Human,Infection,AIM,N,100,108,9,2.0,2.0,1.0,KMKDLSPRW,B*57:01,Predicted Elution,Predicted,CD8,,,N 100-108
+Tarke,Human,Infection,AIM,ORF3a,33,41,9,2.0,2.0,1.0,ATIPIQASL,B*57:01,Predicted Elution,Predicted,CD8,,,ORF3a 33-41
+Tarke,Human,Infection,AIM,nsp3,733,741,9,2.0,2.0,1.0,ITFDNLKTL,B*57:01,Predicted Elution,Predicted,CD8,,,nsp3 1551-1559
+Tarke,Human,Infection,AIM,S,265,275,11,3.0,4.0,0.75,YYVGYLQPRTF,A*24:02,Predicted Elution,Predicted,CD8,,,S 265-275
+Tarke,Human,Infection,AIM,S,1137,1148,12,3.0,4.0,0.75,VYDPLQPELDSF,A*24:02,Predicted Elution,Predicted,CD8,,,S 1137-1148
+Tarke,Human,Infection,AIM,S,258,266,9,3.0,4.0,0.75,WTAGAAAYY,A*26:01,Predicted Elution,Predicted,CD8,,,S 258-266
+Tarke,Human,Infection,AIM,S,686,695,10,3.0,4.0,0.75,SVASQSIIAY,A*26:01,Predicted Elution,Predicted,CD8,,,S 686-695
+Tarke,Human,Infection,AIM,S,687,695,9,3.0,4.0,0.75,VASQSIIAY,B*35:01,Predicted Elution,Predicted,CD8,,,S 687-695
+Tarke,Human,Infection,AIM,nsp3,504,511,8,2.0,3.0,0.6666666666666666,TDNYITTY,A*01:01,Predicted Elution,Predicted,CD8,,,nsp3 1322-1329
+Tarke,Human,Infection,AIM,N,361,370,10,2.0,3.0,0.6666666666666666,KTFPPTEPKK,A*11:01,Predicted Elution,Predicted,CD8,,,N 361-370
+Tarke,Human,Infection,AIM,N,105,113,9,2.0,3.0,0.6666666666666666,SPRWYFYYL,B*07:02,Predicted Elution,Predicted,CD8,,,N 105-113
+Tarke,Human,Infection,AIM,S,634,643,10,2.0,3.0,0.6666666666666666,RVYSTGSNVF,B*15:01,Predicted Elution,Predicted,CD8,,,S 634-643
+Tarke,Human,Infection,AIM,ORF3a,35,43,9,2.0,3.0,0.6666666666666666,IPIQASLPF,B*35:01,Predicted Elution,Predicted,CD8,,,ORF3a 35-43
+Tarke,Human,Infection,AIM,nsp4,135,142,8,2.0,3.0,0.6666666666666666,TPSKLIEY,B*35:01,Predicted Elution,Predicted,CD8,,,nsp4 2898-2905
+Tarke,Human,Infection,AIM,nsp4,373,381,9,2.0,3.0,0.6666666666666666,VPFWITIAY,B*35:01,Predicted Elution,Predicted,CD8,,,nsp4 3136-3144
+Tarke,Human,Infection,AIM,N,289,298,10,2.0,3.0,0.6666666666666666,QELIRQGTDY,B*44:02,Predicted Elution,Predicted,CD8,,,N 289-298
+Tarke,Human,Infection,AIM,S,506,513,8,3.0,5.0,0.6,QPYRVVVL,B*08:01,Predicted Elution,Predicted,CD8,,,S 506-513
+Tarke,Human,Infection,AIM,S,747,756,10,3.0,5.0,0.6,TECSNLLLQY,B*44:02,Predicted Elution,Predicted,CD8,,,S 747-756
+Tarke,Human,Infection,AIM,S,41,49,9,2.0,4.0,0.5,KVFRSSVLH,A*03:01,Predicted Elution,Predicted,CD8,,,S 41-49
+Tarke,Human,Infection,AIM,S,159,168,10,2.0,4.0,0.5,VYSSANNCTF,A*24:02,Predicted Elution,Predicted,CD8,,,S 159-168
+Tarke,Human,Infection,AIM,S,312,320,9,2.0,4.0,0.5,IYQTSNFRV,A*24:02,Predicted Elution,Predicted,CD8,,,S 312-320
+Tarke,Human,Infection,AIM,S,718,726,9,2.0,4.0,0.5,FTISVTTEI,A*26:01,Predicted Elution,Predicted,CD8,,,S 718-726
+Tarke,Human,Infection,AIM,S,162,170,9,2.0,4.0,0.5,SANNCTFEY,A*29:02,Predicted Elution,Predicted,CD8,,,S 162-170
+Tarke,Human,Infection,AIM,S,192,200,9,2.0,4.0,0.5,FVFKNIDGY,A*29:02,Predicted Elution,Predicted,CD8,,,S 192-200
+Tarke,Human,Infection,AIM,S,361,369,9,2.0,4.0,0.5,CVADYSVLY,A*29:02,Predicted Elution,Predicted,CD8,,,S 361-369
+Tarke,Human,Infection,AIM,S,445,453,9,2.0,4.0,0.5,VGGNYNYLY,A*29:02,Predicted Elution,Predicted,CD8,,,S 445-453
+Tarke,Human,Infection,AIM,M,131,138,8,2.0,4.0,0.5,RPLLESEL,B*07:02,Predicted Elution,Predicted,CD8,,,M 131-138
+Tarke,Human,Infection,AIM,M,164,172,9,2.0,4.0,0.5,LPKEITVAT,B*07:02,Predicted Elution,Predicted,CD8,,,M 164-172
+Tarke,Human,Infection,AIM,S,79,92,14,2.0,4.0,0.5,FDNPVLPFNDGVYF,B*35:01,Predicted Elution,Predicted,CD8,,,S 79-92
+Tarke,Human,Infection,AIM,S,895,904,10,2.0,4.0,0.5,QIPFAMQMAY,B*35:01,Predicted Elution,Predicted,CD8,,,S 895-904
+Tarke,Human,Infection,AIM,nsp12,194,202,9,2.0,4.0,0.5,DAMRNAGIV,B*51:01,Predicted Elution,Predicted,CD8,,,nsp12 4586-4594
+Tarke,Human,Infection,AIM,nsp12,828,837,10,2.0,4.0,0.5,YLPYPDPSRI,B*51:01,Predicted Elution,Predicted,CD8,,,nsp12 5220-5229
+Tarke,Human,Infection,AIM,S,462,472,11,2.0,5.0,0.4,KPFERDISTEI,B*07:02,Predicted Elution,Predicted,CD8,,,S 462-472
+Tarke,Human,Infection,AIM,S,1052,1060,9,2.0,5.0,0.4,FPQSAPHGV,B*07:02,Predicted Elution,Predicted,CD8,,,S 1052-1060
+Tarke,Human,Infection,AIM,S,216,223,8,2.0,5.0,0.4,LPQGFSAL,B*08:01,Predicted Elution,Predicted,CD8,,,S 216-223
+Tarke,Human,Infection,AIM,S,869,877,9,2.0,5.0,0.4,MIAQYTSAL,B*08:01,Predicted Elution,Predicted,CD8,,,S 869-877
+Tarke,Human,Infection,AIM,N,322,331,10,2.0,5.0,0.4,MEVTPSGTWL,B*40:01,Predicted Elution,Predicted,CD8,,,N 322-331
+Tarke,Human,Infection,AIM,S,168,177,10,2.0,5.0,0.4,FEYVSQPFLM,B*40:01,Predicted Elution,Predicted,CD8,,,S 168-177
+Tarke,Human,Infection,AIM,S,323,335,13,2.0,5.0,0.4,TESIVRFPNITNL,B*40:01,Predicted Elution,Predicted,CD8,,,S 323-335
+Tarke,Human,Infection,AIM,S,1256,1265,10,2.0,5.0,0.4,FDEDDSEPVL,B*40:01,Predicted Elution,Predicted,CD8,,,S 1256-1265
+Tarke,Human,Infection,AIM,S,1261,1270,10,2.0,5.0,0.4,SEPVLKGVKL,B*40:01,Predicted Elution,Predicted,CD8,,,S 1261-1270
+Tarke,Human,Infection,AIM,S,297,306,10,2.0,5.0,0.4,SETKCTLKSF,B*44:02,Predicted Elution,Predicted,CD8,,,S 297-306
+Tarke,Human,Infection,AIM,S,553,565,13,2.0,5.0,0.4,TESNKKFLPFQQF,B*44:02,Predicted Elution,Predicted,CD8,,,S 553-565
+Tarke,Human,Infection,AIM,S,653,660,8,2.0,5.0,0.4,AEHVNNSY,B*44:02,Predicted Elution,Predicted,CD8,,,S 653-660
+Tarke,Human,Infection,AIM,M,65,73,9,3.0,8.0,0.375,FVLAAVYRI,A*02:01,Predicted Elution,Predicted,CD8,,,M 65-73
+Tarke,Human,Infection,AIM,N,79,87,9,2.0,6.0,0.3333333333333333,SPDDQIGYY,B*35:01,Predicted Elution,Predicted,CD8,,,N 79-87
+Tarke,Human,Infection,AIM,N,266,274,9,2.0,6.0,0.3333333333333333,KAYNVTQAF,B*35:01,Predicted Elution,Predicted,CD8,,,N 266-274
+Tarke,Human,Infection,AIM,N,307,315,9,2.0,6.0,0.3333333333333333,FAPSASAFF,B*35:01,Predicted Elution,Predicted,CD8,,,N 307-315
+Tarke,Human,Infection,AIM,N,325,333,9,2.0,6.0,0.3333333333333333,TPSGTWLTY,B*35:01,Predicted Elution,Predicted,CD8,,,N 325-333
+Tarke,Human,Infection,AIM,N,395,403,9,2.0,6.0,0.3333333333333333,LPAADLDDF,B*35:01,Predicted Elution,Predicted,CD8,,,N 395-403
+Tarke,Human,Infection,AIM,M,15,23,9,2.0,8.0,0.25,KLLEQWNLV,A*02:01,Predicted Elution,Predicted,CD8,,,M 15-23
+Tarke,Human,Infection,AIM,M,108,116,9,2.0,8.0,0.25,SMWSFNPET,A*02:01,Predicted Elution,Predicted,CD8,,,M 108-116
+Tarke,Human,Infection,AIM,N,257,265,9,1.0,3.0,0.3333333333333333,KPRQKRTAT,B*07:02,Predicted Elution,Predicted,CD8,,,N 257-265
+Tarke,Human,Infection,AIM,S,506,513,8,1.0,4.0,0.25,QPYRVVVL,B*07:02,Predicted Elution,Predicted,CD8,,,S 506-513
+Tarke,Human,Infection,AIM,S,917,927,11,1.0,5.0,0.2,YENQKLIANQF,B*44:02,Predicted Elution,Predicted,CD8,,,S 917-927
+Tarke,Human,Infection,AIM,N,66,74,9,1.0,3.0,0.3333333333333333,FPRGQGVPI,B*07:02,Predicted Elution,Predicted,CD8,,,N 66-74
+Tarke,Human,Infection,AIM,nsp4,392,400,9,1.0,1.0,1.0,WFFSNYLKR,A*31:01,Predicted Elution,Predicted,CD8,,,nsp4 3155-3163
+Tarke,Human,Infection,AIM,nsp16,77,88,12,1.0,1.0,1.0,GVAPGTAVLRQW,B*57:01,Predicted Elution,Predicted,CD8,,,nsp16 6875-6886
+Tarke,Human,Infection,AIM,N,311,319,9,1.0,2.0,0.5,ASAFFGMSR,A*68:01,Predicted Elution,Predicted,CD8,,,N 311-319
+Tarke,Human,Infection,AIM,M,84,92,9,1.0,2.0,0.5,MACLVGLMW,B*57:01,Predicted Elution,Predicted,CD8,,,M 84-92
+Tarke,Human,Infection,AIM,nsp16,115,124,10,1.0,1.0,1.0,CATVHTANKW,B*57:01,Predicted Elution,Predicted,CD8,,,nsp16 6913-6922
+Tarke,Human,Infection,AIM,N,306,315,10,1.0,4.0,0.25,QFAPSASAFF,A*24:02,Predicted Elution,Predicted,CD8,,,N 306-315
+Tarke,Human,Infection,AIM,nsp4,436,444,9,1.0,3.0,0.3333333333333333,LPLTQYNRY,B*35:01,Predicted Elution,Predicted,CD8,,,nsp4 3199-3207
+Tarke,Human,Infection,AIM,M,136,144,9,1.0,3.0,0.3333333333333333,SELVIGAVI,B*44:02,Predicted Elution,Predicted,CD8,,,M 136-144
+Tarke,Human,Infection,AIM,S,1016,1024,9,1.0,5.0,0.2,AEIRASANL,B*44:02,Predicted Elution,Predicted,CD8,,,S 1016-1024
+Tarke,Human,Infection,AIM,N,310,319,10,1.0,2.0,0.5,SASAFFGMSR,A*68:01,Predicted Elution,Predicted,CD8,,,N 310-319
+Tarke,Human,Infection,AIM,S,258,266,9,1.0,4.0,0.25,WTAGAAAYY,B*35:01,Predicted Elution,Predicted,CD8,,,S 258-266
+Tarke,Human,Infection,AIM,M,65,73,9,1.0,1.0,1.0,FVLAAVYRI,A*68:02,Predicted Elution,Predicted,CD8,,,M 65-73
+Tarke,Human,Infection,AIM,nsp4,25,32,8,1.0,1.0,1.0,YLITPVHV,A*02:01,Predicted Elution,Predicted,CD8,,,nsp4 2788-2795
+Tarke,Human,Infection,AIM,nsp3,1199,1210,12,1.0,3.0,0.3333333333333333,KPVETSNSFDVL,B*07:02,Predicted Elution,Predicted,CD8,,,nsp3 2017-2028
+Tarke,Human,Infection,AIM,nsp12,253,265,13,1.0,3.0,0.3333333333333333,AESHVDTDLTKPY,B*44:02,Predicted Elution,Predicted,CD8,,,nsp12 4645-4657
+Tarke,Human,Infection,AIM,S,604,612,9,1.0,1.0,1.0,TSNQVAVLY,B*57:01,Predicted Elution,Predicted,CD8,,,S 604-612
+Tarke,Human,Infection,AIM,S,989,997,9,1.0,5.0,0.2,AEVQIDRLI,B*44:02,Predicted Elution,Predicted,CD8,,,S 989-997
+Tarke,Human,Infection,AIM,ORF3a,100,108,9,1.0,3.0,0.3333333333333333,GLEAPFLYL,A*02:01,Predicted Elution,Predicted,CD8,,,ORF3a 100-108
+Tarke,Human,Infection,AIM,S,1093,1102,10,1.0,1.0,1.0,GVFVSNGTHW,B*57:01,Predicted Elution,Predicted,CD8,,,S 1093-1102
+Tarke,Human,Infection,AIM,M,93,101,9,1.0,1.0,1.0,LSYFIASFR,A*31:01,Predicted Elution,Predicted,CD8,,,M 93-101
+Tarke,Human,Infection,AIM,N,105,113,9,1.0,3.0,0.3333333333333333,SPRWYFYYL,B*08:01,Predicted Elution,Predicted,CD8,,,N 105-113
+Tarke,Human,Infection,AIM,S,691,699,9,1.0,5.0,0.2,SIIAYTMSL,B*08:01,Predicted Elution,Predicted,CD8,,,S 691-699
+Tarke,Human,Infection,AIM,M,188,196,9,1.0,4.0,0.25,AGDSGFAAY,A*01:01,Predicted Elution,Predicted,CD8,,,M 188-196
+Tarke,Human,Infection,AIM,S,1048,1056,9,1.0,6.0,0.16666666666666666,HLMSFPQSA,A*02:01,Predicted Elution,Predicted,CD8,,,S 1048-1056
+Tarke,Human,Infection,AIM,ORF3a,57,65,9,1.0,3.0,0.3333333333333333,QSASKIITL,B*08:01,Predicted Elution,Predicted,CD8,,,ORF3a 57-65
+Tarke,Human,Infection,AIM,nsp3,819,828,10,1.0,1.0,1.0,TTDPSFLGRY,A*01:01,Predicted Elution,Predicted,CD8,,,nsp3 1637-1646
+Tarke,Human,Infection,AIM,M,67,75,9,1.0,2.0,0.5,LAAVYRINW,B*57:01,Predicted Elution,Predicted,CD8,,,M 67-75
+Tarke,Human,Infection,AIM,nsp12,500,509,10,1.0,1.0,1.0,KSAGFPFNKW,B*57:01,Predicted Elution,Predicted,CD8,,,nsp12 4892-4901
+Tarke,Human,Infection,AIM,ORF3a,106,114,9,1.0,2.0,0.5,LYLYALVYF,A*24:02,Predicted Elution,Predicted,CD8,,,ORF3a 106-114
+Tarke,Human,Infection,AIM,nsp3,1677,1686,10,1.0,2.0,0.5,TVKNGSIHLY,A*26:01,Predicted Elution,Predicted,CD8,,,nsp3 2495-2504
+Tarke,Human,Infection,AIM,nsp3,905,918,14,1.0,1.0,1.0,GELGDVRETMSYLF,B*44:02,Predicted Elution,Predicted,CD8,,,nsp3 1723-1736
+Tarke,Human,Infection,AIM,M,186,196,11,1.0,2.0,0.5,RVAGDSGFAAY,B*15:01,Predicted Elution,Predicted,CD8,,,M 186-196
+Tarke,Human,Infection,AIM,S,1147,1155,9,1.0,4.0,0.25,SFKEELDKY,A*29:02,Predicted Elution,Predicted,CD8,,,S 1147-1155
+Tarke,Human,Infection,AIM,nsp4,178,186,9,1.0,1.0,1.0,GSVAYESLR,A*31:01,Predicted Elution,Predicted,CD8,,,nsp4 2941-2949
+Tarke,Human,Infection,AIM,nsp3,1487,1496,10,1.0,2.0,0.5,ETIQITISSF,A*26:01,Predicted Elution,Predicted,CD8,,,nsp3 2305-2314
+Tarke,Human,Infection,AIM,ORF3a,120,128,9,1.0,2.0,0.5,FVRIIMRLW,B*57:01,Predicted Elution,Predicted,CD8,,,ORF3a 120-128
+Tarke,Human,Infection,AIM,nsp4,456,464,9,1.0,1.0,1.0,GAMDTTSYR,A*31:01,Predicted Elution,Predicted,CD8,,,nsp4 3219-3227
+Tarke,Human,Infection,AIM,nsp12,609,618,10,1.0,3.0,0.3333333333333333,VENPHLMGWD,B*44:02,Predicted Elution,Predicted,CD8,,,nsp12 5001-5010
+Tarke,Human,Infection,AIM,S,169,177,9,1.0,4.0,0.25,EYVSQPFLM,A*24:02,Predicted Elution,Predicted,CD8,,,S 169-177
+Tarke,Human,Infection,AIM,S,1095,1103,9,1.0,4.0,0.25,FVSNGTHWF,A*26:01,Predicted Elution,Predicted,CD8,,,S 1095-1103
+Tarke,Human,Infection,AIM,nsp4,197,205,9,1.0,3.0,0.3333333333333333,SIIQFPNTY,B*35:01,Predicted Elution,Predicted,CD8,,,nsp4 2960-2968
+Tarke,Human,Infection,AIM,nsp3,1291,1299,9,1.0,3.0,0.3333333333333333,KPNELSRVL,B*07:02,Predicted Elution,Predicted,CD8,,,nsp3 2109-2117
+Tarke,Human,Infection,AIM,M,171,180,10,1.0,1.0,1.0,ATSRTLSYYK,A*30:01,Predicted Elution,Predicted,CD8,,,M 171-180
+Tarke,Human,Infection,AIM,nsp16,250,258,9,1.0,2.0,0.5,FPLKLRGTA,B*07:02,Predicted Elution,Predicted,CD8,,,nsp16 7048-7056
+Tarke,Human,Infection,AIM,nsp3,1846,1859,14,1.0,2.0,0.5,EVTGDSCNNYMLTY,A*26:01,Predicted Elution,Predicted,CD8,,,nsp3 2664-2677
+Tarke,Human,Infection,AIM,nsp3,1271,1281,11,1.0,2.0,0.5,EVGHTDLMAAY,A*26:01,Predicted Elution,Predicted,CD8,,,nsp3 2089-2099
+Tarke,Human,Infection,AIM,nsp3,1268,1281,14,1.0,2.0,0.5,ITEEVGHTDLMAAY,A*01:01,Predicted Elution,Predicted,CD8,,,nsp3 2086-2099
+Tarke,Human,Infection,AIM,nsp3,123,131,9,1.0,1.0,1.0,FEPSTQYEY,B*44:02,Predicted Elution,Predicted,CD8,,,nsp3 941-949
+Tarke,Human,Infection,AIM,nsp12,111,119,9,1.0,1.0,1.0,VPHISRQRL,B*07:02,Predicted Elution,Predicted,CD8,,,nsp12 4503-4511
+Tarke,Human,Infection,AIM,nsp3,1514,1522,9,1.0,2.0,0.5,ILFTRFFYV,A*02:01,Predicted Elution,Predicted,CD8,,,nsp3 2332-2340
+Tarke,Human,Infection,AIM,S,1181,1189,9,1.0,5.0,0.2,KEIDRLNEV,B*44:03,Predicted Elution,Predicted,CD8,,,S 1181-1189
+Tarke,Human,Infection,AIM,nsp3,546,555,10,1.0,1.0,1.0,KQEILGTVSW,B*44:02,Predicted Elution,Predicted,CD8,,,nsp3 1364-1373
+Tarke,Human,Infection,AIM,nsp4,352,361,10,1.0,1.0,1.0,YLTNDVSFLA,A*02:01,Predicted Elution,Predicted,CD8,,,nsp4 3115-3124
+Tarke,Human,Infection,AIM,S,506,515,10,1.0,4.0,0.25,QPYRVVVLSF,B*07:02,Predicted Elution,Predicted,CD8,,,S 506-515
+Tarke,Human,Infection,AIM,S,28,37,10,1.0,3.0,0.3333333333333333,YTNSFTRGVY,A*01:01,Predicted Elution,Predicted,CD8,,,S 28-37
+Tarke,Human,Infection,AIM,nsp12,907,916,10,1.0,1.0,1.0,LTNDNTSRYW,B*57:01,Predicted Elution,Predicted,CD8,,,nsp12 5299-5308
+Tarke,Human,Infection,AIM,S,458,466,9,1.0,2.0,0.5,KSNLKPFER,A*31:01,Predicted Elution,Predicted,CD8,,,S 458-466
+Tarke,Human,Infection,AIM,S,269,277,9,1.0,5.0,0.2,YLQPRTFLL,B*08:01,Predicted Elution,Predicted,CD8,,,S 269-277
+Tarke,Human,Infection,AIM,S,1201,1209,9,1.0,5.0,0.2,QELGKYEQY,B*44:02,Predicted Elution,Predicted,CD8,,,S 1201-1209
+Tarke,Human,Infection,AIM,nsp3,1055,1064,10,1.0,2.0,0.5,YTTTIKPVTY,A*26:01,Predicted Elution,Predicted,CD8,,,nsp3 1873-1882
+Tarke,Human,Infection,AIM,nsp4,241,249,9,1.0,1.0,1.0,WVLNNDYYR,A*31:01,Predicted Elution,Predicted,CD8,,,nsp4 3004-3012
+Tarke,Human,Infection,AIM,nsp3,1571,1579,9,1.0,2.0,0.5,SFYYVWKSY,A*29:02,Predicted Elution,Predicted,CD8,,,nsp3 2389-2397
+Tarke,Human,Infection,AIM,nsp4,297,305,9,1.0,1.0,1.0,LAYYFMRFR,A*31:01,Predicted Elution,Predicted,CD8,,,nsp4 3060-3068
+Tarke,Human,Infection,AIM,ORF3a,63,71,9,1.0,3.0,0.3333333333333333,ITLKKRWQL,B*08:01,Predicted Elution,Predicted,CD8,,,ORF3a 63-71
+Tarke,Human,Infection,AIM,nsp3,1454,1463,10,1.0,2.0,0.5,NSTNVTIATY,A*26:01,Predicted Elution,Predicted,CD8,,,nsp3 2272-2281
+Tarke,Human,Infection,AIM,nsp3,1776,1784,9,1.0,2.0,0.5,YVNTFSSTF,A*26:01,Predicted Elution,Predicted,CD8,,,nsp3 2594-2602
+Tarke,Human,Infection,AIM,S,1264,1272,9,1.0,4.0,0.25,VLKGVKLHY,A*29:02,Predicted Elution,Predicted,CD8,,,S 1264-1272
+Tarke,Human,Infection,AIM,nsp4,337,344,8,1.0,1.0,1.0,FLPGVYSV,A*02:01,Predicted Elution,Predicted,CD8,,,nsp4 3100-3107
+Tarke,Human,Infection,AIM,N,45,53,9,1.0,3.0,0.3333333333333333,LPNNTASWF,B*07:02,Predicted Elution,Predicted,CD8,,,N 45-53
+Tarke,Human,Infection,AIM,S,448,456,9,1.0,4.0,0.25,NYNYLYRLF,A*24:02,Predicted Elution,Predicted,CD8,,,S 448-456
+Tarke,Human,Infection,AIM,nsp3,1617,1626,10,1.0,2.0,0.5,YVYANGGKGF,A*26:01,Predicted Elution,Predicted,CD8,,,nsp3 2435-2444
+Tarke,Human,Infection,AIM,S,896,904,9,1.0,4.0,0.25,IPFAMQMAY,B*35:01,Predicted Elution,Predicted,CD8,,,S 896-904
+Tarke,Human,Infection,AIM,nsp3,1767,1776,10,1.0,2.0,0.5,EVAVKMFDAY,A*26:01,Predicted Elution,Predicted,CD8,,,nsp3 2585-2594
+Tarke,Human,Infection,AIM,S,297,306,10,1.0,5.0,0.2,SETKCTLKSF,B*44:03,Predicted Elution,Predicted,CD8,,,S 297-306
+Tarke,Human,Infection,AIM,S,710,718,9,1.0,1.0,1.0,NSIAIPTNF,B*57:01,Predicted Elution,Predicted,CD8,,,S 710-718
+Tarke,Human,Infection,AIM,nsp4,433,441,9,1.0,3.0,0.3333333333333333,DVLLPLTQY,B*35:01,Predicted Elution,Predicted,CD8,,,nsp4 3196-3204
+Tarke,Human,Infection,AIM,S,340,351,12,1.0,4.0,0.25,EVFNATRFASVY,A*26:01,Predicted Elution,Predicted,CD8,,,S 340-351
+Tarke,Human,Infection,AIM,S,1101,1109,9,1.0,4.0,0.25,HWFVTQRNF,A*24:02,Predicted Elution,Predicted,CD8,,,S 1101-1109
+Tarke,Human,Infection,AIM,nsp3,1293,1301,9,1.0,3.0,0.3333333333333333,NELSRVLGL,B*44:02,Predicted Elution,Predicted,CD8,,,nsp3 2111-2119
+Tarke,Human,Infection,AIM,nsp4,186,194,9,1.0,3.0,0.3333333333333333,RPDTRYVLM,B*35:01,Predicted Elution,Predicted,CD8,,,nsp4 2949-2957
+Tarke,Human,Infection,AIM,nsp3,1862,1870,9,1.0,2.0,0.5,VENMTPRDL,B*44:03,Predicted Elution,Predicted,CD8,,,nsp3 2680-2688
+Tarke,Human,Infection,AIM,nsp3,1039,1050,12,1.0,3.0,0.3333333333333333,SEYKGPITDVFY,B*44:02,Predicted Elution,Predicted,CD8,,,nsp3 1857-1868
+Tarke,Human,Infection,AIM,S,328,338,11,1.0,4.0,0.25,RFPNITNLCPF,A*24:02,Predicted Elution,Predicted,CD8,,,S 328-338
+Tarke,Human,Infection,AIM,S,1052,1062,11,1.0,4.0,0.25,FPQSAPHGVVF,B*35:01,Predicted Elution,Predicted,CD8,,,S 1052-1062
+Tarke,Human,Infection,AIM,S,685,693,9,1.0,1.0,1.0,RSVASQSII,B*57:01,Predicted Elution,Predicted,CD8,,,S 685-693
+Tarke,Human,Infection,AIM,nsp3,10,19,10,1.0,2.0,0.5,DTVIEVQGYK,A*68:01,Predicted Elution,Predicted,CD8,,,nsp3 828-837
+Tarke,Human,Infection,AIM,nsp3,1148,1157,10,1.0,2.0,0.5,DVVAIDYKHY,A*26:01,Predicted Elution,Predicted,CD8,,,nsp3 1966-1975
+Tarke,Human,Infection,AIM,S,30,38,9,1.0,4.0,0.25,NSFTRGVYY,A*29:02,Predicted Elution,Predicted,CD8,,,S 30-38
+Tarke,Human,Infection,AIM,M,186,199,14,1.0,1.0,1.0,RVAGDSGFAAYSRY,A*30:02,Predicted Elution,Predicted,CD8,,,M 186-199
+Tarke,Human,Infection,AIM,ORF3a,35,43,9,1.0,2.0,0.5,IPIQASLPF,B*51:01,Predicted Elution,Predicted,CD8,,,ORF3a 35-43
+Tarke,Human,Infection,AIM,S,1206,1214,9,1.0,5.0,0.2,YEQYIKWPW,B*44:02,Predicted Elution,Predicted,CD8,,,S 1206-1214
+Tarke,Human,Infection,AIM,nsp3,829,837,9,1.0,1.0,1.0,MSALNHTKK,A*30:01,Predicted Elution,Predicted,CD8,,,nsp3 1647-1655
+Tarke,Human,Infection,AIM,S,339,347,9,1.0,5.0,0.2,GEVFNATRF,B*44:02,Predicted Elution,Predicted,CD8,,,S 339-347
+Tarke,Human,Infection,AIM,S,193,201,9,1.0,4.0,0.25,VFKNIDGYF,A*24:02,Predicted Elution,Predicted,CD8,,,S 193-201
+Tarke,Human,Infection,AIM,S,1094,1103,10,1.0,4.0,0.25,VFVSNGTHWF,A*24:02,Predicted Elution,Predicted,CD8,,,S 1094-1103
+Tarke,Human,Infection,AIM,nsp3,205,213,9,1.0,1.0,1.0,IEVNSFSGY,B*44:02,Predicted Elution,Predicted,CD8,,,nsp3 1023-1031
+Tarke,Human,Infection,AIM,nsp3,1314,1323,10,1.0,2.0,0.5,SVPWDTIANY,A*26:01,Predicted Elution,Predicted,CD8,,,nsp3 2132-2141
+Tarke,Human,Infection,AIM,nsp3,1507,1515,9,1.0,3.0,0.3333333333333333,AEWFLAYIL,B*44:02,Predicted Elution,Predicted,CD8,,,nsp3 2325-2333
+Tarke,Human,Infection,AIM,S,95,104,10,1.0,5.0,0.2,TEKSNIIRGW,B*44:02,Predicted Elution,Predicted,CD8,,,S 95-104
+Tarke,Human,Infection,AIM,nsp16,235,244,10,1.0,2.0,0.5,NPIQLSSYSL,B*07:02,Predicted Elution,Predicted,CD8,,,nsp16 7033-7042
+Tarke,Human,Infection,AIM,nsp3,1764,1772,9,1.0,2.0,0.5,DSAEVAVKM,A*26:01,Predicted Elution,Predicted,CD8,,,nsp3 2582-2590
+Tarke,Human,Infection,AIM,nsp4,121,129,9,1.0,1.0,1.0,FLPRVFSAV,A*02:01,Predicted Elution,Predicted,CD8,,,nsp4 2884-2892
+Tarke,Human,Infection,AIM,nsp3,1383,1391,9,1.0,2.0,0.5,NTVKSVGKF,A*26:01,Predicted Elution,Predicted,CD8,,,nsp3 2201-2209
+Tarke,Human,Infection,AIM,nsp3,1436,1444,9,1.0,1.0,1.0,MSNLGMPSY,B*57:01,Predicted Elution,Predicted,CD8,,,nsp3 2254-2262
+Tarke,Human,Infection,AIM,S,781,789,9,1.0,4.0,0.25,VFAQVKQIY,A*29:02,Predicted Elution,Predicted,CD8,,,S 781-789
+Tarke,Human,Infection,AIM,S,229,238,10,1.0,5.0,0.2,LPIGINITRF,B*07:02,Predicted Elution,Predicted,CD8,,,S 229-238
+Tarke,Human,Infection,AIM,N,123,132,10,1.0,2.0,0.5,YGANKDGIIW,B*57:01,Predicted Elution,Predicted,CD8,,,N 123-132
+Tarke,Human,Infection,AIM,S,1095,1103,9,1.0,4.0,0.25,FVSNGTHWF,B*35:01,Predicted Elution,Predicted,CD8,,,S 1095-1103
+Tarke,Human,Infection,AIM,S,1065,1073,9,1.0,3.0,0.3333333333333333,VTYVPAQEK,A*30:01,Predicted Elution,Predicted,CD8,,,S 1065-1073
+Tarke,Human,Infection,AIM,nsp12,341,349,9,1.0,1.0,1.0,VVSTGYHFR,A*11:01,Predicted Elution,Predicted,CD8,,,nsp12 4733-4741
+Tarke,Human,Infection,AIM,nsp3,686,694,9,1.0,2.0,0.5,TISLAGSYK,A*68:01,Predicted Elution,Predicted,CD8,,,nsp3 1504-1512
+Tarke,Human,Infection,AIM,S,28,37,10,1.0,4.0,0.25,YTNSFTRGVY,A*26:01,Predicted Elution,Predicted,CD8,,,S 28-37
+Tarke,Human,Infection,AIM,S,634,642,9,1.0,3.0,0.3333333333333333,RVYSTGSNV,A*30:01,Predicted Elution,Predicted,CD8,,,S 634-642
+Tarke,Human,Infection,AIM,N,290,298,9,1.0,3.0,0.3333333333333333,ELIRQGTDY,A*26:01,Predicted Elution,Predicted,CD8,,,N 290-298
+Tarke,Human,Infection,AIM,nsp3,687,696,10,1.0,2.0,0.5,ISLAGSYKDW,B*57:01,Predicted Elution,Predicted,CD8,,,nsp3 1505-1514
+Tarke,Human,Infection,AIM,nsp3,1073,1081,9,1.0,2.0,0.5,EIDPKLDNY,A*26:01,Predicted Elution,Predicted,CD8,,,nsp3 1891-1899
+Tarke,Human,Infection,AIM,nsp3,1800,1808,9,1.0,3.0,0.3333333333333333,AELAKNVSL,B*44:02,Predicted Elution,Predicted,CD8,,,nsp3 2618-2626
+Tarke,Human,Infection,AIM,S,442,451,10,1.0,4.0,0.25,DSKVGGNYNY,A*26:01,Predicted Elution,Predicted,CD8,,,S 442-451
+Tarke,Human,Infection,AIM,nsp3,1007,1018,12,1.0,3.0,0.3333333333333333,SEYTGNYQCGHY,B*44:02,Predicted Elution,Predicted,CD8,,,nsp3 1825-1836
+Tarke,Human,Infection,AIM,S,208,216,9,1.0,5.0,0.2,TPINLVRDL,B*07:02,Predicted Elution,Predicted,CD8,,,S 208-216
+Tarke,Human,Infection,AIM,S,588,597,10,1.0,5.0,0.2,TPCSFGGVSV,B*07:02,Predicted Elution,Predicted,CD8,,,S 588-597
+Tarke,Human,Infection,AIM,S,269,277,9,1.0,6.0,0.16666666666666666,YLQPRTFLL,A*02:01,Predicted Elution,Predicted,CD8,,,S 269-277
+Tarke,Human,Infection,AIM,S,233,241,9,1.0,5.0,0.2,INITRFQTL,B*08:01,Predicted Elution,Predicted,CD8,,,S 233-241
+Tarke,Human,Infection,AIM,S,827,835,9,1.0,4.0,0.25,TLADAGFIK,A*03:01,Predicted Elution,Predicted,CD8,,,S 827-835
+Tarke,Human,Infection,AIM,nsp3,1505,1513,9,1.0,2.0,0.5,LVAEWFLAY,A*26:01,Predicted Elution,Predicted,CD8,,,nsp3 2323-2331
+Tarke,Human,Infection,AIM,S,865,873,9,1.0,4.0,0.25,LTDEMIAQY,A*29:02,Predicted Elution,Predicted,CD8,,,S 865-873
+Tarke,Human,Infection,AIM,S,712,720,9,1.0,1.0,1.0,IAIPTNFTI,B*53:01,Predicted Elution,Predicted,CD8,,,S 712-720
+Tarke,Human,Infection,AIM,nsp3,1051,1064,14,1.0,3.0,0.3333333333333333,KENSYTTTIKPVTY,B*44:02,Predicted Elution,Predicted,CD8,,,nsp3 1869-1882
+Tarke,Human,Infection,AIM,nsp3,1371,1379,9,1.0,1.0,1.0,RIKASMPTT,A*30:01,Predicted Elution,Predicted,CD8,,,nsp3 2189-2197
+Tarke,Human,Infection,AIM,S,298,306,9,1.0,4.0,0.25,ETKCTLKSF,A*26:01,Predicted Elution,Predicted,CD8,,,S 298-306
+Tarke,Human,Infection,AIM,nsp3,1500,1509,10,1.0,1.0,1.0,LTAFGLVAEW,B*57:01,Predicted Elution,Predicted,CD8,,,nsp3 2318-2327
+Tarke,Human,Infection,AIM,nsp3,1373,1381,9,1.0,1.0,1.0,KASMPTTIA,A*30:01,Predicted Elution,Predicted,CD8,,,nsp3 2191-2199
+Tarke,Human,Infection,AIM,M,42,50,9,1.0,2.0,0.5,RNRFLYIIK,A*30:01,Predicted Elution,Predicted,CD8,,,M 42-50
+Tarke,Human,Infection,AIM,S,268,277,10,1.0,4.0,0.25,GYLQPRTFLL,A*24:02,Predicted Elution,Predicted,CD8,,,S 268-277
+Tarke,Human,Infection,AIM,S,687,695,9,1.0,4.0,0.25,VASQSIIAY,A*29:02,Predicted Elution,Predicted,CD8,,,S 687-695
+Tarke,Human,Infection,AIM,nsp3,1428,1436,9,1.0,2.0,0.5,STAALGVLM,A*26:01,Predicted Elution,Predicted,CD8,,,nsp3 2246-2254
+Tarke,Human,Infection,AIM,nsp3,188,196,9,1.0,2.0,0.5,VEVQPQLEM,B*40:01,Predicted Elution,Predicted,CD8,,,nsp3 1006-1014
+Tarke,Human,Infection,AIM,S,1060,1068,9,1.0,6.0,0.16666666666666666,VVFLHVTYV,A*02:01,Predicted Elution,Predicted,CD8,,,S 1060-1068
+Tarke,Human,Infection,AIM,S,78,86,9,1.0,4.0,0.25,RFDNPVLPF,A*24:02,Predicted Elution,Predicted,CD8,,,S 78-86
+Tarke,Human,Infection,AIM,S,192,200,9,1.0,4.0,0.25,FVFKNIDGY,A*26:01,Predicted Elution,Predicted,CD8,,,S 192-200
+Tarke,Human,Infection,AIM,S,361,369,9,1.0,4.0,0.25,CVADYSVLY,A*26:01,Predicted Elution,Predicted,CD8,,,S 361-369
+Tarke,Human,Infection,AIM,N,75,87,13,1.0,3.0,0.3333333333333333,NTNSSPDDQIGYY,A*01:01,Predicted Elution,Predicted,CD8,,,N 75-87
+Tarke,Human,Infection,AIM,nsp3,1695,1703,9,1.0,3.0,0.3333333333333333,YERHSLSHF,B*44:02,Predicted Elution,Predicted,CD8,,,nsp3 2513-2521
+Tarke,Human,Infection,AIM,nsp12,606,617,12,1.0,3.0,0.3333333333333333,YSDVENPHLMGW,B*44:02,Predicted Elution,Predicted,CD8,,,nsp12 4998-5009
+Tarke,Human,Infection,AIM,S,712,720,9,1.0,4.0,0.25,IAIPTNFTI,B*51:01,Predicted Elution,Predicted,CD8,,,S 712-720
+Tarke,Human,Infection,AIM,nsp3,1638,1646,9,1.0,2.0,0.5,DTFCAGSTF,A*26:01,Predicted Elution,Predicted,CD8,,,nsp3 2456-2464
+Tarke,Human,Infection,AIM,nsp3,1732,1742,11,1.0,3.0,0.3333333333333333,EESSAKSASVY,B*44:02,Predicted Elution,Predicted,CD8,,,nsp3 2550-2560
+Tarke,Human,Infection,AIM,S,634,643,10,1.0,4.0,0.25,RVYSTGSNVF,A*24:02,Predicted Elution,Predicted,CD8,,,S 634-643
+Tarke,Human,Infection,AIM,S,144,152,9,1.0,4.0,0.25,YYHKNNKSW,A*24:02,Predicted Elution,Predicted,CD8,,,S 144-152
+Tarke,Human,Infection,AIM,nsp12,579,587,9,1.0,4.0,0.25,IAATRGATV,B*51:01,Predicted Elution,Predicted,CD8,,,nsp12 4971-4979
+Tarke,Human,Infection,AIM,S,89,97,9,1.0,2.0,0.5,GVYFASTEK,A*68:01,Predicted Elution,Predicted,CD8,,,S 89-97
+Tarke,Human,Infection,AIM,S,1201,1209,9,1.0,5.0,0.2,QELGKYEQY,B*44:03,Predicted Elution,Predicted,CD8,,,S 1201-1209
+Tarke,Human,Infection,AIM,M,212,220,9,1.0,1.0,1.0,SSSDNIALL,A*68:02,Predicted Elution,Predicted,CD8,,,M 212-220
+Tarke,Human,Infection,AIM,M,171,179,9,1.0,1.0,1.0,ATSRTLSYY,A*11:01,Predicted Elution,Predicted,CD8,,,M 171-179
+Tarke,Human,Infection,AIM,S,780,789,10,1.0,4.0,0.25,EVFAQVKQIY,A*26:01,Predicted Elution,Predicted,CD8,,,S 780-789
+Tarke,Human,Infection,AIM,nsp12,829,838,10,1.0,4.0,0.25,LPYPDPSRIL,B*51:01,Predicted Elution,Predicted,CD8,,,nsp12 5221-5230
+Tarke,Human,Infection,AIM,M,122,129,8,1.0,4.0,0.25,VPLHGTIL,B*07:02,Predicted Elution,Predicted,CD8,,,M 122-129
+Tarke,Human,Infection,AIM,S,779,789,11,1.0,5.0,0.2,QEVFAQVKQIY,B*44:02,Predicted Elution,Predicted,CD8,,,S 779-789
+Tarke,Human,Infection,AIM,nsp12,546,555,10,1.0,1.0,1.0,YAISAKNRAR,A*68:01,Predicted Elution,Predicted,CD8,,,nsp12 4938-4947
+Tarke,Human,Infection,AIM,nsp3,25,35,11,1.0,2.0,0.5,FELDERIDKVL,B*40:01,Predicted Elution,Predicted,CD8,,,nsp3 843-853
+Tarke,Human,Infection,AIM,M,137,146,10,1.0,2.0,0.5,ELVIGAVILR,A*68:01,Predicted Elution,Predicted,CD8,,,M 137-146
+Tarke,Human,Infection,AIM,nsp3,1374,1382,9,1.0,1.0,1.0,ASMPTTIAK,A*30:01,Predicted Elution,Predicted,CD8,,,nsp3 2192-2200
+Tarke,Human,Infection,AIM,S,95,104,10,1.0,4.0,0.25,TEKSNIIRGW,B*44:03,Predicted Elution,Predicted,CD8,,,S 95-104
+Tarke,Human,Infection,AIM,S,1173,1181,9,1.0,2.0,0.5,NASVVNIQK,A*68:01,Predicted Elution,Predicted,CD8,,,S 1173-1181
+Tarke,Human,Infection,AIM,nsp3,764,772,9,1.0,1.0,1.0,QVVDMSMTY,A*11:01,Predicted Elution,Predicted,CD8,,,nsp3 1582-1590
+Tarke,Human,Infection,AIM,nsp3,560,568,9,1.0,2.0,0.5,MLAHAEETR,A*68:01,Predicted Elution,Predicted,CD8,,,nsp3 1378-1386
+Tarke,Human,Infection,AIM,nsp3,1047,1055,9,1.0,2.0,0.5,DVFYKENSY,A*26:01,Predicted Elution,Predicted,CD8,,,nsp3 1865-1873
+Tarke,Human,Infection,AIM,S,35,44,10,1.0,2.0,0.5,GVYYPDKVFR,A*68:01,Predicted Elution,Predicted,CD8,,,S 35-44
+Tarke,Human,Infection,AIM,S,30,38,9,1.0,4.0,0.25,NSFTRGVYY,A*26:01,Predicted Elution,Predicted,CD8,,,S 30-38
+Tarke,Human,Infection,AIM,S,1262,1270,9,1.0,5.0,0.2,EPVLKGVKL,B*07:02,Predicted Elution,Predicted,CD8,,,S 1262-1270
+Tarke,Human,Infection,AIM,nsp3,818,827,10,1.0,2.0,0.5,HTTDPSFLGR,A*68:01,Predicted Elution,Predicted,CD8,,,nsp3 1636-1645
+Tarke,Human,Infection,AIM,S,234,241,8,1.0,5.0,0.2,NITRFQTL,B*08:01,Predicted Elution,Predicted,CD8,,,S 234-241
+Tarke,Human,Infection,AIM,nsp3,1798,1806,9,1.0,3.0,0.3333333333333333,AEAELAKNV,B*44:02,Predicted Elution,Predicted,CD8,,,nsp3 2616-2624
+Tarke,Human,Infection,AIM,nsp12,166,174,9,1.0,2.0,0.5,VENPDILRV,B*44:03,Predicted Elution,Predicted,CD8,,,nsp12 4558-4566
+Tarke,Human,Infection,AIM,nsp3,317,325,9,1.0,2.0,0.5,YENFNQHEV,B*40:01,Predicted Elution,Predicted,CD8,,,nsp3 1135-1143
+Tarke,Human,Infection,AIM,nsp3,230,238,9,1.0,3.0,0.3333333333333333,EAKKVKPTV,B*51:01,Predicted Elution,Predicted,CD8,,,nsp3 1048-1056
+Tarke,Human,Infection,AIM,S,923,931,9,1.0,4.0,0.25,IANQFNSAI,B*51:01,Predicted Elution,Predicted,CD8,,,S 923-931
+Tarke,Human,Infection,AIM,S,603,612,10,1.0,4.0,0.25,NTSNQVAVLY,A*26:01,Predicted Elution,Predicted,CD8,,,S 603-612
+Tarke,Human,Infection,AIM,S,583,592,10,1.0,4.0,0.25,EILDITPCSF,A*26:01,Predicted Elution,Predicted,CD8,,,S 583-592
+Tarke,Human,Infection,AIM,M,6,14,9,1.0,2.0,0.5,GTITVEELK,A*68:01,Predicted Elution,Predicted,CD8,,,M 6-14
+Tarke,Human,Infection,AIM,S,1059,1067,9,1.0,2.0,0.5,GVVFLHVTY,A*32:01,Predicted Elution,Predicted,CD8,,,S 1059-1067
+Tarke,Human,Infection,AIM,S,84,92,9,1.0,5.0,0.2,LPFNDGVYF,B*07:02,Predicted Elution,Predicted,CD8,,,S 84-92
+Tarke,Human,Infection,AIM,nsp12,801,812,12,1.0,3.0,0.3333333333333333,TETDLTKGPHEF,B*44:02,Predicted Elution,Predicted,CD8,,,nsp12 5193-5204
+Tarke,Human,Infection,AIM,S,1091,1102,12,1.0,5.0,0.2,REGVFVSNGTHW,B*44:03,Predicted Elution,Predicted,CD8,,,S 1091-1102
+Tarke,Human,Infection,AIM,S,202,210,9,1.0,5.0,0.2,KIYSKHTPI,B*08:01,Predicted Elution,Predicted,CD8,,,S 202-210
+Tarke,Human,Infection,AIM,S,109,117,9,1.0,6.0,0.16666666666666666,TLDSKTQSL,A*02:01,Predicted Elution,Predicted,CD8,,,S 109-117
+Tarke,Human,Infection,AIM,M,93,101,9,1.0,2.0,0.5,LSYFIASFR,A*68:01,Predicted Elution,Predicted,CD8,,,M 93-101
+Tarke,Human,Infection,AIM,S,865,873,9,1.0,4.0,0.25,LTDEMIAQY,B*35:01,Predicted Elution,Predicted,CD8,,,S 865-873
+Tarke,Human,Infection,AIM,nsp3,452,460,9,1.0,1.0,1.0,LVSDIDITF,B*35:01,Predicted Elution,Predicted,CD8,,,nsp3 1270-1278
+Tarke,Human,Infection,AIM,S,339,347,9,1.0,5.0,0.2,GEVFNATRF,B*40:01,Predicted Elution,Predicted,CD8,,,S 339-347
+Tarke,Human,Infection,AIM,ORF3a,98,109,12,1.0,3.0,0.3333333333333333,AAGLEAPFLYLY,B*44:02,Predicted Elution,Predicted,CD8,,,ORF3a 98-109
+Tarke,Human,Infection,AIM,S,224,231,8,1.0,4.0,0.25,EPLVDLPI,B*51:01,Predicted Elution,Predicted,CD8,,,S 224-231
+Tarke,Human,Infection,AIM,S,351,358,8,1.0,4.0,0.25,YAWNRKRI,B*51:01,Predicted Elution,Predicted,CD8,,,S 351-358
+Tarke,Human,Infection,AIM,M,138,146,9,1.0,2.0,0.5,LVIGAVILR,A*68:01,Predicted Elution,Predicted,CD8,,,M 138-146
+Tarke,Human,Infection,AIM,S,339,347,9,1.0,5.0,0.2,GEVFNATRF,B*44:03,Predicted Elution,Predicted,CD8,,,S 339-347
+Tarke,Human,Infection,AIM,nsp12,448,457,10,1.0,1.0,1.0,AAISDYDYYR,A*68:01,Predicted Elution,Predicted,CD8,,,nsp12 4840-4849
+Tarke,Human,Infection,AIM,S,1181,1189,9,1.0,5.0,0.2,KEIDRLNEV,B*44:02,Predicted Elution,Predicted,CD8,,,S 1181-1189
+Tarke,Human,Infection,AIM,nsp3,1766,1773,8,1.0,3.0,0.3333333333333333,AEVAVKMF,B*44:02,Predicted Elution,Predicted,CD8,,,nsp3 2584-2591
+Tarke,Human,Infection,AIM,S,747,756,10,1.0,5.0,0.2,TECSNLLLQY,B*44:03,Predicted Elution,Predicted,CD8,,,S 747-756
+Tarke,Human,Infection,AIM,nsp3,546,555,10,1.0,1.0,1.0,KQEILGTVSW,B*44:03,Predicted Elution,Predicted,CD8,,,nsp3 1364-1373
+Tarke,Human,Infection,AIM,nsp3,1133,1141,9,1.0,1.0,1.0,ASRELKVTF,A*30:01,Predicted Elution,Predicted,CD8,,,nsp3 1951-1959
+Tarke,Human,Infection,AIM,nsp3,1270,1281,12,1.0,2.0,0.5,EEVGHTDLMAAY,B*44:03,Predicted Elution,Predicted,CD8,,,nsp3 2088-2099
+Tarke,Human,Infection,AIM,S,680,687,8,1.0,5.0,0.2,SPRRARSV,B*08:01,Predicted Elution,Predicted,CD8,,,S 680-687
+Tarke,Human,Infection,AIM,S,628,636,9,1.0,1.0,1.0,QLTPTWRVY,A*30:02,Predicted Elution,Predicted,CD8,,,S 628-636
+Tarke,Human,Infection,AIM,S,780,788,9,1.0,4.0,0.25,EVFAQVKQI,B*51:01,Predicted Elution,Predicted,CD8,,,S 780-788
+Tarke,Human,Infection,AIM,S,706,714,9,1.0,4.0,0.25,AYSNNSIAI,A*24:02,Predicted Elution,Predicted,CD8,,,S 706-714
+Tarke,Human,Infection,AIM,S,604,612,9,1.0,4.0,0.25,TSNQVAVLY,B*35:01,Predicted Elution,Predicted,CD8,,,S 604-612
+Tarke,Human,Infection,AIM,nsp3,1650,1659,10,1.0,2.0,0.5,EVARDLSLQF,A*26:01,Predicted Elution,Predicted,CD8,,,nsp3 2468-2477
+Tarke,Human,Infection,AIM,ORF3a,97,105,9,1.0,3.0,0.3333333333333333,VAAGLEAPF,B*35:01,Predicted Elution,Predicted,CD8,,,ORF3a 97-105
+Tarke,Human,Infection,AIM,nsp3,337,345,9,1.0,2.0,0.5,GADPIHSLR,A*68:01,Predicted Elution,Predicted,CD8,,,nsp3 1155-1163
+Tarke,Human,Infection,AIM,nsp3,478,486,9,1.0,2.0,0.5,LTAVVIPTK,A*68:01,Predicted Elution,Predicted,CD8,,,nsp3 1296-1304
+Tarke,Human,Infection,AIM,nsp3,238,246,9,1.0,1.0,1.0,VVVNAANVY,B*35:01,Predicted Elution,Predicted,CD8,,,nsp3 1056-1064
+Tarke,Human,Infection,AIM,ORF3a,89,97,9,1.0,3.0,0.3333333333333333,TVYSHLLLV,A*02:01,Predicted Elution,Predicted,CD8,,,ORF3a 89-97
+Tarke,Human,Infection,AIM,N,134,143,10,1.0,3.0,0.3333333333333333,ATEGALNTPK,A*11:01,Predicted Elution,Predicted,CD8,,,N 134-143
+Tarke,Human,Infection,AIM,S,84,92,9,1.0,4.0,0.25,LPFNDGVYF,B*35:01,Predicted Elution,Predicted,CD8,,,S 84-92
+Tarke,Human,Infection,AIM,S,142,150,9,1.0,4.0,0.25,GVYYHKNNK,A*03:01,Predicted Elution,Predicted,CD8,,,S 142-150
+Tarke,Human,Infection,AIM,M,198,206,9,1.0,1.0,1.0,RYRIGNYKL,A*30:01,Predicted Elution,Predicted,CD8,,,M 198-206
+Tarke,Human,Infection,AIM,S,400,408,9,1.0,2.0,0.5,FVIRGDEVR,A*68:01,Predicted Elution,Predicted,CD8,,,S 400-408
+Tarke,Human,Infection,AIM,N,308,317,10,1.0,3.0,0.3333333333333333,APSASAFFGM,B*07:02,Predicted Elution,Predicted,CD8,,,N 308-317
+Tarke,Human,Infection,AIM,S,1019,1028,10,1.0,4.0,0.25,RASANLAATK,A*03:01,Predicted Elution,Predicted,CD8,,,S 1019-1028
+Tarke,Human,Infection,AIM,ORF3a,8,16,9,1.0,1.0,1.0,FTIGTVTLK,A*68:01,Predicted Elution,Predicted,CD8,,,ORF3a 8-16
+Tarke,Human,Infection,AIM,N,222,230,9,1.0,5.0,0.2,LLLDRLNQL,A*02:01,Predicted Elution,Predicted,CD8,,,N 222-230
+Tarke,Human,Infection,AIM,N,147,155,9,1.0,2.0,0.5,GTRNPANNA,A*30:01,Predicted Elution,Predicted,CD8,,,N 147-155
+Tarke,Human,Infection,AIM,S,829,837,9,1.0,5.0,0.2,ADAGFIKQY,B*44:02,Predicted Elution,Predicted,CD8,,,S 829-837
+Tarke,Human,Infection,AIM,S,1000,1008,9,1.0,6.0,0.16666666666666666,RLQSLQTYV,A*02:01,Predicted Elution,Predicted,CD8,,,S 1000-1008
+Tarke,Human,Infection,AIM,S,861,869,9,1.0,4.0,0.25,LPPLLTDEM,B*35:01,Predicted Elution,Predicted,CD8,,,S 861-869
+Tarke,Human,Infection,AIM,nsp3,194,202,9,1.0,2.0,0.5,LEMELTPVV,B*40:01,Predicted Elution,Predicted,CD8,,,nsp3 1012-1020
+Tarke,Human,Infection,AIM,nsp3,1931,1939,9,1.0,1.0,1.0,QVVNVVTTK,A*03:01,Predicted Elution,Predicted,CD8,,,nsp3 2749-2757
+Tarke,Human,Infection,AIM,nsp12,633,641,9,1.0,1.0,1.0,MASLVLARK,A*68:01,Predicted Elution,Predicted,CD8,,,nsp12 5025-5033
+Tarke,Human,Infection,AIM,N,5,17,13,1.0,3.0,0.3333333333333333,GPQNQRNAPRITF,B*07:02,Predicted Elution,Predicted,CD8,,,N 5-17
+Tarke,Human,Infection,AIM,nsp12,923,931,9,1.0,2.0,0.5,AMYTPHTVL,A*32:01,Predicted Elution,Predicted,CD8,,,nsp12 5315-5323
+Tarke,Human,Infection,AIM,N,41,50,10,1.0,3.0,0.3333333333333333,RPQGLPNNTA,B*07:02,Predicted Elution,Predicted,CD8,,,N 41-50
+Tarke,Human,Infection,AIM,nsp3,1318,1327,10,1.0,2.0,0.5,DTIANYAKPF,A*26:01,Predicted Elution,Predicted,CD8,,,nsp3 2136-2145
+Tarke,Human,Infection,AIM,S,1181,1189,9,1.0,5.0,0.2,KEIDRLNEV,B*40:01,Predicted Elution,Predicted,CD8,,,S 1181-1189
+Tarke,Human,Infection,AIM,N,361,370,10,1.0,3.0,0.3333333333333333,KTFPPTEPKK,A*03:01,Predicted Elution,Predicted,CD8,,,N 361-370
+Tarke,Human,Infection,AIM,nsp12,422,430,9,1.0,1.0,1.0,FAVSKGFFK,A*11:01,Predicted Elution,Predicted,CD8,,,nsp12 4814-4822
+Tarke,Human,Infection,AIM,S,896,904,9,1.0,4.0,0.25,IPFAMQMAY,B*51:01,Predicted Elution,Predicted,CD8,,,S 896-904
+Tarke,Human,Infection,AIM,S,714,722,9,1.0,5.0,0.2,IPTNFTISV,B*07:02,Predicted Elution,Predicted,CD8,,,S 714-722
+Tarke,Human,Infection,AIM,M,39,47,9,1.0,4.0,0.25,YANRNRFLY,B*35:01,Predicted Elution,Predicted,CD8,,,M 39-47
+Tarke,Human,Infection,AIM,S,725,733,9,1.0,4.0,0.25,EILPVSMTK,A*03:01,Predicted Elution,Predicted,CD8,,,S 725-733
+Tarke,Human,Infection,AIM,S,444,453,10,1.0,4.0,0.25,KVGGNYNYLY,A*29:02,Predicted Elution,Predicted,CD8,,,S 444-453
+Tarke,Human,Infection,AIM,ORF3a,227,235,9,1.0,1.0,1.0,HVTFFIYNK,A*68:01,Predicted Elution,Predicted,CD8,,,ORF3a 227-235
+Tarke,Human,Infection,AIM,nsp12,916,924,9,1.0,3.0,0.3333333333333333,WEPEFYEAM,B*40:01,Predicted Elution,Predicted,CD8,,,nsp12 5308-5316
+Tarke,Human,Infection,AIM,S,1064,1073,10,1.0,2.0,0.5,HVTYVPAQEK,A*68:01,Predicted Elution,Predicted,CD8,,,S 1064-1073
+Tarke,Human,Infection,AIM,nsp12,408,417,10,1.0,1.0,1.0,QTVKPGNFNK,A*11:01,Predicted Elution,Predicted,CD8,,,nsp12 4800-4809
+Tarke,Human,Infection,AIM,nsp3,44,53,10,1.0,1.0,1.0,VELGTEVNEF,B*44:02,Predicted Elution,Predicted,CD8,,,nsp3 862-871
+Tarke,Human,Infection,AIM,nsp3,69,77,9,1.0,2.0,0.5,SELLTPLGI,B*40:01,Predicted Elution,Predicted,CD8,,,nsp3 887-895
+Tarke,Human,Infection,AIM,ORF3a,158,169,12,1.0,2.0,0.5,IPYNSVTSSIVI,B*51:01,Predicted Elution,Predicted,CD8,,,ORF3a 158-169
+Tarke,Human,Infection,AIM,nsp3,1450,1458,9,1.0,3.0,0.3333333333333333,EGYLNSTNV,B*51:01,Predicted Elution,Predicted,CD8,,,nsp3 2268-2276
+Tarke,Human,Infection,AIM,N,121,130,10,1.0,3.0,0.3333333333333333,LPYGANKDGI,B*51:01,Predicted Elution,Predicted,CD8,,,N 121-130
+Tarke,Human,Infection,AIM,nsp3,1181,1190,10,1.0,1.0,1.0,NKATYKPNTW,B*57:01,Predicted Elution,Predicted,CD8,,,nsp3 1999-2008
+Tarke,Human,Infection,AIM,S,612,620,9,1.0,2.0,0.5,YQDVNCTEV,A*02:06,Predicted Elution,Predicted,CD8,,,S 612-620
+Tarke,Human,Infection,AIM,S,258,266,9,1.0,4.0,0.25,WTAGAAAYY,A*29:02,Predicted Elution,Predicted,CD8,,,S 258-266
+Tarke,Human,Infection,AIM,nsp12,825,837,13,1.0,4.0,0.25,DYVYLPYPDPSRI,B*51:01,Predicted Elution,Predicted,CD8,,,nsp12 5217-5229
+Tarke,Human,Infection,AIM,N,361,369,9,1.0,2.0,0.5,KTFPPTEPK,A*68:01,Predicted Elution,Predicted,CD8,,,N 361-369
+Tarke,Human,Infection,AIM,M,68,75,8,1.0,2.0,0.5,AAVYRINW,B*57:01,Predicted Elution,Predicted,CD8,,,M 68-75
+Tarke,Human,Infection,AIM,M,101,109,9,1.0,1.0,1.0,RLFARTRSM,A*30:01,Predicted Elution,Predicted,CD8,,,M 101-109
+Tarke,Human,Infection,AIM,nsp12,418,430,13,1.0,1.0,1.0,DFYDFAVSKGFFK,A*33:01,Predicted Elution,Predicted,CD8,,,nsp12 4810-4822
+Tarke,Human,Infection,AIM,nsp3,465,473,9,1.0,3.0,0.3333333333333333,APYIVGDVV,B*51:01,Predicted Elution,Predicted,CD8,,,nsp3 1283-1291
+Tarke,Human,Infection,AIM,S,898,906,9,1.0,4.0,0.25,FAMQMAYRF,B*35:01,Predicted Elution,Predicted,CD8,,,S 898-906
+Tarke,Human,Infection,AIM,S,1065,1073,9,1.0,4.0,0.25,VTYVPAQEK,A*03:01,Predicted Elution,Predicted,CD8,,,S 1065-1073
+Tarke,Human,Infection,AIM,S,1051,1062,12,1.0,4.0,0.25,SFPQSAPHGVVF,A*24:02,Predicted Elution,Predicted,CD8,,,S 1051-1062
+Tarke,Human,Infection,AIM,S,454,462,9,1.0,2.0,0.5,RLFRKSNLK,A*31:01,Predicted Elution,Predicted,CD8,,,S 454-462
+Tarke,Human,Infection,AIM,S,24,32,9,1.0,1.0,1.0,LPPAYTNSF,B*53:01,Predicted Elution,Predicted,CD8,,,S 24-32
+Tarke,Human,Infection,AIM,nsp3,1775,1784,10,1.0,2.0,0.5,AYVNTFSSTF,A*24:02,Predicted Elution,Predicted,CD8,,,nsp3 2593-2602
+Tarke,Human,Infection,AIM,S,261,269,9,1.0,4.0,0.25,GAAAYYVGY,A*29:02,Predicted Elution,Predicted,CD8,,,S 261-269
+Tarke,Human,Infection,AIM,nsp3,547,555,9,1.0,1.0,1.0,QEILGTVSW,B*44:03,Predicted Elution,Predicted,CD8,,,nsp3 1365-1373
+Tarke,Human,Infection,AIM,nsp3,399,407,9,1.0,2.0,0.5,ESKPSVEQR,A*68:01,Predicted Elution,Predicted,CD8,,,nsp3 1217-1225
+Tarke,Human,Infection,AIM,ORF3a,41,48,8,1.0,2.0,0.5,LPFGWLIV,B*51:01,Predicted Elution,Predicted,CD8,,,ORF3a 41-48
+Tarke,Human,Infection,AIM,nsp3,1376,1385,10,1.0,3.0,0.3333333333333333,MPTTIAKNTV,B*51:01,Predicted Elution,Predicted,CD8,,,nsp3 2194-2203
+Tarke,Human,Infection,AIM,S,109,117,9,1.0,5.0,0.2,TLDSKTQSL,B*08:01,Predicted Elution,Predicted,CD8,,,S 109-117
+Tarke,Human,Infection,AIM,nsp4,41,49,9,1.0,1.0,1.0,SEIIGYKAI,B*40:01,Predicted Elution,Predicted,CD8,,,nsp4 2804-2812
+Tarke,Human,Infection,AIM,S,1136,1149,14,1.0,4.0,0.25,TVYDPLQPELDSFK,A*03:01,Predicted Elution,Predicted,CD8,,,S 1136-1149
+Tarke,Human,Infection,AIM,S,151,160,10,1.0,4.0,0.25,SWMESEFRVY,A*29:02,Predicted Elution,Predicted,CD8,,,S 151-160
+Tarke,Human,Infection,AIM,nsp3,1798,1806,9,1.0,2.0,0.5,AEAELAKNV,B*44:03,Predicted Elution,Predicted,CD8,,,nsp3 2616-2624
+Tarke,Human,Infection,AIM,S,41,49,9,1.0,3.0,0.3333333333333333,KVFRSSVLH,A*30:01,Predicted Elution,Predicted,CD8,,,S 41-49
+Tarke,Human,Infection,AIM,nsp3,1786,1794,9,1.0,3.0,0.3333333333333333,VPMEKLKTL,B*51:01,Predicted Elution,Predicted,CD8,,,nsp3 2604-2612
+Tarke,Human,Infection,AIM,M,37,45,9,1.0,4.0,0.25,FAYANRNRF,B*35:01,Predicted Elution,Predicted,CD8,,,M 37-45
+Tarke,Human,Infection,AIM,nsp12,827,837,11,1.0,4.0,0.25,VYLPYPDPSRI,B*51:01,Predicted Elution,Predicted,CD8,,,nsp12 5219-5229
+Tarke,Human,Infection,AIM,nsp4,368,376,9,1.0,2.0,0.5,MFTPLVPFW,A*24:02,Predicted Elution,Predicted,CD8,,,nsp4 3131-3139
+Tarke,Human,Infection,AIM,nsp12,528,536,9,1.0,4.0,0.25,FAYTKRNVI,B*51:01,Predicted Elution,Predicted,CD8,,,nsp12 4920-4928
+Tarke,Human,Infection,AIM,nsp3,352,360,9,1.0,2.0,0.5,RTNVYLAVF,B*57:01,Predicted Elution,Predicted,CD8,,,nsp3 1170-1178
+Tarke,Human,Infection,AIM,nsp12,340,349,10,1.0,1.0,1.0,FVVSTGYHFR,A*68:01,Predicted Elution,Predicted,CD8,,,nsp12 4732-4741
+Tarke,Human,Infection,AIM,nsp12,632,640,9,1.0,1.0,1.0,IMASLVLAR,A*33:01,Predicted Elution,Predicted,CD8,,,nsp12 5024-5032
+Tarke,Human,Infection,AIM,nsp3,1212,1221,10,1.0,2.0,0.5,SEDAQGMDNL,B*40:01,Predicted Elution,Predicted,CD8,,,nsp3 2030-2039
+Tarke,Human,Infection,AIM,nsp3,1886,1895,10,1.0,1.0,1.0,AKSHNIALIW,B*57:01,Predicted Elution,Predicted,CD8,,,nsp3 2704-2713
+Tarke,Human,Infection,AIM,S,1102,1110,9,1.0,4.0,0.25,WFVTQRNFY,A*29:02,Predicted Elution,Predicted,CD8,,,S 1102-1110
+Tarke,Human,Infection,AIM,nsp12,561,569,9,1.0,1.0,1.0,SICSTMTNR,A*33:01,Predicted Elution,Predicted,CD8,,,nsp12 4953-4961
+Tarke,Human,Infection,AIM,S,1208,1216,9,1.0,4.0,0.25,QYIKWPWYI,A*24:02,Predicted Elution,Predicted,CD8,,,S 1208-1216
+Tarke,Human,Infection,AIM,M,5,14,10,1.0,2.0,0.5,NGTITVEELK,A*68:01,Predicted Elution,Predicted,CD8,,,M 5-14
+Tarke,Human,Infection,AIM,nsp4,359,367,9,1.0,1.0,1.0,FLAHIQWMV,A*02:06,Predicted Elution,Predicted,CD8,,,nsp4 3122-3130
+Tarke,Human,Infection,AIM,nsp3,1349,1357,9,1.0,2.0,0.5,NYMPYFFTL,A*24:02,Predicted Elution,Predicted,CD8,,,nsp3 2167-2175
+Tarke,Human,Infection,AIM,nsp12,141,149,9,1.0,1.0,1.0,TLKEILVTY,A*29:02,Predicted Elution,Predicted,CD8,,,nsp12 4533-4541
+Tarke,Human,Infection,AIM,S,495,503,9,1.0,4.0,0.25,YGFQPTNGV,B*51:01,Predicted Elution,Predicted,CD8,,,S 495-503
+Tarke,Human,Infection,AIM,nsp12,926,934,9,1.0,4.0,0.25,TPHTVLQAV,B*51:01,Predicted Elution,Predicted,CD8,,,nsp12 5318-5326
+Tarke,Human,Infection,AIM,S,88,97,10,1.0,2.0,0.5,DGVYFASTEK,A*68:01,Predicted Elution,Predicted,CD8,,,S 88-97
+Tarke,Human,Infection,AIM,nsp16,222,230,9,1.0,1.0,1.0,YVMHANYIF,A*32:01,Predicted Elution,Predicted,CD8,,,nsp16 7020-7028
+Tarke,Human,Infection,AIM,S,464,473,10,1.0,5.0,0.2,FERDISTEIY,B*44:03,Predicted Elution,Predicted,CD8,,,S 464-473
+Tarke,Human,Infection,AIM,nsp3,1231,1239,9,1.0,2.0,0.5,EEVVENPTI,B*44:03,Predicted Elution,Predicted,CD8,,,nsp3 2049-2057
+Tarke,Human,Infection,AIM,N,266,274,9,1.0,2.0,0.5,KAYNVTQAF,B*57:01,Predicted Elution,Predicted,CD8,,,N 266-274
+Tarke,Human,Infection,AIM,nsp6,97,105,9,1.0,1.0,1.0,WLDMVDTSL,A*02:01,Predicted Elution,Predicted,CD8,,,nsp6 3666-3674
+Tarke,Human,Infection,AIM,N,119,127,9,1.0,2.0,0.5,AGLPYGANK,A*30:01,Predicted Elution,Predicted,CD8,,,N 119-127
+Tarke,Human,Infection,AIM,M,97,105,9,1.0,1.0,1.0,IASFRLFAR,A*33:01,Predicted Elution,Predicted,CD8,,,M 97-105
+Tarke,Human,Infection,AIM,nsp12,41,50,10,1.0,1.0,1.0,KVAGFAKFLK,A*11:01,Predicted Elution,Predicted,CD8,,,nsp12 4433-4442
+Tarke,Human,Infection,AIM,S,677,685,9,1.0,2.0,0.5,QTNSPRRAR,A*31:01,Predicted Elution,Predicted,CD8,,,S 677-685
+Tarke,Human,Infection,AIM,S,653,660,8,1.0,4.0,0.25,AEHVNNSY,B*44:03,Predicted Elution,Predicted,CD8,,,S 653-660
+Tarke,Human,Infection,AIM,nsp3,1280,1289,10,1.0,2.0,0.5,AYVDNSSLTI,A*24:02,Predicted Elution,Predicted,CD8,,,nsp3 2098-2107
+Tarke,Human,Infection,AIM,nsp3,272,280,9,1.0,1.0,1.0,YIATNGPLK,A*11:01,Predicted Elution,Predicted,CD8,,,nsp3 1090-1098
+Tarke,Human,Infection,AIM,nsp4,112,121,10,1.0,1.0,1.0,RTTNGDFLHF,B*57:01,Predicted Elution,Predicted,CD8,,,nsp4 2875-2884
+Tarke,Human,Infection,AIM,S,1208,1217,10,1.0,2.0,0.5,QYIKWPWYIW,A*23:01,Predicted Elution,Predicted,CD8,,,S 1208-1217
+Tarke,Human,Infection,AIM,S,321,329,9,1.0,4.0,0.25,QPTESIVRF,B*35:01,Predicted Elution,Predicted,CD8,,,S 321-329
+Tarke,Human,Infection,AIM,nsp3,1045,1055,11,1.0,2.0,0.5,ITDVFYKENSY,A*01:01,Predicted Elution,Predicted,CD8,,,nsp3 1863-1873
+Tarke,Human,Infection,AIM,S,162,170,9,1.0,4.0,0.25,SANNCTFEY,B*35:01,Predicted Elution,Predicted,CD8,,,S 162-170
+Tarke,Human,Infection,AIM,S,349,357,9,1.0,4.0,0.25,SVYAWNRKR,A*03:01,Predicted Elution,Predicted,CD8,,,S 349-357
+Tarke,Human,Infection,AIM,nsp3,828,836,9,1.0,1.0,1.0,YMSALNHTK,A*03:01,Predicted Elution,Predicted,CD8,,,nsp3 1646-1654
+Tarke,Human,Infection,AIM,nsp3,1507,1516,10,1.0,3.0,0.3333333333333333,AEWFLAYILF,B*44:02,Predicted Elution,Predicted,CD8,,,nsp3 2325-2334
+Tarke,Human,Infection,AIM,S,714,722,9,1.0,4.0,0.25,IPTNFTISV,B*51:01,Predicted Elution,Predicted,CD8,,,S 714-722
+Tarke,Human,Infection,AIM,S,216,223,8,1.0,5.0,0.2,LPQGFSAL,B*07:02,Predicted Elution,Predicted,CD8,,,S 216-223
+Tarke,Human,Infection,AIM,S,84,92,9,1.0,4.0,0.25,LPFNDGVYF,B*51:01,Predicted Elution,Predicted,CD8,,,S 84-92
+Tarke,Human,Infection,AIM,nsp3,1436,1444,9,1.0,1.0,1.0,MSNLGMPSY,B*15:01,Predicted Elution,Predicted,CD8,,,nsp3 2254-2262
+Tarke,Human,Infection,AIM,nsp3,196,205,10,1.0,2.0,0.5,MELTPVVQTI,B*40:01,Predicted Elution,Predicted,CD8,,,nsp3 1014-1023
+Tarke,Human,Infection,AIM,M,190,198,9,1.0,2.0,0.5,DSGFAAYSR,A*68:01,Predicted Elution,Predicted,CD8,,,M 190-198
+Tarke,Human,Infection,AIM,ORF3a,99,107,9,1.0,2.0,0.5,AGLEAPFLY,A*29:02,Predicted Elution,Predicted,CD8,,,ORF3a 99-107
+Tarke,Human,Infection,AIM,S,229,238,10,1.0,4.0,0.25,LPIGINITRF,B*35:01,Predicted Elution,Predicted,CD8,,,S 229-238
+Tarke,Human,Infection,AIM,nsp12,585,593,9,1.0,1.0,1.0,ATVVIGTSK,A*11:01,Predicted Elution,Predicted,CD8,,,nsp12 4977-4985
+Tarke,Human,Infection,AIM,nsp12,166,175,10,1.0,3.0,0.3333333333333333,VENPDILRVY,B*44:02,Predicted Elution,Predicted,CD8,,,nsp12 4558-4567
+Tarke,Human,Infection,AIM,nsp3,142,151,10,1.0,2.0,0.5,LEFGATSAAL,B*40:01,Predicted Elution,Predicted,CD8,,,nsp3 960-969
+Tarke,Human,Infection,AIM,nsp3,1293,1301,9,1.0,2.0,0.5,NELSRVLGL,B*40:01,Predicted Elution,Predicted,CD8,,,nsp3 2111-2119
+Tarke,Human,Infection,AIM,S,24,32,9,1.0,5.0,0.2,LPPAYTNSF,B*07:02,Predicted Elution,Predicted,CD8,,,S 24-32
+Tarke,Human,Infection,AIM,nsp3,1505,1513,9,1.0,2.0,0.5,LVAEWFLAY,A*29:02,Predicted Elution,Predicted,CD8,,,nsp3 2323-2331
+Tarke,Human,Infection,AIM,S,8,16,9,1.0,4.0,0.25,LPLVSSQCV,B*51:01,Predicted Elution,Predicted,CD8,,,S 8-16
+Tarke,Human,Infection,AIM,nsp3,830,838,9,1.0,2.0,0.5,SALNHTKKW,B*57:01,Predicted Elution,Predicted,CD8,,,nsp3 1648-1656
+Tarke,Human,Infection,AIM,S,1060,1068,9,1.0,2.0,0.5,VVFLHVTYV,A*02:06,Predicted Elution,Predicted,CD8,,,S 1060-1068
+Tarke,Human,Infection,AIM,nsp12,449,457,9,1.0,1.0,1.0,AISDYDYYR,A*11:01,Predicted Elution,Predicted,CD8,,,nsp12 4841-4849
+Tarke,Human,Infection,AIM,nsp3,1351,1358,8,1.0,3.0,0.3333333333333333,MPYFFTLL,B*51:01,Predicted Elution,Predicted,CD8,,,nsp3 2169-2176
+Tarke,Human,Infection,AIM,ORF3a,137,145,9,1.0,1.0,1.0,NPLLYDANY,B*53:01,Predicted Elution,Predicted,CD8,,,ORF3a 137-145
+Tarke,Human,Infection,AIM,nsp3,1651,1659,9,1.0,1.0,1.0,VARDLSLQF,B*57:01,Predicted Elution,Predicted,CD8,,,nsp3 2469-2477
+Tarke,Human,Infection,AIM,nsp4,101,109,9,1.0,1.0,1.0,FVVPGLPGT,A*02:06,Predicted Elution,Predicted,CD8,,,nsp4 2864-2872
+Tarke,Human,Infection,AIM,S,449,457,9,1.0,2.0,0.5,YNYLYRLFR,A*31:01,Predicted Elution,Predicted,CD8,,,S 449-457
+Tarke,Human,Infection,AIM,M,170,178,9,1.0,4.0,0.25,VATSRTLSY,B*35:01,Predicted Elution,Predicted,CD8,,,M 170-178
+Tarke,Human,Infection,AIM,nsp3,840,849,10,1.0,3.0,0.3333333333333333,YPQVNGLTSI,B*51:01,Predicted Elution,Predicted,CD8,,,nsp3 1658-1667
+Tarke,Human,Infection,AIM,nsp3,1072,1082,11,1.0,3.0,0.3333333333333333,TEIDPKLDNYY,B*44:02,Predicted Elution,Predicted,CD8,,,nsp3 1890-1900
+Tarke,Human,Infection,AIM,S,36,43,8,1.0,4.0,0.25,VYYPDKVF,A*24:02,Predicted Elution,Predicted,CD8,,,S 36-43
+Tarke,Human,Infection,AIM,nsp4,91,99,9,1.0,1.0,1.0,IAAVITREV,B*51:01,Predicted Elution,Predicted,CD8,,,nsp4 2854-2862
+Tarke,Human,Infection,AIM,S,378,386,9,1.0,4.0,0.25,KCYGVSPTK,A*03:01,Predicted Elution,Predicted,CD8,,,S 378-386
+Tarke,Human,Infection,AIM,nsp3,392,401,10,1.0,2.0,0.5,EVKPFITESK,A*68:01,Predicted Elution,Predicted,CD8,,,nsp3 1210-1219
+Tarke,Human,Infection,AIM,S,691,699,9,1.0,6.0,0.16666666666666666,SIIAYTMSL,A*02:01,Predicted Elution,Predicted,CD8,,,S 691-699
+Tarke,Human,Infection,AIM,S,1194,1203,10,1.0,5.0,0.2,NESLIDLQEL,B*40:01,Predicted Elution,Predicted,CD8,,,S 1194-1203
+Tarke,Human,Infection,AIM,S,1099,1107,9,1.0,2.0,0.5,GTHWFVTQR,A*31:01,Predicted Elution,Predicted,CD8,,,S 1099-1107
+Tarke,Human,Infection,AIM,S,347,355,9,1.0,2.0,0.5,FASVYAWNR,A*68:01,Predicted Elution,Predicted,CD8,,,S 347-355
+Tarke,Human,Infection,AIM,S,24,32,9,1.0,4.0,0.25,LPPAYTNSF,B*35:01,Predicted Elution,Predicted,CD8,,,S 24-32
+Tarke,Human,Infection,AIM,S,779,789,11,1.0,5.0,0.2,QEVFAQVKQIY,B*44:03,Predicted Elution,Predicted,CD8,,,S 779-789
+Tarke,Human,Infection,AIM,S,55,64,10,1.0,1.0,1.0,FLPFFSNVTW,B*53:01,Predicted Elution,Predicted,CD8,,,S 55-64
+Tarke,Human,Infection,AIM,S,343,351,9,1.0,4.0,0.25,NATRFASVY,B*35:01,Predicted Elution,Predicted,CD8,,,S 343-351
+Tarke,Human,Infection,AIM,S,321,329,9,1.0,5.0,0.2,QPTESIVRF,B*07:02,Predicted Elution,Predicted,CD8,,,S 321-329
+Tarke,Human,Infection,AIM,nsp3,1133,1141,9,1.0,1.0,1.0,ASRELKVTF,B*57:01,Predicted Elution,Predicted,CD8,,,nsp3 1951-1959
+Tarke,Human,Infection,AIM,nsp3,1105,1113,9,1.0,1.0,1.0,ASFDNFKFV,A*02:06,Predicted Elution,Predicted,CD8,,,nsp3 1923-1931
+Tarke,Human,Infection,AIM,nsp3,659,668,10,1.0,2.0,0.5,VSSPDAVTAY,B*57:01,Predicted Elution,Predicted,CD8,,,nsp3 1477-1486
+Tarke,Human,Infection,AIM,M,39,47,9,1.0,4.0,0.25,YANRNRFLY,A*01:01,Predicted Elution,Predicted,CD8,,,M 39-47
+Tarke,Human,Infection,AIM,nsp16,216,228,13,1.0,2.0,0.5,REQIDGYVMHANY,B*44:02,Predicted Elution,Predicted,CD8,,,nsp16 7014-7026
+Tarke,Human,Infection,AIM,S,574,582,9,1.0,4.0,0.25,DAVRDPQTL,B*51:01,Predicted Elution,Predicted,CD8,,,S 574-582
+Tarke,Human,Infection,AIM,S,1089,1096,8,1.0,4.0,0.25,FPREGVFV,B*51:01,Predicted Elution,Predicted,CD8,,,S 1089-1096
+Tarke,Human,Infection,AIM,nsp6,84,92,9,1.0,1.0,1.0,VYMPASWVM,A*24:02,Predicted Elution,Predicted,CD8,,,nsp6 3653-3661
+Tarke,Human,Infection,AIM,S,622,633,12,1.0,1.0,1.0,VAIHADQLTPTW,B*57:01,Predicted Elution,Predicted,CD8,,,S 622-633
+Tarke,Human,Infection,AIM,nsp6,36,44,9,1.0,1.0,1.0,FLYENAFLP,A*02:01,Predicted Elution,Predicted,CD8,,,nsp6 3605-3613
+Tarke,Human,Infection,AIM,S,346,355,10,1.0,2.0,0.5,RFASVYAWNR,A*31:01,Predicted Elution,Predicted,CD8,,,S 346-355
+Tarke,Human,Infection,AIM,S,464,472,9,1.0,5.0,0.2,FERDISTEI,B*40:01,Predicted Elution,Predicted,CD8,,,S 464-472
+Tarke,Human,Infection,AIM,nsp3,1537,1545,9,1.0,1.0,1.0,AVHFISNSW,B*57:01,Predicted Elution,Predicted,CD8,,,nsp3 2355-2363
+Tarke,Human,Infection,AIM,nsp3,1566,1574,9,1.0,2.0,0.5,YIFFASFYY,A*29:02,Predicted Elution,Predicted,CD8,,,nsp3 2384-2392
+Tarke,Human,Infection,AIM,S,857,865,9,1.0,6.0,0.16666666666666666,GLTVLPPLL,A*02:01,Predicted Elution,Predicted,CD8,,,S 857-865
+Tarke,Human,Infection,AIM,N,249,257,9,1.0,3.0,0.3333333333333333,KSAAEASKK,A*11:01,Predicted Elution,Predicted,CD8,,,N 249-257
+Tarke,Human,Infection,AIM,nsp4,345,353,9,1.0,2.0,0.5,IYLYLTFYL,A*24:02,Predicted Elution,Predicted,CD8,,,nsp4 3108-3116
+Tarke,Human,Infection,AIM,nsp3,1935,1943,9,1.0,1.0,1.0,VVTTKIALK,A*03:01,Predicted Elution,Predicted,CD8,,,nsp3 2753-2761
+Tarke,Human,Infection,AIM,nsp3,1153,1161,9,1.0,2.0,0.5,DYKHYTPSF,A*24:02,Predicted Elution,Predicted,CD8,,,nsp3 1971-1979
+Tarke,Human,Infection,AIM,ORF3a,207,215,9,1.0,3.0,0.3333333333333333,FTSDYYQLY,A*01:01,Predicted Elution,Predicted,CD8,,,ORF3a 207-215
+Tarke,Human,Infection,AIM,nsp12,165,174,10,1.0,1.0,1.0,FVENPDILRV,A*02:06,Predicted Elution,Predicted,CD8,,,nsp12 4557-4566
+Tarke,Human,Infection,AIM,nsp3,1081,1089,9,1.0,2.0,0.5,YYKKDNSYF,A*24:02,Predicted Elution,Predicted,CD8,,,nsp3 1899-1907
+Tarke,Human,Infection,AIM,nsp3,1512,1519,8,1.0,2.0,0.5,AYILFTRF,A*24:02,Predicted Elution,Predicted,CD8,,,nsp3 2330-2337
+Tarke,Human,Infection,AIM,nsp3,1149,1157,9,1.0,1.0,1.0,VVAIDYKHY,B*15:01,Predicted Elution,Predicted,CD8,,,nsp3 1967-1975
+Tarke,Human,Infection,AIM,nsp3,829,838,10,1.0,2.0,0.5,MSALNHTKKW,B*57:01,Predicted Elution,Predicted,CD8,,,nsp3 1647-1656
+Tarke,Human,Infection,AIM,nsp3,1378,1386,9,1.0,1.0,1.0,TTIAKNTVK,A*30:01,Predicted Elution,Predicted,CD8,,,nsp3 2196-2204
+Tarke,Human,Infection,AIM,M,171,179,9,1.0,2.0,0.5,ATSRTLSYY,B*57:01,Predicted Elution,Predicted,CD8,,,M 171-179
+Tarke,Human,Infection,AIM,S,975,983,9,1.0,2.0,0.5,SVLNDILSR,A*68:01,Predicted Elution,Predicted,CD8,,,S 975-983
+Tarke,Human,Infection,AIM,S,1000,1007,8,1.0,3.0,0.3333333333333333,RLQSLQTY,B*15:01,Predicted Elution,Predicted,CD8,,,S 1000-1007
+Tarke,Human,Infection,AIM,ORF3a,206,215,10,1.0,2.0,0.5,YFTSDYYQLY,A*29:02,Predicted Elution,Predicted,CD8,,,ORF3a 206-215
+Tarke,Human,Infection,AIM,ORF3a,58,69,12,1.0,2.0,0.5,SASKIITLKKRW,B*57:01,Predicted Elution,Predicted,CD8,,,ORF3a 58-69
+Tarke,Human,Infection,AIM,ORF3a,63,71,9,1.0,2.0,0.5,ITLKKRWQL,B*57:01,Predicted Elution,Predicted,CD8,,,ORF3a 63-71
+Tarke,Human,Infection,AIM,N,360,369,10,1.0,2.0,0.5,YKTFPPTEPK,A*68:01,Predicted Elution,Predicted,CD8,,,N 360-369
+Tarke,Human,Infection,AIM,S,1016,1024,9,1.0,5.0,0.2,AEIRASANL,B*44:03,Predicted Elution,Predicted,CD8,,,S 1016-1024
+Tarke,Human,Infection,AIM,nsp3,768,776,9,1.0,2.0,0.5,MSMTYGQQF,B*57:01,Predicted Elution,Predicted,CD8,,,nsp3 1586-1594
+Tarke,Human,Infection,AIM,nsp3,597,605,9,1.0,3.0,0.3333333333333333,VVDYGARFY,A*01:01,Predicted Elution,Predicted,CD8,,,nsp3 1415-1423
+Tarke,Human,Infection,AIM,nsp12,875,884,10,1.0,1.0,1.0,QEYADVFHLY,A*29:02,Predicted Elution,Predicted,CD8,,,nsp12 5267-5276
+Tarke,Human,Infection,AIM,nsp3,1735,1743,9,1.0,1.0,1.0,SAKSASVYY,B*57:01,Predicted Elution,Predicted,CD8,,,nsp3 2553-2561
+Tarke,Human,Infection,AIM,nsp6,86,94,9,1.0,2.0,0.5,MPASWVMRI,B*07:02,Predicted Elution,Predicted,CD8,,,nsp6 3655-3663
+Tarke,Human,Infection,AIM,S,637,646,10,1.0,2.0,0.5,STGSNVFQTR,A*31:01,Predicted Elution,Predicted,CD8,,,S 637-646
+Tarke,Human,Infection,AIM,N,316,324,9,1.0,5.0,0.2,GMSRIGMEV,A*02:01,Predicted Elution,Predicted,CD8,,,N 316-324
+Tarke,Human,Infection,AIM,nsp3,1771,1780,10,1.0,2.0,0.5,KMFDAYVNTF,A*24:02,Predicted Elution,Predicted,CD8,,,nsp3 2589-2598
+Tarke,Human,Infection,AIM,nsp3,1119,1129,11,1.0,2.0,0.5,FADDLNQLTGY,A*01:01,Predicted Elution,Predicted,CD8,,,nsp3 1937-1947
+Tarke,Human,Infection,AIM,nsp3,1424,1432,9,1.0,2.0,0.5,SLIYSTAAL,A*02:01,Predicted Elution,Predicted,CD8,,,nsp3 2242-2250
+Tarke,Human,Infection,AIM,nsp12,500,508,9,1.0,1.0,1.0,KSAGFPFNK,A*03:01,Predicted Elution,Predicted,CD8,,,nsp12 4892-4900
+Tarke,Human,Infection,AIM,nsp3,1676,1686,11,1.0,2.0,0.5,VTVKNGSIHLY,A*01:01,Predicted Elution,Predicted,CD8,,,nsp3 2494-2504
+Tarke,Human,Infection,AIM,nsp3,1807,1815,9,1.0,2.0,0.5,SLDNVLSTF,A*32:01,Predicted Elution,Predicted,CD8,,,nsp3 2625-2633
+Tarke,Human,Infection,AIM,N,150,159,10,1.0,3.0,0.3333333333333333,NPANNAAIVL,B*07:02,Predicted Elution,Predicted,CD8,,,N 150-159
+Tarke,Human,Infection,AIM,nsp4,385,392,8,1.0,1.0,1.0,ISTKHFYW,B*57:01,Predicted Elution,Predicted,CD8,,,nsp4 3148-3155
+Tarke,Human,Infection,AIM,nsp3,1455,1463,9,1.0,2.0,0.5,STNVTIATY,A*01:01,Predicted Elution,Predicted,CD8,,,nsp3 2273-2281
+Tarke,Human,Infection,AIM,S,454,462,9,1.0,4.0,0.25,RLFRKSNLK,A*03:01,Predicted Elution,Predicted,CD8,,,S 454-462
+Tarke,Human,Infection,AIM,S,637,646,10,1.0,2.0,0.5,STGSNVFQTR,A*68:01,Predicted Elution,Predicted,CD8,,,S 637-646
+Tarke,Human,Infection,AIM,nsp3,1390,1399,10,1.0,2.0,0.5,KFCLEASFNY,A*29:02,Predicted Elution,Predicted,CD8,,,nsp3 2208-2217
+Tarke,Human,Infection,AIM,nsp3,720,728,9,1.0,2.0,0.5,TSNPTTFHL,B*57:01,Predicted Elution,Predicted,CD8,,,nsp3 1538-1546
+Tarke,Human,Infection,AIM,S,699,707,9,1.0,4.0,0.25,LGAENSVAY,B*35:01,Predicted Elution,Predicted,CD8,,,S 699-707
+Tarke,Human,Infection,AIM,nsp3,950,958,9,1.0,1.0,1.0,VMYMGTLSY,A*03:01,Predicted Elution,Predicted,CD8,,,nsp3 1768-1776
+Tarke,Human,Infection,AIM,nsp4,122,129,8,1.0,1.0,1.0,LPRVFSAV,B*51:01,Predicted Elution,Predicted,CD8,,,nsp4 2885-2892
+Tarke,Human,Infection,AIM,nsp4,338,345,8,1.0,1.0,1.0,LPGVYSVI,B*51:01,Predicted Elution,Predicted,CD8,,,nsp4 3101-3108
+Tarke,Human,Infection,AIM,nsp3,1842,1855,14,1.0,2.0,0.5,QSDIEVTGDSCNNY,A*01:01,Predicted Elution,Predicted,CD8,,,nsp3 2660-2673
+Tarke,Human,Infection,AIM,S,292,300,9,1.0,4.0,0.25,ALDPLSETK,A*03:01,Predicted Elution,Predicted,CD8,,,S 292-300
+Tarke,Human,Infection,AIM,nsp4,308,317,10,1.0,1.0,1.0,FGEYSHVVAF,B*40:01,Predicted Elution,Predicted,CD8,,,nsp4 3071-3080
+Tarke,Human,Infection,AIM,N,361,374,14,1.0,2.0,0.5,KTFPPTEPKKDKKK,A*03:01,Predicted Elution,Predicted,CD8,,,N 361-374
+Tarke,Human,Infection,AIM,S,624,633,10,1.0,1.0,1.0,IHADQLTPTW,B*53:01,Predicted Elution,Predicted,CD8,,,S 624-633
+Tarke,Human,Infection,AIM,nsp3,579,587,9,1.0,1.0,1.0,AIVSTIQRK,A*03:01,Predicted Elution,Predicted,CD8,,,nsp3 1397-1405
+Tarke,Human,Infection,AIM,M,196,205,10,1.0,1.0,1.0,YSRYRIGNYK,A*30:01,Predicted Elution,Predicted,CD8,,,M 196-205
+Tarke,Human,Infection,AIM,nsp16,182,190,9,1.0,1.0,1.0,KLMGHFAWW,A*32:01,Predicted Elution,Predicted,CD8,,,nsp16 6980-6988
+Tarke,Human,Infection,AIM,M,186,196,11,1.0,3.0,0.3333333333333333,RVAGDSGFAAY,A*01:01,Predicted Elution,Predicted,CD8,,,M 186-196
+Tarke,Human,Infection,AIM,S,725,733,9,1.0,2.0,0.5,EILPVSMTK,A*68:01,Predicted Elution,Predicted,CD8,,,S 725-733
+Tarke,Human,Infection,AIM,nsp3,1734,1742,9,1.0,1.0,1.0,SSAKSASVY,B*15:01,Predicted Elution,Predicted,CD8,,,nsp3 2552-2560
+Tarke,Human,Infection,AIM,nsp3,857,865,9,1.0,3.0,0.3333333333333333,YLATALLTL,A*02:01,Predicted Elution,Predicted,CD8,,,nsp3 1675-1683
+Tarke,Human,Infection,AIM,S,558,567,10,1.0,2.0,0.5,KFLPFQQFGR,A*31:01,Predicted Elution,Predicted,CD8,,,S 558-567
+Tarke,Human,Infection,AIM,nsp3,1455,1463,9,1.0,2.0,0.5,STNVTIATY,A*32:01,Predicted Elution,Predicted,CD8,,,nsp3 2273-2281
+Tarke,Human,Infection,AIM,nsp3,1617,1626,10,1.0,1.0,1.0,YVYANGGKGF,B*15:01,Predicted Elution,Predicted,CD8,,,nsp3 2435-2444
+Tarke,Human,Infection,AIM,nsp12,318,326,9,1.0,1.0,1.0,STVFPPTSF,B*57:01,Predicted Elution,Predicted,CD8,,,nsp12 4710-4718
+Tarke,Human,Infection,AIM,nsp3,1407,1415,9,1.0,2.0,0.5,KLINIIIWF,A*32:01,Predicted Elution,Predicted,CD8,,,nsp3 2225-2233
+Tarke,Human,Infection,AIM,ORF3a,204,212,9,1.0,2.0,0.5,HSYFTSDYY,A*29:02,Predicted Elution,Predicted,CD8,,,ORF3a 204-212
+Tarke,Human,Infection,AIM,nsp4,173,182,10,1.0,3.0,0.3333333333333333,TNVLEGSVAY,B*35:01,Predicted Elution,Predicted,CD8,,,nsp4 2936-2945
+Tarke,Human,Infection,AIM,nsp3,1073,1081,9,1.0,2.0,0.5,EIDPKLDNY,A*01:01,Predicted Elution,Predicted,CD8,,,nsp3 1891-1899
+Tarke,Human,Infection,AIM,S,35,44,10,1.0,4.0,0.25,GVYYPDKVFR,A*03:01,Predicted Elution,Predicted,CD8,,,S 35-44
+Tarke,Human,Infection,AIM,N,323,333,11,1.0,3.0,0.3333333333333333,EVTPSGTWLTY,A*26:01,Predicted Elution,Predicted,CD8,,,N 323-333
+Tarke,Human,Infection,AIM,nsp12,41,49,9,1.0,2.0,0.5,KVAGFAKFL,A*32:01,Predicted Elution,Predicted,CD8,,,nsp12 4433-4441
+Tarke,Human,Infection,AIM,nsp4,161,169,9,1.0,3.0,0.3333333333333333,DASGKPVPY,B*35:01,Predicted Elution,Predicted,CD8,,,nsp4 2924-2932
+Tarke,Human,Infection,AIM,S,1016,1024,9,1.0,5.0,0.2,AEIRASANL,B*40:01,Predicted Elution,Predicted,CD8,,,S 1016-1024
+Tarke,Human,Infection,AIM,nsp3,364,372,9,1.0,1.0,1.0,LYDKLVSSF,A*24:02,Predicted Elution,Predicted,CD8,,,nsp3 1182-1190
+Tarke,Human,Infection,AIM,ORF3a,101,109,9,1.0,2.0,0.5,LEAPFLYLY,A*29:02,Predicted Elution,Predicted,CD8,,,ORF3a 101-109
+Tarke,Human,Infection,AIM,S,370,378,9,1.0,2.0,0.5,NSASFSTFK,A*68:01,Predicted Elution,Predicted,CD8,,,S 370-378
+Tarke,Human,Infection,AIM,S,886,894,9,1.0,4.0,0.25,WTFGAGAAL,A*26:01,Predicted Elution,Predicted,CD8,,,S 886-894
+Tarke,Human,Infection,AIM,ORF3a,211,219,9,1.0,2.0,0.5,YYQLYSTQL,A*24:02,Predicted Elution,Predicted,CD8,,,ORF3a 211-219
+Tarke,Human,Infection,AIM,S,604,612,9,1.0,4.0,0.25,TSNQVAVLY,A*26:01,Predicted Elution,Predicted,CD8,,,S 604-612
+Tarke,Human,Infection,AIM,M,105,112,8,1.0,2.0,0.5,RTRSMWSF,B*57:01,Predicted Elution,Predicted,CD8,,,M 105-112
+Tarke,Human,Infection,AIM,nsp12,741,750,10,1.0,1.0,1.0,FVNEFYAYLR,A*33:01,Predicted Elution,Predicted,CD8,,,nsp12 5133-5142
+Tarke,Human,Infection,AIM,S,394,403,10,1.0,2.0,0.5,NVYADSFVIR,A*68:01,Predicted Elution,Predicted,CD8,,,S 394-403
+Tarke,Human,Infection,AIM,nsp4,259,267,9,1.0,1.0,1.0,DAVNLLTNM,B*51:01,Predicted Elution,Predicted,CD8,,,nsp4 3022-3030
+Tarke,Human,Infection,AIM,nsp16,9,17,9,1.0,1.0,1.0,VAMPNLYKM,B*57:01,Predicted Elution,Predicted,CD8,,,nsp16 6807-6815
+Tarke,Human,Infection,AIM,S,686,695,10,1.0,3.0,0.3333333333333333,SVASQSIIAY,A*29:02,Predicted Elution,Predicted,CD8,,,S 686-695
+Tarke,Human,Infection,AIM,nsp6,43,52,10,1.0,2.0,0.5,LPFAMGIIAM,B*07:02,Predicted Elution,Predicted,CD8,,,nsp6 3612-3621
+Tarke,Human,Infection,AIM,M,150,158,9,1.0,2.0,0.5,RIAGHHLGR,A*03:01,Predicted Elution,Predicted,CD8,,,M 150-158
+Tarke,Human,Infection,AIM,S,695,707,13,1.0,4.0,0.25,YTMSLGAENSVAY,A*26:01,Predicted Elution,Predicted,CD8,,,S 695-707
+Tarke,Human,Infection,AIM,nsp3,25,34,10,1.0,3.0,0.3333333333333333,FELDERIDKV,A*02:01,Predicted Elution,Predicted,CD8,,,nsp3 843-852
+Tarke,Human,Infection,AIM,S,989,997,9,1.0,5.0,0.2,AEVQIDRLI,B*44:03,Predicted Elution,Predicted,CD8,,,S 989-997
+Tarke,Human,Infection,AIM,S,880,888,9,1.0,1.0,1.0,GTITSGWTF,B*57:01,Predicted Elution,Predicted,CD8,,,S 880-888
+Tarke,Human,Infection,AIM,S,1052,1060,9,1.0,1.0,1.0,FPQSAPHGV,B*53:01,Predicted Elution,Predicted,CD8,,,S 1052-1060
+Tarke,Human,Infection,AIM,S,660,670,11,1.0,5.0,0.2,YECDIPIGAGI,B*40:01,Predicted Elution,Predicted,CD8,,,S 660-670
+Tarke,Human,Infection,AIM,S,989,996,8,1.0,5.0,0.2,AEVQIDRL,B*40:01,Predicted Elution,Predicted,CD8,,,S 989-996
+Tarke,Human,Infection,AIM,S,166,180,15,7.0,11.0,0.6363636363636364,CTFEYVSQPFLMDLE,"DQB1*02:01, DQB1*02:02, DQB1*05:02, DQB1*05:03, DRB1*07:01, DRB1*16:01",Unbiased Tiling,Predicted,CD4,,,S 166-180
+Tarke,Human,Infection,AIM,M,71,85,15,7.0,12.0,0.5833333333333334,YRINWITGGIAIAMA,"DQB1*02:02, DQB1*03:01, DQB1*05:01, DQB1*05:02, DQB1*05:03, DQB1*06:02, DQB1*06:03, DRB1*07:01, DRB1*10:01, DRB1*12:01, DRB1*13:01, DRB1*14:01, DRB1*15:01, DRB1*16:01",Unbiased Tiling,Predicted,CD4,,,M 71-85
+Tarke,Human,Infection,AIM,ORF8,36,50,15,6.0,11.0,0.5454545454545454,PCPIHFYSKWYIRVG,"DRB1*08:02, DRB1*13:01, DRB1*15:01, DRB1*15:02, DRB1*16:01",Unbiased Tiling,Predicted,CD4,,,ORF8 36-50
+Tarke,Human,Infection,AIM,ORF8,41,55,15,6.0,11.0,0.5454545454545454,FYSKWYIRVGARKSA,"DQB1*06:01, DRB1*04:02, DRB1*07:01, DRB1*11:01, DRB1*11:04, DRB1*13:03, DRB1*14:01, DRB1*14:06, DRB1*15:01, DRB1*15:02, DRB1*16:01, DRB1*16:02",Unbiased Tiling,Predicted,CD4,,,ORF8 41-55
+Tarke,Human,Infection,AIM,M,166,180,15,7.0,13.0,0.5384615384615384,KEITVATSRTLSYYK,"DQB1*06:03, DRB1*03:01, DRB1*07:01, DRB1*14:01, DRB1*14:06, DRB1*15:01, DRB1*16:02",Unbiased Tiling,Predicted,CD4,,,M 166-180
+Tarke,Human,Infection,AIM,M,176,190,15,6.0,13.0,0.46153846153846156,LSYYKLGASQRVAGD,"DQB1*03:01, DQB1*06:02, DQB1*06:03, DRB1*01:01, DRB1*07:01, DRB1*14:06, DRB1*15:01, DRB1*16:01, DRB1*16:02",Unbiased Tiling,Predicted,CD4,,,M 176-190
+Tarke,Human,Infection,AIM,ORF8,76,90,15,5.0,11.0,0.45454545454545453,IGNYTVSCLPFTINC,"DQB1*03:03, DRB1*15:02",Unbiased Tiling,Predicted,CD4,,,ORF8 76-90
+Tarke,Human,Infection,AIM,S,196,210,15,5.0,11.0,0.45454545454545453,NIDGYFKIYSKHTPI,"DRB1*07:01, DRB1*15:01, DRB1*16:01",Unbiased Tiling,Predicted,CD4,,,S 196-210
+Tarke,Human,Infection,AIM,M,66,80,15,5.0,12.0,0.4166666666666667,VLAAVYRINWITGGI,"DQB1*05:01, DQB1*05:03, DRB1*12:02, DRB1*14:01",Unbiased Tiling,Predicted,CD4,,,M 66-80
+Tarke,Human,Infection,AIM,M,146,160,15,5.0,12.0,0.4166666666666667,RGHLRIAGHHLGRCD,"DRB1*07:01, DRB1*13:01, DRB1*14:01, DRB1*15:01",Unbiased Tiling,Predicted,CD4,,,M 146-160
+Tarke,Human,Infection,AIM,N,326,340,15,5.0,12.0,0.4166666666666667,PSGTWLTYTGAIKLD,"DQB1*06:03, DRB1*01:02, DRB1*07:01, DRB1*15:01",Unbiased Tiling,Predicted,CD4,,,N 326-340
+Tarke,Human,Infection,AIM,N,351,365,15,5.0,12.0,0.4166666666666667,ILLNKHIDAYKTFPP,"DRB1*14:06, DRB1*15:01",Unbiased Tiling,Predicted,CD4,,,N 351-365
+Tarke,Human,Infection,AIM,ORF8,26,40,15,4.0,11.0,0.36363636363636365,TQHQPYVVDDPCPIH,DRB1*13:02,Unbiased Tiling,Predicted,CD4,,,ORF8 26-40
+Tarke,Human,Infection,AIM,ORF8,31,45,15,4.0,11.0,0.36363636363636365,YVVDDPCPIHFYSKW,"DRB1*13:02, DRB1*15:02",Unbiased Tiling,Predicted,CD4,,,ORF8 31-45
+Tarke,Human,Infection,AIM,ORF8,101,115,15,4.0,11.0,0.36363636363636365,RCSFYEDFLEYHDVR,DQB1*05:02,Unbiased Tiling,Predicted,CD4,,,ORF8 101-115
+Tarke,Human,Infection,AIM,S,176,190,15,4.0,11.0,0.36363636363636365,LMDLEGKQGNFKNLR,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 176-190
+Tarke,Human,Infection,AIM,nsp12,854,868,15,5.0,14.0,0.35714285714285715,LMIERFVSLAIDAYP,"DQB1*02:02, DQB1*03:02, DQB1*04:02, DQB1*05:01, DQB1*06:04, DRB1*01:01, DRB1*04:04, DRB1*07:01, DRB1*10:01, DRB1*13:02, DRB1*15:01",Unbiased Tiling,Predicted,CD4,,,nsp12 5246-5260
+Tarke,Human,Infection,AIM,M,86,100,15,4.0,12.0,0.3333333333333333,CLVGLMWLSYFIASF,"DQB1*05:01, DQB1*05:03, DRB1*12:01, DRB1*12:02",Unbiased Tiling,Predicted,CD4,,,M 86-100
+Tarke,Human,Infection,AIM,M,136,150,15,4.0,12.0,0.3333333333333333,SELVIGAVILRGHLR,"DQB1*06:02, DQB1*06:03, DRB1*01:02, DRB1*13:01, DRB1*14:01, DRB1*15:01, DRB1*16:01",Unbiased Tiling,Predicted,CD4,,,M 136-150
+Tarke,Human,Infection,AIM,N,301,315,15,4.0,12.0,0.3333333333333333,WPQIAQFAPSASAFF,"DQB1*02:02, DQB1*05:03, DRB1*04:04, DRB1*07:01, DRB1*15:01",Unbiased Tiling,Predicted,CD4,,,N 301-315
+Tarke,Human,Infection,AIM,N,346,360,15,4.0,12.0,0.3333333333333333,FKDQVILLNKHIDAY,"DRB1*03:01, DRB1*14:01, DRB1*14:06, DRB1*15:01, DRB1*16:02",Unbiased Tiling,Predicted,CD4,,,N 346-360
+Tarke,Human,Infection,AIM,S,801,815,15,4.0,12.0,0.3333333333333333,NFSQILPDPSKPSKR,DRB1*03:01,Unbiased Tiling,Predicted,CD4,,,S 801-815
+Tarke,Human,Infection,AIM,nsp16,258,272,15,1.0,3.0,0.3333333333333333,AVMSLKEGQINDMIL,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp16 7056-7070
+Tarke,Human,Infection,AIM,nsp16,263,277,15,1.0,3.0,0.3333333333333333,KEGQINDMILSLLSK,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp16 7061-7075
+Tarke,Human,Infection,AIM,nsp16,283,297,15,1.0,3.0,0.3333333333333333,RENNRVVISSDVLVN,"DQB1*02:02, DRB1*07:01",Unbiased Tiling,Predicted,CD4,,,nsp16 7081-7095
+Tarke,Human,Infection,AIM,M,191,205,15,4.0,13.0,0.3076923076923077,SGFAAYSRYRIGNYK,DRB1*15:01,Unbiased Tiling,Predicted,CD4,,,M 191-205
+Tarke,Human,Infection,AIM,N,256,270,15,4.0,13.0,0.3076923076923077,KKPRQKRTATKAYNV,HLA class II,Unbiased Tiling,Predicted,CD4,,,N 256-270
+Tarke,Human,Infection,AIM,N,261,275,15,4.0,13.0,0.3076923076923077,KRTATKAYNVTQAFG,"DQB1*06:02, DQB1*06:03",Unbiased Tiling,Predicted,CD4,,,N 261-275
+Tarke,Human,Infection,AIM,S,751,765,15,4.0,13.0,0.3076923076923077,NLLLQYGSFCTQLNR,"DQB1*05:03, DRB1*04:04, DRB1*15:01",Unbiased Tiling,Predicted,CD4,,,S 751-765
+Tarke,Human,Infection,AIM,N,126,140,15,4.0,14.0,0.2857142857142857,NKDGIIWVATEGALN,"DQB1*02:01, DQB1*02:02, DQB1*03:02, DQB1*05:03, DRB1*04:04, DRB1*07:01",Unbiased Tiling,Predicted,CD4,,,N 126-140
+Tarke,Human,Infection,AIM,ORF8,86,100,15,3.0,11.0,0.2727272727272727,FTINCQEPKLGSLVV,HLA class II,Unbiased Tiling,Predicted,CD4,,,ORF8 86-100
+Tarke,Human,Infection,AIM,ORF8,96,110,15,3.0,11.0,0.2727272727272727,GSLVVRCSFYEDFLE,"DQB1*05:02, DQB1*05:03",Unbiased Tiling,Predicted,CD4,,,ORF8 96-110
+Tarke,Human,Infection,AIM,S,131,145,15,3.0,11.0,0.2727272727272727,CEFQFCNDPFLGVYY,"DQB1*05:02, DQB1*05:03",Unbiased Tiling,Predicted,CD4,,,S 131-145
+Tarke,Human,Infection,AIM,S,161,175,15,3.0,11.0,0.2727272727272727,SSANNCTFEYVSQPF,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 161-175
+Tarke,Human,Infection,AIM,S,211,225,15,3.0,11.0,0.2727272727272727,NLVRDLPQGFSALEP,DRB1*03:01,Unbiased Tiling,Predicted,CD4,,,S 211-225
+Tarke,Human,Infection,AIM,S,346,360,15,3.0,11.0,0.2727272727272727,RFASVYAWNRKRISN,"DRB1*07:01, DRB1*13:01, DRB1*14:01",Unbiased Tiling,Predicted,CD4,,,S 346-360
+Tarke,Human,Infection,AIM,M,91,105,15,3.0,12.0,0.25,MWLSYFIASFRLFAR,"DQB1*02:01, DQB1*05:01, DQB1*05:02, DQB1*05:03, DRB1*03:01, DRB1*14:01, DRB1*14:06, DRB1*16:01, DRB1*16:02",Unbiased Tiling,Predicted,CD4,,,M 91-105
+Tarke,Human,Infection,AIM,M,116,130,15,3.0,12.0,0.25,TNILLNVPLHGTILT,"DRB1*10:01, DRB1*12:02, DRB1*14:01, DRB1*14:06, DRB1*15:01, DRB1*16:02",Unbiased Tiling,Predicted,CD4,,,M 116-130
+Tarke,Human,Infection,AIM,M,151,165,15,3.0,12.0,0.25,IAGHHLGRCDIKDLP,HLA class II,Unbiased Tiling,Predicted,CD4,,,M 151-165
+Tarke,Human,Infection,AIM,M,156,170,15,3.0,12.0,0.25,LGRCDIKDLPKEITV,HLA class II,Unbiased Tiling,Predicted,CD4,,,M 156-170
+Tarke,Human,Infection,AIM,S,831,845,15,3.0,12.0,0.25,AGFIKQYGDCLGDIA,DQB1*05:03,Unbiased Tiling,Predicted,CD4,,,S 831-845
+Tarke,Human,Infection,AIM,N,51,65,15,3.0,13.0,0.23076923076923078,SWFTALTQHGKEDLK,HLA class II,Unbiased Tiling,Predicted,CD4,,,N 51-65
+Tarke,Human,Infection,AIM,N,81,95,15,3.0,13.0,0.23076923076923078,DDQIGYYRRATRRIR,"DRB1*13:01, DRB1*14:01, DRB1*14:06, DRB1*15:01, DRB1*16:02",Unbiased Tiling,Predicted,CD4,,,N 81-95
+Tarke,Human,Infection,AIM,N,86,100,15,3.0,13.0,0.23076923076923078,YYRRATRRIRGGDGK,"DRB1*13:01, DRB1*14:06",Unbiased Tiling,Predicted,CD4,,,N 86-100
+Tarke,Human,Infection,AIM,M,161,175,15,3.0,13.0,0.23076923076923078,IKDLPKEITVATSRT,HLA class II,Unbiased Tiling,Predicted,CD4,,,M 161-175
+Tarke,Human,Infection,AIM,N,251,265,15,3.0,13.0,0.23076923076923078,AAEASKKPRQKRTAT,HLA class II,Unbiased Tiling,Predicted,CD4,,,N 251-265
+Tarke,Human,Infection,AIM,ORF3a,106,120,15,3.0,14.0,0.21428571428571427,LYLYALVYFLQSINF,"DQB1*02:01, DQB1*03:02, DQB1*05:03, DRB1*11:01, DRB1*12:01",Unbiased Tiling,Predicted,CD4,,,ORF3a 106-120
+Tarke,Human,Infection,AIM,ORF3a,116,130,15,3.0,14.0,0.21428571428571427,QSINFVRIIMRLWLC,"DQB1*06:02, DRB1*03:01, DRB1*11:01, DRB1*12:01, DRB1*14:01, DRB1*15:01",Unbiased Tiling,Predicted,CD4,,,ORF3a 116-130
+Tarke,Human,Infection,AIM,N,211,225,15,3.0,14.0,0.21428571428571427,AGNGGDAALALLLLD,"DQB1*03:01, DQB1*06:02",Unbiased Tiling,Predicted,CD4,,,N 211-225
+Tarke,Human,Infection,AIM,N,216,230,15,3.0,14.0,0.21428571428571427,DAALALLLLDRLNQL,"DQB1*05:03, DQB1*06:02, DRB1*03:01, DRB1*12:01, DRB1*14:01, DRB1*15:01",Unbiased Tiling,Predicted,CD4,,,N 216-230
+Tarke,Human,Infection,AIM,N,221,235,15,3.0,14.0,0.21428571428571427,LLLLDRLNQLESKMS,"DRB1*03:01, DRB1*12:01, DRB1*14:01, DRB1*15:01",Unbiased Tiling,Predicted,CD4,,,N 221-235
+Tarke,Human,Infection,AIM,M,36,50,15,3.0,15.0,0.2,QFAYANRNRFLYIIK,DRB1*14:01,Unbiased Tiling,Predicted,CD4,,,M 36-50
+Tarke,Human,Infection,AIM,ORF8,11,25,15,2.0,11.0,0.18181818181818182,TTVAAFHQECSLQSC,DQB1*05:02,Unbiased Tiling,Predicted,CD4,,,ORF8 11-25
+Tarke,Human,Infection,AIM,ORF8,16,30,15,2.0,11.0,0.18181818181818182,FHQECSLQSCTQHQP,HLA class II,Unbiased Tiling,Predicted,CD4,,,ORF8 16-30
+Tarke,Human,Infection,AIM,ORF8,46,60,15,2.0,11.0,0.18181818181818182,YIRVGARKSAPLIEL,"DQB1*03:01, DRB1*11:04, DRB1*13:02, DRB1*15:01, DRB1*16:01",Unbiased Tiling,Predicted,CD4,,,ORF8 46-60
+Tarke,Human,Infection,AIM,ORF8,51,65,15,2.0,11.0,0.18181818181818182,ARKSAPLIELCVDEA,HLA class II,Unbiased Tiling,Predicted,CD4,,,ORF8 51-65
+Tarke,Human,Infection,AIM,ORF8,56,70,15,2.0,11.0,0.18181818181818182,PLIELCVDEAGSKSP,HLA class II,Unbiased Tiling,Predicted,CD4,,,ORF8 56-70
+Tarke,Human,Infection,AIM,ORF3a,66,80,15,2.0,11.0,0.18181818181818182,KKRWQLALSKGVHFV,DRB1*07:01,Unbiased Tiling,Predicted,CD4,,,ORF3a 66-80
+Tarke,Human,Infection,AIM,ORF3a,81,95,15,2.0,11.0,0.18181818181818182,CNLLLLFVTVYSHLL,"DQB1*02:01, DRB1*07:01, DRB1*11:01",Unbiased Tiling,Predicted,CD4,,,ORF3a 81-95
+Tarke,Human,Infection,AIM,ORF8,106,120,15,2.0,11.0,0.18181818181818182,EDFLEYHDVRVVLDF,"DQB1*05:02, DQB1*06:04, DRB1*13:02, DRB1*15:02",Unbiased Tiling,Predicted,CD4,,,ORF8 106-120
+Tarke,Human,Infection,AIM,ORF8,107,121,15,2.0,11.0,0.18181818181818182,DFLEYHDVRVVLDFI,"DQB1*05:02, DQB1*06:04, DRB1*15:02",Unbiased Tiling,Predicted,CD4,,,ORF8 107-121
+Tarke,Human,Infection,AIM,S,171,185,15,2.0,11.0,0.18181818181818182,VSQPFLMDLEGKQGN,DRB1*03:01,Unbiased Tiling,Predicted,CD4,,,S 171-185
+Tarke,Human,Infection,AIM,S,191,205,15,2.0,11.0,0.18181818181818182,EFVFKNIDGYFKIYS,"DQB1*05:03, DRB1*14:01, DRB1*15:01",Unbiased Tiling,Predicted,CD4,,,S 191-205
+Tarke,Human,Infection,AIM,S,201,215,15,2.0,11.0,0.18181818181818182,FKIYSKHTPINLVRD,"DRB1*07:01, DRB1*13:01",Unbiased Tiling,Predicted,CD4,,,S 201-215
+Tarke,Human,Infection,AIM,S,206,220,15,2.0,11.0,0.18181818181818182,KHTPINLVRDLPQGF,DRB1*03:01,Unbiased Tiling,Predicted,CD4,,,S 206-220
+Tarke,Human,Infection,AIM,S,216,230,15,2.0,11.0,0.18181818181818182,LPQGFSALEPLVDLP,"DQB1*02:02, DQB1*03:03, DQB1*05:03",Unbiased Tiling,Predicted,CD4,,,S 216-230
+Tarke,Human,Infection,AIM,S,236,250,15,2.0,11.0,0.18181818181818182,TRFQTLLALHRSYLT,"DQB1*05:03, DRB1*12:01, DRB1*14:01",Unbiased Tiling,Predicted,CD4,,,S 236-250
+Tarke,Human,Infection,AIM,S,896,910,15,2.0,11.0,0.18181818181818182,IPFAMQMAYRFNGIG,"DQB1*04:02, DQB1*05:03, DRB1*12:01, DRB1*14:01, DRB1*15:01",Unbiased Tiling,Predicted,CD4,,,S 896-910
+Tarke,Human,Infection,AIM,nsp3,808,822,15,2.0,11.0,0.18181818181818182,TLRVEAFEYYHTTDP,DQB1*05:03,Unbiased Tiling,Predicted,CD4,,,nsp3 1626-1640
+Tarke,Human,Infection,AIM,nsp3,818,832,15,2.0,11.0,0.18181818181818182,HTTDPSFLGRYMSAL,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp3 1636-1650
+Tarke,Human,Infection,AIM,M,56,70,15,2.0,12.0,0.16666666666666666,LLWPVTLACFVLAAV,"DQB1*05:01, DQB1*05:03, DQB1*06:03",Unbiased Tiling,Predicted,CD4,,,M 56-70
+Tarke,Human,Infection,AIM,M,76,90,15,2.0,12.0,0.16666666666666666,ITGGIAIAMACLVGL,DQB1*03:01,Unbiased Tiling,Predicted,CD4,,,M 76-90
+Tarke,Human,Infection,AIM,M,106,120,15,2.0,12.0,0.16666666666666666,TRSMWSFNPETNILL,"DQB1*05:01, DQB1*05:02, DQB1*05:03, DRB1*01:02",Unbiased Tiling,Predicted,CD4,,,M 106-120
+Tarke,Human,Infection,AIM,M,126,140,15,2.0,12.0,0.16666666666666666,GTILTRPLLESELVI,DRB1*13:01,Unbiased Tiling,Predicted,CD4,,,M 126-140
+Tarke,Human,Infection,AIM,N,306,320,15,2.0,12.0,0.16666666666666666,QFAPSASAFFGMSRI,DRB1*07:01,Unbiased Tiling,Predicted,CD4,,,N 306-320
+Tarke,Human,Infection,AIM,N,331,345,15,2.0,12.0,0.16666666666666666,LTYTGAIKLDDKDPN,DRB1*07:01,Unbiased Tiling,Predicted,CD4,,,N 331-345
+Tarke,Human,Infection,AIM,S,356,370,15,2.0,12.0,0.16666666666666666,KRISNCVADYSVLYN,"DQB1*02:01, DQB1*02:02, DRB1*03:01",Unbiased Tiling,Predicted,CD4,,,S 356-370
+Tarke,Human,Infection,AIM,S,461,475,15,2.0,12.0,0.16666666666666666,LKPFERDISTEIYQA,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 461-475
+Tarke,Human,Infection,AIM,S,701,715,15,2.0,12.0,0.16666666666666666,AENSVAYSNNSIAIP,"DQB1*03:01, DRB1*15:01",Unbiased Tiling,Predicted,CD4,,,S 701-715
+Tarke,Human,Infection,AIM,S,716,730,15,2.0,12.0,0.16666666666666666,TNFTISVTTEILPVS,"DQB1*02:02, DQB1*06:03, DRB1*07:01, DRB1*14:01",Unbiased Tiling,Predicted,CD4,,,S 716-730
+Tarke,Human,Infection,AIM,S,811,825,15,2.0,12.0,0.16666666666666666,KPSKRSFIEDLLFNK,"DQB1*02:02, DQB1*05:03",Unbiased Tiling,Predicted,CD4,,,S 811-825
+Tarke,Human,Infection,AIM,S,816,830,15,2.0,12.0,0.16666666666666666,SFIEDLLFNKVTLAD,"DQB1*05:03, DRB1*03:01, DRB1*12:01, DRB1*14:01",Unbiased Tiling,Predicted,CD4,,,S 816-830
+Tarke,Human,Infection,AIM,S,826,840,15,2.0,12.0,0.16666666666666666,VTLADAGFIKQYGDC,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 826-840
+Tarke,Human,Infection,AIM,nsp4,348,362,15,2.0,12.0,0.16666666666666666,YLTFYLTNDVSFLAH,"DQB1*05:02, DRB1*14:01, DRB1*15:01, DRB1*16:01",Unbiased Tiling,Predicted,CD4,,,nsp4 3111-3125
+Tarke,Human,Infection,AIM,S,36,50,15,2.0,13.0,0.15384615384615385,VYYPDKVFRSSVLHS,"DRB1*03:01, DRB1*13:01, DRB1*14:01",Unbiased Tiling,Predicted,CD4,,,S 36-50
+Tarke,Human,Infection,AIM,S,46,60,15,2.0,13.0,0.15384615384615385,SVLHSTQDLFLPFFS,"DQB1*02:02, DRB1*07:01",Unbiased Tiling,Predicted,CD4,,,S 46-60
+Tarke,Human,Infection,AIM,N,96,110,15,2.0,13.0,0.15384615384615385,GGDGKMKDLSPRWYF,HLA class II,Unbiased Tiling,Predicted,CD4,,,N 96-110
+Tarke,Human,Infection,AIM,M,171,185,15,2.0,13.0,0.15384615384615385,ATSRTLSYYKLGASQ,"DQB1*05:01, DQB1*05:03, DRB1*16:01",Unbiased Tiling,Predicted,CD4,,,M 171-185
+Tarke,Human,Infection,AIM,M,181,195,15,2.0,13.0,0.15384615384615385,LGASQRVAGDSGFAA,HLA class II,Unbiased Tiling,Predicted,CD4,,,M 181-195
+Tarke,Human,Infection,AIM,M,186,200,15,2.0,13.0,0.15384615384615385,RVAGDSGFAAYSRYR,HLA class II,Unbiased Tiling,Predicted,CD4,,,M 186-200
+Tarke,Human,Infection,AIM,M,196,210,15,2.0,13.0,0.15384615384615385,YSRYRIGNYKLNTDH,HLA class II,Unbiased Tiling,Predicted,CD4,,,M 196-210
+Tarke,Human,Infection,AIM,M,201,215,15,2.0,13.0,0.15384615384615385,IGNYKLNTDHSSSSD,DRB1*03:01,Unbiased Tiling,Predicted,CD4,,,M 201-215
+Tarke,Human,Infection,AIM,N,266,280,15,2.0,13.0,0.15384615384615385,KAYNVTQAFGRRGPE,HLA class II,Unbiased Tiling,Predicted,CD4,,,N 266-280
+Tarke,Human,Infection,AIM,N,291,305,15,2.0,13.0,0.15384615384615385,LIRQGTDYKHWPQIA,HLA class II,Unbiased Tiling,Predicted,CD4,,,N 291-305
+Tarke,Human,Infection,AIM,nsp3,1128,1142,15,2.0,13.0,0.15384615384615385,GYKKPASRELKVTFF,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp3 1946-1960
+Tarke,Human,Infection,AIM,nsp3,1133,1147,15,2.0,13.0,0.15384615384615385,ASRELKVTFFPDLNG,DQB1*05:03,Unbiased Tiling,Predicted,CD4,,,nsp3 1951-1965
+Tarke,Human,Infection,AIM,nsp3,1138,1152,15,2.0,13.0,0.15384615384615385,KVTFFPDLNGDVVAI,DQB1*05:03,Unbiased Tiling,Predicted,CD4,,,nsp3 1956-1970
+Tarke,Human,Infection,AIM,nsp3,1143,1157,15,2.0,13.0,0.15384615384615385,PDLNGDVVAIDYKHY,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp3 1961-1975
+Tarke,Human,Infection,AIM,nsp4,443,457,15,2.0,13.0,0.15384615384615385,RYLALYNKYKYFSGA,DRB1*15:01,Unbiased Tiling,Predicted,CD4,,,nsp4 3206-3220
+Tarke,Human,Infection,AIM,N,101,115,15,2.0,14.0,0.14285714285714285,MKDLSPRWYFYYLGT,HLA class II,Unbiased Tiling,Predicted,CD4,,,N 101-115
+Tarke,Human,Infection,AIM,N,121,135,15,2.0,14.0,0.14285714285714285,LPYGANKDGIIWVAT,HLA class II,Unbiased Tiling,Predicted,CD4,,,N 121-135
+Tarke,Human,Infection,AIM,ORF3a,121,135,15,2.0,14.0,0.14285714285714285,VRIIMRLWLCWKCRS,DRB1*11:01,Unbiased Tiling,Predicted,CD4,,,ORF3a 121-135
+Tarke,Human,Infection,AIM,N,136,150,15,2.0,14.0,0.14285714285714285,EGALNTPKDHIGTRN,HLA class II,Unbiased Tiling,Predicted,CD4,,,N 136-150
+Tarke,Human,Infection,AIM,ORF3a,226,240,15,2.0,14.0,0.14285714285714285,EHVTFFIYNKIVDEP,"DQB1*02:01, DQB1*05:01, DRB1*08:01, DRB1*11:01",Unbiased Tiling,Predicted,CD4,,,ORF3a 226-240
+Tarke,Human,Infection,AIM,ORF3a,231,245,15,2.0,14.0,0.14285714285714285,FIYNKIVDEPEEHVQ,"DQB1*05:01, DRB1*08:01",Unbiased Tiling,Predicted,CD4,,,ORF3a 231-245
+Tarke,Human,Infection,AIM,S,911,925,15,2.0,14.0,0.14285714285714285,VTQNVLYENQKLIAN,"DRB1*03:01, DRB1*12:01",Unbiased Tiling,Predicted,CD4,,,S 911-925
+Tarke,Human,Infection,AIM,nsp12,859,873,15,2.0,14.0,0.14285714285714285,FVSLAIDAYPLTKHP,"DQB1*02:02, DQB1*03:02, DQB1*06:04, DRB1*15:01",Unbiased Tiling,Predicted,CD4,,,nsp12 5251-5265
+Tarke,Human,Infection,AIM,nsp12,864,878,15,2.0,14.0,0.14285714285714285,IDAYPLTKHPNQEYA,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp12 5256-5270
+Tarke,Human,Infection,AIM,M,11,25,15,2.0,15.0,0.13333333333333333,EELKKLLEQWNLVIG,"DQB1*05:01, DQB1*05:02",Unbiased Tiling,Predicted,CD4,,,M 11-25
+Tarke,Human,Infection,AIM,M,16,30,15,2.0,15.0,0.13333333333333333,LLEQWNLVIGFLFLT,"DQB1*02:01, DQB1*05:03",Unbiased Tiling,Predicted,CD4,,,M 16-30
+Tarke,Human,Infection,AIM,M,41,55,15,2.0,15.0,0.13333333333333333,NRNRFLYIIKLIFLW,"DQB1*02:01, DQB1*05:03, DRB1*03:01, DRB1*12:01",Unbiased Tiling,Predicted,CD4,,,M 41-55
+Tarke,Human,Infection,AIM,M,46,60,15,2.0,15.0,0.13333333333333333,LYIIKLIFLWLLWPV,"DQB1*02:01, DRB1*12:01",Unbiased Tiling,Predicted,CD4,,,M 46-60
+Tarke,Human,Infection,AIM,S,656,670,15,1.0,9.0,0.1111111111111111,VNNSYECDIPIGAGI,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 656-670
+Tarke,Human,Infection,AIM,ORF8,6,20,15,1.0,11.0,0.09090909090909091,FLGIITTVAAFHQEC,"DQB1*03:02, DQB1*06:03, DRB1*04:02",Unbiased Tiling,Predicted,CD4,,,ORF8 6-20
+Tarke,Human,Infection,AIM,ORF8,21,35,15,1.0,11.0,0.09090909090909091,SLQSCTQHQPYVVDD,HLA class II,Unbiased Tiling,Predicted,CD4,,,ORF8 21-35
+Tarke,Human,Infection,AIM,ORF3a,51,65,15,1.0,11.0,0.09090909090909091,ALLAVFQSASKIITL,"DQB1*03:01, DRB1*11:01",Unbiased Tiling,Predicted,CD4,,,ORF3a 51-65
+Tarke,Human,Infection,AIM,S,56,70,15,1.0,11.0,0.09090909090909091,LPFFSNVTWFHAIHV,"DQB1*05:02, DRB1*15:01, DRB1*16:01",Unbiased Tiling,Predicted,CD4,,,S 56-70
+Tarke,Human,Infection,AIM,ORF8,61,75,15,1.0,11.0,0.09090909090909091,CVDEAGSKSPIQYID,HLA class II,Unbiased Tiling,Predicted,CD4,,,ORF8 61-75
+Tarke,Human,Infection,AIM,ORF3a,61,75,15,1.0,11.0,0.09090909090909091,KIITLKKRWQLALSK,DRB1*11:01,Unbiased Tiling,Predicted,CD4,,,ORF3a 61-75
+Tarke,Human,Infection,AIM,ORF8,71,85,15,1.0,11.0,0.09090909090909091,IQYIDIGNYTVSCLP,"DRB1*11:04, DRB1*13:02",Unbiased Tiling,Predicted,CD4,,,ORF8 71-85
+Tarke,Human,Infection,AIM,S,81,95,15,1.0,11.0,0.09090909090909091,NPVLPFNDGVYFAST,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 81-95
+Tarke,Human,Infection,AIM,ORF8,91,105,15,1.0,11.0,0.09090909090909091,QEPKLGSLVVRCSFY,DRB1*11:04,Unbiased Tiling,Predicted,CD4,,,ORF8 91-105
+Tarke,Human,Infection,AIM,ORF3a,96,110,15,1.0,11.0,0.09090909090909091,LVAAGLEAPFLYLYA,"DQB1*02:01, DQB1*02:02",Unbiased Tiling,Predicted,CD4,,,ORF3a 96-110
+Tarke,Human,Infection,AIM,S,96,110,15,1.0,11.0,0.09090909090909091,EKSNIIRGWIFGTTL,DRB1*15:01,Unbiased Tiling,Predicted,CD4,,,S 96-110
+Tarke,Human,Infection,AIM,S,101,115,15,1.0,11.0,0.09090909090909091,IRGWIFGTTLDSKTQ,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 101-115
+Tarke,Human,Infection,AIM,S,106,120,15,1.0,11.0,0.09090909090909091,FGTTLDSKTQSLLIV,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 106-120
+Tarke,Human,Infection,AIM,S,111,125,15,1.0,11.0,0.09090909090909091,DSKTQSLLIVNNATN,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 111-125
+Tarke,Human,Infection,AIM,S,116,130,15,1.0,11.0,0.09090909090909091,SLLIVNNATNVVIKV,"DRB1*12:01, DRB1*14:01",Unbiased Tiling,Predicted,CD4,,,S 116-130
+Tarke,Human,Infection,AIM,S,126,140,15,1.0,11.0,0.09090909090909091,VVIKVCEFQFCNDPF,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 126-140
+Tarke,Human,Infection,AIM,S,141,155,15,1.0,11.0,0.09090909090909091,LGVYYHKNNKSWMES,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 141-155
+Tarke,Human,Infection,AIM,S,146,160,15,1.0,11.0,0.09090909090909091,HKNNKSWMESEFRVY,DQB1*05:03,Unbiased Tiling,Predicted,CD4,,,S 146-160
+Tarke,Human,Infection,AIM,S,181,195,15,1.0,11.0,0.09090909090909091,GKQGNFKNLREFVFK,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 181-195
+Tarke,Human,Infection,AIM,S,221,235,15,1.0,11.0,0.09090909090909091,SALEPLVDLPIGINI,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 221-235
+Tarke,Human,Infection,AIM,S,231,245,15,1.0,11.0,0.09090909090909091,IGINITRFQTLLALH,DRB1*07:01,Unbiased Tiling,Predicted,CD4,,,S 231-245
+Tarke,Human,Infection,AIM,S,306,320,15,1.0,11.0,0.09090909090909091,FTVEKGIYQTSNFRV,DRB1*07:01,Unbiased Tiling,Predicted,CD4,,,S 306-320
+Tarke,Human,Infection,AIM,S,316,330,15,1.0,11.0,0.09090909090909091,SNFRVQPTESIVRFP,DRB1*07:01,Unbiased Tiling,Predicted,CD4,,,S 316-330
+Tarke,Human,Infection,AIM,S,326,340,15,1.0,11.0,0.09090909090909091,IVRFPNITNLCPFGE,DRB1*15:01,Unbiased Tiling,Predicted,CD4,,,S 326-340
+Tarke,Human,Infection,AIM,S,336,350,15,1.0,11.0,0.09090909090909091,CPFGEVFNATRFASV,"DQB1*06:03, DRB1*07:01, DRB1*13:01",Unbiased Tiling,Predicted,CD4,,,S 336-350
+Tarke,Human,Infection,AIM,S,401,415,15,1.0,11.0,0.09090909090909091,VIRGDEVRQIAPGQT,DRB1*13:01,Unbiased Tiling,Predicted,CD4,,,S 401-415
+Tarke,Human,Infection,AIM,S,436,450,15,1.0,11.0,0.09090909090909091,WNSNNLDSKVGGNYN,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 436-450
+Tarke,Human,Infection,AIM,S,851,865,15,1.0,11.0,0.09090909090909091,CAQKFNGLTVLPPLL,"DQB1*05:02, DQB1*06:02, DRB1*16:01",Unbiased Tiling,Predicted,CD4,,,S 851-865
+Tarke,Human,Infection,AIM,S,861,875,15,1.0,11.0,0.09090909090909091,LPPLLTDEMIAQYTS,DQB1*04:02,Unbiased Tiling,Predicted,CD4,,,S 861-875
+Tarke,Human,Infection,AIM,S,866,880,15,1.0,11.0,0.09090909090909091,TDEMIAQYTSALLAG,"DQB1*06:02, DRB1*04:04, DRB1*15:01",Unbiased Tiling,Predicted,CD4,,,S 866-880
+Tarke,Human,Infection,AIM,S,871,885,15,1.0,11.0,0.09090909090909091,AQYTSALLAGTITSG,DQB1*06:02,Unbiased Tiling,Predicted,CD4,,,S 871-885
+Tarke,Human,Infection,AIM,S,876,890,15,1.0,11.0,0.09090909090909091,ALLAGTITSGWTFGA,DQB1*06:02,Unbiased Tiling,Predicted,CD4,,,S 876-890
+Tarke,Human,Infection,AIM,S,881,895,15,1.0,11.0,0.09090909090909091,TITSGWTFGAGAALQ,"DQB1*04:02, DQB1*06:02",Unbiased Tiling,Predicted,CD4,,,S 881-895
+Tarke,Human,Infection,AIM,nsp3,803,817,15,1.0,11.0,0.09090909090909091,LPNDDTLRVEAFEYY,DQB1*03:02,Unbiased Tiling,Predicted,CD4,,,nsp3 1621-1635
+Tarke,Human,Infection,AIM,nsp3,823,837,15,1.0,11.0,0.09090909090909091,SFLGRYMSALNHTKK,DRB1*04:04,Unbiased Tiling,Predicted,CD4,,,nsp3 1641-1655
+Tarke,Human,Infection,AIM,nsp3,828,842,15,1.0,11.0,0.09090909090909091,YMSALNHTKKWKYPQ,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp3 1646-1660
+Tarke,Human,Infection,AIM,nsp3,833,847,15,1.0,11.0,0.09090909090909091,NHTKKWKYPQVNGLT,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp3 1651-1665
+Tarke,Human,Infection,AIM,nsp4,93,107,15,1.0,11.0,0.09090909090909091,AVITREVGFVVPGLP,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp4 2856-2870
+Tarke,Human,Infection,AIM,nsp4,103,117,15,1.0,11.0,0.09090909090909091,VPGLPGTILRTTNGD,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp4 2866-2880
+Tarke,Human,Infection,AIM,nsp4,118,132,15,1.0,11.0,0.09090909090909091,FLHFLPRVFSAVGNI,DRB1*15:01,Unbiased Tiling,Predicted,CD4,,,nsp4 2881-2895
+Tarke,Human,Infection,AIM,nsp4,283,297,15,1.0,11.0,0.09090909090909091,SIVAGGIVAIVVTCL,"DQB1*03:02, DQB1*04:02",Unbiased Tiling,Predicted,CD4,,,nsp4 3046-3060
+Tarke,Human,Infection,AIM,S,11,25,15,1.0,13.0,0.07692307692307693,VSSQCVNLTTRTQLP,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 11-25
+Tarke,Human,Infection,AIM,S,16,30,15,1.0,13.0,0.07692307692307693,VNLTTRTQLPPAYTN,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 16-30
+Tarke,Human,Infection,AIM,M,51,65,15,1.0,12.0,0.08333333333333333,LIFLWLLWPVTLACF,"DQB1*05:01, DQB1*05:03, DRB1*01:02",Unbiased Tiling,Predicted,CD4,,,M 51-65
+Tarke,Human,Infection,AIM,N,56,70,15,1.0,13.0,0.07692307692307693,LTQHGKEDLKFPRGQ,HLA class II,Unbiased Tiling,Predicted,CD4,,,N 56-70
+Tarke,Human,Infection,AIM,N,66,80,15,1.0,13.0,0.07692307692307693,FPRGQGVPINTNSSP,HLA class II,Unbiased Tiling,Predicted,CD4,,,N 66-80
+Tarke,Human,Infection,AIM,N,71,85,15,1.0,13.0,0.07692307692307693,GVPINTNSSPDDQIG,HLA class II,Unbiased Tiling,Predicted,CD4,,,N 71-85
+Tarke,Human,Infection,AIM,M,81,95,15,1.0,12.0,0.08333333333333333,AIAMACLVGLMWLSY,HLA class II,Unbiased Tiling,Predicted,CD4,,,M 81-95
+Tarke,Human,Infection,AIM,N,91,105,15,1.0,13.0,0.07692307692307693,TRRIRGGDGKMKDLS,HLA class II,Unbiased Tiling,Predicted,CD4,,,N 91-105
+Tarke,Human,Infection,AIM,M,96,110,15,1.0,12.0,0.08333333333333333,FIASFRLFARTRSMW,"DQB1*05:03, DRB1*03:01, DRB1*14:01",Unbiased Tiling,Predicted,CD4,,,M 96-110
+Tarke,Human,Infection,AIM,M,101,115,15,1.0,12.0,0.08333333333333333,RLFARTRSMWSFNPE,"DQB1*05:03, DRB1*14:01",Unbiased Tiling,Predicted,CD4,,,M 101-115
+Tarke,Human,Infection,AIM,M,111,125,15,1.0,12.0,0.08333333333333333,SFNPETNILLNVPLH,DRB1*01:02,Unbiased Tiling,Predicted,CD4,,,M 111-125
+Tarke,Human,Infection,AIM,M,121,135,15,1.0,12.0,0.08333333333333333,NVPLHGTILTRPLLE,HLA class II,Unbiased Tiling,Predicted,CD4,,,M 121-135
+Tarke,Human,Infection,AIM,M,131,145,15,1.0,12.0,0.08333333333333333,RPLLESELVIGAVIL,DQB1*02:02,Unbiased Tiling,Predicted,CD4,,,M 131-145
+Tarke,Human,Infection,AIM,M,141,155,15,1.0,12.0,0.08333333333333333,GAVILRGHLRIAGHH,"DRB1*13:01, DRB1*15:01",Unbiased Tiling,Predicted,CD4,,,M 141-155
+Tarke,Human,Infection,AIM,M,206,220,15,1.0,13.0,0.07692307692307693,LNTDHSSSSDNIALL,HLA class II,Unbiased Tiling,Predicted,CD4,,,M 206-220
+Tarke,Human,Infection,AIM,ORF3a,206,220,15,1.0,12.0,0.08333333333333333,YFTSDYYQLYSTQLS,DRB1*16:02,Unbiased Tiling,Predicted,CD4,,,ORF3a 206-220
+Tarke,Human,Infection,AIM,N,271,285,15,1.0,13.0,0.07692307692307693,TQAFGRRGPEQTQGN,HLA class II,Unbiased Tiling,Predicted,CD4,,,N 271-285
+Tarke,Human,Infection,AIM,N,276,290,15,1.0,13.0,0.07692307692307693,RRGPEQTQGNFGDQE,HLA class II,Unbiased Tiling,Predicted,CD4,,,N 276-290
+Tarke,Human,Infection,AIM,N,286,300,15,1.0,13.0,0.07692307692307693,FGDQELIRQGTDYKH,HLA class II,Unbiased Tiling,Predicted,CD4,,,N 286-300
+Tarke,Human,Infection,AIM,N,296,310,15,1.0,13.0,0.07692307692307693,TDYKHWPQIAQFAPS,HLA class II,Unbiased Tiling,Predicted,CD4,,,N 296-310
+Tarke,Human,Infection,AIM,N,311,325,15,1.0,12.0,0.08333333333333333,ASAFFGMSRIGMEVT,"DQB1*05:03, DRB1*01:02, DRB1*14:01",Unbiased Tiling,Predicted,CD4,,,N 311-325
+Tarke,Human,Infection,AIM,N,321,335,15,1.0,12.0,0.08333333333333333,GMEVTPSGTWLTYTG,HLA class II,Unbiased Tiling,Predicted,CD4,,,N 321-335
+Tarke,Human,Infection,AIM,N,336,350,15,1.0,12.0,0.08333333333333333,AIKLDDKDPNFKDQV,DRB1*03:01,Unbiased Tiling,Predicted,CD4,,,N 336-350
+Tarke,Human,Infection,AIM,S,351,365,15,1.0,12.0,0.08333333333333333,YAWNRKRISNCVADY,DRB1*13:01,Unbiased Tiling,Predicted,CD4,,,S 351-365
+Tarke,Human,Infection,AIM,S,361,375,15,1.0,12.0,0.08333333333333333,CVADYSVLYNSASFS,"DQB1*05:03, DQB1*06:02",Unbiased Tiling,Predicted,CD4,,,S 361-375
+Tarke,Human,Infection,AIM,S,366,380,15,1.0,12.0,0.08333333333333333,SVLYNSASFSTFKCY,DRB1*15:01,Unbiased Tiling,Predicted,CD4,,,S 366-380
+Tarke,Human,Infection,AIM,S,371,385,15,1.0,12.0,0.08333333333333333,SASFSTFKCYGVSPT,DRB1*15:01,Unbiased Tiling,Predicted,CD4,,,S 371-385
+Tarke,Human,Infection,AIM,S,376,390,15,1.0,12.0,0.08333333333333333,TFKCYGVSPTKLNDL,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 376-390
+Tarke,Human,Infection,AIM,S,386,400,15,1.0,12.0,0.08333333333333333,KLNDLCFTNVYADSF,"DQB1*02:01, DQB1*02:02, DRB1*07:01",Unbiased Tiling,Predicted,CD4,,,S 386-400
+Tarke,Human,Infection,AIM,S,396,410,15,1.0,12.0,0.08333333333333333,YADSFVIRGDEVRQI,"DQB1*02:02, DRB1*13:01",Unbiased Tiling,Predicted,CD4,,,S 396-410
+Tarke,Human,Infection,AIM,S,471,485,15,1.0,12.0,0.08333333333333333,EIYQAGSTPCNGVEG,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 471-485
+Tarke,Human,Infection,AIM,S,486,500,15,1.0,12.0,0.08333333333333333,FNCYFPLQSYGFQPT,"DQB1*05:03, DRB1*12:01",Unbiased Tiling,Predicted,CD4,,,S 486-500
+Tarke,Human,Infection,AIM,S,581,595,15,1.0,12.0,0.08333333333333333,TLEILDITPCSFGGV,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 581-595
+Tarke,Human,Infection,AIM,S,706,720,15,1.0,12.0,0.08333333333333333,AYSNNSIAIPTNFTI,DQB1*03:01,Unbiased Tiling,Predicted,CD4,,,S 706-720
+Tarke,Human,Infection,AIM,S,711,725,15,1.0,12.0,0.08333333333333333,SIAIPTNFTISVTTE,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 711-725
+Tarke,Human,Infection,AIM,S,721,735,15,1.0,12.0,0.08333333333333333,SVTTEILPVSMTKTS,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 721-735
+Tarke,Human,Infection,AIM,S,746,760,15,1.0,12.0,0.08333333333333333,STECSNLLLQYGSFC,DQB1*06:02,Unbiased Tiling,Predicted,CD4,,,S 746-760
+Tarke,Human,Infection,AIM,S,761,775,15,1.0,13.0,0.07692307692307693,TQLNRALTGIAVEQD,"DQB1*04:02, DQB1*06:02",Unbiased Tiling,Predicted,CD4,,,S 761-775
+Tarke,Human,Infection,AIM,S,776,790,15,1.0,13.0,0.07692307692307693,KNTQEVFAQVKQIYK,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 776-790
+Tarke,Human,Infection,AIM,S,781,795,15,1.0,13.0,0.07692307692307693,VFAQVKQIYKTPPIK,DRB1*15:01,Unbiased Tiling,Predicted,CD4,,,S 781-795
+Tarke,Human,Infection,AIM,S,791,805,15,1.0,13.0,0.07692307692307693,TPPIKDFGGFNFSQI,DRB1*15:01,Unbiased Tiling,Predicted,CD4,,,S 791-805
+Tarke,Human,Infection,AIM,S,806,820,15,1.0,12.0,0.08333333333333333,LPDPSKPSKRSFIED,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 806-820
+Tarke,Human,Infection,AIM,S,821,835,15,1.0,12.0,0.08333333333333333,LLFNKVTLADAGFIK,DQB1*06:02,Unbiased Tiling,Predicted,CD4,,,S 821-835
+Tarke,Human,Infection,AIM,S,836,850,15,1.0,12.0,0.08333333333333333,QYGDCLGDIAARDLI,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 836-850
+Tarke,Human,Infection,AIM,S,841,855,15,1.0,12.0,0.08333333333333333,LGDIAARDLICAQKF,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 841-855
+Tarke,Human,Infection,AIM,S,846,860,15,1.0,12.0,0.08333333333333333,ARDLICAQKFNGLTV,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 846-860
+Tarke,Human,Infection,AIM,nsp3,58,72,15,1.0,13.0,0.07692307692307693,ADAVIKTLQPVSELL,DRB1*14:01,Unbiased Tiling,Predicted,CD4,,,nsp3 876-890
+Tarke,Human,Infection,AIM,nsp3,268,282,15,1.0,13.0,0.07692307692307693,ESDDYIATNGPLKVG,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp3 1086-1100
+Tarke,Human,Infection,AIM,nsp3,273,287,15,1.0,13.0,0.07692307692307693,IATNGPLKVGGSCVL,DRB1*13:02,Unbiased Tiling,Predicted,CD4,,,nsp3 1091-1105
+Tarke,Human,Infection,AIM,nsp3,288,302,15,1.0,13.0,0.07692307692307693,SGHNLAKHCLHVVGP,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp3 1106-1120
+Tarke,Human,Infection,AIM,S,1171,1185,15,1.0,12.0,0.08333333333333333,GINASVVNIQKEIDR,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 1171-1185
+Tarke,Human,Infection,AIM,nsp3,363,377,15,1.0,13.0,0.07692307692307693,NLYDKLVSSFLEMKS,"DQB1*05:02, DRB1*14:01",Unbiased Tiling,Predicted,CD4,,,nsp3 1181-1195
+Tarke,Human,Infection,AIM,S,1201,1215,15,1.0,12.0,0.08333333333333333,QELGKYEQYIKWPWY,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 1201-1215
+Tarke,Human,Infection,AIM,nsp3,603,617,15,1.0,13.0,0.07692307692307693,RFYFYTSKTTVASLI,"DQB1*06:01, DRB1*14:01, DRB1*15:02",Unbiased Tiling,Predicted,CD4,,,nsp3 1421-1435
+Tarke,Human,Infection,AIM,nsp3,1123,1137,15,1.0,13.0,0.07692307692307693,LNQLTGYKKPASREL,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp3 1941-1955
+Tarke,Human,Infection,AIM,nsp3,1158,1172,15,1.0,13.0,0.07692307692307693,TPSFKKGAKLLHKPI,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp3 1976-1990
+Tarke,Human,Infection,AIM,nsp3,1173,1187,15,1.0,13.0,0.07692307692307693,VWHVNNATNKATYKP,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp3 1991-2005
+Tarke,Human,Infection,AIM,nsp3,1363,1377,15,1.0,13.0,0.07692307692307693,TFTRSTNSRIKASMP,DRB1*14:01,Unbiased Tiling,Predicted,CD4,,,nsp3 2181-2195
+Tarke,Human,Infection,AIM,nsp3,1368,1382,15,1.0,13.0,0.07692307692307693,TNSRIKASMPTTIAK,"DRB1*04:04, DRB1*07:01",Unbiased Tiling,Predicted,CD4,,,nsp3 2186-2200
+Tarke,Human,Infection,AIM,nsp3,1383,1397,15,1.0,13.0,0.07692307692307693,NTVKSVGKFCLEASF,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp3 2201-2215
+Tarke,Human,Infection,AIM,nsp3,1403,1417,15,1.0,13.0,0.07692307692307693,PNFSKLINIIIWFLL,"DRB1*07:01, DRB1*15:01",Unbiased Tiling,Predicted,CD4,,,nsp3 2221-2235
+Tarke,Human,Infection,AIM,nsp3,1498,1512,15,1.0,12.0,0.08333333333333333,WDLTAFGLVAEWFLA,DQB1*05:03,Unbiased Tiling,Predicted,CD4,,,nsp3 2316-2330
+Tarke,Human,Infection,AIM,nsp3,1503,1517,15,1.0,12.0,0.08333333333333333,FGLVAEWFLAYILFT,"DQB1*05:03, DRB1*12:01",Unbiased Tiling,Predicted,CD4,,,nsp3 2321-2335
+Tarke,Human,Infection,AIM,nsp4,333,347,15,1.0,13.0,0.07692307692307693,PVYSFLPGVYSVIYL,DRB1*15:01,Unbiased Tiling,Predicted,CD4,,,nsp4 3096-3110
+Tarke,Human,Infection,AIM,nsp4,358,372,15,1.0,12.0,0.08333333333333333,SFLAHIQWMVMFTPL,"DQB1*06:02, DRB1*15:01",Unbiased Tiling,Predicted,CD4,,,nsp4 3121-3135
+Tarke,Human,Infection,AIM,nsp4,363,377,15,1.0,12.0,0.08333333333333333,IQWMVMFTPLVPFWI,"DQB1*02:02, DRB1*04:04, DRB1*07:01",Unbiased Tiling,Predicted,CD4,,,nsp4 3126-3140
+Tarke,Human,Infection,AIM,nsp4,368,382,15,1.0,12.0,0.08333333333333333,MFTPLVPFWITIAYI,DRB1*15:01,Unbiased Tiling,Predicted,CD4,,,nsp4 3131-3145
+Tarke,Human,Infection,AIM,nsp4,388,402,15,1.0,12.0,0.08333333333333333,KHFYWFFSNYLKRRV,DRB1*15:01,Unbiased Tiling,Predicted,CD4,,,nsp4 3151-3165
+Tarke,Human,Infection,AIM,nsp4,438,452,15,1.0,12.0,0.08333333333333333,LTQYNRYLALYNKYK,DRB1*15:01,Unbiased Tiling,Predicted,CD4,,,nsp4 3201-3215
+Tarke,Human,Infection,AIM,nsp4,463,477,15,1.0,13.0,0.07692307692307693,YREAACCHLAKALND,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp4 3226-3240
+Tarke,Human,Infection,AIM,nsp4,468,482,15,1.0,13.0,0.07692307692307693,CCHLAKALNDFSNSG,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp4 3231-3245
+Tarke,Human,Infection,AIM,nsp4,478,492,15,1.0,13.0,0.07692307692307693,FSNSGSDVLYQPPQT,DQB1*06:02,Unbiased Tiling,Predicted,CD4,,,nsp4 3241-3255
+Tarke,Human,Infection,AIM,nsp4,483,497,15,1.0,13.0,0.07692307692307693,SDVLYQPPQTSITSA,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp4 3246-3260
+Tarke,Human,Infection,AIM,nsp13,162,176,15,1.0,13.0,0.07692307692307693,ELHLSWEVGKPRPPL,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp13 5486-5500
+Tarke,Human,Infection,AIM,nsp13,172,186,15,1.0,13.0,0.07692307692307693,PRPPLNRNYVFTGYR,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp13 5496-5510
+Tarke,Human,Infection,AIM,nsp13,182,196,15,1.0,13.0,0.07692307692307693,FTGYRVTKNSKVQIG,DRB1*07:01,Unbiased Tiling,Predicted,CD4,,,nsp13 5506-5520
+Tarke,Human,Infection,AIM,nsp13,187,201,15,1.0,13.0,0.07692307692307693,VTKNSKVQIGEYTFE,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp13 5511-5525
+Tarke,Human,Infection,AIM,nsp13,387,401,15,1.0,13.0,0.07692307692307693,VNARLRAKHYVYIGD,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp13 5711-5725
+Tarke,Human,Infection,AIM,M,21,35,15,1.0,15.0,0.06666666666666667,NLVIGFLFLTWICLL,"DQB1*05:01, DRB1*01:02",Unbiased Tiling,Predicted,CD4,,,M 21-35
+Tarke,Human,Infection,AIM,M,26,40,15,1.0,15.0,0.06666666666666667,FLFLTWICLLQFAYA,"DQB1*05:01, DQB1*05:03, DRB1*01:02",Unbiased Tiling,Predicted,CD4,,,M 26-40
+Tarke,Human,Infection,AIM,M,31,45,15,1.0,15.0,0.06666666666666667,WICLLQFAYANRNRF,"DQB1*05:03, DRB1*03:01, DRB1*14:01",Unbiased Tiling,Predicted,CD4,,,M 31-45
+Tarke,Human,Infection,AIM,ORF3a,101,115,15,1.0,14.0,0.07142857142857142,LEAPFLYLYALVYFL,"DQB1*02:01, DRB1*11:01",Unbiased Tiling,Predicted,CD4,,,ORF3a 101-115
+Tarke,Human,Infection,AIM,N,106,120,15,1.0,14.0,0.07142857142857142,PRWYFYYLGTGPEAG,"DQB1*02:01, DQB1*05:03",Unbiased Tiling,Predicted,CD4,,,N 106-120
+Tarke,Human,Infection,AIM,ORF3a,111,125,15,1.0,14.0,0.07142857142857142,LVYFLQSINFVRIIM,"DQB1*05:03, DRB1*12:01, DRB1*14:01",Unbiased Tiling,Predicted,CD4,,,ORF3a 111-125
+Tarke,Human,Infection,AIM,ORF3a,126,140,15,1.0,14.0,0.07142857142857142,RLWLCWKCRSKNPLL,HLA class II,Unbiased Tiling,Predicted,CD4,,,ORF3a 126-140
+Tarke,Human,Infection,AIM,N,131,145,15,1.0,14.0,0.07142857142857142,IWVATEGALNTPKDH,HLA class II,Unbiased Tiling,Predicted,CD4,,,N 131-145
+Tarke,Human,Infection,AIM,ORF3a,136,150,15,1.0,14.0,0.07142857142857142,KNPLLYDANYFLCWH,"DQB1*05:03, DRB1*15:01",Unbiased Tiling,Predicted,CD4,,,ORF3a 136-150
+Tarke,Human,Infection,AIM,ORF3a,141,155,15,1.0,14.0,0.07142857142857142,YDANYFLCWHTNCYD,HLA class II,Unbiased Tiling,Predicted,CD4,,,ORF3a 141-155
+Tarke,Human,Infection,AIM,ORF3a,146,160,15,1.0,14.0,0.07142857142857142,FLCWHTNCYDYCIPY,DQB1*05:03,Unbiased Tiling,Predicted,CD4,,,ORF3a 146-160
+Tarke,Human,Infection,AIM,ORF3a,151,165,15,1.0,14.0,0.07142857142857142,TNCYDYCIPYNSVTS,DQB1*05:01,Unbiased Tiling,Predicted,CD4,,,ORF3a 151-165
+Tarke,Human,Infection,AIM,ORF3a,221,235,15,1.0,14.0,0.07142857142857142,TDTGVEHVTFFIYNK,HLA class II,Unbiased Tiling,Predicted,CD4,,,ORF3a 221-235
+Tarke,Human,Infection,AIM,N,236,250,15,1.0,14.0,0.07142857142857142,GKGQQQQGQTVTKKS,HLA class II,Unbiased Tiling,Predicted,CD4,,,N 236-250
+Tarke,Human,Infection,AIM,ORF3a,251,265,15,1.0,14.0,0.07142857142857142,GSSGVVNPVMEPIYD,DQB1*04:02,Unbiased Tiling,Predicted,CD4,,,ORF3a 251-265
+Tarke,Human,Infection,AIM,N,356,370,15,1.0,15.0,0.06666666666666667,HIDAYKTFPPTEPKK,HLA class II,Unbiased Tiling,Predicted,CD4,,,N 356-370
+Tarke,Human,Infection,AIM,N,386,400,15,1.0,15.0,0.06666666666666667,QKKQQTVTLLPAADL,DRB1*01:02,Unbiased Tiling,Predicted,CD4,,,N 386-400
+Tarke,Human,Infection,AIM,N,391,405,15,1.0,15.0,0.06666666666666667,TVTLLPAADLDDFSK,"DQB1*05:03, DRB1*01:02",Unbiased Tiling,Predicted,CD4,,,N 391-405
+Tarke,Human,Infection,AIM,S,506,520,15,1.0,15.0,0.06666666666666667,QPYRVVVLSFELLHA,"DQB1*05:03, DRB1*14:01",Unbiased Tiling,Predicted,CD4,,,S 506-520
+Tarke,Human,Infection,AIM,S,511,525,15,1.0,15.0,0.06666666666666667,VVLSFELLHAPATVC,"DQB1*05:03, DRB1*12:01, DRB1*14:01",Unbiased Tiling,Predicted,CD4,,,S 511-525
+Tarke,Human,Infection,AIM,S,546,560,15,1.0,15.0,0.06666666666666667,LTGTGVLTESNKKFL,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 546-560
+Tarke,Human,Infection,AIM,S,901,915,15,1.0,14.0,0.07142857142857142,QMAYRFNGIGVTQNV,DQB1*03:01,Unbiased Tiling,Predicted,CD4,,,S 901-915
+Tarke,Human,Infection,AIM,S,916,930,15,1.0,14.0,0.07142857142857142,LYENQKLIANQFNSA,DRB1*12:01,Unbiased Tiling,Predicted,CD4,,,S 916-930
+Tarke,Human,Infection,AIM,S,1056,1070,15,1.0,14.0,0.07142857142857142,APHGVVFLHVTYVPA,DRB1*12:01,Unbiased Tiling,Predicted,CD4,,,S 1056-1070
+Tarke,Human,Infection,AIM,S,1101,1115,15,1.0,14.0,0.07142857142857142,HWFVTQRNFYEPQII,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 1101-1115
+Tarke,Human,Infection,AIM,S,1106,1120,15,1.0,14.0,0.07142857142857142,QRNFYEPQIITTDNT,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 1106-1120
+Tarke,Human,Infection,AIM,S,1121,1135,15,1.0,14.0,0.07142857142857142,FVSGNCDVVIGIVNN,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 1121-1135
+Tarke,Human,Infection,AIM,S,1131,1145,15,1.0,14.0,0.07142857142857142,GIVNNTVYDPLQPEL,"DQB1*02:02, DQB1*03:02",Unbiased Tiling,Predicted,CD4,,,S 1131-1145
+Tarke,Human,Infection,AIM,S,1141,1155,15,1.0,14.0,0.07142857142857142,LQPELDSFKEELDKY,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 1141-1155
+Tarke,Human,Infection,AIM,S,1151,1165,15,1.0,14.0,0.07142857142857142,ELDKYFKNHTSPDVD,HLA class II,Unbiased Tiling,Predicted,CD4,,,S 1151-1165
+Tarke,Human,Infection,AIM,nsp3,1028,1042,15,1.0,14.0,0.07142857142857142,YCIDGALLTKSSEYK,DRB1*15:02,Unbiased Tiling,Predicted,CD4,,,nsp3 1846-1860
+Tarke,Human,Infection,AIM,nsp3,1278,1292,15,1.0,14.0,0.07142857142857142,MAAYVDNSSLTIKKP,DQB1*05:03,Unbiased Tiling,Predicted,CD4,,,nsp3 2096-2110
+Tarke,Human,Infection,AIM,nsp12,309,323,15,1.0,14.0,0.07142857142857142,HCANFNVLFSTVFPP,"DQB1*02:02, DQB1*06:02, DRB1*07:01",Unbiased Tiling,Predicted,CD4,,,nsp12 4701-4715
+Tarke,Human,Infection,AIM,nsp12,314,328,15,1.0,14.0,0.07142857142857142,NVLFSTVFPPTSFGP,DQB1*02:02,Unbiased Tiling,Predicted,CD4,,,nsp12 4706-4720
+Tarke,Human,Infection,AIM,nsp12,619,633,15,1.0,14.0,0.07142857142857142,YPKCDRAMPNMLRIM,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp12 5011-5025
+Tarke,Human,Infection,AIM,nsp12,624,638,15,1.0,14.0,0.07142857142857142,RAMPNMLRIMASLVL,"DQB1*06:02, DRB1*15:01",Unbiased Tiling,Predicted,CD4,,,nsp12 5016-5030
+Tarke,Human,Infection,AIM,nsp12,699,713,15,1.0,15.0,0.06666666666666667,AVTANVNALLSTDGN,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp12 5091-5105
+Tarke,Human,Infection,AIM,nsp12,849,863,15,1.0,14.0,0.07142857142857142,KTDGTLMIERFVSLA,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp12 5241-5255
+Tarke,Human,Infection,AIM,nsp12,879,893,15,1.0,14.0,0.07142857142857142,DVFHLYLQYIRKLHD,"DRB1*04:04, DRB1*13:02",Unbiased Tiling,Predicted,CD4,,,nsp12 5271-5285
+Tarke,Human,Infection,AIM,N,6,20,15,1.0,16.0,0.0625,PQNQRNAPRITFGGP,HLA class II,Unbiased Tiling,Predicted,CD4,,,N 6-20
+Tarke,Human,Infection,AIM,N,11,25,15,1.0,16.0,0.0625,NAPRITFGGPSDSTG,DQB1*03:01,Unbiased Tiling,Predicted,CD4,,,N 11-25
+Tarke,Human,Infection,AIM,N,16,30,15,1.0,16.0,0.0625,TFGGPSDSTGSNQNG,DQB1*03:01,Unbiased Tiling,Predicted,CD4,,,N 16-30
+Tarke,Human,Infection,AIM,nsp12,524,538,15,1.0,17.0,0.058823529411764705,QDALFAYTKRNVIPT,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp12 4916-4930
+Tarke,Human,Infection,AIM,nsp12,574,588,15,1.0,17.0,0.058823529411764705,KLLKSIAATRGATVV,"DQB1*03:03, DRB1*07:01",Unbiased Tiling,Predicted,CD4,,,nsp12 4966-4980
+Tarke,Human,Infection,AIM,nsp12,579,593,15,1.0,17.0,0.058823529411764705,IAATRGATVVIGTSK,"DQB1*03:03, DRB1*07:01",Unbiased Tiling,Predicted,CD4,,,nsp12 4971-4985
+Tarke,Human,Infection,AIM,nsp12,649,663,15,1.0,17.0,0.058823529411764705,SHRFYRLANECAQVL,"DRB1*01:01, DRB1*08:01",Unbiased Tiling,Predicted,CD4,,,nsp12 5041-5055
+Tarke,Human,Infection,AIM,nsp12,664,678,15,1.0,17.0,0.058823529411764705,SEMVMCGGSLYVKPG,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp12 5056-5070
+Tarke,Human,Infection,AIM,nsp12,694,708,15,1.0,17.0,0.058823529411764705,FNICQAVTANVNALL,"DQB1*03:01, DRB1*14:01",Unbiased Tiling,Predicted,CD4,,,nsp12 5086-5100
+Zhang,Mouse,rRBD vaccine,IFN-γ ELISpot,S,375,394,20,,,,,BALB/c mice Class I (H2-K*d or H2-D*d),Unbiased Tiling,Biological,,,,S 375-394
+Zhang,Mouse,rRBD vaccine,IFN-γ ELISpot,S,405,424,20,,,,,BALB/c mice Class I (H2-K*d or H2-D*d),Unbiased Tiling,Biological,,,,S 405-424
+Zhang,Mouse,rRBD vaccine,IFN-γ ELISpot,S,420,439,20,,,,,BALB/c mice Class I (H2-K*d or H2-D*d),Unbiased Tiling,Biological,,,,S 420-439
+Zhang,Mouse,rRBD vaccine,IFN-γ ELISpot,S,435,454,20,,,,,BALB/c mice Class I (H2-K*d or H2-D*d),Unbiased Tiling,Biological,,,,S 435-454
+Zhang,Mouse,rRBD vaccine,IFN-γ ELISpot,S,450,469,20,,,,,BALB/c mice Class I (H2-K*d or H2-D*d),Unbiased Tiling,Biological,,,,S 450-469
+Zhang,Mouse,rRBD vaccine,IFN-γ ELISpot,S,495,514,20,,,,,BALB/c mice Class I (H2-K*d or H2-D*d),Unbiased Tiling,Biological,,,,S 495-514
+Zhang,Mouse,rRBD vaccine,IFN-γ ELISpot,S,510,521,12,,,,,BALB/c mice Class I (H2-K*d or H2-D*d),Unbiased Tiling,Biological,,,,S 510-521
