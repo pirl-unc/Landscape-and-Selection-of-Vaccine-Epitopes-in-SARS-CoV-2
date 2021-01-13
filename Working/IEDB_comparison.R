@@ -3714,4 +3714,74 @@ grid.arrange(el_count, el_int, nrow = 2, ncol = 1)
 
 
 
+####082420 ELISpot
 
+tab = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/ELISpot/082420_COVID_ELISpot_melted.txt")
+tab = tab[complete.cases(tab$Sample_Pep),]
+
+tab$Sample = sapply(strsplit(tab$Sample_Pep, "-"), "[", 1)
+tab$Peptide = sapply(strsplit(tab$Sample_Pep, "-"), "[", 2)
+tab = tab[-which(tab$Group == "BD*"),]
+
+tab$Count_1 = as.numeric(tab$Count_1)
+tab$Count_2 = as.numeric(tab$Count_2)
+tab$Intensity_1 = as.numeric(tab$Intensity_1)
+tab$Intensity_2 = as.numeric(tab$Intensity_2)
+
+PHA_tab = tab[which(tab$Group == "PHA"),]
+Neg_tab = tab[which(tab$Group == "NEG"),]
+
+Sample_tab = tab[-which((tab$Group == "PHA") | (tab$Group == "NEG")),]
+
+Sample_tab$Good_PHA = NA
+for(n in 1:nrow(Sample_tab)){
+  print(n)
+
+  Sample_tab$Count_1[n] = Sample_tab$Count_1[n] - Neg_tab$Count_1[which(Neg_tab$Sample == Sample_tab$Sample[n])][1]
+  Sample_tab$Count_2[n] = Sample_tab$Count_2[n] - Neg_tab$Count_2[which(Neg_tab$Sample == Sample_tab$Sample[n])][1]
+  Sample_tab$Intensity_1[n] = Sample_tab$Intensity_1[n] - Neg_tab$Intensity_1[which(Neg_tab$Sample == Sample_tab$Sample[n])][1]
+  Sample_tab$Intensity_2[n] = Sample_tab$Intensity_2[n] - Neg_tab$Intensity_2[which(Neg_tab$Sample == Sample_tab$Sample[n])][1]
+  
+  Sample_tab$Good_PHA[n] = ifelse(mean(PHA_tab$Intensity_1[which(PHA_tab$Sample == Sample_tab$Sample[n])], PHA_tab$Intensity_2[which(PHA_tab$Sample == Sample_tab$Sample[n])]) > 1000,
+         T, F)
+}
+
+Sample_tab$Mean_Count = rowMeans(Sample_tab[,c(3,4)])
+Sample_tab$Mean_Intensity = rowMeans(Sample_tab[,c(5,6)])
+
+Sample_tab_filt = Sample_tab[which(Sample_tab$Good_PHA == T),]
+
+groups = c("A", "B", "AB", "AD", "BD", "ABD")
+
+for(g in groups){
+  temp_filt = Sample_tab_filt[which((Sample_tab_filt$Group == g) | (Sample_tab_filt$Group == "ADJ")), ]# | (Sample_tab_filt$Group == "PBS")),]
+  temp_filt = temp_filt[which(temp_filt$Peptide %in% unique(temp_filt$Peptide[which(temp_filt$Group == g)]))]
+  
+  temp_filt$Group = factor(temp_filt$Group, levels = c(g, "ADJ"))
+  
+  wilcox_g_ADJ = c()
+  #wilcox_g_PBS = c()
+  for(p in unique(temp_filt$Peptide)[order(unique(temp_filt$Peptide))]){
+    #print(p)
+    wilcox_g_ADJ = c(wilcox_g_ADJ, wilcox.test(temp_filt$Mean_Intensity[which((temp_filt$Group == g) & (temp_filt$Peptide == p))],
+                                               temp_filt$Mean_Intensity[which((temp_filt$Group == "ADJ") & (temp_filt$Peptide == p))])$p.value)
+    #wilcox_g_PBS = c(wilcox_g_PBS, wilcox.test(temp_filt$Mean_Intensity[which((temp_filt$Group == g) & (temp_filt$Peptide == p))],
+    #                                           temp_filt$Mean_Intensity[which((temp_filt$Group == "PBS") & (temp_filt$Peptide == p))])$p.value)
+  }
+  
+  assign(paste0(g, "_plot"), 
+    ggplot(data = temp_filt, aes(x= Peptide, y = Mean_Intensity, color = Group)) +
+    scale_color_discrete(guide = F) +
+    stat_boxplot(outlier.shape = NA, alpha = 0.7)+
+    geom_point(position=position_jitterdodge(), size = 4) +
+    annotate("text", x = unique(temp_filt$Peptide)[order(unique(temp_filt$Peptide))], 
+             y = rep(.75*max(temp_filt$Mean_Intensity),length(unique(temp_filt$Peptide))),
+             angle = 45,
+             label = paste0("p = ", round(wilcox_g_ADJ, 3))) +
+                           # "\nVaccine vs PBS: ", round(wilcox_g_PBS, 3))+
+    theme(text=element_text(face="bold",size=15,colour="black")) +
+    labs(x = "", y = "Mean well intensity (n = 3)", title = paste0("Group: ", g)))
+  
+}
+
+grid.arrange(A_plot, B_plot, AB_plot, AD_plot, BD_plot, ABD_plot, nrow = 3, ncol = 2)
