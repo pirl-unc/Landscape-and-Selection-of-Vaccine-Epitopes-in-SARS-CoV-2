@@ -1,0 +1,290 @@
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{threeparttable}
+\usepackage{wasysym}
+\usepackage{array}
+\usepackage{stackengine}
+\usepackage{tikz}
+
+\begin{document}
+
+
+
+
+\makeatletter
+\newcommand{\thickhline}{%
+    \noalign {\ifnum 0=`}\fi \hrule height 1pt
+    \futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\hskip\tabcolsep\vrule width 1pt\hskip\tabcolsep}}
+\makeatother
+
+% rotated text for column headers
+\newcommand*\rot[1]{\hbox to1em{\hss\rotatebox[origin=br]{-60}{#1}}}
+
+% circles 
+\newcommand*\feature[1]{\ifcase#1 -\or\LEFTcircle\or\CIRCLE\fi}
+
+% column type which is fixed width and centered
+\newcolumntype{x}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+
+
+\newcommand{\pie}[1]{%
+
+\begin{tikzpicture}
+ \draw (0,0) circle (1ex);\fill (1ex,0) arc (0:-#1:1ex) -- (0,0) -- cycle;
+\end{tikzpicture}%
+}
+
+
+\begin{table}
+\begin{tabular}
+{cc" cccccccc"x{30mm}}
+   \multicolumn{1}{c}{\textbf{Protein}} &
+   \multicolumn{1}{c}{\textbf{Region}} &
+
+         \multicolumn{1}{c}{
+             \rot{\textbf{Ferretti}}}    &
+
+         \multicolumn{1}{c}{
+             \rot{\textbf{Le Bert}}}    &
+
+         \multicolumn{1}{c}{
+             \rot{\textbf{Nelde}}}    &
+
+         \multicolumn{1}{c}{
+             \rot{\textbf{Peng}}}    &
+
+         \multicolumn{1}{c}{
+             \rot{\textbf{Schulien}}}    &
+
+         \multicolumn{1}{c}{
+             \rot{\textbf{Shomuradova}}}    &
+
+         \multicolumn{1}{c}{
+             \rot{\textbf{Snyder}}}    &
+
+         \multicolumn{1}{c}{
+             \rot{\textbf{Tarke}}}    &
+ \textbf{Vaccine Peptides} \\
+N & 80-120 & 
+	\pie{288}  &
+	\pie{102}  &
+	\pie{261}  &
+	\pie{102}  &
+	\pie{308}  &
+	 -  &
+	\pie{360}  &
+	\pie{360}  &
+	N$_{102-128}$ \\
+N & 280-320 & 
+	\pie{144}  &
+	\pie{51}  &
+	\pie{187}  &
+	\pie{8}  &
+	\pie{216}  &
+	 -  &
+	\pie{0} &
+	\pie{240}  &
+	N$_{301-327}$\newline N$_{305-331}$\newline N$_{310-336}$ \\
+S & 1200-1240 & 
+	\pie{216}  &
+	 -  &
+	\pie{216}  &
+	\pie{8}  &
+	\pie{45}  &
+	\pie{0} &
+	\pie{0} &
+	\pie{180}  &
+	 \\
+N & 120-160 & 
+	\pie{288}  &
+	\pie{102}  &
+	\pie{294}  &
+	\pie{102}  &
+	\pie{0} &
+	 -  &
+	\pie{0} &
+	\pie{180}  &
+	N$_{102-128}$ \\
+N & 320-360 & 
+	\pie{0} &
+	\pie{154}  &
+	\pie{278}  &
+	\pie{25}  &
+	\pie{300}  &
+	 -  &
+	\pie{0} &
+	\pie{360}  &
+	N$_{301-327}$\newline N$_{305-331}$\newline N$_{310-336}$\newline N$_{324-350}$ \\
+S & 240-280 & 
+	\pie{280}  &
+	 -  &
+	\pie{196}  &
+	\pie{0} &
+	 -  &
+	\pie{334}  &
+	\pie{0} &
+	\pie{270}  &
+	S$_{261-287}$ \\
+ORF3a & 120-160 & 
+	\pie{320}  &
+	 -  &
+	\pie{0} &
+	\pie{8}  &
+	\pie{360}  &
+	 -  &
+	\pie{0} &
+	\pie{360}  &
+	 \\
+ORF3a & 200-240 & 
+	\pie{360}  &
+	 -  &
+	\pie{0} &
+	\pie{34}  &
+	\pie{300}  &
+	 -  &
+	\pie{0} &
+	\pie{360}  &
+	 \\
+N & 40-80 & 
+	\pie{0} &
+	\pie{51}  &
+	\pie{212}  &
+	\pie{0} &
+	\pie{102}  &
+	 -  &
+	\pie{0} &
+	\pie{360}  &
+	 \\
+N & 200-240 & 
+	\pie{80}  &
+	\pie{0} &
+	\pie{229}  &
+	\pie{0} &
+	\pie{98}  &
+	 -  &
+	\pie{0} &
+	\pie{77}  &
+	 \\
+N & 360-400 & 
+	\pie{360}  &
+	\pie{0} &
+	\pie{229}  &
+	\pie{25}  &
+	\pie{0} &
+	 -  &
+	\pie{0} &
+	\pie{240}  &
+	N$_{383-409}$ \\
+nsp3 & 800-840 & 
+	\pie{360}  &
+	 -  &
+	\pie{300}  &
+	 -  &
+	\pie{0} &
+	 -  &
+	\pie{300}  &
+	\pie{360}  &
+	 \\
+M & 160-200 & 
+	\pie{216}  &
+	 -  &
+	\pie{343}  &
+	\pie{137}  &
+	 -  &
+	 -  &
+	\pie{0} &
+	\pie{360}  &
+	 \\
+S & 200-240 & 
+	\pie{0} &
+	 -  &
+	\pie{196}  &
+	\pie{8}  &
+	 -  &
+	\pie{0} &
+	\pie{0} &
+	\pie{180}  &
+	 \\
+S & 360-400 & 
+	\pie{360}  &
+	 -  &
+	\pie{0} &
+	\pie{8}  &
+	 -  &
+	\pie{0} &
+	\pie{0} &
+	\pie{180}  &
+	 \\
+S & 840-880 & 
+	\pie{0} &
+	 -  &
+	\pie{0} &
+	\pie{51}  &
+	\pie{240}  &
+	\pie{0} &
+	\pie{0} &
+	\pie{144}  &
+	S$_{857-883}$ \\
+ORF3a & 80-120 & 
+	\pie{288}  &
+	 -  &
+	\pie{0} &
+	\pie{0} &
+	\pie{294}  &
+	 -  &
+	\pie{0} &
+	\pie{180}  &
+	 \\
+N & 240-280 & 
+	\pie{0} &
+	\pie{51}  &
+	\pie{0} &
+	\pie{0} &
+	\pie{154}  &
+	 -  &
+	\pie{0} &
+	\pie{180}  &
+	 \\
+nsp12 & 720-760 & 
+	\pie{144}  &
+	 -  &
+	\pie{0} &
+	 -  &
+	\pie{300}  &
+	 -  &
+	\pie{0} &
+	\pie{360}  &
+	 \\
+nsp13 & 360-400 & 
+	\pie{144}  &
+	\pie{0} &
+	\pie{251}  &
+	 -  &
+	\pie{0} &
+	 -  &
+	\pie{0} &
+	\pie{27}  &
+	 \\
+nsp13 & 400-440 & 
+	\pie{144}  &
+	\pie{0} &
+	\pie{251}  &
+	 -  &
+	\pie{0} &
+	 -  &
+	\pie{0} &
+	\pie{27}  &
+	 \\
+
+        \end{tabular}
+        \end{table}
+    
+
+\end{document}

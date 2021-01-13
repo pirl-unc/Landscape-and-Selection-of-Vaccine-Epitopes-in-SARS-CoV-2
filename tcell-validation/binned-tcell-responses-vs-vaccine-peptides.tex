@@ -1,0 +1,301 @@
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{threeparttable}
+\usepackage{wasysym}
+\usepackage{array}
+\usepackage{stackengine}
+\usepackage{tikz}
+\usepackage{nicefrac}
+\usepackage{xfrac}
+\begin{document}
+
+
+
+
+\makeatletter
+\newcommand{\thickhline}{%
+    \noalign {\ifnum 0=`}\fi \hrule height 1pt
+    \futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\hskip\tabcolsep\vrule width 1pt\hskip\tabcolsep}}
+\makeatother
+
+% rotated text for column headers
+\newcommand*\rot[1]{\hbox to1em{\hss\rotatebox[origin=br]{-60}{#1}}}
+
+% circles 
+\newcommand*\feature[1]{\ifcase#1 -\or\LEFTcircle\or\CIRCLE\fi}
+
+% column type which is fixed width and centered
+\newcolumntype{x}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+
+
+\newcommand{\pie}[1]{%
+
+\begin{tikzpicture}
+ \draw (0,0) circle (1ex);\fill (1ex,0) arc (0:-#1:1ex) -- (0,0) -- cycle;
+\end{tikzpicture}%
+}
+
+
+\begin{table}
+\begin{tabular}
+{cc" cccccccc"c"x{20mm}}
+   \multicolumn{1}{r}{\textbf{Protein}} &
+   \multicolumn{1}{c}{\textbf{Region}} &
+
+         \multicolumn{1}{c}{
+             \rot{\textbf{Ferretti}}}    &
+
+         \multicolumn{1}{c}{
+             \rot{\textbf{Le Bert}}}    &
+
+         \multicolumn{1}{c}{
+             \rot{\textbf{Nelde}}}    &
+
+         \multicolumn{1}{c}{
+             \rot{\textbf{Peng}}}    &
+
+         \multicolumn{1}{c}{
+             \rot{\textbf{Schulien}}}    &
+
+         \multicolumn{1}{c}{
+             \rot{\textbf{Shomuradova}}}    &
+
+         \multicolumn{1}{c}{
+             \rot{\textbf{Snyder}}}    &
+
+         \multicolumn{1}{c}{
+             \rot{\textbf{Tarke}}}    &
+ \multicolumn{1}{c}{\textbf{Patients}} & \textbf{Vaccine \newline Peptides} \\
+N & 100-139 & 
+	\pie{288}  &
+	\pie{102}  &
+	\pie{261}  &
+	\pie{102}  &
+	\pie{308}  &
+	 -  &
+	\pie{360}  &
+	\pie{360}  &
+	 50.9\%  ($n=55$)  & 
+	N$_{102-128}$ \\
+N & 300-339 & 
+	\pie{144}  &
+	\pie{154}  &
+	\pie{278}  &
+	\pie{17}  &
+	\pie{300}  &
+	 -  &
+	\pie{0} &
+	\pie{360}  &
+	 36.2\%  ($n=34$)  & 
+	N$_{301-327}$\newline N$_{305-331}$\newline N$_{310-336}$\newline N$_{324-350}$ \\
+S & 1200-1228 & 
+	\pie{216}  &
+	 -  &
+	\pie{216}  &
+	\pie{8}  &
+	\pie{45}  &
+	\pie{51}  &
+	\pie{0} &
+	\pie{180}  &
+	 17.3\%  ($n=14$)  & 
+	 \\
+N & 60-99 & 
+	\pie{0} &
+	\pie{51}  &
+	\pie{196}  &
+	\pie{8}  &
+	\pie{102}  &
+	 -  &
+	\pie{0} &
+	\pie{120}  &
+	 20.9\%  ($n=19$)  & 
+	 \\
+M & 160-199 & 
+	\pie{216}  &
+	 -  &
+	\pie{343}  &
+	\pie{137}  &
+	 -  &
+	 -  &
+	\pie{0} &
+	\pie{360}  &
+	 57.3\%  ($n=47$)  & 
+	 \\
+S & 240-277 & 
+	\pie{280}  &
+	 -  &
+	\pie{196}  &
+	\pie{0} &
+	 -  &
+	\pie{334}  &
+	\pie{0} &
+	\pie{270}  &
+	 71.4\%  ($n=35$)  & 
+	S$_{261-287}$ \\
+nsp3 & 820-849 & 
+	\pie{360}  &
+	 -  &
+	\pie{300}  &
+	 -  &
+	\pie{0} &
+	 -  &
+	\pie{300}  &
+	\pie{360}  &
+	 87.1\%  ($n=27$)  & 
+	 \\
+ORF3a & 120-159 & 
+	\pie{320}  &
+	 -  &
+	\pie{0} &
+	\pie{8}  &
+	\pie{360}  &
+	 -  &
+	\pie{0} &
+	\pie{360}  &
+	 30.3\%  ($n=23$)  & 
+	 \\
+N & 211-235 & 
+	\pie{80}  &
+	\pie{0} &
+	\pie{229}  &
+	\pie{0} &
+	\pie{98}  &
+	 -  &
+	\pie{0} &
+	\pie{77}  &
+	 39.3\%  ($n=22$)  & 
+	 \\
+N & 340-374 & 
+	\pie{360}  &
+	\pie{0} &
+	\pie{229}  &
+	\pie{25}  &
+	\pie{0} &
+	 -  &
+	\pie{0} &
+	\pie{240}  &
+	 28.6\%  ($n=20$)  & 
+	N$_{324-350}$ \\
+ORF3a & 200-239 & 
+	\pie{360}  &
+	 -  &
+	\pie{0} &
+	\pie{34}  &
+	\pie{300}  &
+	 -  &
+	\pie{0} &
+	\pie{360}  &
+	 23.9\%  ($n=16$)  & 
+	 \\
+N & 20-59 & 
+	\pie{0} &
+	\pie{51}  &
+	\pie{212}  &
+	\pie{0} &
+	\pie{0} &
+	 -  &
+	\pie{0} &
+	\pie{360}  &
+	 40.5\%  ($n=17$)  & 
+	 \\
+S & 861-895 & 
+	\pie{0} &
+	 -  &
+	\pie{0} &
+	\pie{51}  &
+	\pie{240}  &
+	\pie{0} &
+	\pie{0} &
+	\pie{360}  &
+	 22.6\%  ($n=12$)  & 
+	S$_{857-883}$ \\
+nsp13 & 387-405 & 
+	\pie{144}  &
+	\pie{0} &
+	\pie{251}  &
+	 -  &
+	\pie{0} &
+	 -  &
+	\pie{0} &
+	\pie{27}  &
+	 35.7\%  ($n=10$)  & 
+	 \\
+S & 801-839 & 
+	\pie{0} &
+	 -  &
+	\pie{0} &
+	\pie{17}  &
+	 -  &
+	\pie{51}  &
+	\pie{0} &
+	\pie{120}  &
+	 11.8\%  ($n=8$)  & 
+	S$_{788-814}$\newline S$_{809-835}$ \\
+S & 360-399 & 
+	\pie{360}  &
+	 -  &
+	\pie{0} &
+	\pie{8}  &
+	 -  &
+	\pie{0} &
+	\pie{0} &
+	\pie{180}  &
+	 15.7\%  ($n=8$)  & 
+	 \\
+N & 240-279 & 
+	\pie{0} &
+	\pie{51}  &
+	\pie{0} &
+	\pie{0} &
+	\pie{154}  &
+	 -  &
+	\pie{0} &
+	\pie{180}  &
+	 29.6\%  ($n=8$)  & 
+	 \\
+nsp12 & 738-750 & 
+	\pie{144}  &
+	 -  &
+	\pie{0} &
+	 -  &
+	\pie{300}  &
+	 -  &
+	\pie{0} &
+	\pie{360}  &
+	 66.7\%  ($n=8$)  & 
+	 \\
+S & 424-459 & 
+	\pie{0} &
+	 -  &
+	\pie{0} &
+	\pie{8}  &
+	 -  &
+	\pie{25}  &
+	\pie{0} &
+	\pie{180}  &
+	 6.7\%  ($n=4$)  & 
+	S$_{447-473}$\newline S$_{451-477}$ \\
+S & 1171-1193 & 
+	\pie{0} &
+	 -  &
+	\pie{0} &
+	\pie{8}  &
+	 -  &
+	\pie{25}  &
+	\pie{0} &
+	\pie{180}  &
+	 5.2\%  ($n=3$)  & 
+	 \\
+
+        \end{tabular}
+        \end{table}
+    
+
+\end{document}

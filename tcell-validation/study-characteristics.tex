@@ -1,0 +1,140 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{fullpage}
+\usepackage{graphicx}
+
+\usepackage{array}
+\usepackage{stackengine}
+\usepackage{tikz}
+
+
+\begin{document}
+
+\makeatletter
+\newcommand{\thickhline}{%
+    \noalign {\ifnum 0=`}\fi \hrule height 1pt
+    \futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\hskip\tabcolsep\vrule width 1pt\hskip\tabcolsep}}
+\makeatother
+
+% rotated text for column headers
+\newcommand*\rot[1]{\hbox to1em{\hss\rotatebox[origin=br]{-60}{#1}}}
+
+% circles
+\newcommand*\feature[1]{\ifcase#1 -\or\LEFTcircle\or\CIRCLE\fi}
+
+% column type which is fixed width and centered
+\newcolumntype{x}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+
+
+\newcommand{\pie}[1]{
+\begin{tikzpicture}
+    \draw (0,0) circle (1ex);\fill (1ex,0) arc (0:-#1:1ex) -- (0,0) -- cycle;
+\end{tikzpicture}
+}
+
+
+\begin{table}
+
+\def\arraystretch{1.5}
+
+\begin{tabular}{r"x{30mm}|x{28mm}|c|x{30mm}|x{30mm}}
+  &
+     \multicolumn{1}{c}{
+       \rot{\textbf{Response Type}}}
+    &
+     \multicolumn{1}{c}{
+       \rot{\textbf{Viral Proteins}}}
+
+    &
+     \multicolumn{1}{c}{
+        \rot{\textbf{T-cell Assay}}}
+    &
+     \multicolumn{1}{c}{
+        \rot{\textbf{Peptide Selection}}}
+
+    &
+     \multicolumn{1}{c}{
+        \rot{\textbf{Peptide Length}}}
+    \\
+
+    \thickhline
+
+    \textbf{Ferretti}
+        & CD$8^+$  % response type
+        & All   % proteins
+        & T-Scan % assay
+        & Unbiased Tiling % peptide selection
+        & 61mer  % peptide length
+        \\
+    \textbf{Le Bert}
+        & CD4$^+$, CD8$^+$ % response type
+        & nsp7, nsp13, N % proteins
+        & IFN$\gamma$ ELISpot % T-cell assay
+        &  Unbiased Tiling % peptide selection
+        & 15mer % peptide length
+        \\
+    \textbf{Nelde}
+        & CD4$^+$  % response type
+        & All % proteins
+        & IFN$\gamma$ ELISpot % T-cell assay
+        & MHC Prediction % Peptide selection
+        & 15mer % Peptide length
+        \\
+    \textbf{ }
+        &  CD$8^+$  % response type
+        & All % proteins
+        & IFN$\gamma$ ELISpot % T-cell assay
+        & MHC Prediction % Peptide selection
+        & 9-12mer % Peptide length
+        \\
+
+    \textbf{Peng}
+        & CD4$^+$, CD$8^+$  % response type
+        & ORF3a, ORF6, ORF7a, ORF8, E, M, N, S % proteins
+        & IFN$\gamma$ ELISpot % T-cell assays
+        & Unbiased Tiling % Peptide selection
+        & 18mer % Peptide length
+        \\
+    \textbf{Schulien}
+        & CD$8^+$ % response type
+        & ORF1ab, ORF3a, N % proteins
+        & MHC Tetramer % T-cell assay
+        & MHC Prediction, Known SARS Epitopes % Peptide selection
+        & 8-10mer % Peptide length
+        \\
+    \textbf{Shomuradova}
+        & CD8$^+$ % response type
+        & S % proteins
+        & MHC Tetramer % T-cell assay
+        & MHC Prediction, Known SARS Epitopes % Peptide selection
+        & 9-10mer % Peptide length
+        \\
+
+    \textbf{Snyder}
+        & CD8$^+$
+        & All % proteins
+        & MIRA % T-cell assay
+        & MHC Prediction % Peptide selection
+        & 9-10mer  % Peptide length
+        \\
+    \textbf{Tarke}
+        & CD4$^+$
+        & All % proteins
+        & AIM % T-cell assay
+        & Unbiased Tiling  % Peptide selection
+        & 15mer % Peptide length
+        \\
+
+    \textbf{ }
+        & CD8$^+$
+        & All % proteins
+        & AIM % T-cell assay
+        & MHC Prediction  % Peptide selection
+        & 8-11mer % Peptide length
+\end{tabular}
+\end{table}
+\end{document}
