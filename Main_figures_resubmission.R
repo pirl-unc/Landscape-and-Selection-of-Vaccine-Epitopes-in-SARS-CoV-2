@@ -2479,87 +2479,87 @@ colnames(prot_dist_predicted) = c("Protein", "HLA-I", "HLA-II")#, "Nested ligand
 prot_dist_pred_bar = melt.data.table(prot_dist_predicted, measure.vars = c(2,3), id.vars = 1)
 colnames(prot_dist_pred_bar) = c("Protein", "Class", "Count")
 
-top_left = ggplot(prot_dist_bar, aes(x=Class, y=Count, fill=Protein)) +
-  geom_bar(position = "stack",stat="identity", width=1, show.legend = T, size=1) +
-  labs(title="Predicted ligands")+
-  scale_fill_manual(values=c(viridis(10)))+
-#  geom_label_repel(aes(y = ypos_co, label = Protein), color = "white", size=8, nudge_x = .65,
-#                   box.padding   = 0.35, 
-#                   point.padding = 0.5,
-#                   segment.color = 'black',
-#                   show.legend = F)+
-#  theme_void() +
-  scale_y_continuous(limits = c(0,5500), breaks = seq(0,5500,1000))+
-  theme(legend.key = element_rect(fill = "white"), legend.text = element_text(color = "white"), legend.title = element_text(color = "white")) +
-  theme(text=element_text(face="bold",size=20,colour="black"), 
-        axis.text=element_text(size=20),
-        axis.title=element_text(size=20),
-        plot.title = element_text(size=20)) + 
-  guides(fill = guide_legend(override.aes = list(fill = NA))) +
-  xlab("")
-#  theme(legend.position="none",plot.title = element_text(hjust = 0.5))
-
-#Transform into polar coordinates
-prot_dist <- prot_dist %>% 
-  arrange(desc(Protein)) %>%
-  mutate(HLAI = HLAI / sum(prot_dist$HLAI) *100) %>%
-  mutate(ypos_I = cumsum(HLAI)- 0.5*HLAI )
-
-prot_dist <- prot_dist %>% 
-  arrange(desc(Protein)) %>%
-  mutate(HLAII = HLAII / sum(prot_dist$HLAII) *100) %>%
-  mutate(ypos_II = cumsum(HLAII)- 0.5*HLAII )
-
-prot_dist <- prot_dist %>% 
-  arrange(desc(Protein)) %>%
-  mutate(Coepitopes = Coepitopes / sum(prot_dist$Coepitopes) *100) %>%
-  mutate(ypos_co = cumsum(Coepitopes)- 0.5*Coepitopes )
-
-#Plot pie charts
-pie_I = ggplot(prot_dist, aes(x="", y=HLAI, fill=Protein)) +
-  geom_bar(stat="identity", width=1, show.legend = F, color="red", size=1) +
-  coord_polar("y", start=0)+
-  labs(title="Predicted HLA-I ligands")+
-  scale_fill_manual(values=c(viridis(10)))+
-  geom_label_repel(aes(y = ypos_I, label = Protein), color = "white", size=8, nudge_x = .65,
-                   box.padding   = 0.35, 
-                   point.padding = 0.5,
-                   segment.color = 'black',
-                   show.legend = F)+
-  theme_void() +   
-  theme(text=element_text(face="bold",size=20,colour="black")) +
-  theme(legend.position="none",plot.title = element_text(hjust = 0.5))
-
-
-pie_II = ggplot(prot_dist, aes(x="", y=HLAII, fill=Protein)) +
-  geom_bar(stat="identity", width=1, show.legend = F, color="blue", size=1) +
-  coord_polar("y", start=0)+
-  labs(title="Predicted HLA-II ligands")+
-  scale_fill_manual(values=c(viridis(10)))+
-  geom_label_repel(aes(y = ypos_II, label = Protein), color = "white", size=8, nudge_x = .65,
-                   box.padding   = 0.35, 
-                   point.padding = 0.5,
-                   segment.color = 'black',
-                   show.legend = F)+
-  theme_void() +
-  theme(text=element_text(face="bold",size=20,colour="black")) +
-  theme(legend.position="none",plot.title = element_text(hjust = 0.5))
-
-pie_co = ggplot(prot_dist, aes(x="", y=Coepitopes, fill=Protein)) +
-  geom_bar(stat="identity", width=1, show.legend = F, color="purple", size=1) +
-  coord_polar("y", start=0)+
-  labs(title="Predicted nested HLA ligands")+
-  scale_fill_manual(values=c(viridis(10)))+
-  geom_label_repel(aes(y = ypos_co, label = Protein), color = "white", size=8, nudge_x = .65,
-                   box.padding   = 0.35, 
-                   point.padding = 0.5,
-                   segment.color = 'black',
-                   show.legend = F)+
-  theme_void() +
-  theme(text=element_text(face="bold",size=20,colour="black")) +
-  theme(legend.position="none",plot.title = element_text(hjust = 0.5))
-
-grid.arrange(pie_I, pie_II, pie_co, nrow=2, ncol=2)
+# top_left = ggplot(prot_dist_bar, aes(x=Class, y=Count, fill=Protein)) +
+#   geom_bar(position = "stack",stat="identity", width=1, show.legend = T, size=1) +
+#   labs(title="Predicted ligands")+
+#   scale_fill_manual(values=c(viridis(10)))+
+# #  geom_label_repel(aes(y = ypos_co, label = Protein), color = "white", size=8, nudge_x = .65,
+# #                   box.padding   = 0.35, 
+# #                   point.padding = 0.5,
+# #                   segment.color = 'black',
+# #                   show.legend = F)+
+# #  theme_void() +
+#   scale_y_continuous(limits = c(0,5500), breaks = seq(0,5500,1000))+
+#   theme(legend.key = element_rect(fill = "white"), legend.text = element_text(color = "white"), legend.title = element_text(color = "white")) +
+#   theme(text=element_text(face="bold",size=20,colour="black"), 
+#         axis.text=element_text(size=20),
+#         axis.title=element_text(size=20),
+#         plot.title = element_text(size=20)) + 
+#   guides(fill = guide_legend(override.aes = list(fill = NA))) +
+#   xlab("")
+# #  theme(legend.position="none",plot.title = element_text(hjust = 0.5))
+# 
+# #Transform into polar coordinates
+# prot_dist <- prot_dist %>% 
+#   arrange(desc(Protein)) %>%
+#   mutate(HLAI = HLAI / sum(prot_dist$HLAI) *100) %>%
+#   mutate(ypos_I = cumsum(HLAI)- 0.5*HLAI )
+# 
+# prot_dist <- prot_dist %>% 
+#   arrange(desc(Protein)) %>%
+#   mutate(HLAII = HLAII / sum(prot_dist$HLAII) *100) %>%
+#   mutate(ypos_II = cumsum(HLAII)- 0.5*HLAII )
+# 
+# prot_dist <- prot_dist %>% 
+#   arrange(desc(Protein)) %>%
+#   mutate(Coepitopes = Coepitopes / sum(prot_dist$Coepitopes) *100) %>%
+#   mutate(ypos_co = cumsum(Coepitopes)- 0.5*Coepitopes )
+# 
+# #Plot pie charts
+# pie_I = ggplot(prot_dist, aes(x="", y=HLAI, fill=Protein)) +
+#   geom_bar(stat="identity", width=1, show.legend = F, color="red", size=1) +
+#   coord_polar("y", start=0)+
+#   labs(title="Predicted HLA-I ligands")+
+#   scale_fill_manual(values=c(viridis(10)))+
+#   geom_label_repel(aes(y = ypos_I, label = Protein), color = "white", size=8, nudge_x = .65,
+#                    box.padding   = 0.35, 
+#                    point.padding = 0.5,
+#                    segment.color = 'black',
+#                    show.legend = F)+
+#   theme_void() +   
+#   theme(text=element_text(face="bold",size=20,colour="black")) +
+#   theme(legend.position="none",plot.title = element_text(hjust = 0.5))
+# 
+# 
+# pie_II = ggplot(prot_dist, aes(x="", y=HLAII, fill=Protein)) +
+#   geom_bar(stat="identity", width=1, show.legend = F, color="blue", size=1) +
+#   coord_polar("y", start=0)+
+#   labs(title="Predicted HLA-II ligands")+
+#   scale_fill_manual(values=c(viridis(10)))+
+#   geom_label_repel(aes(y = ypos_II, label = Protein), color = "white", size=8, nudge_x = .65,
+#                    box.padding   = 0.35, 
+#                    point.padding = 0.5,
+#                    segment.color = 'black',
+#                    show.legend = F)+
+#   theme_void() +
+#   theme(text=element_text(face="bold",size=20,colour="black")) +
+#   theme(legend.position="none",plot.title = element_text(hjust = 0.5))
+# 
+# pie_co = ggplot(prot_dist, aes(x="", y=Coepitopes, fill=Protein)) +
+#   geom_bar(stat="identity", width=1, show.legend = F, color="purple", size=1) +
+#   coord_polar("y", start=0)+
+#   labs(title="Predicted nested HLA ligands")+
+#   scale_fill_manual(values=c(viridis(10)))+
+#   geom_label_repel(aes(y = ypos_co, label = Protein), color = "white", size=8, nudge_x = .65,
+#                    box.padding   = 0.35, 
+#                    point.padding = 0.5,
+#                    segment.color = 'black',
+#                    show.legend = F)+
+#   theme_void() +
+#   theme(text=element_text(face="bold",size=20,colour="black")) +
+#   theme(legend.position="none",plot.title = element_text(hjust = 0.5))
+# 
+# grid.arrange(pie_I, pie_II, pie_co, nrow=2, ncol=2)
 
 ####Right: IEDB data
 
@@ -2716,50 +2716,52 @@ Fig3_II = ggplot(prot_dist_bar_all[which(prot_dist_bar_all$Class == "HLA-II")], 
 
 grid.arrange(Fig3_I,Fig3_II, nrow = 1, ncol = 2)
 
-#Convert to polar coordinates
-prot_dist <- prot_dist %>% 
-  arrange(desc(Protein)) %>%
-  mutate(counts_iedb_I = counts_iedb_I / sum(prot_dist$counts_iedb_I) *100) %>%
-  mutate(ypos_iedb_I = cumsum(counts_iedb_I)- 0.5*counts_iedb_I )
-prot_dist <- prot_dist %>% 
-  arrange(desc(Protein)) %>%
-  mutate(counts_iedb_II = counts_iedb_II / sum(prot_dist$counts_iedb_II) *100) %>%
-  mutate(ypos_iedb_II = cumsum(counts_iedb_II)- 0.5*counts_iedb_II )
-
-iedb_I=ggplot(prot_dist, aes(x="", y=counts_iedb_I, fill=Protein)) +
-  geom_bar(stat="identity", width=1, show.legend = F, color = "red", size=1) +
-  coord_polar("y", start=0)+
-  labs(title="IEDB HLA-I ligands")+
-  scale_fill_manual(values=c(viridis(10)))+
-  geom_label_repel(aes(y = ypos_iedb_I, label = Protein), color = "white", size=8, nudge_x = .65,
-                   box.padding   = 0.35, 
-                   point.padding = 0.5,
-                   segment.color = 'black',
-                   show.legend = F)+
-  theme_void() +   
-  theme(text=element_text(face="bold",size=20,colour="black")) +
-  theme(legend.position="none",plot.title = element_text(hjust = 0.5))
-
-iedb_II= ggplot(prot_dist, aes(x="", y=counts_iedb_II, fill=Protein)) +
-  geom_bar(stat="identity", width=1, show.legend = F, color="blue", size = 1) +
-  coord_polar("y", start=0)+
-  labs(title="IEDB HLA-II ligands")+
-  scale_fill_manual(values=c(viridis(10)))+
-  geom_label_repel(aes(y = ypos_iedb_II, label = Protein), color = "white", size=8, nudge_x = .65,
-                   box.padding   = 0.35, 
-                   point.padding = 0.5,
-                   segment.color = 'black',
-                   show.legend = F)+
-  theme_void() +   
-  theme(text=element_text(face="bold",size=20,colour="black")) +
-  theme(legend.position="none",plot.title = element_text(hjust = 0.5))
-
-
-grid.arrange(iedb_I, iedb_II, nrow=1, ncol=2)
+# #Convert to polar coordinates
+# prot_dist <- prot_dist %>% 
+#   arrange(desc(Protein)) %>%
+#   mutate(counts_iedb_I = counts_iedb_I / sum(prot_dist$counts_iedb_I) *100) %>%
+#   mutate(ypos_iedb_I = cumsum(counts_iedb_I)- 0.5*counts_iedb_I )
+# prot_dist <- prot_dist %>% 
+#   arrange(desc(Protein)) %>%
+#   mutate(counts_iedb_II = counts_iedb_II / sum(prot_dist$counts_iedb_II) *100) %>%
+#   mutate(ypos_iedb_II = cumsum(counts_iedb_II)- 0.5*counts_iedb_II )
+# 
+# iedb_I=ggplot(prot_dist, aes(x="", y=counts_iedb_I, fill=Protein)) +
+#   geom_bar(stat="identity", width=1, show.legend = F, color = "red", size=1) +
+#   coord_polar("y", start=0)+
+#   labs(title="IEDB HLA-I ligands")+
+#   scale_fill_manual(values=c(viridis(10)))+
+#   geom_label_repel(aes(y = ypos_iedb_I, label = Protein), color = "white", size=8, nudge_x = .65,
+#                    box.padding   = 0.35, 
+#                    point.padding = 0.5,
+#                    segment.color = 'black',
+#                    show.legend = F)+
+#   theme_void() +   
+#   theme(text=element_text(face="bold",size=20,colour="black")) +
+#   theme(legend.position="none",plot.title = element_text(hjust = 0.5))
+# 
+# iedb_II= ggplot(prot_dist, aes(x="", y=counts_iedb_II, fill=Protein)) +
+#   geom_bar(stat="identity", width=1, show.legend = F, color="blue", size = 1) +
+#   coord_polar("y", start=0)+
+#   labs(title="IEDB HLA-II ligands")+
+#   scale_fill_manual(values=c(viridis(10)))+
+#   geom_label_repel(aes(y = ypos_iedb_II, label = Protein), color = "white", size=8, nudge_x = .65,
+#                    box.padding   = 0.35, 
+#                    point.padding = 0.5,
+#                    segment.color = 'black',
+#                    show.legend = F)+
+#   theme_void() +   
+#   theme(text=element_text(face="bold",size=20,colour="black")) +
+#   theme(legend.position="none",plot.title = element_text(hjust = 0.5))
+# 
+# 
+# grid.arrange(iedb_I, iedb_II, nrow=1, ncol=2)
 
 
 ####Combine predicted epitopes with IEDB epitopes, incorporate entropy
 ent = fread(paste0(WORKING_DIR, "entropy_7882.txt"))
+#ent = fread(paste0(WORKING_DIR, "entropy_rerun_010521.txt"))
+
 
 #All peptides from the IEDB and netMHC(II)pan sets
 all_I = unique(c(iedb_fig3_I$peptide, Net_BA_cast$Peptide))
@@ -3030,6 +3032,33 @@ filt_II = filt_II[which(filt_II$Immunogenic_haplotypes != "")]
 filt_co = filt_co[which((filt_co$c1_immunogenic_haplotypes != "") & (filt_co$c2_immunogenic_haplotypes != ""))]
 
 t2 = bar_chart(filt_I, filt_II, filt_co, 18)
+
+# ####Correct for new entropy values
+# ent = fread(paste0(WORKING_DIR, "entropy_rerun_010521.txt"))
+# 
+# for(n in 1:nrow(filt_I)){
+#   print(n)
+#   start = filt_I$Start[n]
+#   end = filt_I$End[n]
+#   vals = ent$V2[start:end]
+#   if(any(which(vals > 0.1))){
+#     filt_I$Low_entropy[n] = 0
+#   }else{
+#     filt_I$Low_entropy[n] = 1
+#   }
+# }
+# 
+# for(n in 1:nrow(filt_II)){
+#   print(n)
+#   start = filt_II$Start[n]
+#   end = filt_II$End[n]
+#   vals = ent$V2[start:end]
+#   if(any(which(vals > 0.1))){
+#     filt_II$Low_entropy[n] = 0
+#   }else{
+#     filt_II$Low_entropy[n] = 1
+#   }
+# }
 
 ##Filter by entropy
 filt_I = filt_I[which(filt_I$Low_entropy==1),]
@@ -3396,6 +3425,17 @@ filt_II_m = filt_II
 # filt_I_m - filt_I[which(!is.na(filt_I$Murine)),]
 # filt_II_m - filt_I[which(!is.na(filt_II$Murine)),]
 
+###Reference locations
+#orf1ab: 1 - 7096                                                                    
+#S: 7097 - 8369                                                                       
+#ORF3a: 8370 - 8644                                                                   
+#E: 8645 - 8719                                                                       
+#M: 8720 - 8941                                                                       
+#ORF6: 8942 - 9002                                                                    
+#ORF7a: 9003 - 9123                                                                   
+#ORF8: 9124 - 9244                                                                    
+#N: 9245 - 9663                                                                       
+#ORF10: 9664 - 9701
 
 window = c(15,21,27)
 
@@ -3428,11 +3468,11 @@ for(w in window){
       End= Start+w-1
     }else if((n >= 8370) & (n <= 8644)){
       Protein = "ORF3a"
-      Start = n-8719
+      Start = n-8369
       End= Start+w-1
     }else if((n >= 8645) & (n <= 8719)){
       Protein = "E"
-      Start = n-8719
+      Start = n-8644
       End= Start+w-1
     }else if((n >= 8720) & (n <= 8941)){
       Protein = "M"
@@ -3440,15 +3480,15 @@ for(w in window){
       End= Start+w-1
     }else if((n >= 8942) & (n <= 9002)){
       Protein = "ORF6"
-      Start = n-8719
+      Start = n-8941
       End= Start+w-1
     }else if((n >= 9003) & (n <= 9123)){
       Protein = "ORF7"
-      Start = n-8719
+      Start = n-9002
       End= Start+w-1
     }else if((n >= 9124) & (n <= 9244)){
       Protein = "ORF8"
-      Start = n-8719
+      Start = n-9123
       End= Start+w-1
     }else if ((n >= 9245) & (n <= 9663)){
       Protein = "N"
@@ -3456,7 +3496,7 @@ for(w in window){
       End= Start+w-1
     }else if((n >= 9664) & (n <= 9701)){
       Protein = "ORF10"
-      Start = n-8719
+      Start = n-9663
       End= Start+w-1
     }else{
       Protein = NA
@@ -3944,7 +3984,7 @@ for(n in 8:11){
 }
 
 #fwrite(S1, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Table_S1_HLA-I_epitopes_V2.csv")  
-fwrite(S1, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Table_S7_HLA-I_worldwide_epitopes.csv")  
+fwrite(S1, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Table_S3_HLA-I_worldwide_epitopes.csv")  
 
 #Check for hits
 S1_filt = S1[which((S1$Predicted_binder == T) | (S1$IEDB_binder == T))]
@@ -4028,13 +4068,13 @@ S2$Self_epitope[which(S2$Peptide %in% ref$V1)] = TRUE
 #No overlap was found!
 
 #fwrite(S2, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Table_S2_HLA-II_epitopes_V2.csv")  
-fwrite(S2, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Table_S8_HLA-II_worldwide_epitopes.csv")  
+fwrite(S2, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Working/Table_S3_HLA-II_worldwide_epitopes.csv")  
 
 
-#Table S3
+#Table S3 --> S5
 #"/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/Figures/COVID/Supplemental/Standardized T cell epitopes.txt"
 
-#Table S4
+#Table S4 --> S6
 Bc = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/bcell/linear-bcell-epitopes-SARS2-S-with-filters.csv")
 Bc$Source[which(Bc$Source == "ReScan")] = "Zamecnik 2020"
 #Bc = Bc[, c(1, 3, 4, 13, 7)]
@@ -4042,13 +4082,18 @@ fwrite(Bc, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_ep
 
 
 
-###Table S5, Add NMDP stats
+###Table S5, Add NMDP stats --> S7
 Freq_form = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/vaccine-peptides/HLA_freq_formatted.csv")
 
-
+#S, N, and M
 final_15mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/vaccine-peptides/final-vaccine-peptides-15mer.csv")
 final_21mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/vaccine-peptides/final-vaccine-peptides-21mer.csv")
 final_27mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/vaccine-peptides/final-vaccine-peptides-27mer.csv")
+
+#All proteins
+final_15mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/vaccine-peptides-all-proteins/final-vaccine-peptides-15mer.csv")
+final_21mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/vaccine-peptides-all-proteins/final-vaccine-peptides-21mer.csv")
+final_27mer = fread("/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/vaccine-peptides-all-proteins/final-vaccine-peptides-27mer.csv")
 
 final_all = rbind(final_15mer, final_21mer, final_27mer)
 
@@ -4090,7 +4135,8 @@ final_all = cbind(final_all[,1], nchar(final_all$Sequence), final_all[,c(2:ncol(
                                                                                                                  API_HLA_I_coverage, API_DRB_coverage,
                                                                                                                  HIS_HLA_I_coverage, HIS_DRB_coverage))  
 colnames(final_all)[2] = "Length"
-fwrite(final_all, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/vaccine-peptides/Table_S5_final_vaccine-peptides-merged.csv")
+fwrite(final_all, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/vaccine-peptides/Table_S7_final_vaccine-peptides-merged.csv")
+fwrite(final_all, "/datastore/nextgenout5/share/labs/Vincent_Lab/datasets/SARS-CoV-2_epitope_landscape/vaccine-peptides-all-proteins/Table_S8_final_vaccine-peptides-all-proteins-merged.csv")
 
 
 
