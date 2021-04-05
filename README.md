@@ -10,7 +10,9 @@ All code used to analyze data and generate figures from this manuscript have bee
 
 1. Clone this repository onto your local computer
 2. Download the large data files (along with supplemental tables) from the above Mendeley data link.
-3. Unpack the large data file from above.  The subdirectories contained in this file correspond to the same order as those within the github repository.  Merge the large data files together with your local repository files.
-4. For Figures 2-3, Fig. S1-S6, and Table S1-S8: Open the R file "Main_figures_resubmission.R" in the repository root directory, changing the "WORKING_ROOT" variable (line 2) to the path of the repository.  This file contains a step-by-step workflow for recreating these above listed figures.
-5. For Figures...
+3. Unpack the large data file from above.  The subdirectories contained in the Large_files directory correspond to the same order as those within the github repository.  Merge these subdirectories together with your local repository files.
+4. Run the following command in the repository root directory: 
+   >tar -xvf ./SARS-CoV-2_epitope_landscape/Working/large_files_040521.tar.gz
+5. For Figures 2-3, Fig. S1-S6, and Table S1-S8: Open the R file "Main_figures_resubmission.R" in the repository root directory, changing the "WORKING_ROOT" variable (line 2) to the path of the repository.  This file contains a step-by-step workflow for recreating these above listed figures.
+6. For Figures...
  
