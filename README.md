@@ -6,7 +6,7 @@ Several larger files which were used part of these analyses are included alongsi
 
 ## Instructions
 
-All code used to analyze data and generate figures from this manuscript have been released within this github page, with some larger files (>100mb) stored on Mendeley data (https://data.mendeley.com/datasets/c6pdfrwxgj/3). In order to replicate analysis presented in this manuscript, follow the steps listed below:
+All code used to analyze data and generate figures from this manuscript have been released within this github page, with some larger files (>100mb) stored on Mendeley data (https://data.mendeley.com/datasets/c6pdfrwxgj/3). In order to replicate analysis presented in this manuscript, follow the steps listed below.  R v3.5.2 and Python vXYZ was used for these analyses:
 
 1. Clone this repository onto your local computer
 2. Download the large data files (along with supplemental tables) from the above Mendeley data link.
