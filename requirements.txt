@@ -1,28 +1,3 @@
-# Landscape and Selection of Vaccine Epitopes in SARS-CoV-2
-
-Preprint submitted to biorxiv: https://www.biorxiv.org/content/10.1101/2020.06.04.135004v1
-
-Several larger files which were used part of these analyses are included alongside supplemental data on Mendeley due to GitHub file size limits: https://data.mendeley.com/datasets/c6pdfrwxgj/3.
-
-## Instructions
-
-All code used to analyze data and generate figures from this manuscript have been released within this github page, with some larger files (>100mb) stored on Mendeley data (https://data.mendeley.com/datasets/c6pdfrwxgj/3). In order to replicate analysis presented in this manuscript, follow the steps listed below.  R v3.5.2 and Python v3.7.5 were used for these analyses:
-
-1. Clone this repository onto your local computer
-2. Download the large data files (along with supplemental tables) from the above Mendeley data link.
-3. Unpack the data files from above.  The subdirectories contained in the "Large_files" directory correspond to the same order as those within the github repository.  Merge these subdirectories together with your local repository files.
-4. Run the following command in the repository root directory: 
-   >tar -xvf ./SARS-CoV-2_epitope_landscape/Working/large_files_040521.tar.gz
-5. For Figures 2-3, Fig. S1-S6, and Table S1-S8: Open the R file "Main_figures_resubmission.R" in the repository root directory, changing the "WORKING_ROOT" variable (line 2) to the path of the repository.  This file contains a step-by-step workflow for recreating these above listed figures.
-6. Run `pip install -r requirements.txt`
-7. Run `mhcflurry-downloads fetch models_class1_presentation`
-8. To generate Figures 4-6, run `generate-python-figures.sh`, which runs a series of IPython notebooks to select B-cell epitope regions, T-cell epitopes, vaccine peptides, and the generation of all related plots and figures. 
- 
-## Python Package Versions
-
-These package versions are also listed in `requirements.txt`:
-
-```
 absl-py==0.8.1
 alabaster==0.7.12
 appdirs==1.4.3
@@ -293,5 +268,3 @@ XlsxWriter==1.1.0
 xlwt==1.3.0
 xvfbwrapper==0.2.9
 zipp==0.6.0
-```
-

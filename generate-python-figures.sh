@@ -1,9 +1,8 @@
 #!/bin/bash
 
-set -e
+set -ex
 
 notebooks=(
-    "solvent-accessibility/Normalize-solvent-accessibility-values-for-6vxx.ipynb"
     "bcell/Extract-SARS2-literature-B-cell-epitopes.ipynb"
     "bcell/Choose-B-cell-epitopes.ipynb"
     "bcell/Visualize-B-cell-epitopes.ipynb"
@@ -34,8 +33,6 @@ done
 
 for notebook in "${notebooks[@]}"
 do
-
-    echo jupyter nbconvert --to notebook --inplace --execute $notebook
-    jupyter nbconvert --to notebook --inplace --execute $notebook
+    jupyter nbconvert --ExecutePreprocessor.timeout=1200 --to notebook --inplace --execute $notebook
 
 done
