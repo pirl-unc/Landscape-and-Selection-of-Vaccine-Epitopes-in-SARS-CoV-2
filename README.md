@@ -6,33 +6,7 @@ Several larger files which were used part of these analyses are included alongsi
 
 ## Dependent packages
 R packages:
-   caret 6.0-84
-   cowplot 0.9.4
-   data.table 1.12.8
-   DESeq2 1.22.2
-   doMC 1.3.6
-   dplyr 0.8.4
-   forcats 0.4.0
-   GenomicRanges 1.34.0
-   ggallin 0.1.1
-   ggbeeswarm 0.6.0
-   ggnewscale 0.4.1
-   ggplot2 3.3.0
-   ggpubr 0.2
-   ggrepel 0.8.1
-   gplots 3.0.3
-   gridExtra 2.3
-   huxtable 4.7.1
-   magrittr 1.5
-   officer 0.3.10
-   pROC 1.16.2
-   RColorBrewer 1.1-2
-   readxl 1.3.1
-   scales 1.1.0
-   seqinr 3.6-1
-   stringr 1.4.0
-   venneuler 1.1-0
-   viridis 0.5.1
+   caret 6.0-84, cowplot 0.9.4, data.table 1.12.8, DESeq2 1.22.2, doMC 1.3.6, dplyr 0.8.4, forcats 0.4.0, GenomicRanges 1.34.0, ggallin 0.1.1, ggbeeswarm 0.6.0, ggnewscale 0.4.1, ggplot2 3.3.0, ggpubr 0.2, ggrepel 0.8.1, gplots 3.0.3, gridExtra 2.3, huxtable 4.7.1, magrittr 1.5, officer 0.3.10, pROC 1.16.2, RColorBrewer 1.1-2, readxl 1.3.1, scales 1.1.0, seqinr 3.6-1, stringr 1.4.0, venneuler 1.1-0, viridis 0.5.1 
 
 ## Instructions
 
