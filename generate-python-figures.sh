@@ -33,6 +33,6 @@ done
 
 for notebook in "${notebooks[@]}"
 do
-    jupyter nbconvert --ExecutePreprocessor.timeout=1200 --to notebook --inplace --execute $notebook
+    jupyter nbconvert --ExecutePreprocessor.timeout=9600 --to notebook --inplace --execute $notebook
 
 done
