@@ -198,7 +198,7 @@ requests-toolbelt==0.9.1
 rlax==0.0.2
 roman==3.0
 rouge-score==0.0.4
-rsa==4.0
+rsa==4.1
 sacrebleu==1.4.13
 sacremoses==0.0.43
 scikit-bio==0.5.5
