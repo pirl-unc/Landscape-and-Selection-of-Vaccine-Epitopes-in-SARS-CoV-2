@@ -99,7 +99,7 @@ kiwisolver==1.1.0
 lazy-object-proxy==1.4.2
 lockfile==0.12.2
 logomaker==0.8
-lxml==4.5.0
+lxml==4.6.3
 m2r==0.2.1
 Markdown==2.6.11
 MarkupSafe==1.0
