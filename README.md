@@ -16,4 +16,4 @@ All code used to analyze data and generate figures from this manuscript have bee
 5. For Figures 2-3, Fig. S1-S6, and Table S1-S8: Open the R file "Main_figures_resubmission.R" in the repository root directory, changing the "WORKING_ROOT" variable (line 2) to the path of the repository.  This file contains a step-by-step workflow for recreating these above listed figures.
 6. Run `pip install -r requirements.txt`
 7. To generate Figures 4-6, run `collect-and-generate-python-figures.sh`, which runs a series of IPython notebooks to select B-cell epitope regions, T-cell epitopes, vaccine peptides, and the generation of all related plots and figures. 
-8. To copy all figure images to the `figure-images` directory, run `collect-all-figures.sh`
+8. To copy all figure images to the `figure-images` directory, run `collect-all-figures.sh`. This requires [pdftk](https://stackoverflow.com/questions/20804441/how-to-install-pdftk-on-mac-os-x/22054037) to be installed. 
