@@ -50,7 +50,7 @@ Flask==1.1.1
 frozendict==1.2
 funcsigs==1.0.2
 future==0.18.2
-gast==0.2.2
+gast==0.3.3
 gevent==1.5a3
 ghostscript==0.6
 gin-config==0.3.0
@@ -79,6 +79,7 @@ ipython==7.11.1
 ipython-genutils==0.2.0
 ipywidgets==7.5.1
 isort==4.3.21
+-e git+git@github.com:hammerlab/isovar.git@98a8bb33df5664973ff6ded5944a3024258217bd#egg=isovar
 itsdangerous==1.1.0
 jax==0.1.75
 jax-loss==0.0.1
@@ -107,7 +108,7 @@ matplotlib-venn==0.11.5
 mccabe==0.6.1
 memoized-property==1.0.3
 mesh-tensorflow==0.1.16
--e git+git@github.com:hammerlab/mhcflurry.git@3ee69c6d134338359542154a1107b0c447e1960a#egg=mhcflurry
+mhcflurry==2.0.1
 -e git+git@github.com:til-unc/mhcgnomes.git@3e65405aefe7019f0bc751260ad73dd888e434ea#egg=mhcgnomes
 -e git+git@github.com:iskandr/mhcnames.git@71694b9d620db68ceee44da1b8422ff436f15bd3#egg=mhcnames
 -e git+git@github.com:hammerlab/mhctools.git@c64f5d9d08f2d474fe7868f42c8f116e532bcc35#egg=mhctools
@@ -142,6 +143,7 @@ parso==0.6.0
 patsy==0.5.1
 pbr==4.2.0
 pdfkit==0.6.1
+-e git+git@github.com:hammerlab/pepdata.git@2f1bad79f8084545227f4a7f895bbf08a6fb6fdc#egg=pepdata
 pexpect==4.8.0
 pickleshare==0.7.5
 Pillow==7.2.0
@@ -208,6 +210,7 @@ Send2Trash==1.5.0
 sentencepiece==0.1.91
 seqlogo==5.29.7
 sercol==0.1.4
+-e git+git@github.com:iskandr/serializable.git@ed309a6f8f2590b525fc0f93c00549223c8c944f#egg=serializable
 setuptools-scm==3.5.0
 shellinford==0.4.1
 simplejson==3.16.0
@@ -229,9 +232,9 @@ t5==0.6.4
 tensor2tensor==1.7.0
 tensorboard==2.2.0
 tensorboard-plugin-wit==1.7.0
-tensorflow==2.3.0
+tensorflow==2.2.2
 tensorflow-datasets==3.2.1
-tensorflow-estimator==2.3.0
+tensorflow-estimator==2.2.0
 tensorflow-metadata==0.23.0
 tensorflow-text==2.3.0
 termcolor==1.1.0

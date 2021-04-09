@@ -7,7 +7,7 @@ notebooks=(
     "bcell/Choose-B-cell-epitopes.ipynb"
     "bcell/Visualize-B-cell-epitopes.ipynb"
     "iedb/IEDB-SARS-and-SARSCoV2-MHC-ligands-and-T-cell-epitopes.ipynb"
-    "iedb/Predict-immunogenicity.ipynb"
+    # "iedb/Predict-immunogenicity.ipynb"
     "polymorphism/Extract-spike-sequence-from-whole-proteome-entropy-data.ipynb"
     "vaccine-peptides/Extract-minimal-epitope-predictions.ipynb"
     "vaccine-peptides/Select-vaccine-peptides.ipynb"
