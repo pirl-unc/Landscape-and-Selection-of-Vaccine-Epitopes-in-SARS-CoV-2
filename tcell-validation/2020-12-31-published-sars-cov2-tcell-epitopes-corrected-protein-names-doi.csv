@@ -1,6 +1,4 @@
 Source,Species,Exposure,Assay,Protein,Start,End,Length,# Responding,# Total,% Responding,Peptide,MHC,Peptide Selection Method,Allele Attribution,Response type,T-cell Stimulation,Notes,Original Location,DOI
-Chour,Human,Infection,Single chain trimer,S,424,433,10,2.0,2.0,1.0,KLPDDFTGCV,A*02:01,Predicted Binding Affinity,Biological,CD8,,,S 424-433,
-Chour,Human,Infection,Single chain trimer,S,983,991,9,2.0,2.0,1.0,RLDKVEAEV,A*02:01,Predicted Binding Affinity,Biological,CD8,,,S 983-991,
 Ferretti,Human,Infection,T-Scan,nsp7,27,35,9,8.0,9.0,0.8888888888888888,KLWAQCVQL,A*02:01,Unbiased Tiling,Biological,CD8,7 days,,ORF1ab 3886-3894,10.2139/ssrn.3669387
 Ferretti,Human,Infection,T-Scan,S,269,277,9,7.0,9.0,0.7777777777777778,YLQPRTFLL,A*02:01,Unbiased Tiling,Biological,CD8,7 days,,S 269-277,10.2139/ssrn.3669387
 Ferretti,Human,Infection,T-Scan,ORF3a,139,147,9,8.0,9.0,0.8888888888888888,LLYDANYFL,A*02:01,Unbiased Tiling,Biological,CD8,7 days,,ORF3a 139-147,10.2139/ssrn.3669387
@@ -38,8 +36,6 @@ Le Bert,Human,Infection,IFN-γ ELISpot,N,291,305,15,1.0,7.0,0.1428571428571428,L
 Le Bert,Human,Infection,IFN-γ ELISpot,N,301,315,15,1.0,7.0,0.1428571428571428,WPQIAQFAPSASAFF,,Unbiased Tiling,,CD4,<= 1 day,,N 301-315,10.1038/s41586-020-2550-z
 Le Bert,Human,Infection,IFN-γ ELISpot,N,321,340,20,3.0,7.0,0.4285714285714285,GMEVTPSGTWLTYTGAIKLD,,Unbiased Tiling,,CD4 & CD8,<= 1 day,,N 321-340,10.1038/s41586-020-2550-z
 Le Bert,Human,Infection,IFN-γ ELISpot,nsp7,21,35,15,1.0,7.0,0.1428571428571428,RVESSSKLWAQCVQL,,Unbiased Tiling,,CD4,<= 1 day,,nsp7 21-35,10.1038/s41586-020-2550-z
-Minervina,Human,Infection,TCR-seq,S,269,277,9,1.0,2.0,0.5,YLQPRTFLL,A*02:01,Inferred from TCR,Inferred from TCR,CD8,,,S 269-277,
-Minervina,Human,Infection,TCR-seq,S,919,927,9,1.0,2.0,0.5,NQKLIANQF,B*15:01,Inferred from TCR,Inferred from TCR,CD8,,,S 919-927,
 Nelde,Human,Infection,IFN-γ ELISpot,M,43,51,9,6.0,11.0,0.5454545454545454,NRFLYIIKL,C*07,Predicted Binding Affinity,Predicted,CD8,12 days,,M 43-51,10.1038/s41590-020-00808-x
 Nelde,Human,Infection,IFN-γ ELISpot,M,176,190,15,21.0,22.0,0.9545454545454546,LSYYKLGASQRVAGD,"DRB1*04, DRB1*07",Predicted Binding Affinity,Predicted,CD4,12 days,,M 176-190,10.1038/s41590-020-00808-x
 Nelde,Human,Infection,IFN-γ ELISpot,N,361,370,10,7.0,11.0,0.6363636363636364,KTFPPTEPKK,A*03,Predicted Binding Affinity,Predicted,CD8,12 days,,N 361-370,10.1038/s41590-020-00808-x
@@ -141,14 +137,6 @@ Schulien,Human,Infection,pMHC Multimer,nsp12,875,884,10,1.0,8.0,0.125,QEYADVFHLY
 Schulien,Human,Infection,pMHC Multimer,S,1206,1214,9,1.0,8.0,0.125,YEQYIKWPW,B*44:02/03,Predicted Binding Affinity,Biological,CD8,,,S 1206-1214,10.1038/s41591-020-01143-2
 Shomuradova,Human,Infection,pMHC Multimer,S,269,277,9,13.0,14.0,0.9285714285714286,YLQPRTFLL,A*02:01,Homology to SARS,Biological,CD8,,,S 269-277,10.1016/j.immuni.2020.11.004
 Shomuradova,Human,Infection,pMHC Multimer,S,1000,1008,9,10.0,14.0,0.7142857142857143,RLQSLQTYV,A*02:01,Homology to SARS,Biological,CD8,,,S 1000-1008,10.1016/j.immuni.2020.11.004
-Smith,Mouse,DNA Vaccine,IFN-γ ELISpot,S,427,441,15,,,,DDFTGCVIAWNSNNL,H2-d,Unbiased Tiling,Biological,,,,S 427-441,
-Smith,Mouse,DNA Vaccine,IFN-γ ELISpot,S,1075,1089,15,,,,FTTAPAICHDGKAHF,H2-d,Unbiased Tiling,Biological,,,,S 1075-1089,
-Smith,Mouse,DNA Vaccine,IFN-γ ELISpot,S,535,549,15,,,,KNKCVNFNFNGLTGT,H2-d,Unbiased Tiling,Biological,,,,S 535-549,
-Smith,Mouse,DNA Vaccine,IFN-γ ELISpot,S,517,531,15,,,,LLHAPATVCGPKKST,H2-d,Unbiased Tiling,Biological,,,,S 517-531,
-Smith,Mouse,DNA Vaccine,IFN-γ ELISpot,S,1057,1071,15,,,,PHGVVFLHVTYVPAQ,H2-d,Unbiased Tiling,Biological,,,,S 1057-1071,
-Smith,Mouse,DNA Vaccine,IFN-γ ELISpot,S,1051,1065,15,,,,SFPQSAPHGVVFLHV,H2-d,Unbiased Tiling,Biological,,,,S 1051-1065,
-Smith,Mouse,DNA Vaccine,IFN-γ ELISpot,S,445,459,15,,,,VGGNYNYLYRLFRKS,H2-d,Unbiased Tiling,Biological,,,,S 445-459,
-Smith,Mouse,DNA Vaccine,IFN-γ ELISpot,S,421,435,15,,,,YNYKLPDDFTGCVIA,H2-d,Unbiased Tiling,Biological,,,,S 421-435,
 Snyder,Human,Infection,MIRA,nsp3,818,828,11,10.0,12.0,0.8333333333333334,HTTDPSFLGRY,A*01:01,Predicted Binding Affinity,Correlation Between Volunteers,CD8,,,ORF1ab 1636-1646,10.1101/2020.07.31.20165647
 Snyder,Human,Infection,MIRA,N,104,113,10,11.0,11.0,1.0,LSPRWYFYYL,B*07:02,Predicted Binding Affinity,Correlation Between Volunteers,CD8,"Minimal epitopes: LSPRWYFYY, SPRWYFYYL",,N 104-113,10.1101/2020.07.31.20165647
 Tarke,Human,Infection,AIM,nsp3,818,828,11,2.0,2.0,1.0,HTTDPSFLGRY,A*01:01,Predicted Elution,Predicted,CD8,,,nsp3 1636-1646,10.1101/2020.12.08.416750
@@ -954,10 +942,3 @@ Tarke,Human,Infection,AIM,nsp12,579,593,15,1.0,17.0,0.0588235294117647,IAATRGATV
 Tarke,Human,Infection,AIM,nsp12,649,663,15,1.0,17.0,0.0588235294117647,SHRFYRLANECAQVL,"DRB1*01:01, DRB1*08:01",Unbiased Tiling,Predicted,CD4,,,nsp12 5041-5055,10.1101/2020.12.08.416750
 Tarke,Human,Infection,AIM,nsp12,664,678,15,1.0,17.0,0.0588235294117647,SEMVMCGGSLYVKPG,HLA class II,Unbiased Tiling,Predicted,CD4,,,nsp12 5056-5070,10.1101/2020.12.08.416750
 Tarke,Human,Infection,AIM,nsp12,694,708,15,1.0,17.0,0.0588235294117647,FNICQAVTANVNALL,"DQB1*03:01, DRB1*14:01",Unbiased Tiling,Predicted,CD4,,,nsp12 5086-5100,10.1101/2020.12.08.416750
-Zhang,Mouse,rRBD vaccine,IFN-γ ELISpot,S,375,394,20,,,,,BALB/c mice Class I (H2-K*d or H2-D*d),Unbiased Tiling,Biological,,,,S 375-394,
-Zhang,Mouse,rRBD vaccine,IFN-γ ELISpot,S,405,424,20,,,,,BALB/c mice Class I (H2-K*d or H2-D*d),Unbiased Tiling,Biological,,,,S 405-424,
-Zhang,Mouse,rRBD vaccine,IFN-γ ELISpot,S,420,439,20,,,,,BALB/c mice Class I (H2-K*d or H2-D*d),Unbiased Tiling,Biological,,,,S 420-439,
-Zhang,Mouse,rRBD vaccine,IFN-γ ELISpot,S,435,454,20,,,,,BALB/c mice Class I (H2-K*d or H2-D*d),Unbiased Tiling,Biological,,,,S 435-454,
-Zhang,Mouse,rRBD vaccine,IFN-γ ELISpot,S,450,469,20,,,,,BALB/c mice Class I (H2-K*d or H2-D*d),Unbiased Tiling,Biological,,,,S 450-469,
-Zhang,Mouse,rRBD vaccine,IFN-γ ELISpot,S,495,514,20,,,,,BALB/c mice Class I (H2-K*d or H2-D*d),Unbiased Tiling,Biological,,,,S 495-514,
-Zhang,Mouse,rRBD vaccine,IFN-γ ELISpot,S,510,521,12,,,,,BALB/c mice Class I (H2-K*d or H2-D*d),Unbiased Tiling,Biological,,,,S 510-521,
