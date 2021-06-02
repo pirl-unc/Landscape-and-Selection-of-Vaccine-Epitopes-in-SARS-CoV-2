@@ -258,7 +258,7 @@ typechecks==0.1.0
 typed-ast==1.4.0
 Unidecode==1.1.2
 uritemplate==3.0.1
-urllib3==1.25.8
+urllib3==1.26.5
 wasabi==0.7.1
 wcwidth==0.1.8
 webencodings==0.5.1
