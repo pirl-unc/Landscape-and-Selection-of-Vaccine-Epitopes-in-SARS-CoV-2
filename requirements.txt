@@ -112,7 +112,7 @@ mhcflurry==2.0.1
 -e git+git@github.com:til-unc/mhcgnomes.git@3e65405aefe7019f0bc751260ad73dd888e434ea#egg=mhcgnomes
 -e git+git@github.com:iskandr/mhcnames.git@71694b9d620db68ceee44da1b8422ff436f15bd3#egg=mhcnames
 -e git+git@github.com:hammerlab/mhctools.git@c64f5d9d08f2d474fe7868f42c8f116e532bcc35#egg=mhctools
-mistune==0.8.4
+mistune==2.0.3
 mizani==0.7.1
 mock==2.0.0
 more-itertools==7.2.0
